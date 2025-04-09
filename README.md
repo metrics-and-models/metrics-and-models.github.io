@@ -20,7 +20,7 @@ Hi! We are a group of health and social data scientists located at the Demograph
 
 <div style="text-align: center;">
 
-### Upcoming Seminars
+**Registration**: Please find below the details of some of forthcoming, and some of the previous talks held as part of the Metrics and Models seminar series:
 
 <table style="margin-left: auto; margin-right: auto;">
   <thead>
