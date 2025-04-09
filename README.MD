@@ -20,7 +20,7 @@ Hi! We are a group of health and social data scientists located at the Demograph
 
 <div style="text-align: center;">
 
-#### Upcoming Seminars
+### Upcoming Seminars
 
 <table style="margin-left: auto; margin-right: auto;">
   <thead>
