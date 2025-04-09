@@ -16,11 +16,10 @@ Hi! We are a group of health and social data scientists located at the Demograph
 **Time and Place**: The seminar series will be held online at 1pm UK time (GMT and BST).
 
 **Registration**: To register, send a blank email or otherwise to metrics_and_models-subscribe@maillist.ox.ac.uk.
-<br>
-
-<div style="text-align: center;">
 
 **Registration**: Please find below the details of some of forthcoming, and some of the previous talks held as part of the Metrics and Models seminar series:
+
+<div style="text-align: center;">
 
 <table style="margin-left: auto; margin-right: auto;">
   <thead>
