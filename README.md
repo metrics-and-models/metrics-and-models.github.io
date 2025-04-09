@@ -11,7 +11,7 @@ Hi! We are a group of health and social data scientists located at the Demograph
 
 **Focus**: We have a focus on health and social data science.  We're specifically interested in predictive methods. We're also interested in the mathematical philosophy underpinning prediction, and efforts to make research more reproducible in general.
 
-**Open to Everyone!** Importantly, this seminar series is open to *everyone*. We've tried to schedule it at a time of day that's amenable to people in the US, Europe, and China all the same.
+**Open to Everyone!** Importantly, this seminar series is open to *everyone*. We've tried to schedule it at a time of day that's hopefully roughly equitable to people in the Americas and Asia all the same.
 
 **Time and Place**: The seminar series will be held online at 1pm UK time (GMT and BST).
 
