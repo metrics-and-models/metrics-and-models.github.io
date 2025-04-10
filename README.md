@@ -19,7 +19,7 @@ Hi! We are a group of health and social data scientists located at the Demograph
 
 **Interested in Presenting?**: If you're interested in presenting something to this seminar series, please don't hesitate to get in touch with us!
 
-**Schedule of Talks*: Please find below the details of some of forthcoming, and some of the previous talks held as part of the Metrics and Models seminar series:
+**Schedule of Talks**: Please find below the details of some of forthcoming, and some of the previous talks held as part of the Metrics and Models seminar series:
 
 <div style="text-align: center;">
 
