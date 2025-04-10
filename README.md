@@ -13,7 +13,7 @@ Hi! We are a group of health and social data scientists located at the Demograph
 
 **Open to Everyone!** Importantly, this seminar series is open to *everyone*. We've tried to schedule it at a time of day that's hopefully roughly equitable to people in the Americas and Asia all the same.
 
-**Time and Place**: The seminar series will be held online at 1pm UK time (GMT and BST).
+**Time and Place**: The seminar series will be held online at 2pm UK time (GMT and BST).
 
 **Registration**: To register, send a blank email or otherwise to metrics_and_models-subscribe@maillist.ox.ac.uk.
 
