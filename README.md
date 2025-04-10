@@ -1,6 +1,6 @@
 ### Welcome to the **Metrics and Models** homepage!
 
-Hi! We are a group of health and social data scientists located at the Demographic Science Unit within the University of Oxford ([Charlie](http://crahal.com/), [Jiani](https://vallerrr.github.io/), [Claire](https://duiyidai.github.io/), and [Daniel](https://github.com/dhvalden)). This is a website dedicated to a new online, open seminar series which we're launching.
+Hi! We are a group of health and social data scientists located at the Demographic Science Unit within the University of Oxford ([Charlie](http://crahal.com/), [Jiani](https://vallerrr.github.io/), [Claire](https://duiyidai.github.io/), (Mark)[https://markverhagen.me/], and, [Daniel](https://github.com/dhvalden)). This is a website dedicated to a new online, open seminar series which we're launching.
 
 <center> <span style="color:red;">Note: This seminar series is in the `pre-launch` phase while we try to co-ordinate some of our first speakers!</span> </center>
 
