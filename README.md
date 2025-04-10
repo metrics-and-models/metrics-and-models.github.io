@@ -17,7 +17,9 @@ Hi! We are a group of health and social data scientists located at the Demograph
 
 **Registration**: To register, send a blank email or otherwise to metrics_and_models-subscribe@maillist.ox.ac.uk.
 
-**Registration**: Please find below the details of some of forthcoming, and some of the previous talks held as part of the Metrics and Models seminar series:
+**Interested in Presenting?**: If you're interested in presenting something to this seminar series, please don't hesitate to get in touch with us!
+
+**Schedule of Talks*: Please find below the details of some of forthcoming, and some of the previous talks held as part of the Metrics and Models seminar series:
 
 <div style="text-align: center;">
 
