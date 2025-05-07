@@ -1,15 +1,15 @@
 ### Welcome to the **Metrics and Models** homepage!
 
-Hi! We are a group of health and social data scientists located at the Demographic Science Unit within the University of Oxford ([Charlie](http://crahal.com/), [Jiani](https://vallerrr.github.io/), [Claire](https://duiyidai.github.io/), [Mark](https://markverhagen.me), and, [Daniel](https://github.com/dhvalden)). This is a website dedicated to a new online, open seminar series which we're launching.
+Hi! We are a group of health and social data scientists located at the University of Oxford. This is a website dedicated to a new online, open seminar series which we're launching.
 
 <center> <span style="color:red;">Note: This seminar series is in the `pre-launch` phase while we try to co-ordinate some of our first speakers!</span> </center>
 
 <br>
 
 
-**Frequency**: First Wednesday of every month, starting May 2025.
+**Frequency**: First Wednesday of every month, starting June\July 2025.
 
-**Focus**: We have a focus on health and social data science.  We're specifically interested in predictive methods. We're also interested in the mathematical philosophy underpinning prediction, and efforts to make research more reproducible in general.
+**Focus**: We have a focus on health and social data science. We're specifically interested in predictive methods. We're also interested in the mathematical philosophy underpinning prediction, and efforts to make research more reproducible in general.
 
 **Open to Everyone!** Importantly, this seminar series is open to *everyone*. We've tried to schedule it at a time of day that's hopefully roughly equitable to people in the Americas and Asia all the same.
 
