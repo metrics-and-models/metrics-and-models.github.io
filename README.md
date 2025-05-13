@@ -20,7 +20,7 @@ Hi! We are a group of health and social data scientists located at the Universit
 
 **Who**: In alphabetical order, we are [Charlie](http://crahal.com/), [Claire](https://duiyidai.github.io/), [Daniel](https://github.com/dhvalden), [Jiani](http://vallerrr.github.io/), [Luc](https://rocher.lc/), [Mark](https://markverhagen.me/), [Ridhi](https://www.sociology.ox.ac.uk/people/ridhi-kashyap), and [Xiaowen](https://eng.ox.ac.uk/people/xiaowen-dong/). Our organisational team are part of the [Demographic Science Unit](https://www.demography.ox.ac.uk/), [Engineering Science](https://eng.ox.ac.uk/), the [Oxford Internet Institute](https://www.oii.ox.ac.uk/), and [Sociology](https://www.sociology.ox.ac.uk/).
 
-**Schedule of Talks**: Please find below the details of some of forthcoming, and some of the previous talks held as part of the Metrics and Models seminar series:
+**Schedule of Talks**: Please find below the details of some forthcoming, and some of the previous talks held as part of the Metrics and Models seminar series:
 
 <div style="text-align: center;">
 
