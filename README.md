@@ -4,7 +4,7 @@ Hi! We are a group of health and social data scientists located at the Universit
 
 **Note**: This seminar series is in the pre-launch phase while we try to co-ordinate some of our first speakers!
 
-**Frequency**: First Wednesday of every month, starting July 2nd, 2025.
+**Frequency**: Every other Wednesday, starting July 2nd, 2025.
 
 **Focus**: We have a focus on health and social data science. We're specifically interested -- but not exclusively -- in predictive methods (i.e., machine/deep learning, LLMs). We're also interested in the mathematical philosophy underpinning prediction, and efforts to make research more reproducible in general.
 
