@@ -18,7 +18,7 @@ Hi! We are a group of health and social data scientists located at the Universit
 
 **Off-weeks**: We'll be meeting in-person on the off-weeks, locally in Oxford, to discuss potential for collaboration and other opportunities. If you're interested in coming along to these offline meetings (or just want to chat), please get in touch with us at metrics_and_models_mgmt [at] maillist.ox.ac.uk.
 
-**Who**: In alphabetical order, we are [Charlie](http://crahal.com/), [Claire](https://duiyidai.github.io/), [Daniel](https://github.com/dhvalden), [Jiani](http://vallerrr.github.io/), [Luc](https://rocher.lc/), [Mark](https://markverhagen.me/), [Ridhi](https://www.sociology.ox.ac.uk/people/ridhi-kashyap), and [Xiaowen](https://eng.ox.ac.uk/people/xiaowen-dong/). Our organisational team are part of the [Demographic Science Unit](https://www.demography.ox.ac.uk/), [Engineering Science](https://eng.ox.ac.uk/), the [Oxford Internet Institute](https://www.oii.ox.ac.uk/), and [Sociology](https://www.sociology.ox.ac.uk/).
+**Who**: In alphabetical order, we are [Charlie](http://crahal.com/), [Claire](https://duiyidai.github.io/), [Daniel](https://github.com/dhvalden), [Jiani](http://vallerrr.github.io/), [Luc](https://rocher.lc/), [Mark](https://markverhagen.me/), [Ridhi](https://www.sociology.ox.ac.uk/people/ridhi-kashyap), and [Xiaowen](https://web.media.mit.edu/~xdong). Our organisational team are part of the [Demographic Science Unit](https://www.demography.ox.ac.uk/), [Engineering Science](https://eng.ox.ac.uk/), the [Oxford Internet Institute](https://www.oii.ox.ac.uk/), and [Sociology](https://www.sociology.ox.ac.uk/).
 
 **Schedule of Talks**: Please find below the details of some forthcoming, and some of the previous talks held as part of the Metrics and Models seminar series:
 
@@ -43,11 +43,15 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td>14:00 BST, 16nd July, 2025</td>
       <td>Title for Speaker Two</td>
     </tr>
-    <tr>
-      <td>Speaker Three</td>
-      <td>02 Jul 2025</td>
-      <td>14:00 BST, 30th July, 2025</td>
-    </tr>
+<tr>
+  <td>
+    <a href="https://klintkanopka.com/" target="_blank" rel="noopener noreferrer">
+      Klint Kanopka
+    </a>
+  </td>
+  <td>14:00 BST, 30th July 2025</td>
+  <td>Reproducing Expert Judgement with Shortened Surveys using Simulated Annealing</td>
+</tr>
   </tbody>
 </table>
 
