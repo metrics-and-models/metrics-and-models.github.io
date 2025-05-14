@@ -34,7 +34,10 @@ Hi! We are a group of health and social data scientists located at the Universit
   </thead>
   <tbody>
     <tr>
-      <td>Speaker One</td>
+      <td>
+        <a href="https://elliottash.com/" target="_blank" rel="noopener noreferrer">
+      Elliott Ash
+    </a></td>
       <td>14:00 BST, 2nd July, 2025</td>
       <td>Title for Speaker One</td>
     </tr>
