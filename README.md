@@ -34,7 +34,7 @@ Hi! We are a group of health and social data scientists located at the Universit
   </thead>
   <tbody>
     <tr>
-      <td><a href="[https://klintkanopka.com/](https://elliottash.com/)" target="_blank" rel="noopener noreferrer">
+      <td><a href="[[https://klintkanopka.com/]" target="_blank" rel="noopener noreferrer">
       Elliott Ash
     </a></td>
       <td>14:00 BST, 2nd July, 2025</td>
