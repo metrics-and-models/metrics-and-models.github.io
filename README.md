@@ -39,13 +39,17 @@ Hi! We are a group of health and social data scientists located at the Universit
       Elliott Ash
     </a></td>
       <td>14:00 BST, 2nd July, 2025</td>
-      <td>Title for Speaker One</td>
+      <td>Tile TBC</td>
     </tr>
-    <tr>
-      <td>Speaker Two</td>
-      <td>14:00 BST, 16nd July, 2025</td>
-      <td>Title for Speaker Two</td>
-    </tr>
+<tr>
+  <td>
+    <a href="https://klintkanopka.com/" target="_blank" rel="noopener noreferrer">
+      Ramina Sotoudeh
+    </a>
+  </td>
+  <td>14:00 BST, 16th July 2025</td>
+  <td>Title TBC</td>
+</tr>
 <tr>
   <td>
     <a href="https://klintkanopka.com/" target="_blank" rel="noopener noreferrer">
@@ -54,6 +58,15 @@ Hi! We are a group of health and social data scientists located at the Universit
   </td>
   <td>14:00 BST, 30th July 2025</td>
   <td>Reproducing Expert Judgement with Shortened Surveys using Simulated Annealing</td>
+</tr>
+<tr>
+  <td>
+    <a href="https://jcperdomo.org/" target="_blank" rel="noopener noreferrer">
+      Juan Carlos Perdomo
+    </a>
+  </td>
+  <td>14:00 BST, 13th August 2025</td>
+  <td>Title TBC</td>
 </tr>
   </tbody>
 </table>
