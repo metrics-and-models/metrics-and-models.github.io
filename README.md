@@ -43,7 +43,7 @@ Hi! We are a group of health and social data scientists located at the Universit
     </tr>
 <tr>
   <td>
-    <a href="https://klintkanopka.com/" target="_blank" rel="noopener noreferrer">
+    <a href="https://sociology.yale.edu/people/ramina-sotoudeh" target="_blank" rel="noopener noreferrer">
       Ramina Sotoudeh
     </a>
   </td>
@@ -68,6 +68,18 @@ Hi! We are a group of health and social data scientists located at the Universit
   <td>14:00 BST, 13th August 2025</td>
   <td>Title TBC</td>
 </tr>
+
+<tr>
+  <td>
+    <a href="https://keyonvafa.com/" target="_blank" rel="noopener noreferrer">
+      Keyon Vafa
+    </a>
+  </td>
+  <td>14:00 BST, 27th August 2025</td>
+  <td>Behavioral Machine Learning</td>
+</tr>
+
+
   </tbody>
 </table>
 
