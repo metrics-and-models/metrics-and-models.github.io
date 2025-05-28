@@ -39,7 +39,7 @@ Hi! We are a group of health and social data scientists located at the Universit
       Elliott Ash
     </a></td>
       <td>14:00 BST, 2nd July, 2025</td>
-      <td>Tile TBC</td>
+      <td>Courts of Tomorrow: Experimental Evidence on AI-Augmented Justice in Pakistan</td>
     </tr>
 <tr>
   <td>
