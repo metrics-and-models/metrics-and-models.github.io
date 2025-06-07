@@ -2,17 +2,17 @@
 
 Hi! We are a group of health and social data scientists located at the University of Oxford. This is a website dedicated to a new online, open seminar series which we're launching.
 
-**Note**: This seminar series is in the pre-launch phase while we try to co-ordinate some of our first speakers!
+**Note**: This seminar series is now *live*!
 
 **Frequency**: Every other Wednesday, starting July 2nd, 2025.
 
-**Focus**: We have a focus on health and social data science. We're specifically interested -- but not exclusively -- in predictive methods (i.e., machine/deep learning, LLMs). We're also interested in the mathematical philosophy underpinning prediction, and efforts to make research more reproducible in general.
+**Open to Everyone!** Importantly, this seminar series is open to *everyone*. We've tried to schedule it at a time of day that's hopefully roughly equitable to people in the Americas and Asia all the same. It is not just limited to academics: attendees are welcome from all (e.g., private, public, third) sectors!
 
-**Open to Everyone!** Importantly, this seminar series is open to *everyone*. We've tried to schedule it at a time of day that's hopefully roughly equitable to people in the Americas and Asia all the same.
+**Focus**: We have a focus on the metrics and models used across health and social data science. We're specifically interested -- but not exclusively -- in predictive methods (i.e., machine/deep learning, LLMs), because this is where most of the organiser's shared interests overlap. However, we are broadly interested in all computational tools and techniques, including but not limited to the mathematical philosophy underpinning prediction, and efforts to make research more reproducible in general.
 
-**Time and Place**: The seminar series will be held online at 2pm UK time (GMT and BST).
+**Time and Place**: The seminar series will be held online for now at 2pm UK time (GMT and BST). In the future, we are hoping to host the talks in a hybrid fashion, where\when we are able to invite speakers to talk in person.
 
-**Registration**: To register, send a blank email or otherwise to metrics_and_models-subscribe [at] maillist.ox.ac.uk (replace the ' [at] ' with '@'), or see our maillist page [here](https://web.maillist.ox.ac.uk/ox/info/metrics_and_models).
+**Registration**: To register, send a blank email or otherwise to metrics_and_models-subscribe [at] maillist.ox.ac.uk (replace the ' [at] ' with '@'); this is preferred, as you'll automatically get added to all forthcoming talks upon reply. See our maillist page [here](https://web.maillist.ox.ac.uk/ox/info/metrics_and_models) to subscribe to the list directly. Alternatively, click [here](https://github.com/vallerrr) to access a form to register, and we will (~weekly) add new registrants from that onto the maillist.
 
 **Interested in Presenting?**: If you're interested in presenting something to this seminar series, we have a form [here](https://forms.office.com/e/KsFZYcMz5C)!
 
