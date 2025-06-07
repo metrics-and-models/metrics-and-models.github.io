@@ -5,7 +5,7 @@ permalink: /details/juan-carlos-perdomo.html
 ---
 
 ## Speaker: Juan Carlos Perdomo  
-### Institution: University of California, Berkeley (EECS)  
+### Institution: Harvard Center for Research on Computation and Society
 ### Date: 14:00 BST, 13th August, 2025
 
 **Talk Title**: *TBC*
