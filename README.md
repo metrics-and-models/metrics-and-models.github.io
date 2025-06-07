@@ -75,5 +75,5 @@ Hi! We are a group of health and social data scientists located at the Universit
 
 
 <div style="display: flex; justify-content: center;">
-    <img src="assets/logo.png" alt="LCDS" style="width: 750px; height: auto;">
+    <img src="assets/logo.png" alt="LCDS" style="width: 650px; height: auto;">
 </div>
