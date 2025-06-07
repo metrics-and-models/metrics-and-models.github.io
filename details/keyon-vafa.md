@@ -5,7 +5,7 @@ permalink: /details/keyon-vafa.html
 ---
 
 ## Speaker: Keyon Vafa  
-### Institution: Princeton University  
+### Institution: Harvard Data Science Initiative
 ### Date: 14:00 BST, 27th August, 2025
 
 **Talk Title**: *Behavioral Machine Learning*
