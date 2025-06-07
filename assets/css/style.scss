@@ -1,6 +1,7 @@
 ---
 ---
 @import "{{ site.theme }}";
+
 header {
   img {
     border-radius: 10%;
@@ -11,4 +12,13 @@ header {
   p.view {
     text-align: left;
   }
+}
+
+/* widen the main content wrapper */
+.wrapper {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
