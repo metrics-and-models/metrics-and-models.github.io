@@ -12,7 +12,7 @@ Hi! We are a group of health and social data scientists located at the Universit
 
 **Time and Place**: The seminar series will be held online for now at 2pm UK time (GMT and BST). In the future, we are hoping to host the talks in a hybrid fashion, where\when we are able to invite speakers to talk in person.
 
-**Registration**: To register, send a blank email or otherwise to metrics_and_models-subscribe [at] maillist.ox.ac.uk (replace the ' [at] ' with '@'); this is preferred, as you'll automatically get added to all forthcoming talks upon reply. See our maillist page [here](https://web.maillist.ox.ac.uk/ox/info/metrics_and_models) to subscribe to the list directly. Alternatively, click [here](https://github.com/vallerrr) to access a form to register, and we will (~weekly) add new registrants from that onto the maillist.
+**Registration**: To register, send a blank email or otherwise to [metrics_and_models-subscribe [at] maillist.ox.ac.uk](mailto:sympa@maillist.ox.ac.uk?subject=subscribe%20metrics_and_models) (replace the ' [at] ' with '@'); this is preferred, as you'll automatically get added to all forthcoming talks upon reply. See our maillist page [here](https://web.maillist.ox.ac.uk/ox/info/metrics_and_models) to subscribe to the list directly if you have an Oxford SSO. Alternatively, click [here](https://github.com/vallerrr) to access a form to register, and we will (~weekly) add new registrants from that onto the maillist.
 
 **Interested in Presenting?**: If you're interested in presenting something to this seminar series, we have a form [here](https://forms.office.com/e/KsFZYcMz5C)!
 
