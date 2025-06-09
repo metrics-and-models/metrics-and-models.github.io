@@ -43,7 +43,7 @@ Hi! We are a group of health and social data scientists located at the Universit
     <tr>
       <td><a href="https://sociology.yale.edu/people/ramina-sotoudeh" target="_blank" rel="noopener noreferrer">Ramina Sotoudeh</a></td>
       <td>14:00 BST, 16th July 2025</td>
-      <td>Title TBC</td>
+      <td>Antenatal Selection: A novel approach for assessing the genetic and ecological drivers of who survives to birth</td>
       <td><a href="/details/ramina-sotoudeh.html">More details</a></td>
     </tr>
     <tr>
