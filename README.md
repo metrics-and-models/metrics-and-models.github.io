@@ -64,6 +64,13 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td>Behavioral Machine Learning</td>
       <td><a href="/details/keyon-vafa.html">More details</a></td>
     </tr>
+    <tr>
+      <td><a href="https://www.weisiguo.com/cv" target="_blank" rel="noopener noreferrer">Weisi Guo</a></td>
+      <td>14:00 BST,8th October 2025</td>
+      <td>Spatial Ecology of War and Peace: Perspective of Global Networked Tipping Dynamics</td>
+      <td><a href="/details/weisiguo-guo.html">More details</a></td>
+    </tr>
+
   </tbody>
 </table>
 
