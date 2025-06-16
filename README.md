@@ -55,7 +55,7 @@ Hi! We are a group of health and social data scientists located at the Universit
     <tr>
       <td><a href="https://jcperdomo.org/" target="_blank" rel="noopener noreferrer">Juan Carlos Perdomo</a></td>
       <td>14:00 BST, 13th August 2025</td>
-      <td>Title TBC</td>
+      <td>The relative value of prediction</td>
       <td><a href="/details/juan-carlos-perdomo.html">More details</a></td>
     </tr>
     <tr>
