@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Ramina Sotoudeh – More Details
-permalink: /details/ramina-sotoudeh.html
+permalink: /details/weisiguo-guo.html
 ---
 
 ## Speaker: Weisi Guo
