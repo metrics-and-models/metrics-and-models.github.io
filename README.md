@@ -2,7 +2,7 @@
 
 Hi! We are a group of health and social data scientists located at the University of Oxford. This is a website dedicated to a new online, open seminar series which we're launching.
 
-**Note**: This seminar series is now *live*!
+**Note**: This seminar series is now *live*! We are also now on [Oxford Talks](https://talks.ox.ac.uk/talks/series/id/d8857aca-129d-4d6d-acbc-d410d6e115bd)!
 
 **Frequency**: Every other Wednesday, starting July 2nd, 2025.
 
