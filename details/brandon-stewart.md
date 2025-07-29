@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Ramina Sotoudeh – More Details
-permalink: /details/ramina-sotoudeh.html
+title: Brandon Stewart – More Details
+permalink: /details/brandon-stewart.html
 ---
 
 ## Speaker: Brandon Stewart
