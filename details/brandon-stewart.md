@@ -6,7 +6,7 @@ permalink: /details/brandon-stewart.html
 
 ## Speaker: Brandon Stewart
 ### Institution: Department of Sociology, Princeton University
-### Date: 14:00 BST, 8th October, 2025
+### Date: 14:00 BST, 24th September, 2025
 
 **Talk Title**:  Design-Based Supervised Learning: A General Framework for Using LLM Annotations and Other Predicted Variables in Downstream Analyses
 

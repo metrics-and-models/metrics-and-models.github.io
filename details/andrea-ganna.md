@@ -6,7 +6,7 @@ permalink: /details/andrea-ganna.html
 
 ## Speaker: Andrea Ganna
 ### Institution: Institute for Molecular Medicine Finland (FIMM); Harvard Medical School
-### Date: 14:00 BST, 8th October 2025
+### Date: 14:00 BST, 22nd October 2025
 
 **Talk Title**: Disease prediction using nationwide health data and genetics
 
