@@ -65,6 +65,12 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td><a href="/details/keyon-vafa.html">More details</a></td>
     </tr>
     <tr>
+      <td><a href="https://www.vezhnick.com/" target="_blank" rel="noopener noreferrer">Alexander Vezhnevets</a></td>
+      <td>14:00 BST, 10th September 2025</td>
+      <td>Concordia, a  multi-actor generative agent based modelling system</td>
+      <td><a href="/details/vezhnick.html">More details</a></td>
+    </tr>
+    <tr>
       <td><a href="https://sociology.princeton.edu/people/brandon-stewart" target="_blank" rel="noopener noreferrer">Brandon Stewart</a></td>
       <td>14:00 BST,24th September 2025</td>
       <td>Design-Based Supervised Learning: A General Framework for Using LLM Annotations and Other Predicted Variables in Downstream Analyses</td>
