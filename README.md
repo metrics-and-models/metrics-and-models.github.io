@@ -20,7 +20,7 @@ Hi! We are a group of health and social data scientists located at the Universit
 
 **Who**: In alphabetical order, we are [Charlie](http://crahal.com/), [Claire](https://duiyidai.github.io/), [Daniel](https://github.com/dhvalden), [Jiani](http://vallerrr.github.io/), [Luc](https://rocher.lc/), [Mark](https://markverhagen.me/), [Ridhi](https://www.sociology.ox.ac.uk/people/ridhi-kashyap), and [Xiaowen](https://web.media.mit.edu/~xdong). Our organisational team are part of the [Demographic Science Unit](https://www.demography.ox.ac.uk/), [Engineering Science](https://eng.ox.ac.uk/), the [Oxford Internet Institute](https://www.oii.ox.ac.uk/), and [Sociology](https://www.sociology.ox.ac.uk/).
 
-**Schedule of Talks**: Please find below the details of some forthcoming, and some of the previous talks held as part of the Metrics and Models seminar series:
+**Forthcoming Talks**: Please find below the details of some forthcoming talks held as part of the Metrics and Models seminar series:
 
 <div style="text-align: center;">
 
@@ -34,18 +34,6 @@ Hi! We are a group of health and social data scientists located at the Universit
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td><a href="https://elliottash.com/" target="_blank" rel="noopener noreferrer">Elliott Ash</a></td>
-      <td>14:00 BST, 2nd July, 2025</td>
-      <td>Courts of Tomorrow: Experimental Evidence on AI-Augmented Justice in Pakistan</td>
-      <td><a href="/details/elliott-ash.html">More details</a></td>
-    </tr>
-    <tr>
-      <td><a href="https://sociology.yale.edu/people/ramina-sotoudeh" target="_blank" rel="noopener noreferrer">Ramina Sotoudeh</a></td>
-      <td>14:00 BST, 16th July 2025</td>
-      <td>Antenatal Selection: A novel approach for assessing the genetic and ecological drivers of who survives to birth</td>
-      <td><a href="/details/ramina-sotoudeh.html">More details</a></td>
-    </tr>
     <tr>
       <td><a href="https://klintkanopka.com/" target="_blank" rel="noopener noreferrer">Klint Kanopka</a></td>
       <td>14:00 BST, 30th July 2025</td>
@@ -72,19 +60,19 @@ Hi! We are a group of health and social data scientists located at the Universit
     </tr>
     <tr>
       <td><a href="https://sociology.princeton.edu/people/brandon-stewart" target="_blank" rel="noopener noreferrer">Brandon Stewart</a></td>
-      <td>14:00 BST,24th September 2025</td>
+      <td>14:00 BST, 24th September 2025</td>
       <td>Design-Based Supervised Learning: A General Framework for Using LLM Annotations and Other Predicted Variables in Downstream Analyses</td>
       <td><a href="/details/brandon-stewart.html">More details</a></td>
     </tr>
     <tr>
       <td><a href="https://www.weisiguo.com/cv" target="_blank" rel="noopener noreferrer">Weisi Guo</a></td>
-      <td>14:00 BST,8th October 2025</td>
+      <td>14:00 BST, 8th October 2025</td>
       <td>Spatial Ecology of War and Peace: Perspective of Global Networked Tipping Dynamics</td>
       <td><a href="/details/weisiguo-guo.html">More details</a></td>
     </tr>
     <tr>
       <td><a href="https://researchers.mgh.harvard.edu/profile/13438682/Andrea-Ganna" target="_blank" rel="noopener noreferrer">Andrea Ganna</a></td>
-      <td>14:00 BST,22th October 2025</td>
+      <td>14:00 BST, 22th October 2025</td>
       <td>Disease prediction using nation-wide health data and genetics</td>
       <td><a href="/details/andrea-ganna.html">More details</a></td>
     </tr>
@@ -98,6 +86,42 @@ Hi! We are a group of health and social data scientists located at the Universit
 
 </div>
 
+
+**Previous Talks**: Please find below the details of some of the previous talks held as part of the Metrics and Models seminar series:
+
+<div style="text-align: center;">
+
+<table style="margin-left: auto; margin-right: auto;">
+  <thead>
+    <tr>
+      <th>Speaker</th>
+      <th>Date</th>
+      <th>Title</th>
+      <th>More Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://elliottash.com/" target="_blank" rel="noopener noreferrer">Elliott Ash</a></td>
+      <td>14:00 BST, 2nd July, 2025</td>
+      <td>Courts of Tomorrow: Experimental Evidence on AI-Augmented Justice in Pakistan</td>
+      <td><a href="/details/elliott-ash.html">More details</a></td>
+    </tr>
+    <tr>
+      <td><a href="https://sociology.yale.edu/people/ramina-sotoudeh" target="_blank" rel="noopener noreferrer">Ramina Sotoudeh</a></td>
+      <td>14:00 BST, 16th July 2025</td>
+      <td>Antenatal Selection: A novel approach for assessing the genetic and ecological drivers of who survives to birth</td>
+      <td><a href="/details/ramina-sotoudeh.html">More details</a></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+<br>
+<br>
+
+</div>
 
 <div style="display: flex; justify-content: center;">
     <img src="assets/logo.png" alt="LCDS" style="width: 650px; height: auto;">
