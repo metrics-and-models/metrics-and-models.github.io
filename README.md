@@ -65,10 +65,22 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td><a href="/details/keyon-vafa.html">More details</a></td>
     </tr>
     <tr>
+      <td><a href="https://sociology.princeton.edu/people/brandon-stewart" target="_blank" rel="noopener noreferrer">Brandon Stewart</a></td>
+      <td>14:00 BST,24th September 2025</td>
+      <td>Design-Based Supervised Learning: A General Framework for Using LLM Annotations and Other Predicted Variables in Downstream Analyses</td>
+      <td><a href="/details/brandon-stewart.html">More details</a></td>
+    </tr>
+    <tr>
       <td><a href="https://www.weisiguo.com/cv" target="_blank" rel="noopener noreferrer">Weisi Guo</a></td>
       <td>14:00 BST,8th October 2025</td>
       <td>Spatial Ecology of War and Peace: Perspective of Global Networked Tipping Dynamics</td>
       <td><a href="/details/weisiguo-guo.html">More details</a></td>
+    </tr>
+    <tr>
+      <td><a href="https://researchers.mgh.harvard.edu/profile/13438682/Andrea-Ganna" target="_blank" rel="noopener noreferrer">Andrea Ganna</a></td>
+      <td>14:00 BST,22th October 2025</td>
+      <td>Disease prediction using nation-wide health data and genetics</td>
+      <td><a href="/details/andrea-ganna.html">More details</a></td>
     </tr>
 
   </tbody>
