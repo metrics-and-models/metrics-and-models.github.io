@@ -3,7 +3,6 @@
 Please find below the details of some of the previous talks held as part of the Metrics and Models seminar series:
 
 <div style="text-align: center;">
-
 <table style="margin-left: auto; margin-right: auto;">
   <thead>
     <tr>
@@ -35,4 +34,4 @@ Please find below the details of some of the previous talks held as part of the 
     
   </tbody>
 </table>
-
+</div>
