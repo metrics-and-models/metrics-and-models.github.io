@@ -14,6 +14,12 @@ Please find below the details of some of the previous talks held as part of the 
   </thead>
   <tbody>
     <tr>
+      <td><a href="https://jcperdomo.org/" target="_blank" rel="noopener noreferrer">Juan Carlos Perdomo</a></td>
+      <td>14:00 BST, 13th August 2025</td>
+      <td>The relative value of prediction</td>
+      <td><a href="/details/juan-carlos-perdomo.html">More details</a></td>
+    </tr>
+    <tr>
       <td><a href="https://klintkanopka.com/" target="_blank" rel="noopener noreferrer">Klint Kanopka</a></td>
       <td>14:00 BST, 30th July 2025</td>
       <td>Reproducing Expert Judgement with Shortened Surveys using Simulated Annealing</td>
