@@ -14,6 +14,12 @@ Please find below the details of some of the previous talks held as part of the 
   </thead>
   <tbody>
     <tr>
+      <td><a href="https://keyonvafa.com/" target="_blank" rel="noopener noreferrer">Keyon Vafa</a></td>
+      <td>14:00 BST, 27th August 2025</td>
+      <td>What are AI's World Models?</td>
+      <td><a href="/details/keyon-vafa.html">More details</a></td>
+    </tr>
+    <tr>
       <td><a href="https://jcperdomo.org/" target="_blank" rel="noopener noreferrer">Juan Carlos Perdomo</a></td>
       <td>14:00 BST, 13th August 2025</td>
       <td>The relative value of prediction</td>

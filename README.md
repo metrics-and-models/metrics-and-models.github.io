@@ -37,12 +37,6 @@ Hi! We are a group of health and social data scientists located at the Universit
   </thead>
   <tbody>
     <tr>
-      <td><a href="https://keyonvafa.com/" target="_blank" rel="noopener noreferrer">Keyon Vafa</a></td>
-      <td>14:00 BST, 27th August 2025</td>
-      <td>What are AI's World Models?</td>
-      <td><a href="/details/keyon-vafa.html">More details</a></td>
-    </tr>
-    <tr>
       <td><a href="https://www.vezhnick.com/" target="_blank" rel="noopener noreferrer">Alexander Vezhnevets</a></td>
       <td>14:00 BST, 10th September 2025</td>
       <td>Concordia, a  multi-actor generative agent based modelling system</td>
@@ -55,16 +49,34 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td><a href="/details/brandon-stewart.html">More details</a></td>
     </tr>
     <tr>
+      <td>Confirmation in Progress</td>
+      <td>14:00 BST, 8th October 2025</td>
+      <td>TBC</td>
+      <td>TBC</td>
+    </tr>
+    <tr>
       <td><a href="https://researchers.mgh.harvard.edu/profile/13438682/Andrea-Ganna" target="_blank" rel="noopener noreferrer">Andrea Ganna</a></td>
       <td>14:00 BST, 22th October 2025</td>
       <td>Disease prediction using nation-wide health data and genetics</td>
       <td><a href="/details/andrea-ganna.html">More details</a></td>
     </tr>
     <tr>
+      <td>VIP Guest Host Edition #1</td>
+      <td>14:00 BST, 5th November 2025</td>
+      <td>TBC</td>
+      <td>TBC</td>
+    </tr>
+    <tr>
       <td><a href="https://www.weisiguo.com/cv" target="_blank" rel="noopener noreferrer">Weisi Guo</a></td>
       <td>14:00 BST, 19th November 2025</td>
       <td>Spatial Ecology of War and Peace: Perspective of Global Networked Tipping Dynamics</td>
       <td><a href="/details/weisiguo-guo.html">More details</a></td>
+    </tr>
+    <tr>
+      <td>VIP Guest Host Edition #2</td>
+      <td>14:00 BST, 3rd December 2025</td>
+      <td>TBC</td>
+      <td>TBC</td>
     </tr>
   </tbody>
 </table>
