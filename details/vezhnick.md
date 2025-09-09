@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Alexander Sasha Vezhnevets
+title: Alexander Sasha Vezhnevets – More Details
 permalink: /details/vezhnick.html
 ---
 

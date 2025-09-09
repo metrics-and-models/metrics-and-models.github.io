@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Juan Carlos Perdomo – More Details
-permalink: /details/juan-carlos-perdomo.html
+title: Xi Song – More Details
+permalink: /details/xisong.html
 ---
 
 ## Speaker: Xi Song

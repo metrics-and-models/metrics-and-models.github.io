@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Ramina Sotoudeh – More Details
+title: Weisi Guo – More Details
 permalink: /details/weisiguo-guo.html
 ---
 
