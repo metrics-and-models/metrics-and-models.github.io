@@ -61,7 +61,7 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td><a href="/details/andrea-ganna.html">More details</a></td>
     </tr>
     <tr>
-      <td>VIP Guest Host Edition #1</td>
+      <td><a href="https://www.samtrejo.com/" target="_blank" rel="noopener noreferrer">Sam Trejo</a></td>
       <td>14:00 BST, 5th November 2025</td>
       <td>TBC</td>
       <td>TBC</td>
@@ -73,10 +73,10 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td><a href="/details/weisiguo-guo.html">More details</a></td>
     </tr>
     <tr>
-      <td>VIP Guest Host Edition #2</td>
+      <td><a href="https://xisong.me/" target="_blank" rel="noopener noreferrer">Xi Song</a></td>
       <td>14:00 BST, 3rd December 2025</td>
-      <td>TBC</td>
-      <td>TBC</td>
+      <td>From Job Descriptions to Occupations: Using Neural Language Models to Code Job Data</td>
+      <td><a href="/details/xisong.html">More details</a></td>
     </tr>
   </tbody>
 </table>
