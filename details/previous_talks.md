@@ -14,6 +14,12 @@ Please find below the details of some of the previous talks held as part of the 
   </thead>
   <tbody>
     <tr>
+      <td><a href="https://www.vezhnick.com/" target="_blank" rel="noopener noreferrer">Alexander Vezhnevets</a></td>
+      <td>14:00 BST, 10th September 2025</td>
+      <td>Concordia, a multi-actor generative agent based modelling system</td>
+      <td><a href="/details/vezhnick.html">More details</a></td>
+    </tr>
+    <tr>
       <td><a href="https://keyonvafa.com/" target="_blank" rel="noopener noreferrer">Keyon Vafa</a></td>
       <td>14:00 BST, 27th August 2025</td>
       <td>What are AI's World Models?</td>
