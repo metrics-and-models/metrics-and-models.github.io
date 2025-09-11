@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Felix Elwert – More Details
-permalink: /details/xisong.html
+permalink: /details/felix-elwert.html
 ---
 
 ## Speaker: Felix Elwert
