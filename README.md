@@ -37,12 +37,6 @@ Hi! We are a group of health and social data scientists located at the Universit
   </thead>
   <tbody>
     <tr>
-      <td><a href="https://sociology.princeton.edu/people/brandon-stewart" target="_blank" rel="noopener noreferrer">Brandon Stewart</a></td>
-      <td>14:00 BST, 24th September 2025</td>
-      <td>Design-Based Supervised Learning: A General Framework for Using LLM Annotations and Other Predicted Variables in Downstream Analyses</td>
-      <td><a href="/details/brandon-stewart.html">More details</a></td>
-    </tr>
-    <tr>
       <td><a href="https://sociology.wisc.edu/staff/elwert-felix-2/" target="_blank" rel="noopener noreferrer">Felix Elwert</a></td>
       <td>14:00 BST, 8th October 2025</td>
       <td>Nonparametric Causal Decomposition of Group Differences: New Mechanisms & New Methods</td>
