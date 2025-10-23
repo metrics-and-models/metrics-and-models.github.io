@@ -54,6 +54,15 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td>From Job Descriptions to Occupations: Using Neural Language Models to Code Job Data</td>
       <td><a href="/details/xisong.html">More details</a></td>
     </tr>
+
+    <tr>
+      <td><a href="https://www.sns.it/it/persona/giovanni-mauro" target="_blank" rel="noopener noreferrer">Giovanni Mauro</a></td>
+      <td>14:00 BST, 17th December 2025</td>
+      <td>TBC</td>
+      <td><a href="/details/giovannimauro.html">More details</a></td>
+    </tr>
+
+
   </tbody>
 </table>
 </div>
