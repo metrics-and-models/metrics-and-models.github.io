@@ -41,7 +41,6 @@ The table below indicates whether they are online or offline. They will run onli
       <td>Claus-al Inference: Detecting Holiday Patterns with Statistical Rigor</td>
       <td> Online </td>
     </tr> 
-    <tr>
   </tbody>
 </table>
 </div>
