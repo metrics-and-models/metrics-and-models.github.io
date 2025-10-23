@@ -14,6 +14,18 @@ Please find below the details of some of the previous talks held as part of the 
   </thead>
   <tbody>
     <tr>
+      <td><a href="https://sociology.wisc.edu/staff/elwert-felix-2/" target="_blank" rel="noopener noreferrer">Felix Elwert</a></td>
+      <td>14:00 BST, 8th October 2025</td>
+      <td>Nonparametric Causal Decomposition of Group Differences: New Mechanisms & New Methods</td>
+      <td><a href="/details/felix-elwert.html">More details</a></td>
+    </tr>
+    <tr>
+      <td><a href="https://researchers.mgh.harvard.edu/profile/13438682/Andrea-Ganna" target="_blank" rel="noopener noreferrer">Andrea Ganna</a></td>
+      <td>14:00 BST, 22th October 2025</td>
+      <td>Disease prediction using nation-wide health data and genetics</td>
+      <td><a href="/details/andrea-ganna.html">More details</a></td>
+    </tr>
+    <tr>
       <td><a href="https://sociology.princeton.edu/people/brandon-stewart" target="_blank" rel="noopener noreferrer">Brandon Stewart</a></td>
       <td>14:00 BST, 24th September 2025</td>
       <td>Design-Based Supervised Learning: A General Framework for Using LLM Annotations and Other Predicted Variables in Downstream Analyses</td>

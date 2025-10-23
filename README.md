@@ -37,18 +37,6 @@ Hi! We are a group of health and social data scientists located at the Universit
   </thead>
   <tbody>
     <tr>
-      <td><a href="https://sociology.wisc.edu/staff/elwert-felix-2/" target="_blank" rel="noopener noreferrer">Felix Elwert</a></td>
-      <td>14:00 BST, 8th October 2025</td>
-      <td>Nonparametric Causal Decomposition of Group Differences: New Mechanisms & New Methods</td>
-      <td><a href="/details/felix-elwert.html">More details</a></td>
-    </tr>
-    <tr>
-      <td><a href="https://researchers.mgh.harvard.edu/profile/13438682/Andrea-Ganna" target="_blank" rel="noopener noreferrer">Andrea Ganna</a></td>
-      <td>14:00 BST, 22th October 2025</td>
-      <td>Disease prediction using nation-wide health data and genetics</td>
-      <td><a href="/details/andrea-ganna.html">More details</a></td>
-    </tr>
-    <tr>
       <td><a href="https://www.samtrejo.com/" target="_blank" rel="noopener noreferrer">Sam Trejo</a></td>
       <td>14:00 BST, 5th November 2025</td>
       <td>Utilizing DNA to Measure Within-Race Skin Tone Disparities</td>
