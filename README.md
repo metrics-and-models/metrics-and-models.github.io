@@ -16,7 +16,7 @@ Hi! We are a group of health and social data scientists located at the Universit
 
 **Interested in Presenting?**: If you're interested in presenting something to this seminar series, we have a form [here](https://forms.office.com/e/KsFZYcMz5C)!
 
-**Off-weeks**: We'll be meeting in-person on the off-weeks, locally in Oxford, to discuss potential for collaboration and other opportunities. If you're interested in coming along to these offline meetings (or just want to chat), please get in touch with us at metrics_and_models_mgmt [at] maillist.ox.ac.uk.
+**Off-weeks**: We'll be meeting as a local 'lab' in the off-weeks. Details are <a href="/details/internal_lab_sessions.html">here</a>. These will feature informal presentations for feedback, general updates, and discussions re: potential collaboration/opportunities. If you're interested in coming along to these offline meetings (or just want to chat), please get in touch with us at metrics_and_models_mgmt [at] maillist.ox.ac.uk.
 
 **Who**: In alphabetical order, we are [Charlie](http://crahal.com/), [Claire](https://duiyidai.github.io/), [Daniel](https://github.com/dhvalden), [Jiani](http://vallerrr.github.io/), [Luc](https://rocher.lc/), [Mark](https://markverhagen.me/), [Ridhi](https://www.sociology.ox.ac.uk/people/ridhi-kashyap), and [Xiaowen](https://web.media.mit.edu/~xdong). Our organisational team are part of the [Demographic Science Unit](https://www.demography.ox.ac.uk/), [Engineering Science](https://eng.ox.ac.uk/), the [Oxford Internet Institute](https://www.oii.ox.ac.uk/), and [Sociology](https://www.sociology.ox.ac.uk/).
 
@@ -54,15 +54,12 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td>From Job Descriptions to Occupations: Using Neural Language Models to Code Job Data</td>
       <td><a href="/details/xisong.html">More details</a></td>
     </tr>
-
     <tr>
       <td><a href="https://www.sns.it/it/persona/giovanni-mauro" target="_blank" rel="noopener noreferrer">Giovanni Mauro</a></td>
       <td>14:00 BST, 17th December 2025</td>
       <td>TBC</td>
       <td><a href="/details/giovannimauro.html">More details</a></td>
     </tr>
-
-
   </tbody>
 </table>
 </div>
