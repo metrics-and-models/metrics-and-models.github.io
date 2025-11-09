@@ -14,6 +14,12 @@ Please find below the details of some of the previous talks held as part of the 
   </thead>
   <tbody>
     <tr>
+      <td><a href="https://www.samtrejo.com/" target="_blank" rel="noopener noreferrer">Sam Trejo</a></td>
+      <td>14:00 BST, 5th November 2025</td>
+      <td>Utilizing DNA to Measure Within-Race Skin Tone Disparities</td>
+      <td><a href="/details/sam-trejo.html">More details</a></td>
+    </tr>
+    <tr>
       <td><a href="https://sociology.wisc.edu/staff/elwert-felix-2/" target="_blank" rel="noopener noreferrer">Felix Elwert</a></td>
       <td>14:00 BST, 8th October 2025</td>
       <td>Nonparametric Causal Decomposition of Group Differences: New Mechanisms & New Methods</td>
@@ -56,18 +62,17 @@ Please find below the details of some of the previous talks held as part of the 
       <td><a href="/details/klint-kanopka.html">More details</a></td>
     </tr>
     <tr>
-      <td><a href="https://elliottash.com/" target="_blank" rel="noopener noreferrer">Elliott Ash</a></td>
-      <td>14:00 BST, 2nd July, 2025</td>
-      <td>Courts of Tomorrow: Experimental Evidence on AI-Augmented Justice in Pakistan</td>
-      <td><a href="/details/elliott-ash.html">More details</a></td>
-    </tr>
-    <tr>
       <td><a href="https://sociology.yale.edu/people/ramina-sotoudeh" target="_blank" rel="noopener noreferrer">Ramina Sotoudeh</a></td>
       <td>14:00 BST, 16th July 2025</td>
       <td>Antenatal Selection: A novel approach for assessing the genetic and ecological drivers of who survives to birth</td>
       <td><a href="/details/ramina-sotoudeh.html">More details</a></td>
     </tr>
-    
+    <tr>
+      <td><a href="https://elliottash.com/" target="_blank" rel="noopener noreferrer">Elliott Ash</a></td>
+      <td>14:00 BST, 2nd July, 2025</td>
+      <td>Courts of Tomorrow: Experimental Evidence on AI-Augmented Justice in Pakistan</td>
+      <td><a href="/details/elliott-ash.html">More details</a></td>
+    </tr>    
   </tbody>
 </table>
 </div>

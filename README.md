@@ -37,12 +37,6 @@ Hi! We are a group of health and social data scientists located at the Universit
   </thead>
   <tbody>
     <tr>
-      <td><a href="https://www.samtrejo.com/" target="_blank" rel="noopener noreferrer">Sam Trejo</a></td>
-      <td>14:00 BST, 5th November 2025</td>
-      <td>Utilizing DNA to Measure Within-Race Skin Tone Disparities</td>
-      <td><a href="/details/sam-trejo.html">More details</a></td>
-    </tr>
-    <tr>
       <td><a href="https://www.weisiguo.com/cv" target="_blank" rel="noopener noreferrer">Weisi Guo</a></td>
       <td>14:00 BST, 19th November 2025</td>
       <td>Spatial Ecology of War and Peace: Perspective of Global Networked Tipping Dynamics</td>
