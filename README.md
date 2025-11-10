@@ -54,6 +54,12 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td>Spatial Ecology of War and Peace: Perspective of Global Networked Tipping Dynamics</td>
       <td><a href="/details/weisiguo-guo.html">More details</a></td>
     </tr>
+    <tr>
+      <td>Happy New Year!</td>
+      <td>14:00 BST, 31st December 2025</td>
+      <td>No talk is scheduled for this date.</td>
+      <td>N/A</td>
+    </tr>
   </tbody>
 </table>
 </div>
