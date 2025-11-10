@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Xi Song – More Details
+title: Giovanni Mauro – More Details
 permalink: /details/giovannimauro.html
 ---
 
