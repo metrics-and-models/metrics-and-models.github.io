@@ -37,10 +37,10 @@ Hi! We are a group of health and social data scientists located at the Universit
   </thead>
   <tbody>
     <tr>
-      <td><a href="https://www.weisiguo.com/cv" target="_blank" rel="noopener noreferrer">Weisi Guo</a></td>
+      <td><a href="https://www.sns.it/it/persona/giovanni-mauro" target="_blank" rel="noopener noreferrer">Giovanni Mauro</a></td>
       <td>14:00 BST, 19th November 2025</td>
-      <td>Spatial Ecology of War and Peace: Perspective of Global Networked Tipping Dynamics</td>
-      <td><a href="/details/weisiguo-guo.html">More details</a></td>
+      <td>The Urban Impact of AI: Modelling Feedback Loops in Location-Based Recommender Systems</td>
+      <td><a href="/details/giovannimauro.html">More details</a></td>
     </tr>
     <tr>
       <td><a href="https://xisong.me/" target="_blank" rel="noopener noreferrer">Xi Song</a></td>
@@ -49,10 +49,10 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td><a href="/details/xisong.html">More details</a></td>
     </tr>
     <tr>
-      <td><a href="https://www.sns.it/it/persona/giovanni-mauro" target="_blank" rel="noopener noreferrer">Giovanni Mauro</a></td>
+      <td><a href="https://www.weisiguo.com/cv" target="_blank" rel="noopener noreferrer">Weisi Guo</a></td>
       <td>14:00 BST, 17th December 2025</td>
-      <td>The Urban Impact of AI: Modelling Feedback Loops in Location-Based Recommender Systems</td>
-      <td><a href="/details/giovannimauro.html">More details</a></td>
+      <td>Spatial Ecology of War and Peace: Perspective of Global Networked Tipping Dynamics</td>
+      <td><a href="/details/weisiguo-guo.html">More details</a></td>
     </tr>
   </tbody>
 </table>

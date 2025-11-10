@@ -6,7 +6,7 @@ permalink: /details/giovannimauro.html
 
 ## Speaker: Giovanni Mauro
 ### Institution: Scuola Normale Superiore di Pisa
-### Date: 14:00 BST, 17th December, 2025
+### Date: 14:00 BST, 19th November, 2025
 
 **Talk Title**: The Urban Impact of AI: Modelling Feedback Loops in Location-Based Recommender Systems
 
