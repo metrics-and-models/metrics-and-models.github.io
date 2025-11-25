@@ -37,12 +37,6 @@ Hi! We are a group of health and social data scientists located at the Universit
   </thead>
   <tbody>
     <tr>
-      <td><a href="https://www.sns.it/it/persona/giovanni-mauro" target="_blank" rel="noopener noreferrer">Giovanni Mauro</a></td>
-      <td>14:00 BST, 19th November 2025</td>
-      <td>The Urban Impact of AI: Modelling Feedback Loops in Location-Based Recommender Systems</td>
-      <td><a href="/details/giovannimauro.html">More details</a></td>
-    </tr>
-    <tr>
       <td><a href="https://xisong.me/" target="_blank" rel="noopener noreferrer">Xi Song</a></td>
       <td>14:00 BST, 3rd December 2025</td>
       <td>From Job Descriptions to Occupations: Using Neural Language Models to Code Job Data</td>

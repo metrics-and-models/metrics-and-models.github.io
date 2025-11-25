@@ -14,6 +14,12 @@ Please find below the details of some of the previous talks held as part of the 
   </thead>
   <tbody>
     <tr>
+      <td><a href="https://www.sns.it/it/persona/giovanni-mauro" target="_blank" rel="noopener noreferrer">Giovanni Mauro</a></td>
+      <td>14:00 BST, 19th November 2025</td>
+      <td>The Urban Impact of AI: Modelling Feedback Loops in Location-Based Recommender Systems</td>
+      <td><a href="/details/giovannimauro.html">More details</a></td>
+    </tr>
+    <tr>
       <td><a href="https://www.samtrejo.com/" target="_blank" rel="noopener noreferrer">Sam Trejo</a></td>
       <td>14:00 BST, 5th November 2025</td>
       <td>Utilizing DNA to Measure Within-Race Skin Tone Disparities</td>
