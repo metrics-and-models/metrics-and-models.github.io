@@ -6,7 +6,7 @@ permalink: /details/weisiguo-guo.html
 
 ## Speaker: Weisi Guo
 ### Institution: Centre for Autonomous and Cyber-Physical Systems, Cranfield University  
-### Date: 14:00 BST, 17th December, 2025
+### Date: 14:00 GMT, 17th December, 2025
 
 **Talk Title**: Spatial Ecology of War and Peace: Perspective of Global Networked Tipping Dynamics
 
