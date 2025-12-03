@@ -32,6 +32,12 @@ Please find below the details of some of the previous talks held as part of the 
       <td><a href="/details/felix-elwert.html">More details</a></td>
     </tr>
     <tr>
+      <td><a href="https://xisong.me/" target="_blank" rel="noopener noreferrer">Xi Song</a></td>
+      <td>14:00 BST, 3rd December 2025</td>
+      <td>From Job Descriptions to Occupations: Using Neural Language Models to Code Job Data</td>
+      <td>CANCELLED: To be re-arranged!</a></td>
+    </tr>
+    <tr>
       <td><a href="https://researchers.mgh.harvard.edu/profile/13438682/Andrea-Ganna" target="_blank" rel="noopener noreferrer">Andrea Ganna</a></td>
       <td>14:00 BST, 22th October 2025</td>
       <td>Disease prediction using nation-wide health data and genetics</td>
