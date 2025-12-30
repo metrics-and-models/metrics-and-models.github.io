@@ -13,7 +13,6 @@ Please find below the details of some of the previous talks held as part of the 
     </tr>
   </thead>
   <tbody>
-
       <tr>
       <td><a href="https://www.weisiguo.com/cv" target="_blank" rel="noopener noreferrer">Weisi Guo</a></td>
       <td>14:00 BST, 17th December 2025</td>
