@@ -13,6 +13,19 @@ Please find below the details of some of the previous talks held as part of the 
     </tr>
   </thead>
   <tbody>
+
+      <tr>
+      <td><a href="https://www.weisiguo.com/cv" target="_blank" rel="noopener noreferrer">Weisi Guo</a></td>
+      <td>14:00 BST, 17th December 2025</td>
+      <td>Spatial Ecology of War and Peace: Perspective of Global Networked Tipping Dynamics</td>
+      <td><a href="/details/weisiguo-guo.html">More details</a></td>
+    </tr>
+    <tr>
+      <td><a href="https://xisong.me/" target="_blank" rel="noopener noreferrer">Xi Song</a></td>
+      <td>14:00 BST, 3rd December 2025</td>
+      <td>From Job Descriptions to Occupations: Using Neural Language Models to Code Job Data</td>
+      <td>CANCELLED: To be re-arranged!</td>
+    </tr>
     <tr>
       <td><a href="https://www.sns.it/it/persona/giovanni-mauro" target="_blank" rel="noopener noreferrer">Giovanni Mauro</a></td>
       <td>14:00 BST, 19th November 2025</td>
@@ -30,12 +43,6 @@ Please find below the details of some of the previous talks held as part of the 
       <td>14:00 BST, 8th October 2025</td>
       <td>Nonparametric Causal Decomposition of Group Differences: New Mechanisms & New Methods</td>
       <td><a href="/details/felix-elwert.html">More details</a></td>
-    </tr>
-    <tr>
-      <td><a href="https://xisong.me/" target="_blank" rel="noopener noreferrer">Xi Song</a></td>
-      <td>14:00 BST, 3rd December 2025</td>
-      <td>From Job Descriptions to Occupations: Using Neural Language Models to Code Job Data</td>
-      <td>CANCELLED: To be re-arranged!</a></td>
     </tr>
     <tr>
       <td><a href="https://researchers.mgh.harvard.edu/profile/13438682/Andrea-Ganna" target="_blank" rel="noopener noreferrer">Andrea Ganna</a></td>

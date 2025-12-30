@@ -37,18 +37,45 @@ Hi! We are a group of health and social data scientists located at the Universit
   </thead>
   <tbody>
     <tr>
-      <td><a href="https://www.weisiguo.com/cv" target="_blank" rel="noopener noreferrer">Weisi Guo</a></td>
-      <td>14:00 BST, 17th December 2025</td>
-      <td>Spatial Ecology of War and Peace: Perspective of Global Networked Tipping Dynamics</td>
-      <td><a href="/details/weisiguo-guo.html">More details</a></td>
+      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Confirmation in Progress!</a></td>
+      <td>14:00 GMT, 8th January, 2026</td>
+      <td>TBC</td>
+      <td><a href="https://metrics-and-models.github.io/">TBC</a></td>
     </tr>
     <tr>
-      <td>Happy New Year!</td>
-      <td>14:00 BST, 31st December 2025</td>
-      <td>No talk is scheduled for this date.</td>
-      <td>N/A</td>
+      <td><a href="https://yleng.github.io/www/" target="_blank" rel="noopener noreferrer">Yan Leng</a></td>
+      <td>14:00 GMT, 22nd January, 2026</td>
+      <td>TBC</td>
+      <td><a href="/details/yanleng.html">More details</a></td>
+    </tr>
+    <tr>
+      <td><a href="https://eng.ox.ac.uk/people/tingting-zhu" target="_blank" rel="noopener noreferrer">Tingting Zhu</a></td>
+      <td>14:00 GMT, 5th February, 2026</td>
+      <td>TBC</td>
+      <td><a href="/details/tingtingzhu.html">More details</a></td>
+    </tr>
+    <tr>
+      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Confirmation in Progress!</a></td>
+      <td>14:00 GMT, 19th February, 2026</td>
+      <td>TBC</td>
+      <td><a href="https://metrics-and-models.github.io/">TBC</a></td>
+    </tr>
+    <td><a href="https://www.cjbarrie.com/" target="_blank" rel="noopener noreferrer">Chris Barrie</a></td>
+      <td>14:00 GMT, 19th March, 2026</td>
+      <td>TBC</td>
+      <td><a href="/details/chrisbarrie.html">More details</a></td>
+    </tr>
+    <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Confirmation in Progress!</a></td>
+      <td>14:00 GMT, 19th March, 2026</td>
+      <td>TBC</td>
+      <td><a href="https://metrics-and-models.github.io/">TBC</a></td>
     </tr>
   </tbody>
+
+  </tbody>
+
+
+  
 </table>
 </div>
 
