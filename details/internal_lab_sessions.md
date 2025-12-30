@@ -19,28 +19,46 @@ The table below indicates whether they are online or offline. They will run onli
   <tbody>
     <tr>
       <td><a href="https://vallerrr.github.io/" target="_blank" rel="noopener noreferrer">Jiani Yan</a></td>
-      <td>14:00 BST, 12th November 2025</td>
+      <td>14:00 GMT, 12th November 2025</td>
       <td>Discovering Prevalent Chronic Disease Profiles with Advanced Clustering Methods</td>
-      <td> Online </td>
+      <td>Online</td>
     </tr>
     <tr>
       <td><a href="https://crahal.com/" target="_blank" rel="noopener noreferrer">Charles Rahal</a></td>
-      <td>14:00 BST, 26th November 2025</td>
+      <td>14:00 GMT, 26th November 2025</td>
       <td>On the Responsible use of Pseudo-Random Number Generators in Applied Scientific Research</td>
-      <td> Online </td>
+      <td>Online</td>
     </tr> 
     <tr>
       <td><a href="https://www.exeter.ox.ac.uk/exeter-to-celebrate-women-in-stem/anda-raluca-epure1/" target="_blank" rel="noopener noreferrer">Anda-Raluca Epure</a></td>
-      <td>14:00 BST, 10th December 2025</td>
-      <td>TBC</td>
-      <td> Online </td>
+      <td>14:00 GMT, 10th December 2025</td>
+      <td>AI Scientist for Drug Discovery: a new way towards designing safe, targeted minibinder structures</td>
+      <td>Online</td>
     </tr>
     <tr>
-      <td><a href="https://en.wikipedia.org/wiki/Santa_Claus" target="_blank" rel="noopener noreferrer">Dr. Santa Claus</a></td>
-      <td>14:00 BST, 24th December 2025</td>
-      <td>Claus-al Inference: Detecting Holiday Patterns with Statistical Rigor</td>
-      <td> Online </td>
-    </tr> 
+      <td><a href="https://pablobiedma.github.io/" target="_blank" rel="noopener noreferrer">Pablo Biedma</a></td>
+      <td>14:00 GMT, 15th January 2026</td>
+      <td>Towards Value Evaluation in Large Language Models</td>
+      <td>Online</td>
+    </tr>
+    <tr>
+      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">TBC</a></td>
+      <td>14:00 GMT, 19th January 2026</td>
+      <td>TBC</td>
+      <td>Online</td>
+    </tr>
+    <tr>
+      <td><a href="https://www.micolmorellini.eu/" target="_blank" rel="noopener noreferrer">Micol Morelini</a></td>
+      <td>14:00 GMT, 12th February 2026</td>
+      <td>TBC</td>
+      <td>Online</td>
+    </tr>
+    <tr>
+      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">TBC</a></td>
+      <td>14:00 GMT, 26th February 2026</td>
+      <td>TBC</td>
+      <td>Online</td>
+    </tr>
   </tbody>
 </table>
 </div>
