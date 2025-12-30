@@ -6,7 +6,7 @@ permalink: /details/xisong.html
 
 ## Speaker: Xi Song
 ### Institution: University of Pennsylvania
-### Date: 14:00 GMT, 3rd December, 2025
+### Date: 14:00 GMT, 8th January, 2026 
 
 **Talk Title**: *From Job Descriptions to Occupations: Using Neural Language Models to Code Job Data*
 
