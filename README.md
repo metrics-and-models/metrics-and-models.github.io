@@ -62,7 +62,7 @@ Hi! We are a group of health and social data scientists located at the Universit
     </tr>
     <td><a href="https://www.cjbarrie.com/" target="_blank" rel="noopener noreferrer">Chris Barrie</a></td>
       <td>14:00 GMT, 19th March, 2026</td>
-      <td>TBC</td>
+      <td>Synthetic personas distort the structure of human belief systems</td>
       <td><a href="/details/chrisbarrie.html">More details</a></td>
     </tr>
     <tr>
@@ -72,11 +72,6 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td><a href="https://metrics-and-models.github.io/">TBC</a></td>
     </tr>
   </tbody>
-
-  </tbody>
-
-
-  
 </table>
 </div>
 
