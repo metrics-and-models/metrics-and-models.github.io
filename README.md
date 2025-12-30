@@ -40,7 +40,7 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td><a href="https://xisong.me/" target="_blank" rel="noopener noreferrer">Xi Song</a></td>
       <td>14:00 GMT, 8th January, 2026</td>
       <td>From Job Descriptions to Occupations: Using Neural Language Models to Code Job Data</td>
-      <td><a href="xisong.html">More details</a></td>
+      <td><a href="details/xisong.html">More details</a></td>
     </tr>
     <tr>
       <td><a href="https://yleng.github.io/www/" target="_blank" rel="noopener noreferrer">Yan Leng</a></td>
