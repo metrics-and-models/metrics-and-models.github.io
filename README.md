@@ -45,7 +45,7 @@ Hi! We are a group of health and social data scientists located at the Universit
     <tr>
       <td><a href="https://yleng.github.io/www/" target="_blank" rel="noopener noreferrer">Yan Leng</a></td>
       <td>14:00 GMT, 22nd January, 2026</td>
-      <td>TBC</td>
+      <td>TBCLatent Neural Coupling of Risk and Time Preferences in LLMs</td>
       <td><a href="/details/yanleng.html">More details</a></td>
     </tr>
     <tr>
