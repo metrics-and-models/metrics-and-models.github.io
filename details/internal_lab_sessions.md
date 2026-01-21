@@ -44,7 +44,7 @@ The table below indicates whether they are online or offline. They will run onli
     <tr>
       <td><a href="https://scholar.google.com/citations?user=v3ik0qkAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Juuso Repo</a></td>
       <td>14:00 GMT, 29th January 2026</td>
-      <td>TBC</td>
+      <td>Auditing Prevalence Claims with LLM-Based Paper Analysis: Is Cyberbullying on the Rise?</td>
       <td>Online</td>
     </tr>
     <tr>
