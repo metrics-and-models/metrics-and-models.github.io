@@ -14,6 +14,12 @@ Please find below the details of some of the previous talks held as part of the 
   </thead>
   <tbody>
       <tr>
+        <td><a href="https://xisong.me/" target="_blank" rel="noopener noreferrer">Xi Song</a></td>
+        <td>14:00 GMT, 8th January, 2026</td>
+        <td>From Job Descriptions to Occupations: Using Neural Language Models to Code Job Data</td>
+        <td><a href="details/xisong.html">More details</a></td>
+      </tr>
+      <tr>
       <td><a href="https://www.weisiguo.com/cv" target="_blank" rel="noopener noreferrer">Weisi Guo</a></td>
       <td>14:00 BST, 17th December 2025</td>
       <td>Spatial Ecology of War and Peace: Perspective of Global Networked Tipping Dynamics</td>
