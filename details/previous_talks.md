@@ -13,6 +13,12 @@ Please find below the details of some of the previous talks held as part of the 
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td><a href="https://yleng.github.io/www/" target="_blank" rel="noopener noreferrer">Yan Leng</a></td>
+      <td>14:00 GMT, 22nd January, 2026</td>
+      <td>TBCLatent Neural Coupling of Risk and Time Preferences in LLMs</td>
+      <td><a href="/details/yanleng.html">More details</a></td>
+    </tr>
       <tr>
         <td><a href="https://xisong.me/" target="_blank" rel="noopener noreferrer">Xi Song</a></td>
         <td>14:00 GMT, 8th January, 2026</td>
