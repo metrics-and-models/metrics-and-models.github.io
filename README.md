@@ -37,16 +37,10 @@ Hi! We are a group of health and social data scientists located at the Universit
   </thead>
   <tbody>
     <tr>
-      <td><a href="https://yleng.github.io/www/" target="_blank" rel="noopener noreferrer">Yan Leng</a></td>
-      <td>14:00 GMT, 22nd January, 2026</td>
-      <td>TBCLatent Neural Coupling of Risk and Time Preferences in LLMs</td>
-      <td><a href="/details/yanleng.html">More details</a></td>
-    </tr>
-    <tr>
-      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Confirmation in Progress!</a></td>
+      <td><a href="https://fbarez.github.io/" target="_blank" rel="noopener noreferrer">Fazl Barez</a></td>
       <td>14:00 GMT, 5th February, 2026</td>
-      <td>TBC</td>
-      <td><a href="/details/tingtingzhu.html">More details</a></td>
+      <td>How can we automate Interpretability to help people make better and faster decisions?</td>
+      <td><a href="/details/fazlbarez.html">More details</a></td>
     </tr>
     <tr>
       <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Confirmation in Progress!</a></td>
