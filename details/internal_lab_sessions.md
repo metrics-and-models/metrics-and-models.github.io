@@ -50,7 +50,7 @@ The table below indicates whether they are online or offline. They will run onli
     <tr>
       <td><a href="https://www.micolmorellini.eu/" target="_blank" rel="noopener noreferrer">Micol Morelini</a></td>
       <td>14:00 GMT, 12th February 2026</td>
-      <td>TBC</td>
+      <td>Patterns as Signals: Recovering the Meso Level in European Student Mobility</td>
       <td>Online</td>
     </tr>
     <tr>
