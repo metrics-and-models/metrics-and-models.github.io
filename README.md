@@ -37,12 +37,6 @@ Hi! We are a group of health and social data scientists located at the Universit
   </thead>
   <tbody>
     <tr>
-      <td><a href="https://fbarez.github.io/" target="_blank" rel="noopener noreferrer">Fazl Barez</a></td>
-      <td>14:00 GMT, 5th February, 2026</td>
-      <td>How can we automate Interpretability to help people make better and faster decisions?</td>
-      <td><a href="/details/fazlbarez.html">More details</a></td>
-    </tr>
-    <tr>
       <td><a href="https://munibmesinovic.com/" target="_blank" rel="noopener noreferrer">Munib Mesinovic</a></td>
       <td>14:00 GMT, 19th February, 2026</td>
       <td>TBC</td>
