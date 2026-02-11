@@ -43,10 +43,10 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td><a href="/details/fazlbarez.html">More details</a></td>
     </tr>
     <tr>
-      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Confirmation in Progress!</a></td>
+      <td><a href="https://munibmesinovic.com/" target="_blank" rel="noopener noreferrer">Munib Mesinovic</a></td>
       <td>14:00 GMT, 19th February, 2026</td>
       <td>TBC</td>
-      <td><a href="https://metrics-and-models.github.io/">TBC</a></td>
+      <td><a href="/details/munibmesinovic.html">TBC</a></td>
     </tr>
     <tr>
     <td><a href="https://www.cjbarrie.com/" target="_blank" rel="noopener noreferrer">Chris Barrie</a></td>
