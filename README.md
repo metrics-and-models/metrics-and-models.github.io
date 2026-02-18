@@ -50,13 +50,13 @@ Hi! We are a group of health and social data scientists located at the Universit
     </tr>
     <tr>
     <td><a href="https://jundewu.com/" target="_blank" rel="noopener noreferrer">Junde Wu</a></td>
-      <td>14:00 GMT, **18th March**, 2026</td>
+      <td>14:00 GMT, *18th March*, 2026</td>
       <td>TBC</td>
       <td><a href="/details/jundewu.html">TBC</a></td>
     </tr>
     <tr>
-    <td><a href="https://sites.google.com/view/laiweisoc" target="_blank" rel="noopener noreferrer">Confirmation in Progress!</a></td>
-      <td>14:00 GMT, *28th May*, 2026</td>
+    <td><a href="https://sites.google.com/view/laiweisoc" target="_blank" rel="noopener noreferrer">Lai Wei!</a></td>
+      <td>14:00 GMT, 28th May, 2026</td>
       <td>TBC</td>
       <td><a href="/details/laiwei.html">TBC</a></td>
     </tr>
