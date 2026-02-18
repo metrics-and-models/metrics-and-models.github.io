@@ -14,6 +14,12 @@ Please find below the details of some of the previous talks held as part of the 
   </thead>
   <tbody>
     <tr>
+    <tr>
+      <td><a href="https://munibmesinovic.com/" target="_blank" rel="noopener noreferrer">CANCELLED Munib Mesinovic</a></td>
+      <td>14:00 GMT, 19th February, 2026</td>
+      <td>TBC</td>
+      <td><a href="/details/munibmesinovic.html">TBC</a></td>
+    </tr>
       <td><a href="https://fbarez.github.io/" target="_blank" rel="noopener noreferrer">Fazl Barez</a></td>
       <td>14:00 GMT, 5th February, 2026</td>
       <td>How can we automate Interpretability to help people make better and faster decisions?</td>
