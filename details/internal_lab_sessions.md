@@ -68,7 +68,7 @@ Critique of LLM Usage</td>
     </tr>
     <tr>
       <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Maksim, Charlie, and Daniel</a></td>
-      <td>14:00 GMT, 12th March 2026</td>
+      <td>14:00 GMT, 9th April 2026</td>
       <td>LLM based analysis of political texts at scale: a scoping and feedback session</td>
       <td>Online</td>
     </tr>
