@@ -42,11 +42,34 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td>Synthetic personas distort the structure of human belief systems</td>
       <td><a href="/details/chrisbarrie.html">More details</a></td>
     </tr>
+      <tr>
+    <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">TBC</a></td>
+      <td>14:00 GMT, *18th* March, 2026</td>
+      <td>TBC</td>
+      <td><a href="https://metrics-and-models.github.io/">More details</a></td>
+    </tr>
     <tr>
     <td><a href="https://jundewu.com/" target="_blank" rel="noopener noreferrer">Junde Wu</a></td>
-      <td>14:00 GMT, *18th March*, 2026</td>
+      <td>14:00 GMT, 2nd April, 2026</td>
       <td>TBC</td>
       <td><a href="/details/jundewu.html">TBC</a></td>
+    </tr>
+      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">TBC</a></td>
+      <td>14:00 GMT, 16th April, 2026</td>
+      <td>TBC</td>
+      <td><a href="https://metrics-and-models.github.io/">More details</a></td>
+    </tr>
+      </tr>
+      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">TBC</a></td>
+      <td>14:00 GMT, 30th April, 2026</td>
+      <td>TBC</td>
+      <td><a href="https://metrics-and-models.github.io/">More details</a></td>
+    </tr>
+      </tr>
+      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">TBC</a></td>
+      <td>14:00 GMT, 14th May, 2026</td>
+      <td>TBC</td>
+      <td><a href="https://metrics-and-models.github.io/">More details</a></td>
     </tr>
     <tr>
     <td><a href="https://sites.google.com/view/laiweisoc" target="_blank" rel="noopener noreferrer">Lai Wei</a></td>
