@@ -69,7 +69,7 @@ Critique of LLM Usage</td>
       <tr>
       <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Aarushi Sharma</a></td>
       <td>14:00 GMT, 26th March 2026</td>
-      <td>TBC</td>
+      <td>Encoding Without Influence: Dissociating Demographic Representation from Causal Effect in Large Language Model Survey Simulation</td>
       <td>Online</td>
     </tr>
     <tr>
