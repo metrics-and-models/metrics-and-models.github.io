@@ -45,7 +45,7 @@ Hi! We are a group of health and social data scientists located at the Universit
       <tr>
     <td><a href="https://www.iq.harvard.edu/people/joshua-gilbert" target="_blank" rel="noopener noreferrer">Joshua Gilbert</a></td>
       <td>14:00 GMT, *18th* March, 2026</td>
-      <td>TBC</td>
+      <td>Estimating heterogeneous treatment effects with item-level outcome data: Insights from item response theory</td>
       <td><a href="/details/joshgilbert.html">More details</a></td>
     </tr>
     <tr>
