@@ -56,8 +56,7 @@ The table below indicates whether they are online or offline. They will run onli
     <tr>
       <td><a href="https://www.ndph.ox.ac.uk/team/daniel-valdenegro" target="_blank" rel="noopener noreferrer">Daniel Valdenegro</a></td>
       <td>14:00 GMT, 26th February 2026</td>
-      <td>Information Theory for Social Scientists: An (Un)Serious
-Critique of LLM Usage</td>
+      <td>Information Theory for Social Scientists: An (Un)Serious Critique of LLM Usage</td>
       <td>Online</td>
     </tr>
     <tr>
