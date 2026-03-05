@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Josh Gilbert – More Details
-permalink: /details/Josh Gilbert.html
+permalink: /details/joshgilbert.html
 ---
 
 ## Speaker: Josh Gilbert
