@@ -14,6 +14,11 @@ Please find below the details of some of the previous talks held as part of the 
   </thead>
   <tbody>
     <tr>
+    <td><a href="https://www.cjbarrie.com/" target="_blank" rel="noopener noreferrer">Chris Barrie</a></td>
+      <td>14:00 GMT, 5th March, 2026</td>
+      <td>Synthetic personas distort the structure of human belief systems</td>
+      <td><a href="/details/chrisbarrie.html">More details</a></td>
+    </tr>
     <tr>
       <td><a href="https://munibmesinovic.com/" target="_blank" rel="noopener noreferrer">CANCELLED Munib Mesinovic</a></td>
       <td>14:00 GMT, 19th February, 2026</td>
