@@ -65,21 +65,27 @@ The table below indicates whether they are online or offline. They will run onli
       <td>TBC</td>
       <td>Online</td>
     </tr>
-      <tr>
-      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Aarushi Sharma</a></td>
+    <tr>
+      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Lijin Zhang</a></td>
       <td>14:00 GMT, 26th March 2026</td>
-      <td>Encoding Without Influence: Dissociating Demographic Representation from Causal Effect in Large Language Model Survey Simulation</td>
+      <td>Bayesian Factor Mixture Modeling for Detecting Inattentive Respondents</td>
       <td>Online</td>
     </tr>
     <tr>
       <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Mingyue Liu</a></td>
       <td>14:00 GMT, 9th April 2026</td>
-      <td>TBC</td>
+      <td>Neural-symbolic Data Augmentation for Contrastive Learning.</td>
+      <td>Online</td>
+    </tr>
+    <tr>
+      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Aarushi Sharma</a></td>
+      <td>14:00 GMT, 23rd April 2026</td>
+      <td>Encoding Without Influence: Dissociating Demographic Representation from Causal Effect in Large Language Model Survey Simulation</td>
       <td>Online</td>
     </tr>
     <tr>
       <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Maksim, Charlie, and Daniel</a></td>
-      <td>14:00 GMT, 23rd April 2026</td>
+      <td>14:00 GMT, 7th May 2026</td>
       <td>LLM based analysis of political texts at scale: a scoping and feedback session</td>
       <td>Online</td>
     </tr>
