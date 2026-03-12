@@ -62,7 +62,7 @@ The table below indicates whether they are online or offline. They will run onli
     <tr>
       <td><a href="https://www.yuqi-liang.tech/" target="_blank" rel="noopener noreferrer">Yuqi Liang</a></td>
       <td>14:00 GMT, 12th March 2026</td>
-      <td>TBC</td>
+      <td>Measuring Divergence and Convergence in Sequence Analysis: A Spell-Based Extension of Longest Common Prefixes</td>
       <td>Online</td>
     </tr>
     <tr>
