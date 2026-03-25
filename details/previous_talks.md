@@ -14,6 +14,12 @@ Please find below the details of some of the previous talks held as part of the 
   </thead>
   <tbody>
     <tr>
+    <td><a href="https://www.iq.harvard.edu/people/joshua-gilbert" target="_blank" rel="noopener noreferrer">Joshua Gilbert</a></td>
+      <td>14:00 GMT, *18th* March, 2026</td>
+      <td>Estimating heterogeneous treatment effects with item-level outcome data: Insights from item response theory</td>
+      <td><a href="/details/joshgilbert.html">More details</a></td>
+    </tr>
+    <tr>
     <td><a href="https://www.cjbarrie.com/" target="_blank" rel="noopener noreferrer">Chris Barrie</a></td>
       <td>14:00 GMT, 5th March, 2026</td>
       <td>Synthetic personas distort the structure of human belief systems</td>

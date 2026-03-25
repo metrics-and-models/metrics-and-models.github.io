@@ -37,12 +37,6 @@ Hi! We are a group of health and social data scientists located at the Universit
   </thead>
   <tbody>
     <tr>
-    <td><a href="https://www.iq.harvard.edu/people/joshua-gilbert" target="_blank" rel="noopener noreferrer">Joshua Gilbert</a></td>
-      <td>14:00 GMT, *18th* March, 2026</td>
-      <td>Estimating heterogeneous treatment effects with item-level outcome data: Insights from item response theory</td>
-      <td><a href="/details/joshgilbert.html">More details</a></td>
-    </tr>
-    <tr>
     <td><a href="https://jundewu.com/" target="_blank" rel="noopener noreferrer">Junde Wu</a></td>
       <td>14:00 GMT, 2nd April, 2026</td>
       <td>Human, Agent, and One Context</td>
@@ -59,7 +53,7 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td>TBC</td>
       <td><a href="https://metrics-and-models.github.io/">More details</a></td>
     </tr>
-      <tr>
+      <tr>  
       <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">TBC</a></td>
       <td>14:00 GMT, 14th May, 2026</td>
       <td>TBC</td>
