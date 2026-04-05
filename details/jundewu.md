@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Junde Wu – More Details
+title: Junde Wu – More Details [CANCELLED]
 permalink: /details/jundewu.html
 ---
 
