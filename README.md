@@ -36,22 +36,16 @@ Hi! We are a group of health and social data scientists located at the Universit
     </tr>
   </thead>
   <tbody>
-    <tr>
-    <td><a href="https://jundewu.com/" target="_blank" rel="noopener noreferrer">Junde Wu</a></td>
-      <td>14:00 GMT, 2nd April, 2026</td>
-      <td>Human, Agent, and One Context</td>
-      <td><a href="/details/jundewu.html">More details</a></td>
-    </tr>
       <td><a href="https://fbickfordsmith.com/" target="_blank" rel="noopener noreferrer">Freddie Bickford Smith</a></td>
       <td>14:00 GMT, 16th April, 2026</td>
       <td>TBC</td>
       <td><a href="/details/freddiebickfordsmith.html">More details</a></td>
     </tr>
       <tr>
-      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">TBC</a></td>
+      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Mathew Zook</a></td>
       <td>14:00 GMT, 30th April, 2026</td>
-      <td>TBC</td>
-      <td><a href="https://metrics-and-models.github.io/">More details</a></td>
+      <td>The silicon gaze: A typology of biases and inequality in LLMs through the lens of place</td>
+      <td><a href="/details/mathewzook.html">More details</a></td>
     </tr>
       <tr>  
       <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">TBC</a></td>
