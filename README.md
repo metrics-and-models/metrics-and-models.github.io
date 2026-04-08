@@ -39,7 +39,7 @@ Hi! We are a group of health and social data scientists located at the Universit
     <tr>
       <td><a href="https://fbickfordsmith.com/" target="_blank" rel="noopener noreferrer">Freddie Bickford Smith</a></td>
       <td>14:00 GMT, 16th April, 2026</td>
-      <td>TBC</td>
+      <td>Rethinking aleatoric and epistemic uncertainty</td>
       <td><a href="/details/freddiebickfordsmith.html">More details</a></td>
     </tr>
       <tr>
