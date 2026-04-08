@@ -36,6 +36,7 @@ Hi! We are a group of health and social data scientists located at the Universit
     </tr>
   </thead>
   <tbody>
+    <tr>
       <td><a href="https://fbickfordsmith.com/" target="_blank" rel="noopener noreferrer">Freddie Bickford Smith</a></td>
       <td>14:00 GMT, 16th April, 2026</td>
       <td>TBC</td>
@@ -48,10 +49,10 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td><a href="/details/mathewzook.html">More details</a></td>
     </tr>
       <tr>  
-      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">TBC</a></td>
+      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Mohsen Mosleh</a></td>
       <td>14:00 GMT, 14th May, 2026</td>
       <td>TBC</td>
-      <td><a href="https://metrics-and-models.github.io/">More details</a></td>
+      <td><a href="/details/mohsenmosleh.html">TBC</a></td>
     </tr>
     <tr>
     <td><a href="https://sites.google.com/view/laiweisoc" target="_blank" rel="noopener noreferrer">Lai Wei</a></td>
