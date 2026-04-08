@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Munib Mesinovic – More Details
+title: Munib Mesinovic – More Details [CANCELLED]
 permalink: /details/munibmesinovic.html
 ---
 

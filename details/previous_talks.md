@@ -2,136 +2,24 @@
 
 Please find below the details of some of the previous talks held as part of the Metrics and Models seminar series:
 
-<div style="text-align: center;">
-<table style="margin-left: auto; margin-right: auto;">
-  <thead>
-    <tr>
-      <th>Speaker</th>
-      <th>Date</th>
-      <th>Title</th>
-      <th>More Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-    <td><a href="https://jundewu.com/" target="_blank" rel="noopener noreferrer">Junde Wu [CANCELLED]</a></td>
-      <td>14:00 GMT, 2nd April, 2026</td>
-      <td>Human, Agent, and One Context</td>
-      <td><a href="/details/jundewu.html">More details</a></td>
-    </tr>
-    <tr>
-    <td><a href="https://www.iq.harvard.edu/people/joshua-gilbert" target="_blank" rel="noopener noreferrer">Joshua Gilbert</a></td>
-      <td>14:00 GMT, *18th* March, 2026</td>
-      <td>Estimating heterogeneous treatment effects with item-level outcome data: Insights from item response theory</td>
-      <td><a href="/details/joshgilbert.html">More details</a></td>
-    </tr>
-    <tr>
-    <td><a href="https://www.cjbarrie.com/" target="_blank" rel="noopener noreferrer">Chris Barrie</a></td>
-      <td>14:00 GMT, 5th March, 2026</td>
-      <td>Synthetic personas distort the structure of human belief systems</td>
-      <td><a href="/details/chrisbarrie.html">More details</a></td>
-    </tr>
-    <tr>
-      <td><a href="https://munibmesinovic.com/" target="_blank" rel="noopener noreferrer">CANCELLED Munib Mesinovic</a></td>
-      <td>14:00 GMT, 19th February, 2026</td>
-      <td>TBC</td>
-      <td><a href="/details/munibmesinovic.html">TBC</a></td>
-    </tr>
-      <td><a href="https://fbarez.github.io/" target="_blank" rel="noopener noreferrer">Fazl Barez</a></td>
-      <td>14:00 GMT, 5th February, 2026</td>
-      <td>How can we automate Interpretability to help people make better and faster decisions?</td>
-      <td><a href="/details/fazlbarez.html">More details</a></td>
-    </tr>
-    <tr>
-      <td><a href="https://yleng.github.io/www/" target="_blank" rel="noopener noreferrer">Yan Leng</a></td>
-      <td>14:00 GMT, 22nd January, 2026</td>
-      <td>TBCLatent Neural Coupling of Risk and Time Preferences in LLMs</td>
-      <td><a href="/details/yanleng.html">More details</a></td>
-    </tr>
-      <tr>
-        <td><a href="https://xisong.me/" target="_blank" rel="noopener noreferrer">Xi Song</a></td>
-        <td>14:00 GMT, 8th January, 2026</td>
-        <td>From Job Descriptions to Occupations: Using Neural Language Models to Code Job Data</td>
-        <td><a href="details/xisong.html">More details</a></td>
-      </tr>
-      <tr>
-      <td><a href="https://www.weisiguo.com/cv" target="_blank" rel="noopener noreferrer">Weisi Guo</a></td>
-      <td>14:00 BST, 17th December 2025</td>
-      <td>Spatial Ecology of War and Peace: Perspective of Global Networked Tipping Dynamics</td>
-      <td><a href="/details/weisiguo-guo.html">More details</a></td>
-    </tr>
-    <tr>
-      <td><a href="https://xisong.me/" target="_blank" rel="noopener noreferrer">Xi Song</a></td>
-      <td>14:00 BST, 3rd December 2025</td>
-      <td>From Job Descriptions to Occupations: Using Neural Language Models to Code Job Data</td>
-      <td>CANCELLED: To be re-arranged!</td>
-    </tr>
-    <tr>
-      <td><a href="https://www.sns.it/it/persona/giovanni-mauro" target="_blank" rel="noopener noreferrer">Giovanni Mauro</a></td>
-      <td>14:00 BST, 19th November 2025</td>
-      <td>The Urban Impact of AI: Modelling Feedback Loops in Location-Based Recommender Systems</td>
-      <td><a href="/details/giovannimauro.html">More details</a></td>
-    </tr>
-    <tr>
-      <td><a href="https://www.samtrejo.com/" target="_blank" rel="noopener noreferrer">Sam Trejo</a></td>
-      <td>14:00 BST, 5th November 2025</td>
-      <td>Utilizing DNA to Measure Within-Race Skin Tone Disparities</td>
-      <td><a href="/details/sam-trejo.html">More details</a></td>
-    </tr>
-    <tr>
-      <td><a href="https://sociology.wisc.edu/staff/elwert-felix-2/" target="_blank" rel="noopener noreferrer">Felix Elwert</a></td>
-      <td>14:00 BST, 8th October 2025</td>
-      <td>Nonparametric Causal Decomposition of Group Differences: New Mechanisms & New Methods</td>
-      <td><a href="/details/felix-elwert.html">More details</a></td>
-    </tr>
-    <tr>
-      <td><a href="https://researchers.mgh.harvard.edu/profile/13438682/Andrea-Ganna" target="_blank" rel="noopener noreferrer">Andrea Ganna</a></td>
-      <td>14:00 BST, 22th October 2025</td>
-      <td>Disease prediction using nation-wide health data and genetics</td>
-      <td><a href="/details/andrea-ganna.html">More details</a></td>
-    </tr>
-    <tr>
-      <td><a href="https://sociology.princeton.edu/people/brandon-stewart" target="_blank" rel="noopener noreferrer">Brandon Stewart</a></td>
-      <td>14:00 BST, 24th September 2025</td>
-      <td>Design-Based Supervised Learning: A General Framework for Using LLM Annotations and Other Predicted Variables in Downstream Analyses</td>
-      <td><a href="/details/brandon-stewart.html">More details</a></td>
-    </tr>
-    <tr>
-      <td><a href="https://www.vezhnick.com/" target="_blank" rel="noopener noreferrer">Alexander Vezhnevets</a></td>
-      <td>14:00 BST, 10th September 2025</td>
-      <td>Concordia, a multi-actor generative agent based modelling system</td>
-      <td><a href="/details/vezhnick.html">More details</a></td>
-    </tr>
-    <tr>
-      <td><a href="https://keyonvafa.com/" target="_blank" rel="noopener noreferrer">Keyon Vafa</a></td>
-      <td>14:00 BST, 27th August 2025</td>
-      <td>What are AI's World Models?</td>
-      <td><a href="/details/keyon-vafa.html">More details</a></td>
-    </tr>
-    <tr>
-      <td><a href="https://jcperdomo.org/" target="_blank" rel="noopener noreferrer">Juan Carlos Perdomo</a></td>
-      <td>14:00 BST, 13th August 2025</td>
-      <td>The relative value of prediction</td>
-      <td><a href="/details/juan-carlos-perdomo.html">More details</a></td>
-    </tr>
-    <tr>
-      <td><a href="https://klintkanopka.com/" target="_blank" rel="noopener noreferrer">Klint Kanopka</a></td>
-      <td>14:00 BST, 30th July 2025</td>
-      <td>Reproducing Expert Judgement with Shortened Surveys using Simulated Annealing</td>
-      <td><a href="/details/klint-kanopka.html">More details</a></td>
-    </tr>
-    <tr>
-      <td><a href="https://sociology.yale.edu/people/ramina-sotoudeh" target="_blank" rel="noopener noreferrer">Ramina Sotoudeh</a></td>
-      <td>14:00 BST, 16th July 2025</td>
-      <td>Antenatal Selection: A novel approach for assessing the genetic and ecological drivers of who survives to birth</td>
-      <td><a href="/details/ramina-sotoudeh.html">More details</a></td>
-    </tr>
-    <tr>
-      <td><a href="https://elliottash.com/" target="_blank" rel="noopener noreferrer">Elliott Ash</a></td>
-      <td>14:00 BST, 2nd July, 2025</td>
-      <td>Courts of Tomorrow: Experimental Evidence on AI-Augmented Justice in Pakistan</td>
-      <td><a href="/details/elliott-ash.html">More details</a></td>
-    </tr>    
-  </tbody>
-</table>
-</div>
+| Speaker | Date | Title | More Details |
+|---------|------|-------|--------------|
+| [Junde Wu](https://jundewu.com/) | 14:00 GMT, 2nd April, 2026 | Human, Agent, and One Context | [More details](/details/jundewu.html) |
+| [Joshua Gilbert](https://www.iq.harvard.edu/people/joshua-gilbert) | 14:00 GMT, *18th* March, 2026 | Estimating heterogeneous treatment effects with item-level outcome data: Insights from item response theory | [More details](/details/joshgilbert.html) |
+| [Chris Barrie](https://www.cjbarrie.com/) | 14:00 GMT, 5th March, 2026 | Synthetic personas distort the structure of human belief systems | [More details](/details/chrisbarrie.html) |
+| [CANCELLED Munib Mesinovic](https://munibmesinovic.com/) | 14:00 GMT, 19th February, 2026 | TBC | [TBC](/details/munibmesinovic.html) |
+| [Fazl Barez](https://fbarez.github.io/) | 14:00 GMT, 5th February, 2026 | How can we automate Interpretability to help people make better and faster decisions? | [More details](/details/fazlbarez.html) |
+| [Yan Leng](https://yleng.github.io/www/) | 14:00 GMT, 22nd January, 2026 | Latent Neural Coupling of Risk and Time Preferences in LLMs | [More details](/details/yanleng.html) |
+| [Xi Song](https://xisong.me/) | 14:00 GMT, 8th January, 2026 | From Job Descriptions to Occupations: Using Neural Language Models to Code Job Data | [More details](/details/xisong.html) |
+| [Weisi Guo](https://www.weisiguo.com/cv) | 14:00 BST, 17th December 2025 | Spatial Ecology of War and Peace: Perspective of Global Networked Tipping Dynamics | [More details](/details/weisiguo-guo.html) |
+| [Giovanni Mauro](https://www.sns.it/it/persona/giovanni-mauro) | 14:00 BST, 19th November 2025 | The Urban Impact of AI: Modelling Feedback Loops in Location-Based Recommender Systems | [More details](/details/giovannimauro.html) |
+| [Sam Trejo](https://www.samtrejo.com/) | 14:00 BST, 5th November 2025 | Utilizing DNA to Measure Within-Race Skin Tone Disparities | [More details](/details/sam-trejo.html) |
+| [Felix Elwert](https://sociology.wisc.edu/staff/elwert-felix-2/) | 14:00 BST, 8th October 2025 | Nonparametric Causal Decomposition of Group Differences: New Mechanisms & New Methods | [More details](/details/felix-elwert.html) |
+| [Andrea Ganna](https://researchers.mgh.harvard.edu/profile/13438682/Andrea-Ganna) | 14:00 BST, 22th October 2025 | Disease prediction using nation-wide health data and genetics | [More details](/details/andrea-ganna.html) |
+| [Brandon Stewart](https://sociology.princeton.edu/people/brandon-stewart) | 14:00 BST, 24th September 2025 | Design-Based Supervised Learning: A General Framework for Using LLM Annotations and Other Predicted Variables in Downstream Analyses | [More details](/details/brandon-stewart.html) |
+| [Alexander Vezhnevets](https://www.vezhnick.com/) | 14:00 BST, 10th September 2025 | Concordia, a multi-actor generative agent based modelling system | [More details](/details/vezhnick.html) |
+| [Keyon Vafa](https://keyonvafa.com/) | 14:00 BST, 27th August 2025 | What are AI's World Models? | [More details](/details/keyon-vafa.html) |
+| [Juan Carlos Perdomo](https://jcperdomo.org/) | 14:00 BST, 13th August 2025 | The relative value of prediction | [More details](/details/juan-carlos-perdomo.html) |
+| [Klint Kanopka](https://klintkanopka.com/) | 14:00 BST, 30th July 2025 | Reproducing Expert Judgement with Shortened Surveys using Simulated Annealing | [More details](/details/klint-kanopka.html) |
+| [Ramina Sotoudeh](https://sociology.yale.edu/people/ramina-sotoudeh) | 14:00 BST, 16th July 2025 | Antenatal Selection: A novel approach for assessing the genetic and ecological drivers of who survives to birth | [More details](/details/ramina-sotoudeh.html) |
+| [Elliott Ash](https://elliottash.com/) | 14:00 BST, 2nd July, 2025 | Courts of Tomorrow: Experimental Evidence on AI-Augmented Justice in Pakistan | [More details](/details/elliott-ash.html) |
