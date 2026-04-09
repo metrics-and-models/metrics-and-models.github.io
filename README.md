@@ -52,7 +52,7 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Mohsen Mosleh</a></td>
       <td>14:00 GMT, 14th May, 2026</td>
       <td>TBC</td>
-      <td><a href="/details/mohsenmosleh.html">TBC</a></td>
+      <td><a href="/details/mohsenmosleh.html">Echo Platforms & Conversational Corrections</a></td>
     </tr>
     <tr>
     <td><a href="https://sites.google.com/view/laiweisoc" target="_blank" rel="noopener noreferrer">Lai Wei</a></td>
