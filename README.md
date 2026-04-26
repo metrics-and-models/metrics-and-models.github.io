@@ -49,10 +49,16 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td><a href="/details/mohsenmosleh.html">More details</a></td>
     </tr>
     <tr>
-    <td><a href="https://sites.google.com/view/laiweisoc" target="_blank" rel="noopener noreferrer">Lai Wei</a></td>
+      <td><a href="https://sites.google.com/view/laiweisoc" target="_blank" rel="noopener noreferrer">Lai Wei</a></td>
       <td>14:00 GMT, 28th May, 2026</td>
       <td>TBC</td>
       <td><a href="/details/laiwei.html">TBC</a></td>
+    </tr>
+    <tr>
+      <td><a href="https://scholar.google.com/citations?user=jkirGmUAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Jakub Bijak</a></td>
+      <td>14:00 GMT, 11th June, 2026</td>
+      <td>TBC</td>
+      <td><a href="/details/jakubbijak.html">TBC</a></td>
     </tr>
   </tbody>
 </table>
