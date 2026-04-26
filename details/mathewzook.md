@@ -6,7 +6,7 @@ permalink: /details/mathewzook.html
 
 ## Speaker: Mathew Zook
 ### Institution: University of Oxford
-### Date: 14:00 GMT, 16th April, 2026
+### Date: 14:00 BST, 30th April, 2026
 
 **Talk Title**: The silicon gaze: A typology of biases and inequality in LLMs through the lens of place
 
