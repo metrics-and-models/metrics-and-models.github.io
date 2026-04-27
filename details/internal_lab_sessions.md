@@ -2,7 +2,7 @@
 
 Please find below the details of some of the *forthcoming* lab sessions we have coming up. The talks are _maximally informal_ and last for ~30 minutes each. For the other 30 minutes of the session, we'll discuss the administration of the lab, and any other updates from the internal group.
 
-These are _internal only_ to people on themetrics-and-models_internal@@maillist.ox.ac.uk. If you are local to Oxford and want to be added to this list, please email metrics_and_models_mgmt@mailist.ox.ac.uk!
+These are _internal only_ to people on the metrics-and-models_internal@maillist.ox.ac.uk. If you are local to Oxford and want to be added to this list, please email metrics_and_models_mgmt@mailist.ox.ac.uk with a request!
 
 The table below indicates whether they are online or offline. They will run online through to the end of 2025.
 
@@ -75,25 +75,37 @@ The table below indicates whether they are online or offline. They will run onli
       <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Mingyue Liu</a></td>
       <td>14:00 GMT, 9th April 2026</td>
       <td>Neural-symbolic Data Augmentation for Contrastive Learning.</td>
-      <td>Online</td>
+      <td>Hybrid</td>
     </tr>
     <tr>
       <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Aarushi Sharma</a></td>
       <td>14:00 GMT, 23rd April 2026</td>
       <td>Encoding Without Influence: Dissociating Demographic Representation from Causal Effect in Large Language Model Survey Simulation</td>
-      <td>Online</td>
+      <td>Hybrid</td>
     </tr>
     <tr>
       <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Maksim, Charlie, and Daniel</a></td>
       <td>14:00 GMT, 7th May 2026</td>
       <td>LLM based analysis of political texts at scale: a scoping and feedback session</td>
-      <td>Online</td>
+      <td>Hybrid</td>
     </tr>
     <tr>
       <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">TBC</a></td>
       <td>14:00 GMT, 21st May 2026</td>
       <td>TBC</td>
-      <td>Online</td>
+      <td>Hybrid</td>
+    </tr>
+    <tr>
+      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">TBC</a></td>
+      <td>14:00 GMT, 4th June 2026</td>
+      <td>TBC</td>
+      <td>Hybrid</td>
+    </tr>
+    <tr>
+      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">TBC</a></td>
+      <td>14:00 GMT, 4th June 2026</td>
+      <td>Ava Keeling</td>
+      <td>Hybrid</td>
     </tr>
   </tbody>
 </table>
