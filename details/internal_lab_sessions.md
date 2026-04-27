@@ -66,13 +66,13 @@ The table below indicates whether they are online or offline. They will run onli
       <td>Online</td>
     </tr>
     <tr>
-      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Lijin Zhang</a></td>
+      <td><a href="https://lijinzhang.com/" target="_blank" rel="noopener noreferrer">Lijin Zhang</a></td>
       <td>14:00 GMT, 26th March 2026</td>
       <td>Bayesian Factor Mixture Modeling for Detecting Inattentive Respondents</td>
       <td>Online</td>
     </tr>
     <tr>
-      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Mingyue Liu</a></td>
+      <td><a href="https://scholar.google.com/citations?user=9zgHnV4AAAAJ" target="_blank" rel="noopener noreferrer">Mingyue Liu</a></td>
       <td>14:00 GMT, 9th April 2026</td>
       <td>Neural-symbolic Data Augmentation for Contrastive Learning.</td>
       <td>Hybrid</td>
@@ -90,20 +90,20 @@ The table below indicates whether they are online or offline. They will run onli
       <td>Hybrid</td>
     </tr>
     <tr>
-      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">TBC</a></td>
+      <td><a href="https://juliettezaccour.notion.site/" target="_blank" rel="noopener noreferrer">TBC</a></td>
       <td>14:00 GMT, 21st May 2026</td>
-      <td>TBC</td>
+      <td>Juliette Zaccour</td>
       <td>Hybrid</td>
     </tr>
     <tr>
       <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">TBC</a></td>
       <td>14:00 GMT, 4th June 2026</td>
-      <td>TBC</td>
+      <td>Cancelled due to EPC</td>
       <td>Hybrid</td>
     </tr>
     <tr>
-      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">TBC</a></td>
-      <td>14:00 GMT, 4th June 2026</td>
+      <td><a href="https://www.bdi.ox.ac.uk/Team/ava-keeling" target="_blank" rel="noopener noreferrer">TBC</a></td>
+      <td>14:00 GMT, 18th June 2026</td>
       <td>Ava Keeling</td>
       <td>Hybrid</td>
     </tr>
