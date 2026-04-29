@@ -51,7 +51,7 @@ Hi! We are a group of health and social data scientists located at the Universit
     <tr>
       <td><a href="https://sites.google.com/view/laiweisoc" target="_blank" rel="noopener noreferrer">Lai Wei</a></td>
       <td>14:00 GMT, 28th May, 2026</td>
-      <td>TBC</td>
+      <td>Using AI Predictions to Augment Rather Than Replacing Surveys</td>
       <td><a href="/details/laiwei.html">TBC</a></td>
     </tr>
     <tr>
