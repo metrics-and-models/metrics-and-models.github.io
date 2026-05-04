@@ -38,25 +38,25 @@ Hi! We are a group of health and social data scientists located at the Universit
   <tbody>
     <tr>  
       <td><a href="https:/https://mohsenmosleh.com/" target="_blank" rel="noopener noreferrer">Mohsen Mosleh</a></td>
-      <td>14:00 GMT, 14th May, 2026</td>
+      <td>14:00 BST, 14th May, 2026</td>
       <td>Echo Platforms & Conversational Corrections</td>
       <td><a href="/details/mohsenmosleh.html">More details</a></td>
     </tr>
     <tr>
       <td><a href="https://sites.google.com/view/laiweisoc" target="_blank" rel="noopener noreferrer">Lai Wei</a></td>
-      <td>14:00 GMT, 28th May, 2026</td>
+      <td>14:00 BST, 28th May, 2026</td>
       <td>Using AI Predictions to Augment Rather Than Replacing Surveys</td>
       <td><a href="/details/laiwei.html">More details</a></td>
     </tr>
     <tr>
       <td><a href="https://scholar.google.com/citations?user=jkirGmUAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Jakub Bijak</a></td>
-      <td>14:00 GMT, 11th June, 2026</td>
+      <td>14:00 BST, 11th June, 2026</td>
       <td>TBC</td>
       <td><a href="/details/jakubbijak.html">More details</a></td>
     </tr>
     <tr>
       <td><a href="https://www.ericbschneider.com/" target="_blank" rel="noopener noreferrer">Eric Schneider</a></td>
-      <td>14:00 GMT, 11th June, 2026</td>
+      <td>14:00 BST, 25th June, 2026</td>
       <td>TBC</td>
       <td><a href="/details/ericschneider.html">More details</a></td>
     </tr>
