@@ -4,6 +4,7 @@ Please find below the details of some of the previous talks held as part of the 
 
 | Speaker | Date | Title | More Details |
 |---------|------|-------|--------------|
+| [Mathew Zook](https://metrics-and-models.github.io/) | 14:00 GMT, 30th April, 2026 | The silicon gaze: A typology of biases and inequality in LLMs through the lens of place | [More details](/details/mathewzook.html) |
 | [Freddie Bickford Smith](https://fbickfordsmith.com/) | 14:00 GMT, 16th April, 2026 | Rethinking aleatoric and epistemic uncertainty | [More details](/details/freddiebickfordsmith.html) |
 | [Junde Wu](https://jundewu.com/) | 14:00 GMT, 2nd April, 2026 | Human, Agent, and One Context | [More details](/details/jundewu.html) |
 | [Joshua Gilbert](https://www.iq.harvard.edu/people/joshua-gilbert) | 14:00 GMT, *18th* March, 2026 | Estimating heterogeneous treatment effects with item-level outcome data: Insights from item response theory | [More details](/details/joshgilbert.html) |
