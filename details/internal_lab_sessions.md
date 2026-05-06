@@ -90,9 +90,9 @@ The table below indicates whether they are online or offline. They will run onli
       <td>Hybrid</td>
     </tr>
     <tr>
-      <td><a href="https://juliettezaccour.notion.site/" target="_blank" rel="noopener noreferrer">Juliette Zaccour</a></td>
+      <td><a href="https://juliettezaccour.notion.site/" target="_blank" rel="noopener noreferrer">Naomi Muggleton</a></td>
       <td>14:00 GMT, 21st May 2026</td>
-      <td>Large synthetic datasets are less reliable than small real samples for empirical research</td>
+      <td>ERC Interview Practice Talk</td>
       <td>Hybrid</td>
     </tr>
     <tr>
@@ -102,9 +102,9 @@ The table below indicates whether they are online or offline. They will run onli
       <td>Hybrid</td>
     </tr>
     <tr>
-      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">TBC</a></td>
+      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Juliette Zaccour</a></td>
       <td>14:00 GMT, 18th June 2026</td>
-      <td>TBC</td>
+      <td>Large synthetic datasets are less reliable than small real samples for empirical research</td>
       <td>Hybrid</td>
     </tr>
   </tbody>
