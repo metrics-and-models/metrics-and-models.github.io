@@ -51,7 +51,7 @@ Hi! We are a group of health and social data scientists located at the Universit
     <tr>
       <td><a href="https://scholar.google.com/citations?user=jkirGmUAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Jakub Bijak</a></td>
       <td>14:00 BST, 11th June, 2026</td>
-      <td>odels as Theory-Building Machines? Insights from Agent-Based Simulations of Human Migration</td>
+      <td>Models as Theory-Building Machines? Insights from Agent-Based Simulations of Human Migration</td>
       <td><a href="/details/jakubbijak.html">More details</a></td>
     </tr>
     <tr>
