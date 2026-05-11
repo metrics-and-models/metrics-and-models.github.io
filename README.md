@@ -60,6 +60,12 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td>TBC</td>
       <td><a href="/details/ericschneider.html">More details</a></td>
     </tr>
+    <tr>
+      <td><a href="https://perengzell.com/" target="_blank" rel="noopener noreferrer">Per Engzell</a></td>
+      <td>14:00 BST, 20th August, 2026</td>
+      <td>The Paper Factory</td>
+      <td><a href="/details/perengzell.html">More details</a></td>
+    </tr>
   </tbody>
 </table>
 </div>
