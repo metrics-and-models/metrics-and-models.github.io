@@ -6,7 +6,7 @@ permalink: /details/mohsenmosleh.html
 
 ## Speaker: Mohsen Mosleh
 ### Institution: University of Oxford
-### Date: 14:00 GMT, 14th May, 2026
+### Date: 14:00 BST, 14th May, 2026
 
 **Talk Title**: Echo Platforms & Conversational Corrections
 

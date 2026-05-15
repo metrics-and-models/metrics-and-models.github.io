@@ -36,12 +36,6 @@ Hi! We are a group of health and social data scientists located at the Universit
     </tr>
   </thead>
   <tbody>
-    <tr>  
-      <td><a href="https:/https://mohsenmosleh.com/" target="_blank" rel="noopener noreferrer">Mohsen Mosleh</a></td>
-      <td>14:00 BST, 14th May, 2026</td>
-      <td>Echo Platforms & Conversational Corrections</td>
-      <td><a href="/details/mohsenmosleh.html">More details</a></td>
-    </tr>
     <tr>
       <td><a href="https://sites.google.com/view/laiweisoc" target="_blank" rel="noopener noreferrer">Lai Wei</a></td>
       <td>14:00 BST, 28th May, 2026</td>
