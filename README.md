@@ -51,7 +51,7 @@ Hi! We are a group of health and social data scientists located at the Universit
     <tr>
       <td><a href="https://www.ericbschneider.com/" target="_blank" rel="noopener noreferrer">Eric Schneider</a></td>
       <td>14:00 BST, 25th June, 2026</td>
-      <td>TBC</td>
+      <td>Transport and the Transmission of Plague across Settlements in Early Modern England</td>
       <td><a href="/details/ericschneider.html">More details</a></td>
     </tr>
     <tr>
