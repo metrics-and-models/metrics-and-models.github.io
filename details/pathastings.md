@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Pat Hastings – More Details
-permalink: /details/ericschneider.html
+permalink: /details/pathastings.html
 ---
 
 ## Speaker: Pat Hastings (with Zachary Parolin)
