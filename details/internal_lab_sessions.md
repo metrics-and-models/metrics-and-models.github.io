@@ -107,6 +107,12 @@ The table below indicates whether they are online or offline. They will run onli
       <td>Large synthetic datasets are less reliable than small real samples for empirical research</td>
       <td>Hybrid</td>
     </tr>
+    <tr>
+      <td><a href="https://sites.create-cdn.net/siteimages/52/2/0/522090/15/4/1/15418296/1000x1000.png?1493483209" target="_blank" rel="noopener noreferrer">1st Birthday Party Time!</a></td>
+      <td>TBC</td>
+      <td>Metrics and Models Celebrates its first birthday</td>
+      <td>In Person</td>
+    </tr>
   </tbody>
 </table>
 </div>
