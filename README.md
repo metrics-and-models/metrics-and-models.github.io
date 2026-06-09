@@ -49,6 +49,12 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td><a href="/details/ericschneider.html">More details</a></td>
     </tr>
     <tr>
+      <td><a href="https://sites.google.com/view/ksiler" target="_blank" rel="noopener noreferrer">Kyle Siler</a></td>
+      <td>14:00 BST, 9th July, 2026</td>
+      <td>The diffusion of large language models in published academic articles</td>
+      <td><a href="/details/kylesiler.html">More details</a></td>
+    </tr>
+    <tr>
       <td><a href="https://ophastings.com/" target="_blank" rel="noopener noreferrer">Pat Hastings</a></td>
       <td>14:00 BST, 23rd July, 2026</td>
       <td>Rags or Riches? Predicting Life Outcomes from the Birth Lottery Across Five High-Income Countries</td>
