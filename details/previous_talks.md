@@ -4,6 +4,8 @@ Please find below the details of some of the previous talks held as part of the 
 
 | Speaker | Date | Title | More Details |
 |---------|------|-------|--------------|
+| [Eric Schneider](https://www.ericbschneider.com/) | 14:00 BST, 25th June, 2026 | Transport and the Transmission of Plague across Settlements in Early Modern England | [More details](/details/ericschneider.html) |
+| [Jakub Bijak](https://scholar.google.com/citations?user=jkirGmUAAAAJ&hl=en) | 14:00 BST, 11th June, 2026 | Models as Theory-Building Machines? Insights from Agent-Based Simulations of Human Migration | [More details](/details/jakubbijak.html) |
 | [Lai Wei](https://sites.google.com/view/laiweisoc) | 14:00 BST, 28th May, 2026 | Using AI Predictions to Augment Rather Than Replacing Surveys | [More details](/details/laiwei.html) |
 | [Mohsen Mosleh](https://mohsenmosleh.com/) | 14:00 BST, 14th May, 2026 | Echo Platforms & Conversational Corrections | [More details](/details/mohsenmosleh.html) |
 | [Mathew Zook](https://geography.as.uky.edu/users/zook) | 14:00 GMT, 30th April, 2026 | The silicon gaze: A typology of biases and inequality in LLMs through the lens of place | [More details](/details/mathewzook.html) |
