@@ -4,6 +4,7 @@ Please find below the details of some of the previous talks held as part of the 
 
 | Speaker | Date | Title | More Details |
 |---------|------|-------|--------------|
+| [Kyle Siler](https://sites.google.com/view/ksiler) | 14:00 BST, 9th July, 2026 | The diffusion of large language models in published academic articles | [More details](/details/kylesiler.html) |
 | [Eric Schneider](https://www.ericbschneider.com/) | 14:00 BST, 25th June, 2026 | Transport and the Transmission of Plague across Settlements in Early Modern England | [More details](/details/ericschneider.html) |
 | [Jakub Bijak](https://scholar.google.com/citations?user=jkirGmUAAAAJ&hl=en) | 14:00 BST, 11th June, 2026 | Models as Theory-Building Machines? Insights from Agent-Based Simulations of Human Migration | [More details](/details/jakubbijak.html) |
 | [Lai Wei](https://sites.google.com/view/laiweisoc) | 14:00 BST, 28th May, 2026 | Using AI Predictions to Augment Rather Than Replacing Surveys | [More details](/details/laiwei.html) |
