@@ -4,7 +4,7 @@ Hi! We are a group of health and social data scientists located at the Universit
 
 **Note**: We are in the process of moving our events from OxTalks to OxEvents. Please see our current schedule at the bottom of this page for now.
 
-**Frequency and Timing**: Every other Thursday at 14:00 UTC.
+**Frequency and Timing**: Every other Thursday at 14:00 GMT/BST (i.e. consistently at 2pm UK time).
 
 **Open to Everyone!** Importantly, this seminar series is open to *everyone*. We've tried to schedule it at a time of day that's hopefully roughly equitable to people in the Americas and Asia all the same. It is not just limited to academics: attendees are welcome from all (e.g., private, public, third) sectors!
 
@@ -36,12 +36,6 @@ Hi! We are a group of health and social data scientists located at the Universit
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td><a href="https://sites.google.com/view/ksiler" target="_blank" rel="noopener noreferrer">Kyle Siler</a></td>
-      <td>14:00 BST, 9th July, 2026</td>
-      <td>The diffusion of large language models in published academic articles</td>
-      <td><a href="/details/kylesiler.html">More details</a></td>
-    </tr>
     <tr>
       <td><a href="https://ophastings.com/" target="_blank" rel="noopener noreferrer">Pat Hastings</a></td>
       <td>14:00 BST, 23rd July, 2026</td>
