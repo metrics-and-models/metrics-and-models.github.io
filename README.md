@@ -54,6 +54,12 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td>The Paper Factory</td>
       <td><a href="/details/perengzell.html">More details</a></td>
     </tr>
+    <tr>
+      <td><a href="https://icsc-conf.github.io/" target="_blank" rel="noopener noreferrer">ICSC'26</a></td>
+      <td>14:00 BST, 20th August, 2026</td>
+      <td>International Conference on Social Computing</td>
+      <td><a href="https://icsc-conf.github.io/">More details</a></td>
+    </tr>
   </tbody>
 </table>
 </div>
