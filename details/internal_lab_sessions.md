@@ -73,37 +73,37 @@ The table below indicates whether they are online or offline. They will run onli
     </tr>
     <tr>
       <td><a href="https://scholar.google.com/citations?user=9zgHnV4AAAAJ" target="_blank" rel="noopener noreferrer">Mingyue Liu</a></td>
-      <td>14:00 GMT, 9th April 2026</td>
+      <td>14:00 BST, 9th April 2026</td>
       <td>Neural-symbolic Data Augmentation for Contrastive Learning.</td>
       <td>Hybrid</td>
     </tr>
     <tr>
       <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Aarushi Sharma</a></td>
-      <td>14:00 GMT, 23rd April 2026</td>
+      <td>14:00 BST, 23rd April 2026</td>
       <td>Encoding Without Influence: Dissociating Demographic Representation from Causal Effect in Large Language Model Survey Simulation</td>
       <td>Hybrid</td>
     </tr>
     <tr>
       <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Maksim, Charlie, and Daniel</a></td>
-      <td>14:00 GMT, 7th May 2026</td>
+      <td>14:00 BST, 7th May 2026</td>
       <td>LLM based analysis of political texts at scale: a scoping and feedback session</td>
       <td>Hybrid</td>
     </tr>
     <tr>
       <td><a href="https://www.wbs.ac.uk/about/person/naomi-muggleton/" target="_blank" rel="noopener noreferrer">Naomi Muggleton</a></td>
-      <td>14:00 GMT, 21st May 2026</td>
+      <td>14:00 BST, 21st May 2026</td>
       <td>What is the health price we pay for adapting to economic conditions?</td>
       <td>Hybrid</td>
     </tr>
     <tr>
       <td><a href="https://www.bdi.ox.ac.uk/Team/ava-keeling" target="_blank" rel="noopener noreferrer">Ava Keeling</a></td>
-      <td>14:00 GMT, 4th June 2026</td>
+      <td>14:00 BST, 4th June 2026</td>
       <td>Aleatoric Luck</td>
       <td>Hybrid</td>
     </tr>
     <tr>
       <td><a href="https://juliettezaccour.notion.site/" target="_blank" rel="noopener noreferrer">Juliette Zaccour</a></td>
-      <td>14:00 GMT, 18th June 2026</td>
+      <td>14:00 BST, 18th June 2026</td>
       <td>Large synthetic datasets are less reliable than small real samples for empirical research</td>
       <td>Hybrid</td>
     </tr>
@@ -112,6 +112,11 @@ The table below indicates whether they are online or offline. They will run onli
       <td>TBC</td>
       <td>Metrics and Models Celebrates its first birthday</td>
       <td>In Person</td>
+    </tr>
+      <td><a href="https://www.sophiehsqq.com/" target="_blank" rel="noopener noreferrer">Huilian Sophie Qiu</a></td>
+      <td>14:00 BST, 18th June 2026</td>
+      <td>TBD</td>
+      <td>Hybrid</td>
     </tr>
   </tbody>
 </table>
