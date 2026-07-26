@@ -113,9 +113,16 @@ The table below indicates whether they are online or offline. They will run onli
       <td>Metrics and Models Celebrates its first birthday</td>
       <td>In Person</td>
     </tr>
+    <tr>
       <td><a href="https://www.sophiehsqq.com/" target="_blank" rel="noopener noreferrer">Huilian Sophie Qiu</a></td>
-      <td>14:00 BST, 18th June 2026</td>
-      <td>TBD</td>
+      <td>14:00 BST, 30th July 2026</td>
+      <td>The Role of Promotional Language in Communicating Innovation</td>
+      <td>Hybrid</td>
+    </tr>
+    <tr>
+      <td><a href="https://metrics-and-models.github.io/" target="_blank" rel="noopener noreferrer">Metrics and Models</a></td>
+      <td>14:00 BST, 13th August 2026</td>
+      <td>Local Metrics and Models Strategy Meeting</td>
       <td>Hybrid</td>
     </tr>
   </tbody>

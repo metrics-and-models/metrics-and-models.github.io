@@ -37,12 +37,6 @@ Hi! We are a group of health and social data scientists located at the Universit
   </thead>
   <tbody>
     <tr>
-      <td><a href="https://ophastings.com/" target="_blank" rel="noopener noreferrer">Pat Hastings</a></td>
-      <td>14:00 BST, 23rd July, 2026</td>
-      <td>Rags or Riches? Predicting Life Outcomes from the Birth Lottery Across Five High-Income Countries</td>
-      <td><a href="/details/pathastings.html">More details</a></td>
-    </tr>
-    <tr>
       <td><a href="https://jacobcwalker.com/" target="_blank" rel="noopener noreferrer">Jacob Walker</a></td>
       <td>14:00 BST, 6th August, 2026</td>
       <td>TBC</td>
@@ -59,6 +53,12 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td>14:00 BST, 3rd September, 2026</td>
       <td>International Conference on Social Computing</td>
       <td><a href="https://icsc-conf.github.io/">More details</a></td>
+    </tr>
+    <tr>
+      <td><a href="https://emily-m-cantrell.owlstown.net/" target="_blank" rel="noopener noreferrer">Emily Cantrell</a></td>
+      <td>14:00 BST, 15th October, 2026</td>
+      <td>TBC</td>
+      <td><a href="https://emily-m-cantrell.owlstown.net/">More details</a></td>
     </tr>
   </tbody>
 </table>
