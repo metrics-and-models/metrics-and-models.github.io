@@ -4,6 +4,7 @@ Please find below the details of some of the previous talks held as part of the 
 
 | Speaker | Date | Title | More Details |
 |---------|------|-------|--------------|
+| [Jacob Walker](https://jacobcwalker.com/) | 14:00 BST, 6th August, 2026 | Computer Vision Research at Google DeepMind | [More details](/details/jacobwalker.html) |
 | [Pat Hastings](https://ophastings.com/) | 14:00 BST, 23rd July, 2026 | Rags or Riches? Predicting Life Outcomes from the Birth Lottery Across Five High-Income Countries | [More details](/details/pathastings.html) |
 | [Kyle Siler](https://sites.google.com/view/ksiler) | 14:00 BST, 9th July, 2026 | The diffusion of large language models in published academic articles | [More details](/details/kylesiler.html) |
 | [Eric Schneider](https://www.ericbschneider.com/) | 14:00 BST, 25th June, 2026 | Transport and the Transmission of Plague across Settlements in Early Modern England | [More details](/details/ericschneider.html) |
