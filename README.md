@@ -37,18 +37,6 @@ Hi! We are a group of health and social data scientists located at the Universit
   </thead>
   <tbody>
     <tr>
-      <td><a href="https://perengzell.com/" target="_blank" rel="noopener noreferrer">Per Engzell</a></td>
-      <td>14:00 BST, 20th August, 2026</td>
-      <td>The Paper Factory</td>
-      <td><a href="/details/perengzell.html">More details</a></td>
-    </tr>
-    <tr>
-      <td><a href="https://icsc-conf.github.io/" target="_blank" rel="noopener noreferrer">ICSC'26</a></td>
-      <td>14:00 BST, 3rd September, 2026</td>
-      <td>International Conference on Social Computing</td>
-      <td><a href="https://icsc-conf.github.io/">More details</a></td>
-    </tr>
-    <tr>
       <td><a href="https://psych.washu.edu/people/joshua-jackson" target="_blank" rel="noopener noreferrer">Joshua Jackson</a></td>
       <td>14:00 BST, 17th September, 2026</td>
       <td>LifeSentence: Language models can encode human life course trajectories from longitudinal panel data</td>
@@ -57,7 +45,7 @@ Hi! We are a group of health and social data scientists located at the Universit
     <tr>
       <td><a href="https://plos.org/" target="_blank" rel="noopener noreferrer">Iain Hrynaszkiewicz</a></td>
       <td>14:00 BST, 1st October, 2026</td>
-      <td>TBD</td>
+      <td>Understanding the prevalence and impact of open, reproducible research practices</td>
       <td><a href="/details/iainhrynaszkiewicz.html">More details</a></td>
     </tr>
     <tr>

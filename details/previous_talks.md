@@ -4,6 +4,8 @@ Please find below the details of some of the previous talks held as part of the 
 
 | Speaker | Date | Title | More Details |
 |---------|------|-------|--------------|
+| [ICSC'26](https://icsc-conf.github.io/) | 14:00 BST, 3rd September, 2026 | International Conference on Social Computing | [More details](https://icsc-conf.github.io/) |
+| [Per Engzell](https://perengzell.com/) | 14:00 BST, 20th August, 2026 | The Paper Factory | [More details](/details/perengzell.html) |
 | [Jacob Walker](https://jacobcwalker.com/) | 14:00 BST, 6th August, 2026 | Computer Vision Research at Google DeepMind | [More details](/details/jacobwalker.html) |
 | [Pat Hastings](https://ophastings.com/) | 14:00 BST, 23rd July, 2026 | Rags or Riches? Predicting Life Outcomes from the Birth Lottery Across Five High-Income Countries | [More details](/details/pathastings.html) |
 | [Kyle Siler](https://sites.google.com/view/ksiler) | 14:00 BST, 9th July, 2026 | The diffusion of large language models in published academic articles | [More details](/details/kylesiler.html) |
