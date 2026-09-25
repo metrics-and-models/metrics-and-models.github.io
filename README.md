@@ -37,12 +37,6 @@ Hi! We are a group of health and social data scientists located at the Universit
   </thead>
   <tbody>
     <tr>
-      <td><a href="https://psych.washu.edu/people/joshua-jackson" target="_blank" rel="noopener noreferrer">Joshua Jackson</a></td>
-      <td>14:00 BST, 17th September, 2026</td>
-      <td>LifeSentence: Language models can encode human life course trajectories from longitudinal panel data</td>
-      <td><a href="/details/joshuajackson.html">More details</a></td>
-    </tr>
-    <tr>
       <td><a href="https://plos.org/" target="_blank" rel="noopener noreferrer">Iain Hrynaszkiewicz</a></td>
       <td>14:00 BST, 1st October, 2026</td>
       <td>Understanding the prevalence and impact of open, reproducible research practices</td>
