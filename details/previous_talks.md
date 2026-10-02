@@ -4,6 +4,7 @@ Please find below the details of some of the previous talks held as part of the 
 
 | Speaker | Date | Title | More Details |
 |---------|------|-------|--------------|
+| [Iain Hrynaszkiewicz](https://plos.org/) | 14:00 BST, 1st October, 2026 | Understanding the prevalence and impact of open, reproducible research practices | [More details](/details/iainhrynaszkiewicz.html) |
 | [Joshua Jackson](https://psych.washu.edu/people/joshua-jackson) | 14:00 BST, 17th September, 2026 | LifeSentence: Language models can encode human life course trajectories from longitudinal panel data | [More details](/details/joshuajackson.html) |
 | [ICSC'26](https://icsc-conf.github.io/) | 14:00 BST, 3rd September, 2026 | International Conference on Social Computing | [More details](https://icsc-conf.github.io/) |
 | [Per Engzell](https://perengzell.com/) | 14:00 BST, 20th August, 2026 | The Paper Factory | [More details](/details/perengzell.html) |
