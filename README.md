@@ -43,6 +43,12 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td><a href="/details/emilycantrell.html">More details</a></td>
     </tr>
     <tr>
+      <td><a href="https://www.benzevgreen.com/" target="_blank" rel="noopener noreferrer">Ben Green</a></td>
+      <td>14:00 GMT, 29th October, 2026</td>
+      <td>Algorithmic Realism: Data Science Practices to Promote Social Justice</td>
+      <td><a href="/details/bengreen.html">More details</a></td>
+    </tr>
+    <tr>
       <td><a href="https://www.suz.uzh.ch/en/institute/aboutus/professors/block.html" target="_blank" rel="noopener noreferrer">Per Block</a></td>
       <td>14:00 GMT, 12th November, 2026</td>
       <td>Relational Alignment Models</td>
