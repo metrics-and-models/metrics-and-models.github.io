@@ -224,7 +224,7 @@ test("styles and scripts are versioned by their content on every page", () => {
   }
 });
 
-test("the production logo is used unchanged in every page header and favicon", () => {
+test("each page uses the original logo once, plus its favicon", () => {
   assert.deepEqual(
     fs.readFileSync("dist/assets/legacy-logo.png"),
     fs.readFileSync("assets/metrics_and_models_logo.png"),
@@ -237,11 +237,11 @@ test("the production logo is used unchanged in every page header and favicon", (
     const brand = $(".site-header .wordmark");
     assert.equal(brand.attr("href"), prefix + "/");
     assert.equal(brand.attr("aria-label"), "Metrics and Models home");
-    assert.equal(
-      brand.find(".brand-logo").attr("src"),
-      prefix + "/assets/legacy-logo.png",
-    );
-    assert.equal(brand.find(".brand-logo").attr("alt"), "");
+    const logo = $("img[src='" + prefix + "/assets/legacy-logo.png']");
+    assert.equal(logo.length, 1, file + ": only one visible logo");
+    assert.equal(logo.attr("alt"), "");
+    assert.ok(logo.hasClass(file === "index.html" ? "intro-logo" : "brand-logo"));
+    assert.equal(brand.find(".brand-logo").length, file === "index.html" ? 0 : 1);
     assert.equal(
       $("link[rel=icon]").attr("href"),
       prefix + "/assets/legacy-logo.png",

@@ -23,7 +23,7 @@
   <a href="#main" class="skip-link">Skip to content</a>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="wordmark" href="/" aria-label="Metrics and Models home"><img class="brand-logo" src="/assets/legacy-logo.png" alt="" width="64" height="64"><span>Metrics and Models</span></a>
+      <a class="wordmark" href="/" aria-label="Metrics and Models home">{% if not home %}<img class="brand-logo" src="/assets/legacy-logo.png" alt="" width="64" height="64">{% endif %}<span>Metrics and Models</span></a>
       <button class="menu-toggle icon-button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-nav">{% icon "menu" %}</button>
       <nav id="main-nav" aria-label="Main navigation">
         <a href="/" {% if section == "lab" %}aria-current="page"{% endif %}>Lab</a>

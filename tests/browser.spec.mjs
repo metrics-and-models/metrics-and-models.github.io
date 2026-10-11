@@ -264,12 +264,14 @@ test("seminar details, registration and calendar downloads are connected", async
   ).toHaveAttribute("href", /^mailto:sympa@maillist.ox.ac.uk/);
 });
 
-test("the homepage logo is prominent without hiding the seminar section", async ({
+test("the homepage has one prominent logo without hiding the seminar section", async ({
   page,
 }) => {
   await page.goto("");
   await page.evaluate(() => document.fonts.ready);
   const logo = page.locator(".intro-logo");
+  await expect(page.locator(".brand-logo")).toHaveCount(0);
+  await expect(page.locator('img[src$="/assets/legacy-logo.png"]')).toHaveCount(1);
   await expect(logo).toBeInViewport({ ratio: 1 });
   await expect
     .poll(() => logo.evaluate((img) => img.complete && img.naturalWidth))
@@ -277,11 +279,9 @@ test("the homepage logo is prominent without hiding the seminar section", async 
   const layout = await page.evaluate(() => {
     const logo = document.querySelector(".intro-logo").getBoundingClientRect();
     const heading = document.querySelector(".intro-brand h1").getBoundingClientRect();
-    const navLogo = document.querySelector(".brand-logo").getBoundingClientRect();
     const seminars = document.querySelector("#upcoming h2").getBoundingClientRect();
     return {
       size: logo.width,
-      ratio: logo.width / navLogo.width,
       square: logo.width === logo.height,
       overlaps: logo.right > heading.left,
       headingFits: heading.right <= innerWidth,
@@ -289,7 +289,6 @@ test("the homepage logo is prominent without hiding the seminar section", async 
     };
   });
   expect(layout.size).toBeGreaterThanOrEqual(140);
-  expect(layout.ratio).toBeGreaterThanOrEqual(2.5);
   expect(layout.square).toBe(true);
   expect(layout.overlaps).toBe(false);
   expect(layout.headingFits).toBe(true);
