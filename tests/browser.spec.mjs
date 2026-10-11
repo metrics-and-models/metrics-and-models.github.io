@@ -30,7 +30,7 @@ test("responsive pages have no overflow, broken assets or browser errors", async
       scroll: document.documentElement.scrollWidth,
       outside: [
         ...document.querySelectorAll(
-          "main h1, main h2, main h3, main p, main a, main button",
+          "main h1, main h2, main h3, main p, main a, main button, main canvas",
         ),
       ]
         .filter((el) => {
@@ -50,7 +50,7 @@ test("responsive pages have no overflow, broken assets or browser errors", async
         .toBeTruthy();
     }
     await page.evaluate(() => scrollTo({ top: 0, behavior: "instant" }));
-    if (["", "people/", "details/emilycantrell.html"].includes(url))
+    if (["", "people/", "about/", "details/emilycantrell.html"].includes(url))
       await page.screenshot({
         path: testInfo.outputPath(
           (url || "home").replaceAll("/", "-") + ".png",
@@ -137,33 +137,64 @@ test("seminar details, registration and calendar downloads are connected", async
   ).toHaveAttribute("href", /^mailto:sympa@maillist.ox.ac.uk/);
 });
 
-test("the canvas renders, animates, pauses and respects reduced motion", async ({
+test("all scientific sketches render, animate, pause and respect reduced motion", async ({
   page,
 }) => {
-  await page.goto("");
-  const canvas = page.locator("canvas");
-  await expect(canvas).toBeVisible();
-  const pixels = await canvas.evaluate((c) => {
-    const data = c.getContext("2d").getImageData(0, 0, c.width, c.height).data;
-    let painted = 0;
-    for (let i = 3; i < data.length; i += 4) if (data[i] > 0) painted++;
-    return painted;
-  });
-  expect(pixels).toBeGreaterThan(1000);
-  const first = await canvas.evaluate((c) => c.toDataURL());
-  await page.waitForTimeout(180);
-  expect(await canvas.evaluate((c) => c.toDataURL())).not.toBe(first);
-  await page
-    .getByRole("button", { name: "Pause animation", exact: true })
-    .click();
-  const paused = await canvas.evaluate((c) => c.toDataURL());
-  await page.waitForTimeout(180);
-  expect(await canvas.evaluate((c) => c.toDataURL())).toBe(paused);
-  await page
-    .getByRole("button", { name: "Play animation", exact: true })
-    .click();
-  await page.emulateMedia({ reducedMotion: "reduce" });
-  await expect(
-    page.getByRole("button", { name: "Play animation", exact: true }),
-  ).toBeVisible();
+  for (const [url, count] of [
+    ["", 4],
+    ["people/", 1],
+    ["about/", 1],
+  ]) {
+    await page.emulateMedia({ reducedMotion: "no-preference" });
+    await page.goto(url);
+    const canvases = page.locator("canvas[data-plot]");
+    const button = page.locator(".motion-toggle");
+    await expect(canvases).toHaveCount(count);
+    const snapshots = () =>
+      canvases.evaluateAll((items) => items.map((c) => c.toDataURL()));
+    for (const canvas of await canvases.all()) {
+      await expect(canvas).toBeInViewport();
+      await expect
+        .poll(() =>
+          canvas.evaluate((c) => {
+            const data = c
+              .getContext("2d")
+              .getImageData(0, 0, c.width, c.height).data;
+            let painted = 0;
+            for (let i = 3; i < data.length; i += 4) if (data[i] > 0) painted++;
+            return painted;
+          }),
+        )
+        .toBeGreaterThan(100);
+    }
+    const first = await snapshots();
+    await page.waitForTimeout(250);
+    (await snapshots()).forEach((frame, index) =>
+      expect(frame, url + " plot " + index).not.toBe(first[index]),
+    );
+    await button.click();
+    await expect(button).toHaveAttribute("aria-label", /^Play /);
+    const paused = await snapshots();
+    await page.waitForTimeout(250);
+    expect(await snapshots()).toEqual(paused);
+    await button.click();
+    await expect(button).toHaveAttribute("aria-label", /^Pause /);
+    await page.waitForTimeout(250);
+    expect(await snapshots()).not.toEqual(paused);
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await expect(button).toHaveAttribute("aria-label", /^Play /);
+    const reduced = await snapshots();
+    await page.waitForTimeout(250);
+    expect(await snapshots()).toEqual(reduced);
+
+    await page.reload();
+    await expect(button).toHaveAttribute("aria-label", /^Play /);
+    await expect
+      .poll(() => canvases.first().evaluate((c) => c.width))
+      .toBeGreaterThan(0);
+    await page.waitForTimeout(100);
+    const initialReduced = await snapshots();
+    await page.waitForTimeout(250);
+    expect(await snapshots()).toEqual(initialReduced);
+  }
 });

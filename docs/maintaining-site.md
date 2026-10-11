@@ -94,6 +94,18 @@ Profile sources and portrait provenance are recorded in
 `docs/people-sources.md`. Use "Mingyue Liu" as supplied, even though her linked
 departmental page uses "Rita Liu".
 
+## Scientific sketches
+
+`site/assets/field.js` draws illustrative flow, network, distribution and scatter
+sketches, not empirical research results. The home page has four sketches sharing
+one pause control; People and About each have a small heading sketch. The
+`science-decoration.njk` include provides the heading version.
+
+Animation stops when a sketch is offscreen or the tab is hidden. Reduced-motion
+preferences initialise all sketches as still images; the controls can start or
+pause them. Keep dimensions fixed in CSS and preserve the controls and accessible
+canvas labels when adding a sketch.
+
 ## Publishing the preview
 
 Source is maintained on `dev` in the original repository. A separate public

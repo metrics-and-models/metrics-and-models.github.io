@@ -2,10 +2,14 @@
 layout: base.njk
 title: People
 section: people
+animated: true
 permalink: /people/index.html
 ---
 <div class="container section-space">
-  <header class="page-heading"><h1>People</h1><p>Lab members, working across health and social data science.</p></header>
+  <header class="page-heading">
+    <div class="heading-line"><h1>People</h1>{% set plot = "network" %}{% set plotLabel = "Illustrative animated network connections" %}{% include "science-decoration.njk" %}</div>
+    <p>Lab members, working across health and social data science.</p>
+  </header>
   <div class="people-grid">
   {% for person in people %}
     <article class="person">

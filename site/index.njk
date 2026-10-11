@@ -3,16 +3,23 @@ layout: base.njk
 section: lab
 home: true
 ---
-<header class="container introduction">
+<header class="container introduction" data-animation-group data-animation-name="animations">
   <h1>Metrics <i>and</i> Models</h1>
   <div class="intro-grid">
     <div class="intro-copy">
       <p>We are a lab for health and social data science at the University of Oxford. We work across disciplines, share ideas, and run an open seminar series.</p>
-      <div class="intro-meta"><a href="/people/">Lab members</a><a href="/about/">About the lab</a></div>
+      <div class="intro-meta">
+        <a href="/people/">Lab members</a><a href="/about/">About the lab</a>
+        <div class="science-sketches">
+          <canvas data-plot="network" width="64" height="48" role="img" aria-label="Illustrative animated network connections"></canvas>
+          <canvas data-plot="distribution" width="64" height="48" role="img" aria-label="Illustrative animated probability distribution"></canvas>
+          <canvas data-plot="scatter" width="64" height="48" role="img" aria-label="Illustrative animated scatter plot and fitted line"></canvas>
+        </div>
+      </div>
     </div>
     <figure class="research-figure">
-      <canvas id="flow-field" aria-label="An animated mathematical flow field" role="img"></canvas>
-      <button class="motion-toggle icon-button" aria-label="Pause animation" title="Pause animation"><span data-pause>{% icon "pause" %}</span><span data-play hidden>{% icon "play" %}</span></button>
+      <canvas id="flow-field" data-plot="flow" aria-label="An animated mathematical flow field" role="img"></canvas>
+      <button class="motion-toggle icon-button" aria-label="Pause animations" title="Pause animations"><span data-pause>{% icon "pause" %}</span><span data-play hidden>{% icon "play" %}</span></button>
     </figure>
   </div>
 </header>

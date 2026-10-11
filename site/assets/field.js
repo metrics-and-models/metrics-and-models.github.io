@@ -1,119 +1,254 @@
 (() => {
-  const canvas = document.getElementById("flow-field");
-  const context = canvas?.getContext("2d");
-  if (!context) return;
-  const button = document.querySelector(".motion-toggle");
-  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
-  let paused = reducedMotion.matches;
-  let visible = true;
-  let width = 0,
-    height = 0,
-    frame = 0,
-    time = 0,
-    last = 0;
+  const colours = {
+    ink: "#62645f",
+    line: "#b0b2aa",
+    grid: "#d5d6cf",
+    blue: "#355287",
+    red: "#944a3d",
+    green: "#4f756b",
+  };
 
-  // A smoothly varying family of trajectories, projected onto a scientific grid.
-  function point(u, v, phase) {
-    const angle = u * Math.PI * 1.7 - 1.1;
-    const radius = 0.25 + v * 0.11;
-    const bend = Math.sin(u * Math.PI * 2 + phase) * 0.025;
-    return [
-      width * (0.51 + Math.cos(angle) * radius + u * 0.14 + v * 0.035),
-      height * (0.52 + Math.sin(angle) * radius * 0.95 + v * 0.18 + bend),
-    ];
+  function dot(context, x, y, radius, colour) {
+    context.fillStyle = colour;
+    context.beginPath();
+    context.arc(x, y, radius, 0, Math.PI * 2);
+    context.fill();
   }
 
-  function draw() {
-    context.clearRect(0, 0, width, height);
-    const spacing = width < 300 ? 18 : 26;
-    context.fillStyle = "#d5d6cf";
-    for (let x = spacing; x < width - 5; x += spacing) {
-      for (let y = spacing; y < height - 5; y += spacing) {
-        context.fillRect(x, y, 1, 1);
-      }
-    }
-    const size = width < 300 ? 0.7 : 1;
+  function axes(context, width, height) {
+    context.strokeStyle = colours.line;
+    context.lineWidth = 0.8;
+    context.beginPath();
+    context.moveTo(5, 5);
+    context.lineTo(5, height - 5);
+    context.lineTo(width - 4, height - 5);
+    context.stroke();
+  }
+
+  function flow(context, width, height, time) {
+    // A family of trajectories projected onto a scientific grid.
+    const point = (u, v) => {
+      const angle = u * Math.PI * 1.7 - 1.1;
+      const radius = 0.25 + v * 0.11;
+      const bend = Math.sin(u * Math.PI * 2 + time * 0.00028) * 0.025;
+      return [
+        width * (0.51 + Math.cos(angle) * radius + u * 0.14 + v * 0.035),
+        height * (0.52 + Math.sin(angle) * radius * 0.95 + v * 0.18 + bend),
+      ];
+    };
+    context.fillStyle = colours.grid;
+    for (let x = 18; x < width - 5; x += 18)
+      for (let y = 18; y < height - 5; y += 18) context.fillRect(x, y, 1, 1);
+
     for (let line = 0; line < 27; line++) {
       const v = (line - 13) / 13;
       context.beginPath();
       for (let step = 0; step <= 130; step++) {
-        const [x, y] = point(step / 130, v, time * 0.00028);
+        const [x, y] = point(step / 130, v);
         if (step === 0) context.moveTo(x, y);
         else context.lineTo(x, y);
       }
-      context.strokeStyle = line % 6 === 0 ? "#62645f" : "#b0b2aa";
-      context.lineWidth = line % 6 === 0 ? 1.1 * size : 0.65 * size;
+      context.strokeStyle = line % 6 === 0 ? colours.ink : colours.line;
+      context.lineWidth = line % 6 === 0 ? 0.77 : 0.455;
       context.stroke();
     }
     for (let index = 0; index < 5; index++) {
       const u = (index * 0.207 + time * 0.000025) % 1;
-      const [x, y] = point(u, (index - 2) / 3, time * 0.00028);
-      context.fillStyle = index === 2 ? "#944a3d" : "#355287";
-      context.beginPath();
-      context.arc(x, y, 2.8 * size, 0, Math.PI * 2);
-      context.fill();
-    }
-    if (width > 300) {
-      context.fillStyle = "#647369";
-      context.font = '10px "Courier New", monospace';
-      context.fillText("x", width - 23, height / 2 + 4);
-      context.fillText("y", width / 2, 20);
-      context.strokeStyle = "#a9b6ac";
-      context.lineWidth = 0.75;
-      for (const [x, y] of [
-        [width / 2, height / 2],
-        [width - 33, height / 2],
-        [width / 2, 32],
-      ]) {
-        context.beginPath();
-        context.moveTo(x - 3, y);
-        context.lineTo(x + 3, y);
-        context.moveTo(x, y - 3);
-        context.lineTo(x, y + 3);
-        context.stroke();
-      }
+      const [x, y] = point(u, (index - 2) / 3);
+      dot(context, x, y, 1.96, index === 2 ? colours.red : colours.blue);
     }
   }
 
-  function tick(now) {
-    if (last) time += Math.min(now - last, 50);
-    last = now;
-    draw();
-    frame = requestAnimationFrame(tick);
+  function network(context, width, height, time) {
+    const points = [
+      [0.16, 0.3],
+      [0.2, 0.76],
+      [0.41, 0.15],
+      [0.47, 0.52],
+      [0.62, 0.83],
+      [0.77, 0.23],
+      [0.86, 0.62],
+    ].map(([x, y], index) => [
+      width * (x + Math.sin(time * 0.0004 + index) * 0.025),
+      height * (y + Math.cos(time * 0.0005 + index * 2) * 0.025),
+    ]);
+    const edges = [
+      [0, 1],
+      [0, 2],
+      [0, 3],
+      [1, 3],
+      [1, 4],
+      [2, 3],
+      [2, 5],
+      [3, 4],
+      [3, 5],
+      [3, 6],
+      [4, 6],
+      [5, 6],
+    ];
+    context.strokeStyle = colours.line;
+    context.lineWidth = 0.8;
+    for (const [a, b] of edges) {
+      context.beginPath();
+      context.moveTo(...points[a]);
+      context.lineTo(...points[b]);
+      context.stroke();
+    }
+    points.forEach(([x, y], index) =>
+      dot(
+        context,
+        x,
+        y,
+        width < 70 ? 1.7 : 2.4,
+        index === 3 ? colours.red : colours.blue,
+      ),
+    );
+    const progress = (time * 0.00015) % 1;
+    const [a, b] = [points[2], points[3]];
+    dot(
+      context,
+      a[0] + (b[0] - a[0]) * progress,
+      a[1] + (b[1] - a[1]) * progress,
+      1.6,
+      colours.green,
+    );
   }
-  function update() {
-    cancelAnimationFrame(frame);
-    last = 0;
-    if (!paused && visible && !document.hidden)
+
+  function distribution(context, width, height, time) {
+    axes(context, width, height);
+    const mean = 0.49 + Math.sin(time * 0.0004) * 0.09;
+    const sigma = 0.16 + Math.cos(time * 0.0003) * 0.02;
+    const density = (x) => Math.exp(-0.5 * ((x - mean) / sigma) ** 2);
+    const xPixel = (x) => 7 + x * (width - 13);
+    const yPixel = (x) => height - 6 - density(x) * (height - 13);
+    const barWidth = (width - 13) / 12;
+    context.fillStyle = "#35528726";
+    for (let bin = 0; bin < 12; bin++) {
+      const x = (bin + 0.5) / 12;
+      const y = yPixel(x);
+      context.fillRect(
+        xPixel(bin / 12),
+        y,
+        Math.max(1, barWidth - 1),
+        height - 6 - y,
+      );
+    }
+    context.strokeStyle = colours.blue;
+    context.lineWidth = 1.1;
+    context.beginPath();
+    for (let step = 0; step <= 60; step++) {
+      const x = step / 60;
+      if (step === 0) context.moveTo(xPixel(x), yPixel(x));
+      else context.lineTo(xPixel(x), yPixel(x));
+    }
+    context.stroke();
+    dot(context, xPixel(mean), yPixel(mean), 1.8, colours.red);
+  }
+
+  function scatter(context, width, height, time) {
+    axes(context, width, height);
+    const slope = 0.46 + Math.sin(time * 0.0004) * 0.09;
+    const xPixel = (x) => 7 + x * (width - 13);
+    const yPixel = (y) => height - 7 - y * (height - 13);
+    context.strokeStyle = colours.red;
+    context.lineWidth = 1;
+    context.beginPath();
+    context.moveTo(xPixel(0), yPixel(0.2));
+    context.lineTo(xPixel(1), yPixel(0.2 + slope));
+    context.stroke();
+    for (let index = 0; index < 15; index++) {
+      const x = (index + 0.5) / 15;
+      const noise = Math.sin(index * 5.7) * 0.14;
+      const drift = Math.sin(time * 0.0006 + index) * 0.035;
+      dot(
+        context,
+        xPixel(x),
+        yPixel(0.2 + slope * x + noise + drift),
+        width < 70 ? 1.3 : 1.8,
+        colours.green,
+      );
+    }
+  }
+
+  const renderers = { flow, network, distribution, scatter };
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+
+  for (const group of document.querySelectorAll("[data-animation-group]")) {
+    const button = group.querySelector(".motion-toggle");
+    if (!button) continue;
+    const plots = [...group.querySelectorAll("canvas[data-plot]")]
+      .map((canvas) => ({
+        canvas,
+        context: canvas.getContext("2d"),
+        render: renderers[canvas.dataset.plot],
+        width: 0,
+        height: 0,
+        visible: false,
+      }))
+      .filter((plot) => plot.context && plot.render);
+    if (!plots.length) {
+      button.hidden = true;
+      continue;
+    }
+    let paused = reducedMotion.matches;
+    let frame = 0;
+    let time = 0;
+    let last = 0;
+
+    const draw = (plot) => {
+      if (!plot.width || !plot.height) return;
+      plot.context.clearRect(0, 0, plot.width, plot.height);
+      plot.render(plot.context, plot.width, plot.height, time);
+    };
+    const tick = (now) => {
+      if (last) time += Math.min(now - last, 50);
+      last = now;
+      for (const plot of plots) if (plot.visible) draw(plot);
       frame = requestAnimationFrame(tick);
-    const label = paused ? "Play animation" : "Pause animation";
-    button.setAttribute("aria-label", label);
-    button.setAttribute("title", label);
-    button.querySelector("[data-play]").hidden = !paused;
-    button.querySelector("[data-pause]").hidden = paused;
+    };
+    const update = () => {
+      cancelAnimationFrame(frame);
+      last = 0;
+      if (!paused && !document.hidden && plots.some((plot) => plot.visible))
+        frame = requestAnimationFrame(tick);
+      const label = (paused ? "Play " : "Pause ") + group.dataset.animationName;
+      button.setAttribute("aria-label", label);
+      button.setAttribute("title", label);
+      button.querySelector("[data-play]").hidden = !paused;
+      button.querySelector("[data-pause]").hidden = paused;
+    };
+
+    const byCanvas = new Map(plots.map((plot) => [plot.canvas, plot]));
+    const resize = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const plot = byCanvas.get(entry.target);
+        plot.width = entry.contentRect.width;
+        plot.height = entry.contentRect.height;
+        const scale = Math.min(devicePixelRatio || 1, 2);
+        plot.canvas.width = Math.round(plot.width * scale);
+        plot.canvas.height = Math.round(plot.height * scale);
+        plot.context.setTransform(scale, 0, 0, scale, 0, 0);
+        draw(plot);
+      }
+    });
+    const visibility = new IntersectionObserver((entries) => {
+      for (const entry of entries)
+        byCanvas.get(entry.target).visible = entry.isIntersecting;
+      update();
+    });
+    for (const { canvas } of plots) {
+      resize.observe(canvas);
+      visibility.observe(canvas);
+    }
+    document.addEventListener("visibilitychange", update);
+    button.addEventListener("click", () => {
+      paused = !paused;
+      update();
+    });
+    reducedMotion.addEventListener("change", () => {
+      paused = reducedMotion.matches;
+      update();
+    });
+    update();
   }
-  new ResizeObserver(() => {
-    const bounds = canvas.getBoundingClientRect();
-    width = bounds.width;
-    height = bounds.height;
-    const scale = Math.min(devicePixelRatio || 1, 2);
-    canvas.width = Math.round(width * scale);
-    canvas.height = Math.round(height * scale);
-    context.setTransform(scale, 0, 0, scale, 0, 0);
-    draw();
-  }).observe(canvas);
-  new IntersectionObserver(([entry]) => {
-    visible = entry.isIntersecting;
-    update();
-  }).observe(canvas);
-  document.addEventListener("visibilitychange", update);
-  button.addEventListener("click", () => {
-    paused = !paused;
-    update();
-  });
-  reducedMotion.addEventListener("change", () => {
-    paused = reducedMotion.matches;
-    update();
-  });
-  update();
 })();

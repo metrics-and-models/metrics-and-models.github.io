@@ -226,6 +226,45 @@ img {
 .intro-meta a + a {
   margin-left: 24px;
 }
+.science-sketches {
+  display: flex;
+  gap: 14px;
+  margin-top: 14px;
+}
+.science-sketches canvas {
+  display: block;
+  width: 64px;
+  height: 48px;
+}
+.heading-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 19px;
+}
+.page-heading .heading-line h1 {
+  margin: 0;
+  min-width: 0;
+}
+.science-decoration {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  width: 156px;
+  height: 72px;
+  margin: 0;
+  flex-shrink: 0;
+}
+.science-decoration canvas {
+  display: block;
+  width: 124px;
+  height: 72px;
+}
+.science-decoration .motion-toggle {
+  position: static;
+  flex-shrink: 0;
+}
 .intro-meta p {
   color: var(--muted);
   margin-bottom: 5px;
@@ -790,6 +829,26 @@ input::placeholder {
     display: block;
     width: fit-content;
     margin: 3px 0 0;
+  }
+  .science-sketches {
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .science-sketches canvas {
+    width: 44px;
+    height: 36px;
+  }
+  .heading-line {
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .science-decoration {
+    width: 108px;
+    height: 60px;
+  }
+  .science-decoration canvas {
+    width: 76px;
+    height: 60px;
   }
   .research-figure {
     position: absolute;
