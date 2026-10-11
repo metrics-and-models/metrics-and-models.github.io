@@ -66,6 +66,12 @@ Hi! We are a group of health and social data scientists located at the Universit
       <td>TBC</td>
       <td><a href="/details/ilyakashnitsky.html">More details</a></td>
     </tr>
+    <tr>
+      <td><a href="https://chenyang03.wordpress.com/" target="_blank" rel="noopener noreferrer">Yang Chen</a></td>
+      <td>14:00 GMT, 7th January, 2027</td>
+      <td>Beyond Retrieval: Incorporating Personality and Emotion into RAG-Based Conversational Agents</td>
+      <td><a href="/details/yangchen.html">More details</a></td>
+    </tr>
   </tbody>
 </table>
 </div>
