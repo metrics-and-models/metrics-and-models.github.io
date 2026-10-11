@@ -179,7 +179,89 @@
     }
   }
 
-  const renderers = { flow, network, distribution, scatter };
+  function heatmap(context, width, height, time) {
+    const cellWidth = (width - 12) / 5;
+    const cellHeight = (height - 12) / 5;
+    for (let row = 0; row < 5; row++) {
+      for (let column = 0; column < 5; column++) {
+        const value =
+          row === column
+            ? 1
+            : Math.cos(
+                (row - column) * (1.15 + Math.sin(time * 0.0006) * 0.65),
+              );
+        context.fillStyle = value >= 0 ? colours.blue : colours.red;
+        context.globalAlpha = 0.15 + Math.abs(value) * 0.7;
+        context.fillRect(
+          6 + column * cellWidth,
+          6 + row * cellHeight,
+          cellWidth - 1.5,
+          cellHeight - 1.5,
+        );
+      }
+    }
+    context.globalAlpha = 1;
+  }
+
+  function series(context, width, height, time) {
+    axes(context, width, height);
+    const phase = time * 0.001;
+    const value = (x) =>
+      0.5 + Math.sin(x * 7 - phase) * 0.23 + Math.sin(x * 19 + phase) * 0.09;
+    const xPixel = (x) => 7 + x * (width - 13);
+    const yPixel = (x) => height - 7 - value(x) * (height - 13);
+    context.strokeStyle = colours.green;
+    context.lineWidth = 1.1;
+    context.beginPath();
+    for (let step = 0; step <= 60; step++) {
+      const x = step / 60;
+      if (step === 0) context.moveTo(xPixel(x), yPixel(x));
+      else context.lineTo(xPixel(x), yPixel(x));
+    }
+    context.stroke();
+    const position = 0.5 + Math.sin(time * 0.0007) * 0.42;
+    dot(context, xPixel(position), yPixel(position), 1.8, colours.red);
+  }
+
+  function contours(context, width, height, time) {
+    const radiusX = (width - 14) / 2;
+    const radiusY = (height - 14) / 2;
+    const angle = time * 0.0009;
+    const distance = 0.5 + Math.sin(time * 0.00065) * 0.28;
+    context.lineWidth = 0.8;
+    for (let ring = 1; ring <= 4; ring++) {
+      context.strokeStyle = ring === 1 ? colours.green : colours.line;
+      context.beginPath();
+      context.ellipse(
+        width / 2,
+        height / 2,
+        (radiusX * ring) / 4,
+        (radiusY * ring) / 4,
+        0,
+        0,
+        Math.PI * 2,
+      );
+      context.stroke();
+    }
+    dot(context, width / 2, height / 2, 1.4, colours.green);
+    dot(
+      context,
+      width / 2 + Math.cos(angle) * radiusX * distance,
+      height / 2 + Math.sin(angle) * radiusY * distance,
+      2,
+      colours.red,
+    );
+  }
+
+  const renderers = {
+    flow,
+    network,
+    distribution,
+    scatter,
+    heatmap,
+    series,
+    contours,
+  };
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
 
   for (const group of document.querySelectorAll("[data-animation-group]")) {

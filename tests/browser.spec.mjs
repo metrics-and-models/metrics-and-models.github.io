@@ -185,11 +185,52 @@ test("seminar details, registration and calendar downloads are connected", async
   ).toHaveAttribute("href", /^mailto:sympa@maillist.ox.ac.uk/);
 });
 
+test("homepage sketches form a centred row below the introduction", async ({
+  page,
+}) => {
+  await page.goto("");
+  await page.evaluate(() => document.fonts.ready);
+  const sketches = page.locator(".science-sketches canvas");
+  await expect(sketches).toHaveCount(6);
+  expect(
+    await sketches.evaluateAll((items) => items.map((c) => c.dataset.plot)),
+  ).toEqual([
+    "network",
+    "distribution",
+    "scatter",
+    "heatmap",
+    "series",
+    "contours",
+  ]);
+  const layout = await page.evaluate(() => {
+    const boxes = [
+      ...document.querySelectorAll(".science-sketches canvas"),
+    ].map((c) => c.getBoundingClientRect());
+    return {
+      centre: (boxes[0].left + boxes.at(-1).right) / 2,
+      viewportCentre: innerWidth / 2,
+      top: boxes[0].top,
+      introBottom: document.querySelector(".intro-grid").getBoundingClientRect()
+        .bottom,
+      aligned: boxes.every((box) => Math.abs(box.top - boxes[0].top) < 1),
+      readable: boxes.every((box) => box.width >= 36 && box.height >= 36),
+      overlap: boxes.some(
+        (box, index) => index && box.left < boxes[index - 1].right,
+      ),
+    };
+  });
+  expect(Math.abs(layout.centre - layout.viewportCentre)).toBeLessThan(1);
+  expect(layout.top).toBeGreaterThan(layout.introBottom);
+  expect(layout.aligned).toBe(true);
+  expect(layout.readable).toBe(true);
+  expect(layout.overlap).toBe(false);
+});
+
 test("all scientific sketches render, animate, pause and respect reduced motion", async ({
   page,
 }) => {
   for (const [url, count] of [
-    ["", 4],
+    ["", 7],
     ["people/", 1],
     ["about/", 1],
     ["details/previous_talks.html", 1],
