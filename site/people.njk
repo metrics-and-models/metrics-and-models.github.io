@@ -5,7 +5,7 @@ section: people
 animated: true
 permalink: /people/index.html
 ---
-<div class="container section-space">
+<div class="container section-space people-page">
   <header class="page-heading">
     <div class="heading-line"><h1>People</h1>{% set plot = "network" %}{% set plotLabel = "Illustrative animated network connections" %}{% include "science-decoration.njk" %}</div>
     <p>Lab members, working across health and social data science.</p>
@@ -25,7 +25,7 @@ permalink: /people/index.html
         </div>
         {% endif %}
       </div>
-      {% if person.photo %}<img class="person-photo" src="{{ person.photo }}" alt="{{ person.name }}" width="88" height="104" loading="lazy">{% endif %}
+      {% if person.photo %}<img class="person-photo" src="{{ person.photo }}" alt="{{ person.name }}" width="76" height="90" loading="lazy">{% endif %}
     </article>
   {% endfor %}
   </div>
