@@ -321,9 +321,9 @@ test("lab profiles support optional links, photos and interests without a hierar
 test("the lab is introduced separately from its open seminar programme", () => {
   const home = html("/index.html");
   const about = html("/about/index.html");
-  assert.match(
-    home(".intro-copy").text(),
-    /lab at the University of Oxford, developing computational methods for complex problems in health and society/,
+  assert.equal(
+    home(".intro-copy > p").first().text(),
+    "We are a lab at the University of Oxford, developing computational methods for complex problems.",
   );
   assert.equal(home(".intro-copy a").first().attr("href"), prefix + "/people/");
   assert.equal(home("#upcoming h2").text(), "Open seminars");
