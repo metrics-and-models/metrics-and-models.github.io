@@ -146,6 +146,29 @@
     ]
   },
   {
+    "name": "Maksim Zubok",
+    "url": "https://www.demography.ox.ac.uk/people/maksim-zubok",
+    "urlLabel": "Oxford profile",
+    "role": "Lab member",
+    "interests": [
+      "Large language models",
+      "Public opinion",
+      "Survey response prediction",
+      "Model evaluation"
+    ],
+    "photo": "/assets/people/maksim-zubok.webp",
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/antndlcrx"
+      },
+      {
+        "label": "Oxford LLMs",
+        "url": "https://llmsforsocialscience.net/"
+      }
+    ]
+  },
+  {
     "name": "Mark Verhagen",
     "url": "https://markverhagen.me/",
     "role": "Lab member",

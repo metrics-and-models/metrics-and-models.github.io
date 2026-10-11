@@ -18,6 +18,9 @@ directory; this file records supporting sources and portrait provenance.
 - Jiani Yan: [personal website](https://jianiyan.com/).
 - Luc Rocher: [personal website](https://rocher.lc/) and
   [short biography](https://rocher.lc/bio).
+- Maksim Zubok: [Oxford profile](https://www.demography.ox.ac.uk/people/maksim-zubok),
+  which describes his work on language models, survey responses, public opinion,
+  and model evaluation, and links to [Oxford LLMs](https://llmsforsocialscience.net/).
 - Mark Verhagen: [personal website](https://markverhagen.me/) and
   [research publications](https://markverhagen.me/publications.html).
 - Mingyue Liu: [Oxford profile, under Rita Liu](https://www.demography.ox.ac.uk/people/rita-liu).
@@ -75,6 +78,12 @@ The five existing accounts were also rechecked and retained:
 [Mark](https://github.com/MarkDVerhagen). Their original homepage or institutional
 profile sources are recorded above.
 
+Maksim Zubok's account, [antndlcrx](https://github.com/antndlcrx), was verified
+when adding his profile. It names Maksim Zubok, lists Oxford University, and is
+linked as Maksim's account in the Oxford LLMs site's earlier footer. His Oxford
+departmental page links to the separate Oxford LLMs GitHub organisation, which
+is not presented as his personal account.
+
 No personal GitHub account could be confidently verified for Mingyue (Rita)
 Liu or Xiaowen Dong from the available public sources. Namesakes and
 collaborators' repositories have not been assigned to their profiles. A
@@ -100,6 +109,8 @@ member-confirmed account or a direct link from their own page can be added later
 - `mark-verhagen.jpg`: [portrait](https://scholar.googleusercontent.com/citations?view_op=view_photo&user=9rbQDbgAAAAJ&citpid=2)
   from the Scholar profile linked on his homepage. This avoids loading the
   homepage's 14 MB image for a small directory portrait.
+- `maksim-zubok.webp`: [departmental portrait](https://www.demography.ox.ac.uk/sites/default/files/styles/person/public/2026-04/maksim_zubok_website.png.webp?itok=XGSzitGI)
+  on his Oxford profile.
 - `olivia-li.jpeg`: striped-background portrait supplied for Olivia's lab
   profile; identity confirmed by the site owner.
 - `ridhi-kashyap.jpg`: [departmental portrait](https://www.sociology.ox.ac.uk/sites/g/files/vzsiac2426/files/styles/oxfcms_medium_square/public/2026-07/ridhi_kashyap2.jpeg?h=b4e301e9&itok=pmtc4jDy)
