@@ -23,16 +23,62 @@ directory; this file records supporting sources and portrait provenance.
 - Mingyue Liu: [Oxford profile, under Rita Liu](https://www.demography.ox.ac.uk/people/rita-liu).
   Displayed name supplied by the site owner and also used on the linked Scholar profile.
 - Olivia Li: research interests supplied directly for the lab profile;
-  full name confirmed by the site owner.
+  full name confirmed by the site owner. The owner supplied her
+  [LinkedIn profile, under Ziying (Olivia) Li](https://uk.linkedin.com/in/ziying-olivia-li-0a93271b7)
+  and [Google Scholar profile](https://scholar.google.com/citations?user=g91lJ0AAAAAJ&hl=en).
+  LinkedIn's public profile corroborates the GitHub research and coursework
+  described below; Scholar's contents were unavailable to automated access.
 - Ridhi Kashyap: [Sociology profile](https://www.sociology.ox.ac.uk/people/ridhi-kashyap)
   and [Demographic Science profile](https://www.demography.ox.ac.uk/people/ridhi-kashyap).
 - Xiaowen Dong: [personal website](https://web.media.mit.edu/~xdong/) and
   [research page](https://web.media.mit.edu/~xdong/research.html).
 
 Keywords summarise the research described on these pages. Google Scholar and
-GitHub links are taken from the members' own linked pages, not guessed from names.
+GitHub links come from members' own linked pages, or are corroborated against
+public GitHub profiles and attributed research or teaching repositories. They
+are not guessed from names.
 All profiles use the same "Lab member" role. No academic seniority or leadership
 roles from external biographies are reproduced.
+
+## GitHub verification
+
+Checked on 11 October 2026. Five additional personal accounts were verified:
+
+- Anda-Raluca Epure: [anda-raluca](https://github.com/anda-raluca).
+  The public profile names Anda Epure and describes her Oxford Engineering
+  Science DPhil in Healthcare Data Science, matching her supplied profile.
+- Hana Antonio: [HanaAntonio](https://github.com/HanaAntonio).
+  The public profile identifies Hana Antonio as an Oxford Clinical Medicine
+  DPhil student with clinical and data-science training, matching the supplied
+  background.
+- Luc Rocher: [cynddl](https://github.com/cynddl).
+  The public profile names Luc, identifies Oxford Internet Institute, and links
+  directly back to [their homepage](https://rocher.lc/).
+- Olivia Li: [Olivia-Li-00](https://github.com/Olivia-Li-00).
+  The public profile names Ziying (Olivia) Li. The identity match is inferred
+  from that full name and two independent research/coursework connections to
+  the LinkedIn profile supplied by the site owner: a 2023
+  [TIHM dataset fork](https://github.com/Olivia-Li-00/TIHM-Dataset) from her
+  named Imperial supervisor Payam Barnaghi, and 2026
+  [agent coursework](https://github.com/Olivia-Li-00/agents_lab_2026) from
+  Boris Bolliet's Cambridge teaching materials.
+- Ridhi Kashyap: [ridhi-kashyap](https://github.com/ridhi-kashyap).
+  The account's [SICSS teaching repository](https://github.com/ridhi-kashyap/SICSS_Digital_Trace_2022)
+  contains a [tutorial attributed to Ridhi Kashyap and Jiani Yan](https://github.com/ridhi-kashyap/SICSS_Digital_Trace_2022/blob/main/facebook_marketing_api_tutorial_2022.Rmd)
+  and Oxford digital-trace-data lecture slides.
+
+The five existing accounts were also rechecked and retained:
+[Ava](https://github.com/avakeeling199),
+[Charlie](https://github.com/crahal),
+[Daniel](https://github.com/dhvalden),
+[Jiani](https://github.com/vallerrr), and
+[Mark](https://github.com/MarkDVerhagen). Their original homepage or institutional
+profile sources are recorded above.
+
+No personal GitHub account could be confidently verified for Mingyue (Rita)
+Liu or Xiaowen Dong from the available public sources. Namesakes and
+collaborators' repositories have not been assigned to their profiles. A
+member-confirmed account or a direct link from their own page can be added later.
 
 ## Portraits
 

@@ -8,6 +8,10 @@
       {
         "label": "Google Scholar",
         "url": "https://scholar.google.com/citations?user=Co3JdVkAAAAJ&hl=en"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/anda-raluca"
       }
     ],
     "photo": "/assets/people/anda-raluca-epure.jpg",
@@ -88,7 +92,13 @@
       "Health economics and financing"
     ],
     "bio": "Background in medicine, health policy, and data science.",
-    "photo": "/assets/people/hana.png"
+    "photo": "/assets/people/hana.png",
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/HanaAntonio"
+      }
+    ]
   },
   {
     "name": "Jiani Yan",
@@ -128,6 +138,10 @@
       {
         "label": "Google Scholar",
         "url": "https://scholar.google.be/citations?user=05XnhCwAAAAJ&sortby=pubdate"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/cynddl"
       }
     ]
   },
@@ -174,14 +188,25 @@
   },
   {
     "name": "Olivia Li",
-    "url": "",
+    "url": "https://uk.linkedin.com/in/ziying-olivia-li-0a93271b7",
+    "urlLabel": "LinkedIn",
     "role": "Lab member",
     "interests": [
       "Medical AI",
       "Benchmarking and validation",
       "Multi-agent systems"
     ],
-    "photo": "/assets/people/olivia-li.jpeg"
+    "photo": "/assets/people/olivia-li.jpeg",
+    "links": [
+      {
+        "label": "Google Scholar",
+        "url": "https://scholar.google.com/citations?user=g91lJ0AAAAAJ&hl=en"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Olivia-Li-00"
+      }
+    ]
   },
   {
     "name": "Ridhi Kashyap",
@@ -199,6 +224,10 @@
       {
         "label": "Google Scholar",
         "url": "https://scholar.google.com/citations?user=9oExhHsAAAAJ&hl=en"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/ridhi-kashyap"
       }
     ]
   },
