@@ -90,8 +90,7 @@ HTML into fields. Existing members remain listed when new profiles are added.
 
 Profile sources and portrait provenance are recorded in
 `docs/people-sources.md`. Use "Mingyue Liu" as supplied, even though her linked
-departmental page uses "Rita Liu". Olivia is listed by first name until her
-preferred full name is confirmed.
+departmental page uses "Rita Liu".
 
 ## Publishing the preview
 

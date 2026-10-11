@@ -49,7 +49,7 @@
     "photo": ""
   },
   {
-    "name": "Hana Atonio",
+    "name": "Hana Antonio",
     "url": "",
     "role": "Lab member",
     "interests": [
@@ -59,7 +59,7 @@
       "Health economics and financing"
     ],
     "bio": "Background in medicine, health policy, and data science.",
-    "photo": ""
+    "photo": "/assets/people/hana.png"
   },
   {
     "name": "Jiani Yan",
@@ -101,7 +101,7 @@
     "photo": ""
   },
   {
-    "name": "Olivia",
+    "name": "Olivia Li",
     "url": "",
     "role": "Lab member",
     "interests": [
@@ -109,7 +109,7 @@
       "Benchmarking and validation",
       "Multi-agent systems"
     ],
-    "photo": ""
+    "photo": "/assets/people/olivia-li.jpeg"
   },
   {
     "name": "Ridhi Kashyap",

@@ -546,6 +546,7 @@ input::placeholder {
   width: 88px;
   height: 104px;
   object-fit: cover;
+  object-position: center 20%;
   flex-shrink: 0;
 }
 .people-note {
