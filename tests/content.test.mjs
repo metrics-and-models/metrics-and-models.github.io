@@ -55,6 +55,10 @@ test("all source schedule rows and detail permalinks survive the rebuild", () =>
 
 test("the homepage lists each talk once and marks the next seminar", () => {
   const $ = html("/index.html");
+  assert.equal($(".intro-brand h1").text(), "Metrics and Models");
+  assert.equal($(".intro-logo").length, 1);
+  assert.equal($(".intro-logo").attr("src"), prefix + "/assets/legacy-logo.png");
+  assert.equal($(".intro-logo").attr("alt"), "");
   assert.equal($(".talk-row").length, content.upcoming.length);
   const first = $(".talk-row").first();
   assert.ok(first.text().includes(content.next.speaker));
