@@ -1,66 +1,132 @@
 [
   {
     "name": "Anda-Raluca Epure",
-    "url": "https://www.bdi.ox.ac.uk/Team/anda-raluca-epure",
-    "role": "Organising team",
-    "affiliation": "",
-    "bio": "",
+    "url": "https://uk.linkedin.com/in/anda-raluca-epure-7b28021b7",
+    "role": "Lab member",
+    "interests": ["Healthcare data science", "AI for drug discovery"],
+    "links": [
+      {
+        "label": "Google Scholar",
+        "url": "https://scholar.google.com/citations?user=Co3JdVkAAAAJ&hl=en"
+      }
+    ],
+    "photo": ""
+  },
+  {
+    "name": "Ava Keeling",
+    "url": "https://www.demography.ox.ac.uk/people/ava-keeling",
+    "role": "Lab member",
+    "interests": [
+      "Agent-based modelling",
+      "Large language models",
+      "Health policy",
+      "Health inequalities"
+    ],
     "photo": ""
   },
   {
     "name": "Charlie Rahal",
     "url": "https://crahal.com/",
-    "role": "Organising team",
-    "affiliation": "",
-    "bio": "",
-    "photo": ""
+    "role": "Lab member",
+    "interests": [
+      "Model uncertainty",
+      "Applied data science",
+      "Scientometrics",
+      "Open science"
+    ],
+    "photo": "/assets/people/charlie-rahal.jpg"
   },
   {
     "name": "Daniel Valdenegro",
-    "url": "https://github.com/dhvalden",
-    "role": "Organising team",
-    "affiliation": "",
-    "bio": "",
+    "url": "https://www.demography.ox.ac.uk/people/daniel-valdenegro",
+    "role": "Lab member",
+    "interests": [
+      "Robust estimation",
+      "Multiverse analysis",
+      "Natural language processing",
+      "Computational social science"
+    ],
+    "photo": ""
+  },
+  {
+    "name": "Hana Atonio",
+    "url": "",
+    "role": "Lab member",
+    "interests": [
+      "Clinical and health AI",
+      "Population health",
+      "Infectious disease",
+      "Health economics and financing"
+    ],
+    "bio": "Background in medicine, health policy, and data science.",
     "photo": ""
   },
   {
     "name": "Jiani Yan",
-    "url": "https://vallerrr.github.io/",
-    "role": "Organising team",
-    "affiliation": "",
-    "bio": "",
+    "url": "https://jianiyan.com/",
+    "role": "Lab member",
+    "interests": [
+      "Explainable AI",
+      "Health inequalities",
+      "Social determinants",
+      "Computational demography",
+      "Model evaluation"
+    ],
     "photo": ""
   },
   {
     "name": "Luc Rocher",
     "url": "https://rocher.lc/",
-    "role": "Organising team",
-    "affiliation": "",
-    "bio": "",
+    "role": "Lab member",
+    "interests": [],
     "photo": ""
   },
   {
     "name": "Mark Verhagen",
     "url": "https://markverhagen.me/",
-    "role": "Organising team",
-    "affiliation": "",
-    "bio": "",
+    "role": "Lab member",
+    "interests": [],
+    "photo": ""
+  },
+  {
+    "name": "Mingyue Liu",
+    "url": "https://www.demography.ox.ac.uk/people/rita-liu",
+    "role": "Lab member",
+    "interests": [
+      "Neuro-symbolic learning",
+      "Inductive logic programming",
+      "Large language models",
+      "AI for science"
+    ],
+    "photo": ""
+  },
+  {
+    "name": "Olivia",
+    "url": "",
+    "role": "Lab member",
+    "interests": [
+      "Medical AI",
+      "Benchmarking and validation",
+      "Multi-agent systems"
+    ],
     "photo": ""
   },
   {
     "name": "Ridhi Kashyap",
     "url": "https://www.sociology.ox.ac.uk/people/ridhi-kashyap",
-    "role": "Organising team",
-    "affiliation": "",
-    "bio": "",
+    "role": "Lab member",
+    "interests": [],
     "photo": ""
   },
   {
     "name": "Xiaowen Dong",
-    "url": "https://web.media.mit.edu/~xdong",
-    "role": "Organising team",
-    "affiliation": "",
-    "bio": "",
-    "photo": ""
+    "url": "https://web.media.mit.edu/~xdong/",
+    "role": "Lab member",
+    "interests": [
+      "Graph signal processing",
+      "Graph machine learning",
+      "Computational social science"
+    ],
+    "photo": "/assets/people/xiaowen-dong.jpg"
   }
 ]

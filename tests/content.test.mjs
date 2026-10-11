@@ -145,13 +145,67 @@ test("all generated internal links, fragments and assets resolve, including the 
   }
 });
 
-test("people data is editable and appears without invented filler text", () => {
+test("lab profiles support optional links, photos and interests without a hierarchy", () => {
   const people = JSON.parse(fs.readFileSync("site/_data/people.json", "utf8"));
   const $ = html("/people/index.html");
   assert.equal($(".person").length, people.length);
-  for (const person of people) {
+  assert.equal(
+    new Set(people.map((person) => person.name)).size,
+    people.length,
+  );
+  for (const [index, person] of people.entries()) {
+    const profile = $(".person").eq(index);
     assert.ok(person.name);
-    assert.ok(/^https:\/\//.test(person.url));
-    assert.ok($(".person h2").text().includes(person.name));
+    assert.equal(person.role, "Lab member");
+    assert.equal(profile.find(".person-role").text(), "Lab member");
+    assert.equal(profile.find("h2").text().trim(), person.name);
+    if (person.url) {
+      assert.ok(/^https:\/\//.test(person.url));
+      assert.equal(profile.find("h2 a").attr("href"), person.url);
+    } else {
+      assert.equal(profile.find("h2 a").length, 0);
+    }
+    assert.ok(Array.isArray(person.interests));
+    for (const interest of person.interests)
+      assert.ok(profile.find(".person-interests").text().includes(interest));
+    assert.equal(profile.find(".person-bio").text(), person.bio || "");
+    assert.equal(profile.find("img").length, person.photo ? 1 : 0);
+    if (person.photo) {
+      assert.ok(person.photo.startsWith("/assets/people/"));
+      assert.equal(profile.find("img").attr("src"), prefix + person.photo);
+      assert.equal(profile.find("img").attr("alt"), person.name);
+      assert.ok(fs.statSync("site" + person.photo).size > 0);
+    }
+    for (const link of person.links || []) {
+      assert.ok(/^https:\/\//.test(link.url));
+      assert.ok(
+        profile
+          .find(".person-links a")
+          .toArray()
+          .some(
+            (el) =>
+              $(el).attr("href") === link.url &&
+              $(el).text().trim() === link.label,
+          ),
+      );
+    }
   }
+  assert.doesNotMatch(
+    $("main").text(),
+    /Organising team|Transfer of Status|assessors|supervisors/i,
+  );
+});
+
+test("the lab is introduced separately from its open seminar programme", () => {
+  const home = html("/index.html");
+  const about = html("/about/index.html");
+  assert.match(
+    home(".intro-copy").text(),
+    /lab for health and social data science/,
+  );
+  assert.equal(home(".intro-copy a").first().attr("href"), prefix + "/people/");
+  assert.equal(home("#upcoming h2").text(), "Open seminars");
+  assert.match(home(".programme-intro").text(), /open to everyone/);
+  assert.match(about("main").text(), /flat structure/);
+  assert.match(about("#join").text(), /do not need to be a lab member/);
 });

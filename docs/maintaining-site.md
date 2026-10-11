@@ -68,18 +68,30 @@ Edit `site/_data/people.json`. Add an object following this structure:
 {
   "name": "Full name",
   "url": "https://example.org/",
-  "role": "Organising team",
-  "affiliation": "",
+  "role": "Lab member",
+  "interests": ["Research interest", "Another research interest"],
   "bio": "",
-  "photo": ""
+  "photo": "",
+  "links": []
 }
 ```
 
-Optional fields can stay empty. For a photo, put the image in
+Use the same "Lab member" role for everyone. Keep profiles minimal; keywords are
+preferred to long biographies. Only publish information intended for the public
+profile, not the correspondence in which it was supplied.
+
+The homepage URL, interests, short bio, photo and extra links are optional and
+can stay empty. For a photo, put the approved image in
 `site/assets/people/` and use `/assets/people/filename.jpg`. Entries without a
-photo display as plain names. Entries display in file order. Do not put HTML into fields.
-The initial people list comes from the existing site's organising team; no
-additional roles, affiliations or biographies have been invented.
+photo display as plain names; names without a URL are not links. Extra links
+use objects such as `{"label": "Google Scholar", "url": "https://..."}`.
+Entries display in file order, currently alphabetical by given name. Do not put
+HTML into fields. Existing members remain listed when new profiles are added.
+
+Profile sources and portrait provenance are recorded in
+`docs/people-sources.md`. Use "Mingyue Liu" as supplied, even though her linked
+departmental page uses "Rita Liu". Olivia is listed by first name until her
+preferred full name is confirmed.
 
 ## Publishing the preview
 

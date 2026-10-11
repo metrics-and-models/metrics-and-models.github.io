@@ -1,14 +1,14 @@
 ---
 layout: base.njk
-section: seminars
+section: lab
 home: true
 ---
 <header class="container introduction">
   <h1>Metrics <i>and</i> Models</h1>
   <div class="intro-grid">
     <div class="intro-copy">
-      <p>We are a group of health and social data scientists at the University of Oxford. Our seminar series is open to everyone.</p>
-      <div class="intro-meta"><p>Every other Thursday, 14:00 UK time. Online.</p><a href="/about/#join">Mailing list &amp; joining information</a></div>
+      <p>We are a lab for health and social data science at the University of Oxford. We work across disciplines, share ideas, and run an open seminar series.</p>
+      <div class="intro-meta"><a href="/people/">Lab members</a><a href="/about/">About the lab</a></div>
     </div>
     <figure class="research-figure">
       <canvas id="flow-field" aria-label="An animated mathematical flow field" role="img"></canvas>
@@ -17,6 +17,7 @@ home: true
   </div>
 </header>
 <section id="upcoming" class="container programme section-space">
-  <div class="section-heading"><h2>Upcoming talks</h2><a href="/details/previous_talks.html" class="text-link">Previous talks</a></div>
+  <div class="section-heading"><h2>Open seminars</h2><a href="/details/previous_talks.html" class="text-link">Previous talks</a></div>
+  <p class="programme-intro">Every other Thursday, 14:00 UK time. Online and open to everyone. <a href="/about/#join">Mailing list &amp; joining information</a>.</p>
   {% set events = seminars.upcoming %}{% set highlightNext = true %}{% include "talk-list.njk" %}
 </section>

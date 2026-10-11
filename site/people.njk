@@ -5,14 +5,20 @@ section: people
 permalink: /people/index.html
 ---
 <div class="container section-space">
-  <header class="page-heading"><h1>People</h1><p>The people who organise Metrics and Models.</p></header>
+  <header class="page-heading"><h1>People</h1><p>Lab members, working across health and social data science.</p></header>
   <div class="people-grid">
   {% for person in people %}
     <article class="person">
-      {% if person.photo %}<img class="person-photo" src="{{ person.photo }}" alt="{{ person.name }}" width="88" height="88" loading="lazy">{% endif %}
-      <div><h2><a href="{{ person.url }}" target="_blank" rel="noopener">{{ person.name }} {% icon "arrow-up-right" %}</a></h2>{% if person.role and person.role != "Organising team" %}<p>{{ person.role }}</p>{% endif %}{% if person.affiliation %}<p>{{ person.affiliation }}</p>{% endif %}{% if person.bio %}<p class="person-bio">{{ person.bio }}</p>{% endif %}</div>
+      <div>
+        <h2>{% if person.url %}<a href="{{ person.url }}" target="_blank" rel="noopener">{{ person.name }} {% icon "arrow-up-right" %}</a>{% else %}{{ person.name }}{% endif %}</h2>
+        <p class="person-role">{{ person.role }}</p>
+        {% if person.interests | length %}<p class="person-interests">{{ person.interests | join("; ") }}.</p>{% endif %}
+        {% if person.bio %}<p class="person-bio">{{ person.bio }}</p>{% endif %}
+        {% if person.links | length %}<div class="person-links">{% for link in person.links %}<a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label }} {% icon "arrow-up-right" %}</a>{% endfor %}</div>{% endif %}
+      </div>
+      {% if person.photo %}<img class="person-photo" src="{{ person.photo }}" alt="{{ person.name }}" width="88" height="104" loading="lazy">{% endif %}
     </article>
   {% endfor %}
   </div>
-  <p class="people-note">You do not need to be based at Oxford to attend the seminars. <a href="/about/#join">Joining information</a>.</p>
+  <p class="people-note">Interested in joining the lab? <a href="mailto:{{ site.email }}">Get in touch</a>. Our <a href="/#upcoming">seminar series</a> is open to everyone.</p>
 </div>

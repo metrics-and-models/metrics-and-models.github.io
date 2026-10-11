@@ -105,6 +105,16 @@ test("navigation is keyboard accessible on mobile and desktop", async ({
     .click();
   await expect(page.locator("h1")).toHaveText("People");
   await expect(page.locator(".person")).toHaveCount(people.length);
+  await expect(page.locator(".person-role")).toHaveText(
+    people.map(() => "Lab member"),
+  );
+  if (await menu.isVisible()) await menu.click();
+  await page
+    .getByRole("navigation")
+    .getByRole("link", { name: "Seminars", exact: true })
+    .click();
+  await expect(page.locator("#upcoming")).toBeInViewport();
+  await expect(page.locator("#upcoming h2")).toHaveText("Open seminars");
 });
 
 test("seminar details, registration and calendar downloads are connected", async ({
