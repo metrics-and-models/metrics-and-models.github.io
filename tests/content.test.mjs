@@ -18,9 +18,8 @@ test("all source schedule rows and detail permalinks survive the rebuild", () =>
   for (const [source, key] of [
     ["README.md", "upcoming"],
     ["details/previous_talks.md", "archive"],
-    ["details/internal_lab_sessions.md", "internal"],
   ]) {
-    const rows = tableRows(fs.readFileSync(source, "utf8"), key === "internal");
+    const rows = tableRows(fs.readFileSync(source, "utf8"));
     assert.equal(content[key].length, rows.length);
     for (const row of rows) {
       const event = content[key].find(
@@ -241,4 +240,45 @@ test("the lab is introduced separately from its open seminar programme", () => {
   assert.match(home(".programme-intro").text(), /open to everyone/);
   assert.match(about("main").text(), /flat structure/);
   assert.match(about("#join").text(), /do not need to be a lab member/);
+});
+
+test("the public site mentions lab meetings only on About and never publishes their schedule", () => {
+  assert.equal("internal" in content, false);
+  const files = fs.readdirSync("dist", { recursive: true });
+  assert.ok(files.every((file) => !file.includes("internal_lab_sessions")));
+  const about = html("/about/index.html");
+  assert.equal(
+    about("#lab-meetings p").text(),
+    "Lab members also meet internally to share work in progress and discuss collaborations.",
+  );
+  assert.equal(
+    about("#lab-meetings a, #lab-meetings time, #lab-meetings table").length,
+    0,
+  );
+
+  const publicTitles = new Set(
+    [...content.upcoming, ...content.archive].map((talk) => talk.title),
+  );
+  const internalTitles = tableRows(
+    fs.readFileSync("details/internal_lab_sessions.md", "utf8"),
+    true,
+  )
+    .map((meeting) => meeting.title)
+    .filter((title) => title.length > 20 && !publicTitles.has(title));
+  for (const file of files.filter((file) => file.endsWith(".html"))) {
+    const $ = html("/" + file);
+    assert.equal($('[href*="internal_lab_sessions"]').length, 0, file);
+    assert.doesNotMatch(
+      $("main").text(),
+      /off-weeks|internal mailing list|lab schedule/i,
+      file,
+    );
+    if (file !== "about/index.html")
+      assert.equal($("#lab-meetings").length, 0, file);
+    for (const title of internalTitles)
+      assert.ok(
+        !$("body").text().includes(title),
+        file + ": internal meeting title",
+      );
+  }
 });

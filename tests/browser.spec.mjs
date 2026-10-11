@@ -18,13 +18,15 @@ test("responsive pages have no overflow, broken assets or browser errors", async
     "people/",
     "about/",
     "details/previous_talks.html",
-    "details/internal_lab_sessions.html",
     ...content.details.map((t) => t.url.slice(1)),
   ];
   for (const url of pages) {
     await page.goto(url);
     await page.evaluate(() => document.fonts.ready);
     await expect(page.locator("h1")).toBeVisible();
+    await expect(page.locator('a[href*="internal_lab_sessions"]')).toHaveCount(
+      0,
+    );
     const overflow = await page.evaluate(() => ({
       width: innerWidth,
       scroll: document.documentElement.scrollWidth,
@@ -50,7 +52,15 @@ test("responsive pages have no overflow, broken assets or browser errors", async
         .toBeTruthy();
     }
     await page.evaluate(() => scrollTo({ top: 0, behavior: "instant" }));
-    if (["", "people/", "about/", "details/emilycantrell.html"].includes(url))
+    if (
+      [
+        "",
+        "people/",
+        "about/",
+        "details/previous_talks.html",
+        "details/emilycantrell.html",
+      ].includes(url)
+    )
       await page.screenshot({
         path: testInfo.outputPath(
           (url || "home").replaceAll("/", "-") + ".png",
@@ -79,6 +89,26 @@ test("Christmas Eve is clearly marked as a seminar break", async ({
   await expect(page.locator(".talk-row")).toHaveCount(content.upcoming.length);
   await page.evaluate(() => document.fonts.ready);
   await page.screenshot({ path: testInfo.outputPath("christmas-break.png") });
+});
+
+test("the internal meeting schedule is not served", async ({
+  page,
+  request,
+}) => {
+  for (const path of [
+    "details/internal_lab_sessions.html",
+    "details/internal_lab_sessions.md",
+  ]) {
+    const response = await request.get(path);
+    expect(response.status(), path).toBe(404);
+  }
+  await page.goto("about/");
+  await expect(page.locator("#lab-meetings")).toContainText(
+    "Lab members also meet internally",
+  );
+  await expect(
+    page.locator("#lab-meetings a, #lab-meetings time, #lab-meetings table"),
+  ).toHaveCount(0);
 });
 
 test("archive search, year filtering and empty state work together", async ({
@@ -164,6 +194,8 @@ test("all scientific sketches render, animate, pause and respect reduced motion"
     ["", 4],
     ["people/", 1],
     ["about/", 1],
+    ["details/previous_talks.html", 1],
+    ["details/emilycantrell.html", 1],
   ]) {
     await page.emulateMedia({ reducedMotion: "no-preference" });
     await page.goto(url);
@@ -173,6 +205,7 @@ test("all scientific sketches render, animate, pause and respect reduced motion"
     const snapshots = () =>
       canvases.evaluateAll((items) => items.map((c) => c.toDataURL()));
     for (const canvas of await canvases.all()) {
+      await canvas.scrollIntoViewIfNeeded();
       await expect(canvas).toBeInViewport();
       await expect
         .poll(() =>
@@ -217,4 +250,44 @@ test("all scientific sketches render, animate, pause and respect reduced motion"
     await page.waitForTimeout(250);
     expect(await snapshots()).toEqual(initialReduced);
   }
+});
+
+test("sketches stay framed through a full network rotation and stop offscreen", async ({
+  page,
+}, testInfo) => {
+  await page.clock.install({ time: new Date("2026-10-11T12:00:00Z") });
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("");
+  await page.evaluate(() => document.fonts.ready);
+  await page.clock.pauseAt(new Date("2026-10-11T12:01:00Z"));
+  const canvases = page.locator("canvas[data-plot]");
+  for (let step = 0; step < 6; step++) {
+    await page.clock.runFor(4000);
+    const clipped = await canvases.evaluateAll((items) =>
+      items
+        .filter((canvas) => {
+          const { width, height } = canvas;
+          const pixels = canvas
+            .getContext("2d")
+            .getImageData(0, 0, width, height).data;
+          const painted = (x, y) => pixels[(y * width + x) * 4 + 3] > 0;
+          for (let x = 0; x < width; x++)
+            if (painted(x, 0) || painted(x, height - 1)) return true;
+          for (let y = 0; y < height; y++)
+            if (painted(0, y) || painted(width - 1, y)) return true;
+          return false;
+        })
+        .map((canvas) => canvas.dataset.plot),
+    );
+    expect(clipped, "animation sample " + step).toEqual([]);
+  }
+  await page.screenshot({ path: testInfo.outputPath("moving-sketches.png") });
+  await page.locator("footer").scrollIntoViewIfNeeded();
+  await expect(canvases.first()).not.toBeInViewport();
+  await page.clock.runFor(100);
+  const snapshots = () =>
+    canvases.evaluateAll((items) => items.map((canvas) => canvas.toDataURL()));
+  const offscreen = await snapshots();
+  await page.clock.runFor(1000);
+  expect(await snapshots()).toEqual(offscreen);
 });

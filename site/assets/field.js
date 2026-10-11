@@ -28,12 +28,13 @@
   function flow(context, width, height, time) {
     // A family of trajectories projected onto a scientific grid.
     const point = (u, v) => {
-      const angle = u * Math.PI * 1.7 - 1.1;
-      const radius = 0.25 + v * 0.11;
-      const bend = Math.sin(u * Math.PI * 2 + time * 0.00028) * 0.025;
+      const phase = time * 0.00055;
+      const angle = u * Math.PI * 1.7 - 1.1 + Math.sin(time * 0.00022) * 0.28;
+      const radius = (0.25 + v * 0.11) * (1 + Math.sin(phase + v) * 0.04);
+      const bend = Math.sin(u * Math.PI * 2 + phase) * 0.045;
       return [
         width * (0.51 + Math.cos(angle) * radius + u * 0.14 + v * 0.035),
-        height * (0.52 + Math.sin(angle) * radius * 0.95 + v * 0.18 + bend),
+        height * (0.47 + Math.sin(angle) * radius * 0.9 + v * 0.12 + bend),
       ];
     };
     context.fillStyle = colours.grid;
@@ -53,7 +54,7 @@
       context.stroke();
     }
     for (let index = 0; index < 5; index++) {
-      const u = (index * 0.207 + time * 0.000025) % 1;
+      const u = (index * 0.207 + time * 0.00007) % 1;
       const [x, y] = point(u, (index - 2) / 3);
       dot(context, x, y, 1.96, index === 2 ? colours.red : colours.blue);
     }
@@ -68,10 +69,16 @@
       [0.62, 0.83],
       [0.77, 0.23],
       [0.86, 0.62],
-    ].map(([x, y], index) => [
-      width * (x + Math.sin(time * 0.0004 + index) * 0.025),
-      height * (y + Math.cos(time * 0.0005 + index * 2) * 0.025),
-    ]);
+    ].map(([x, y], index) => {
+      const angle = time * 0.00035 + Math.sin(time * 0.00065 + index) * 0.1;
+      const radius = 0.84 * (1 + Math.sin(time * 0.0009 + index) * 0.07);
+      const dx = (x - 0.5) * radius;
+      const dy = (y - 0.5) * radius;
+      return [
+        width * (0.5 + dx * Math.cos(angle) - dy * Math.sin(angle)),
+        height * (0.5 + dx * Math.sin(angle) + dy * Math.cos(angle)),
+      ];
+    });
     const edges = [
       [0, 1],
       [0, 2],
@@ -103,21 +110,23 @@
         index === 3 ? colours.red : colours.blue,
       ),
     );
-    const progress = (time * 0.00015) % 1;
-    const [a, b] = [points[2], points[3]];
-    dot(
-      context,
-      a[0] + (b[0] - a[0]) * progress,
-      a[1] + (b[1] - a[1]) * progress,
-      1.6,
-      colours.green,
-    );
+    for (const [index, edge] of [edges[5], edges[8], edges[10]].entries()) {
+      const progress = (time * 0.00028 + index / 3) % 1;
+      const [a, b] = edge.map((node) => points[node]);
+      dot(
+        context,
+        a[0] + (b[0] - a[0]) * progress,
+        a[1] + (b[1] - a[1]) * progress,
+        1.6,
+        colours.green,
+      );
+    }
   }
 
   function distribution(context, width, height, time) {
     axes(context, width, height);
-    const mean = 0.49 + Math.sin(time * 0.0004) * 0.09;
-    const sigma = 0.16 + Math.cos(time * 0.0003) * 0.02;
+    const mean = 0.49 + Math.sin(time * 0.00085) * 0.14;
+    const sigma = 0.155 + Math.cos(time * 0.00065) * 0.03;
     const density = (x) => Math.exp(-0.5 * ((x - mean) / sigma) ** 2);
     const xPixel = (x) => 7 + x * (width - 13);
     const yPixel = (x) => height - 6 - density(x) * (height - 13);
@@ -147,7 +156,7 @@
 
   function scatter(context, width, height, time) {
     axes(context, width, height);
-    const slope = 0.46 + Math.sin(time * 0.0004) * 0.09;
+    const slope = 0.44 + Math.sin(time * 0.0008) * 0.15;
     const xPixel = (x) => 7 + x * (width - 13);
     const yPixel = (y) => height - 7 - y * (height - 13);
     context.strokeStyle = colours.red;
@@ -157,9 +166,9 @@
     context.lineTo(xPixel(1), yPixel(0.2 + slope));
     context.stroke();
     for (let index = 0; index < 15; index++) {
-      const x = (index + 0.5) / 15;
+      const x = (index + 0.5) / 15 + Math.sin(time * 0.00055 + index) * 0.012;
       const noise = Math.sin(index * 5.7) * 0.14;
-      const drift = Math.sin(time * 0.0006 + index) * 0.035;
+      const drift = Math.sin(time * 0.001 + index) * 0.065;
       dot(
         context,
         xPixel(x),

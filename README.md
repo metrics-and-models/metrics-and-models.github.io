@@ -16,8 +16,6 @@ Hi! We are a group of health and social data scientists located at the Universit
 
 **Interested in Presenting?**: If you're interested in presenting something to this seminar series, we have a form [here](https://forms.office.com/e/KsFZYcMz5C)!
 
-**Off-weeks**: We'll be meeting as a local 'lab' in the off-weeks. Details are <a href="/details/internal_lab_sessions.html">here</a>. These will feature informal presentations for feedback, general updates, and discussions re: potential collaboration/opportunities. If you're interested in coming along to these offline meetings (or just want to chat), please get in touch with us at metrics_and_models_mgmt [at] maillist.ox.ac.uk.
-
 **Who**: In alphabetical order, we are [Charlie](http://crahal.com/), [Anda](https://www.bdi.ox.ac.uk/Team/anda-raluca-epure), [Daniel](https://github.com/dhvalden), [Jiani](http://vallerrr.github.io/), [Luc](https://rocher.lc/), [Mark](https://markverhagen.me/), [Ridhi](https://www.sociology.ox.ac.uk/people/ridhi-kashyap), and [Xiaowen](https://web.media.mit.edu/~xdong). Our organisational team are part of the [Demographic Science Unit](https://www.demography.ox.ac.uk/), [Engineering Science](https://eng.ox.ac.uk/), the [Oxford Internet Institute](https://www.oii.ox.ac.uk/), and [Sociology](https://www.sociology.ox.ac.uk/).
 
 **Previous Talks**: Details on previous talks can be found <a href="/details/previous_talks.html">here</a>.

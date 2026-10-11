@@ -4,6 +4,10 @@ import { loadContent } from "./lib/content.mjs";
 
 export default function (config) {
   const prefix = (process.env.PATH_PREFIX || "").replace(/\/$/, "");
+  config.on("eleventy.before", () => {
+    // Eleventy retains removed pages in an existing output directory.
+    fs.rmSync("dist/details/internal_lab_sessions.html", { force: true });
+  });
   config.setNunjucksEnvironmentOptions({ autoescape: true });
   config.addGlobalData("seminars", loadContent);
   config.addGlobalData("site", {

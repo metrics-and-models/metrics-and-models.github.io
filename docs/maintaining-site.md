@@ -41,8 +41,15 @@ The existing Markdown is still the source of truth:
 
 - `README.md`: upcoming talks table.
 - `details/previous_talks.md`: archive table.
-- `details/internal_lab_sessions.md`: internal sessions table.
 - `details/<speaker>.md`: title, date, institution, abstract, bio and links.
+
+The internal meeting schedule is excluded from the development website and is
+not loaded into template data. About contains only a brief mention of lab
+meetings, with no dates, cadence or schedule link. The build also removes the
+old generated schedule page from an existing `dist/` directory. Do not restore
+that page or copy the source schedule into published assets. The existing
+Markdown and public Git history are retained; this is not a confidentiality
+guarantee for information already published, and production is unchanged.
 
 Keep each talk's existing `permalink` and the table's details link matching.
 Some older files have intentionally different filenames and permalinks; do not
@@ -103,8 +110,10 @@ departmental page uses "Rita Liu".
 
 `site/assets/field.js` draws illustrative flow, network, distribution and scatter
 sketches, not empirical research results. The home page has four sketches sharing
-one pause control; People and About each have a small heading sketch. The
-`science-decoration.njk` include provides the heading version.
+one pause control; People, About and the archive have small heading sketches,
+and talk details include a network beside the event facts. Networks rotate and
+deform slowly, while coloured points travel along their edges. The
+`science-decoration.njk` include provides these smaller versions.
 
 Animation stops when a sketch is offscreen or the tab is hidden. Reduced-motion
 preferences initialise all sketches as still images; the controls can start or

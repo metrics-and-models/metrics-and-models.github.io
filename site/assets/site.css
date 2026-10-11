@@ -727,6 +727,13 @@ input::placeholder {
   gap: 22px;
   font: 13px/1.7 var(--sans);
 }
+.event-facts .science-decoration {
+  width: 100%;
+  max-width: 156px;
+}
+.event-facts .science-decoration canvas {
+  width: calc(100% - 32px);
+}
 .event-facts .eyebrow {
   font-size: 11px;
   color: var(--muted);
