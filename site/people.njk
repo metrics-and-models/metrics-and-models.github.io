@@ -10,11 +10,16 @@ permalink: /people/index.html
   {% for person in people %}
     <article class="person">
       <div>
-        <h2>{% if person.url %}<a href="{{ person.url }}" target="_blank" rel="noopener">{{ person.name }} {% icon "arrow-up-right" %}</a>{% else %}{{ person.name }}{% endif %}</h2>
+        <h2>{{ person.name }}</h2>
         <p class="person-role">{{ person.role }}</p>
         {% if person.interests | length %}<p class="person-interests">{{ person.interests | join("; ") }}.</p>{% endif %}
         {% if person.bio %}<p class="person-bio">{{ person.bio }}</p>{% endif %}
-        {% if person.links | length %}<div class="person-links">{% for link in person.links %}<a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label }} {% icon "arrow-up-right" %}</a>{% endfor %}</div>{% endif %}
+        {% if person.url or person.links | length %}
+        <div class="person-links">
+          {% if person.url %}<a class="person-homepage" href="{{ person.url }}" target="_blank" rel="noopener" aria-label="{{ person.name }}: {{ person.urlLabel or 'Website' }}">{{ person.urlLabel or "Website" }} {% icon "arrow-up-right" %}</a>{% endif %}
+          {% for link in person.links %}<a href="{{ link.url }}" target="_blank" rel="noopener" aria-label="{{ person.name }}: {{ link.label }}">{{ link.label }} {% icon "arrow-up-right" %}</a>{% endfor %}
+        </div>
+        {% endif %}
       </div>
       {% if person.photo %}<img class="person-photo" src="{{ person.photo }}" alt="{{ person.name }}" width="88" height="104" loading="lazy">{% endif %}
     </article>

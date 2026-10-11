@@ -68,6 +68,7 @@ Edit `site/_data/people.json`. Add an object following this structure:
 {
   "name": "Full name",
   "url": "https://example.org/",
+  "urlLabel": "Website",
   "role": "Lab member",
   "interests": ["Research interest", "Another research interest"],
   "bio": "",
@@ -83,7 +84,8 @@ profile, not the correspondence in which it was supplied.
 The homepage URL, interests, short bio, photo and extra links are optional and
 can stay empty. For a photo, put the approved image in
 `site/assets/people/` and use `/assets/people/filename.jpg`. Entries without a
-photo display as plain names; names without a URL are not links. Extra links
+photo display as plain names. The primary URL appears beneath the research
+interests, labelled by `urlLabel` (default: "Website"). Extra links
 use objects such as `{"label": "Google Scholar", "url": "https://..."}`.
 Entries display in file order, currently alphabetical by given name. Do not put
 HTML into fields. Existing members remain listed when new profiles are added.

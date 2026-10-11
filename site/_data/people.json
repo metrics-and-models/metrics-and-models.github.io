@@ -10,7 +10,8 @@
         "url": "https://scholar.google.com/citations?user=Co3JdVkAAAAJ&hl=en"
       }
     ],
-    "photo": ""
+    "photo": "/assets/people/anda-raluca-epure.jpg",
+    "urlLabel": "LinkedIn"
   },
   {
     "name": "Ava Keeling",
@@ -22,7 +23,14 @@
       "Health policy",
       "Health inequalities"
     ],
-    "photo": ""
+    "photo": "/assets/people/ava-keeling.webp",
+    "urlLabel": "Oxford profile",
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/avakeeling199"
+      }
+    ]
   },
   {
     "name": "Charlie Rahal",
@@ -34,7 +42,17 @@
       "Scientometrics",
       "Open science"
     ],
-    "photo": "/assets/people/charlie-rahal.jpg"
+    "photo": "/assets/people/charlie-rahal.jpg",
+    "links": [
+      {
+        "label": "Google Scholar",
+        "url": "https://scholar.google.co.uk/citations?user=8bd7KNgAAAAJ&hl=en"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/crahal"
+      }
+    ]
   },
   {
     "name": "Daniel Valdenegro",
@@ -46,7 +64,18 @@
       "Natural language processing",
       "Computational social science"
     ],
-    "photo": ""
+    "photo": "/assets/people/daniel-valdenegro.webp",
+    "urlLabel": "Oxford profile",
+    "links": [
+      {
+        "label": "Google Scholar",
+        "url": "https://scholar.google.com/citations?user=ilwTrOwAAAAJ&hl=en"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/dhvalden"
+      }
+    ]
   },
   {
     "name": "Hana Antonio",
@@ -72,21 +101,57 @@
       "Computational demography",
       "Model evaluation"
     ],
-    "photo": ""
+    "photo": "/assets/people/jiani-yan.png",
+    "links": [
+      {
+        "label": "Google Scholar",
+        "url": "https://scholar.google.co.uk/citations?user=trFPRdsAAAAJ&hl=en"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/vallerrr"
+      }
+    ]
   },
   {
     "name": "Luc Rocher",
     "url": "https://rocher.lc/",
     "role": "Lab member",
-    "interests": [],
-    "photo": ""
+    "interests": [
+      "Algorithmic accountability",
+      "Data privacy",
+      "Human-AI interaction",
+      "Computational social science"
+    ],
+    "photo": "/assets/people/luc-rocher.jpg",
+    "links": [
+      {
+        "label": "Google Scholar",
+        "url": "https://scholar.google.be/citations?user=05XnhCwAAAAJ&sortby=pubdate"
+      }
+    ]
   },
   {
     "name": "Mark Verhagen",
     "url": "https://markverhagen.me/",
     "role": "Lab member",
-    "interests": [],
-    "photo": ""
+    "interests": [
+      "Computational social science",
+      "Machine learning",
+      "Social prediction",
+      "Inequality"
+    ],
+    "photo": "/assets/people/mark-verhagen.jpg",
+    "links": [
+      {
+        "label": "Google Scholar",
+        "url": "https://scholar.google.com/citations?user=9rbQDbgAAAAJ&hl=en"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/MarkDVerhagen"
+      }
+    ]
   },
   {
     "name": "Mingyue Liu",
@@ -98,7 +163,14 @@
       "Large language models",
       "AI for science"
     ],
-    "photo": ""
+    "photo": "",
+    "urlLabel": "Oxford profile",
+    "links": [
+      {
+        "label": "Google Scholar",
+        "url": "https://scholar.google.com/citations?user=9zgHnV4AAAAJ&hl=en"
+      }
+    ]
   },
   {
     "name": "Olivia Li",
@@ -115,8 +187,20 @@
     "name": "Ridhi Kashyap",
     "url": "https://www.sociology.ox.ac.uk/people/ridhi-kashyap",
     "role": "Lab member",
-    "interests": [],
-    "photo": ""
+    "interests": [
+      "Computational demography",
+      "Gender inequality",
+      "Population health",
+      "Digital trace data"
+    ],
+    "photo": "/assets/people/ridhi-kashyap.jpg",
+    "urlLabel": "Oxford profile",
+    "links": [
+      {
+        "label": "Google Scholar",
+        "url": "https://scholar.google.com/citations?user=9oExhHsAAAAJ&hl=en"
+      }
+    ]
   },
   {
     "name": "Xiaowen Dong",
@@ -127,6 +211,12 @@
       "Graph machine learning",
       "Computational social science"
     ],
-    "photo": "/assets/people/xiaowen-dong.jpg"
+    "photo": "/assets/people/xiaowen-dong.jpg",
+    "links": [
+      {
+        "label": "Research",
+        "url": "https://web.media.mit.edu/~xdong/research.html"
+      }
+    ]
   }
 ]

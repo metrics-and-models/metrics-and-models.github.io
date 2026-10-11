@@ -161,9 +161,13 @@ test("lab profiles support optional links, photos and interests without a hierar
     assert.equal(profile.find("h2").text().trim(), person.name);
     if (person.url) {
       assert.ok(/^https:\/\//.test(person.url));
-      assert.equal(profile.find("h2 a").attr("href"), person.url);
+      assert.equal(profile.find(".person-homepage").attr("href"), person.url);
+      assert.equal(
+        profile.find(".person-homepage").text().trim(),
+        person.urlLabel || "Website",
+      );
     } else {
-      assert.equal(profile.find("h2 a").length, 0);
+      assert.equal(profile.find(".person-homepage").length, 0);
     }
     assert.ok(Array.isArray(person.interests));
     for (const interest of person.interests)
@@ -187,6 +191,14 @@ test("lab profiles support optional links, photos and interests without a hierar
               $(el).attr("href") === link.url &&
               $(el).text().trim() === link.label,
           ),
+      );
+    }
+    for (const link of profile.find(".person-links a").toArray()) {
+      assert.equal($(link).attr("target"), "_blank");
+      assert.equal($(link).attr("rel"), "noopener");
+      assert.equal(
+        $(link).attr("aria-label"),
+        person.name + ": " + $(link).text().trim(),
       );
     }
   }
