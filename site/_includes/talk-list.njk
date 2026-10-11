@@ -1,0 +1,14 @@
+<div class="talk-list">
+{% for event in events %}
+  <article class="talk-row" data-search="{{ event.speaker }} {{ event.title }} {{ event.institution }}" data-year="{{ event.date.year }}">
+    <div class="talk-date"><span class="date-day">{{ event.date.day or "—" }}</span><span class="mono">{{ event.date.month }} {{ event.date.year }}</span></div>
+    <div class="talk-main">
+      {% if event.cancelled %}<span class="eyebrow cancelled">Cancelled</span>{% endif %}
+      <a class="speaker-name" href="{{ event.home }}" target="_blank" rel="noopener">{{ event.speaker | replace("CANCELLED ", "") }} {% icon "arrow-up-right" %}</a>
+      {% if event.institution %}<p class="institution">{{ event.institution }}</p>{% endif %}
+      {% if event.url %}<h3><a href="{{ event.url }}">{{ event.title | displayTitle }}</a></h3>{% else %}<h3>{{ event.title | displayTitle }}</h3>{% endif %}
+    </div>
+    <div class="talk-meta"><span class="mono">{{ event.date.time or "Time TBC" }}</span><span>{{ event.mode }}</span>{% if event.url %}<a href="{{ event.url }}" class="row-link" aria-label="Details for {{ event.speaker }}">{% icon "arrow-up-right" %}</a>{% endif %}</div>
+  </article>
+{% endfor %}
+</div>

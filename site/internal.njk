@@ -1,0 +1,12 @@
+---
+layout: base.njk
+title: Internal lab sessions
+section: about
+permalink: /details/internal_lab_sessions.html
+---
+<div class="container section-space">
+  <header class="page-heading"><a class="back-link" href="/about/">{% icon "arrow-left" %} About the group</a><p class="eyebrow">The local lab / Internal</p><h1>Work in progress.<br><i>Ideas in company.</i></h1><p>Informal presentations and feedback, followed by time for collaboration and updates from the group.</p></header>
+  <aside class="notice">{% icon "users" %}<p>For members of the local lab mailing list. Based in Oxford and interested in joining? <a href="mailto:{{ site.email }}">Get in touch.</a></p></aside>
+  <div class="section-heading"><h2>Lab sessions</h2><span class="mono">Most recent first</span></div>
+  {% set events = seminars.internal %}{% include "talk-list.njk" %}
+</div>

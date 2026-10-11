@@ -1,0 +1,21 @@
+---
+layout: base.njk
+section: seminars
+pagination:
+  data: seminars.details
+  size: 1
+  alias: talk
+permalink: "{{ talk.url }}"
+---
+<article class="container talk-detail section-space">
+  <a class="back-link" href="{% if talk.archived %}/details/previous_talks.html{% else %}/#upcoming{% endif %}">{% icon "arrow-left" %} {% if talk.archived %}Previous talks{% else %}Upcoming talks{% endif %}</a>
+  <header class="talk-heading">
+    <p class="eyebrow">Metrics and Models / {% if talk.archived %}From the archive{% else %}Open seminar{% endif %}</p>
+    <h1>{{ talk.title | displayTitle }}</h1>
+    <div class="speaker-line"><span class="speaker-monogram" aria-hidden="true">{{ talk.speaker | initials }}</span><div><h2>{% if talk.home %}<a href="{{ talk.home }}" target="_blank" rel="noopener">{{ talk.speaker }} {% icon "arrow-up-right" %}</a>{% else %}{{ talk.speaker }}{% endif %}</h2><p>{{ talk.institution }}</p></div></div>
+  </header>
+  <div class="detail-grid">
+    <aside class="event-facts"><div><p class="eyebrow">When</p><p>{{ talk.date.full }}</p><strong>{{ talk.date.time }}</strong></div><div><p class="eyebrow">Where</p><p>Online</p></div>{% if not talk.archived and not talk.cancelled %}<a href="/about/#join" class="button">Attend this talk {% icon "arrow-up-right" %}</a>{% if talk.calendar %}<a class="text-link calendar-link" href="{{ talk.calendar }}" download>{% icon "calendar-plus" %} Add to calendar</a>{% endif %}{% endif %}{% if talk.cancelled %}<p class="cancelled">This talk was cancelled.</p>{% endif %}</aside>
+    <div class="prose talk-copy">{{ talk.body | safe }}</div>
+  </div>
+</article>

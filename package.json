@@ -1,0 +1,25 @@
+{
+  "name": "metrics-and-models",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "eleventy",
+    "dev": "eleventy --serve --port=8081",
+    "test": "node --test tests/content.test.mjs",
+    "test:browser": "playwright test"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "@fontsource-variable/instrument-sans": "^5.3.0",
+    "@fontsource/stix-two-text": "^5.3.0",
+    "@playwright/test": "^1.64.0",
+    "cheerio": "^1.2.0",
+    "gray-matter": "^4.0.3",
+    "lucide-static": "^1.55.0",
+    "markdown-it": "^15.0.2"
+  }
+}
