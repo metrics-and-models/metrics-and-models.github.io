@@ -51,7 +51,7 @@ rename their public URLs. Preserve the `Speaker`, `Institution`, `Date`,
 GMT or BST and a complete date including year.
 
 To move a talk to the archive, move its table row from `README.md` into
-`details/previous_talks.md`. The next-talk feature uses the first chronologically
+`details/previous_talks.md`. The "Next" label uses the first chronologically
 sorted row in the upcoming table; archiving is deliberately manual. Calendar
 downloads use the listed GMT/BST offset and assume a one-hour seminar.
 
@@ -76,8 +76,8 @@ Edit `site/_data/people.json`. Add an object following this structure:
 ```
 
 Optional fields can stay empty. For a photo, put the image in
-`site/assets/people/` and use `/assets/people/filename.jpg`. Initials appear when
-no photo is supplied. Entries display in file order. Do not put HTML into fields.
+`site/assets/people/` and use `/assets/people/filename.jpg`. Entries without a
+photo display as plain names. Entries display in file order. Do not put HTML into fields.
 The initial people list comes from the existing site's organising team; no
 additional roles, affiliations or biographies have been invented.
 

@@ -9,7 +9,7 @@ export default function (config) {
   config.addGlobalData("site", {
     name: "Metrics and Models",
     description:
-      "An open conversation in health and social data science. A seminar series and research community at the University of Oxford.",
+      "Metrics and Models: a health and social data science seminar series at the University of Oxford. Open to everyone.",
     origin: process.env.SITE_URL || "https://metrics-and-models.github.io",
     prefix,
     registration: "https://forms.office.com/e/M3j2M2hBFt",
@@ -19,15 +19,6 @@ export default function (config) {
   });
   config.addFilter("displayTitle", (title) =>
     /^(TBC|TBD)$/.test(title || "") ? "Title forthcoming" : title,
-  );
-  config.addFilter("afterFirst", (events) => events.slice(1));
-  config.addFilter("initials", (name) =>
-    name
-      .split(/\s+/)
-      .map((n) => n[0])
-      .filter(Boolean)
-      .slice(0, 2)
-      .join(""),
   );
   config.addShortcode("icon", (name, className = "") => {
     if (!/^[a-z-]+$/.test(name)) throw new Error("Invalid icon name");

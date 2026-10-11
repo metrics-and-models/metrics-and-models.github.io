@@ -3,27 +3,20 @@ layout: base.njk
 section: seminars
 home: true
 ---
-<section class="hero">
-  <canvas id="flow-field" aria-label="An animated mathematical flow field" role="img"></canvas>
-  <div class="container hero-inner">
-    <p class="eyebrow"><span class="tiny-square"></span> University of Oxford <span class="eyebrow-divider">/</span> Open seminar series</p>
-    <h1><span class="hero-first-line">Metrics <i>&</i></span><br>Models<span class="accent">.</span></h1>
-    <p class="hero-description">Better questions. New perspectives.<br>A meeting place for health and social data science.</p>
-    <a class="text-link" href="#upcoming">Explore the programme {% icon "arrow-down" %}</a>
-    <div class="hero-notes"><span class="mono">Methods. Evidence. People.</span><button class="motion-toggle icon-button" aria-label="Pause animation" title="Pause animation"><span data-pause>{% icon "pause" %}</span><span data-play hidden>{% icon "play" %}</span></button></div>
+<header class="container introduction">
+  <h1>Metrics <i>and</i> Models</h1>
+  <div class="intro-grid">
+    <div class="intro-copy">
+      <p>We are a group of health and social data scientists at the University of Oxford. Our seminar series is open to everyone.</p>
+      <div class="intro-meta"><p>Every other Thursday, 14:00 UK time. Online.</p><a href="/about/#join">Mailing list &amp; joining information</a></div>
+    </div>
+    <figure class="research-figure">
+      <canvas id="flow-field" aria-label="An animated mathematical flow field" role="img"></canvas>
+      <button class="motion-toggle icon-button" aria-label="Pause animation" title="Pause animation"><span data-pause>{% icon "pause" %}</span><span data-play hidden>{% icon "play" %}</span></button>
+    </figure>
   </div>
-</section>
-<div class="series-strip"><div class="container"><span><span class="status-dot"></span> Open to everyone</span><span>Every other Thursday</span><span>14:00 UK time</span><span>{% icon "globe" %} Online, wherever you are</span></div></div>
+</header>
 <section id="upcoming" class="container programme section-space">
-  <div class="section-heading"><div><p class="eyebrow">01 / The conversation continues</p><h2>Upcoming talks</h2></div><a href="/details/previous_talks.html" class="text-link">The archive <span class="count">{{ seminars.archive.length }}</span> {% icon "arrow-up-right" %}</a></div>
-  {% if seminars.next %}
-  <a href="{{ seminars.next.url }}" class="next-talk">
-    <div class="next-label"><span class="status-dot"></span><span class="eyebrow">Up next</span><span class="mono">{{ seminars.next.date.day }} {{ seminars.next.date.month }} {{ seminars.next.date.year }}<br>{{ seminars.next.date.time }} / Online</span></div>
-    <div><p class="next-speaker">{{ seminars.next.speaker }} <span>{{ seminars.next.institution }}</span></p><h3>{{ seminars.next.title | displayTitle }}</h3></div>
-    <span class="next-arrow">{% icon "arrow-up-right" %}</span>
-  </a>
-  {% endif %}
-  {% set events = seminars.upcoming | afterFirst %}{% include "talk-list.njk" %}
+  <div class="section-heading"><h2>Upcoming talks</h2><a href="/details/previous_talks.html" class="text-link">Previous talks</a></div>
+  {% set events = seminars.upcoming %}{% set highlightNext = true %}{% include "talk-list.njk" %}
 </section>
-<section class="about-band"><div class="container about-grid"><p class="eyebrow">A shared curiosity</p><div><h2>Across disciplines.<br><i>Beyond the usual questions.</i></h2><p>We bring together researchers working with data, models, and the questions that matter for health and society. Our seminars make space for new work, different perspectives, and a thoughtful exchange of ideas.</p><div class="inline-links"><a href="/people/" class="text-link">Meet the people {% icon "arrow-up-right" %}</a><a href="/about/" class="text-link">About the series {% icon "arrow-up-right" %}</a></div></div></div></section>
-<section class="container join-band"><div><p class="eyebrow">All disciplines. All sectors.</p><h2>There's a place for you here.</h2></div><a class="button" href="/about/#join">Join a seminar {% icon "arrow-up-right" %}</a></section>

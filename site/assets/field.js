@@ -26,7 +26,7 @@
   function draw() {
     context.clearRect(0, 0, width, height);
     const spacing = width < 300 ? 18 : 26;
-    context.fillStyle = "#cbd5cd";
+    context.fillStyle = "#d5d6cf";
     for (let x = spacing; x < width - 5; x += spacing) {
       for (let y = spacing; y < height - 5; y += spacing) {
         context.fillRect(x, y, 1, 1);
@@ -41,14 +41,14 @@
         if (step === 0) context.moveTo(x, y);
         else context.lineTo(x, y);
       }
-      context.strokeStyle = line % 6 === 0 ? "#568a77" : "#a8bdb0";
+      context.strokeStyle = line % 6 === 0 ? "#62645f" : "#b0b2aa";
       context.lineWidth = line % 6 === 0 ? 1.1 * size : 0.65 * size;
       context.stroke();
     }
     for (let index = 0; index < 5; index++) {
       const u = (index * 0.207 + time * 0.000025) % 1;
       const [x, y] = point(u, (index - 2) / 3, time * 0.00028);
-      context.fillStyle = index === 2 ? "#ad5944" : "#006d5e";
+      context.fillStyle = index === 2 ? "#944a3d" : "#355287";
       context.beginPath();
       context.arc(x, y, 2.8 * size, 0, Math.PI * 2);
       context.fill();

@@ -51,15 +51,15 @@ test("all source schedule rows and detail permalinks survive the rebuild", () =>
   }
 });
 
-test("the homepage features the next talk once and lists all following talks", () => {
+test("the homepage lists each talk once and marks the next seminar", () => {
   const $ = html("/index.html");
-  assert.equal(
-    $(".talk-row").length + $(".next-talk").length,
-    content.upcoming.length,
-  );
-  assert.ok($(".next-talk").text().includes(content.next.speaker));
-  assert.ok($(".next-talk").text().includes(content.next.title));
-  assert.equal($(".next-talk").attr("href"), prefix + content.next.url);
+  assert.equal($(".talk-row").length, content.upcoming.length);
+  const first = $(".talk-row").first();
+  assert.ok(first.text().includes(content.next.speaker));
+  assert.ok(first.text().includes(content.next.title));
+  assert.equal(first.find("h3 a").attr("href"), prefix + content.next.url);
+  assert.equal($(".next-marker").length, 1);
+  assert.equal(first.find(".next-marker").text(), "Next");
 });
 
 test("summer and winter seminar times convert correctly to UTC", () => {

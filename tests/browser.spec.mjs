@@ -103,7 +103,7 @@ test("navigation is keyboard accessible on mobile and desktop", async ({
     .getByRole("navigation")
     .getByRole("link", { name: /People/ })
     .click();
-  await expect(page.locator("h1")).toContainText("People behind");
+  await expect(page.locator("h1")).toHaveText("People");
   await expect(page.locator(".person")).toHaveCount(people.length);
 });
 
@@ -111,7 +111,7 @@ test("seminar details, registration and calendar downloads are connected", async
   page,
 }) => {
   await page.goto("");
-  await page.locator(".next-talk").click();
+  await page.locator(".talk-row h3 a").first().click();
   await expect(page.locator("h1")).toHaveText(content.next.title);
   await expect(page.locator(".talk-copy")).toContainText("Abstract");
   const download = page.waitForEvent("download");

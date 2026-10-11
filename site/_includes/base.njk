@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f8faf9">
+  <meta name="theme-color" content="#fcfcfa">
   <meta name="description" content="{{ description or site.description }}">
   <meta name="robots" content="noindex, nofollow">
   <title>{% if talk %}{{ talk.speaker }}{% elif title %}{{ title }}{% else %}Health & social data science{% endif %} | Metrics and Models</title>
@@ -13,7 +13,7 @@
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/site.css">
-  <noscript><style>.motion-toggle,.archive-tools{display:none}@media(max-width:560px){.header-inner{height:auto;padding-block:16px}.menu-toggle{display:none}#main-nav{display:flex;position:static;flex-wrap:wrap;padding:12px 0 0;width:100%;border:0}}</style></noscript>
+  <noscript><style>.motion-toggle,.archive-tools{display:none}@media(max-width:420px){.header-inner{height:auto;padding-block:16px}.menu-toggle{display:none}#main-nav{display:flex;position:static;flex-wrap:wrap;padding:12px 0 0;width:100%;border:0}}</style></noscript>
   <script src="/assets/site.js" defer></script>
   {% if home %}<script src="/assets/field.js" defer></script>{% endif %}
 </head>
@@ -21,24 +21,18 @@
   <a href="#main" class="skip-link">Skip to content</a>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="wordmark" href="/" aria-label="Metrics and Models home"><span class="brand-mark" aria-hidden="true">m<span>/</span>m</span><span>Metrics <span class="wordmark-and">&</span> Models</span></a>
+      <a class="wordmark" href="/" aria-label="Metrics and Models home">Metrics and Models</a>
       <button class="menu-toggle icon-button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-nav">{% icon "menu" %}</button>
       <nav id="main-nav" aria-label="Main navigation">
-        <a href="/" {% if section == "seminars" %}aria-current="page"{% endif %}><span>01</span> Seminars</a>
-        <a href="/people/" {% if section == "people" %}aria-current="page"{% endif %}><span>02</span> People</a>
-        <a href="/about/" {% if section == "about" %}aria-current="page"{% endif %}><span>03</span> About</a>
-        <a href="/about/#join" class="nav-join">Join the conversation {% icon "arrow-up-right" %}</a>
+        <a href="/" {% if section == "seminars" %}aria-current="page"{% endif %}>Seminars</a>
+        <a href="/people/" {% if section == "people" %}aria-current="page"{% endif %}>People</a>
+        <a href="/about/" {% if section == "about" %}aria-current="page"{% endif %}>About</a>
       </nav>
     </div>
   </header>
   <main id="main">{{ content | safe }}</main>
   <footer class="site-footer">
-    <div class="container footer-main">
-      <div><a class="footer-brand" href="/">Metrics <i>&</i> Models</a><p>Health and social data science.<br>An open conversation, from Oxford.</p></div>
-      <div class="footer-links"><a href="/people/">Our people</a><a href="/details/previous_talks.html">Previous talks</a><a href="/details/internal_lab_sessions.html">Internal sessions</a></div>
-      <div class="footer-links"><a href="/about/#join">Attend a seminar {% icon "arrow-up-right" %}</a><a href="https://forms.office.com/e/KsFZYcMz5C" target="_blank" rel="noopener">Present your work {% icon "arrow-up-right" %}</a><a href="mailto:{{ site.email }}">Get in touch {% icon "arrow-up-right" %}</a></div>
-    </div>
-    <div class="container footer-bottom"><span>University of Oxford</span><span class="mono">M / M <span class="tiny-square"></span> Ideas in good company.</span><a href="https://github.com/metrics-and-models/metrics-and-models.github.io/tree/dev">Source {% icon "arrow-up-right" %}</a></div>
+    <div class="container footer-bottom"><span>Metrics and Models / University of Oxford</span><div class="footer-links"><a href="/details/internal_lab_sessions.html">Internal sessions</a><a href="mailto:{{ site.email }}">Contact</a><a href="https://github.com/metrics-and-models/metrics-and-models.github.io/tree/dev">Source</a></div></div>
   </footer>
 </body>
 </html>

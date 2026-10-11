@@ -5,15 +5,14 @@ section: people
 permalink: /people/index.html
 ---
 <div class="container section-space">
-  <header class="page-heading"><p class="eyebrow">02 / Our community</p><h1>People behind<br><i>the conversation.</i></h1><p>Different disciplines. A shared interest in what data can tell us about health and society.</p></header>
-  <div class="section-heading people-heading"><h2>The organising team</h2><span class="mono">Oxford & beyond</span></div>
+  <header class="page-heading"><h1>People</h1><p>The people who organise Metrics and Models.</p></header>
   <div class="people-grid">
   {% for person in people %}
     <article class="person">
-      {% if person.photo %}<img class="person-photo" src="{{ person.photo }}" alt="{{ person.name }}" width="88" height="88" loading="lazy">{% else %}<div class="person-initials" aria-hidden="true">{{ person.name | initials }}</div>{% endif %}
-      <div><p class="eyebrow">{{ person.role }}</p><h2><a href="{{ person.url }}" target="_blank" rel="noopener">{{ person.name }} {% icon "arrow-up-right" %}</a></h2>{% if person.affiliation %}<p>{{ person.affiliation }}</p>{% endif %}{% if person.bio %}<p class="person-bio">{{ person.bio }}</p>{% endif %}</div>
+      {% if person.photo %}<img class="person-photo" src="{{ person.photo }}" alt="{{ person.name }}" width="88" height="88" loading="lazy">{% endif %}
+      <div><h2><a href="{{ person.url }}" target="_blank" rel="noopener">{{ person.name }} {% icon "arrow-up-right" %}</a></h2>{% if person.role and person.role != "Organising team" %}<p>{{ person.role }}</p>{% endif %}{% if person.affiliation %}<p>{{ person.affiliation }}</p>{% endif %}{% if person.bio %}<p class="person-bio">{{ person.bio }}</p>{% endif %}</div>
     </article>
   {% endfor %}
   </div>
-  <div class="community-note"><h2>A wider circle.</h2><p>The series is open to researchers, practitioners, and anyone curious about health and social data science. You don't need to be based at Oxford to take part.</p><a href="/about/#join" class="text-link">Join the conversation {% icon "arrow-up-right" %}</a></div>
+  <p class="people-note">You do not need to be based at Oxford to attend the seminars. <a href="/about/#join">Joining information</a>.</p>
 </div>
