@@ -1,14 +1,14 @@
 # Metrics and Models website
 
-The rebuilt lab website is prepared for https://metrics-and-models.ai/.
+The rebuilt lab website is live at https://metrics-and-models.github.io/.
 Production is published from `main` in `metrics-and-models.github.io`; `dev`
 remains the working branch. The separate preview repository is published at:
 
 https://metrics-and-models.github.io/dev/
 
-Once the custom domain is connected to the organisation site, GitHub Pages
-redirects the old URLs to the new domain, including the preview at
-https://metrics-and-models.ai/dev/. No additional DNS record is needed for `/dev/`.
+The `metrics-and-models.ai` launch is on hold. Do not set a GitHub Pages custom
+domain or redirect the GitHub URLs until the owner explicitly approves the
+switch. Keep the production repository's Pages custom domain unset.
 
 ## Local preview and checks
 
@@ -37,7 +37,7 @@ To test the deployed path locally, stop the existing server first, then run
 `PATH_PREFIX=/dev npm run test:browser`.
 
 For the production configuration, use `SITE_ENV=production`,
-`SITE_URL=https://metrics-and-models.ai` and an empty `PATH_PREFIX` for all three
+`SITE_URL=https://metrics-and-models.github.io` and an empty `PATH_PREFIX` for all three
 commands. Local builds default to preview mode and remain unindexed.
 
 ## Updating content
@@ -153,13 +153,17 @@ After reviewing and testing changes on `dev`, merge them into `main` and push
 production repository's Pages publishing source must be **GitHub Actions**;
 its `github-pages` environment permits only `main` to deploy.
 
-Production builds set `SITE_ENV=production`, `SITE_URL=https://metrics-and-models.ai`
+Production builds set `SITE_ENV=production`, `SITE_URL=https://metrics-and-models.github.io`
 and an empty `PATH_PREFIX`. This generates root-relative assets, canonical URLs
-and calendar links for the new domain. Existing event UIDs and talk permalinks
+and calendar links for the GitHub domain. Existing event UIDs and talk permalinks
 are preserved. Production allows search indexing, except for `/dev/` and the
 404 page.
 
 ## Connecting the GoDaddy domain
+
+These are future launch instructions, not approval to change DNS or enable a
+redirect. The owner has explicitly requested that the GitHub site must not
+redirect yet. Obtain fresh approval before performing the switch below.
 
 DNS is managed at GoDaddy. Keep its existing nameservers and preserve email
 records (MX, SPF, DKIM and DMARC), ownership-verification TXT records and other
@@ -171,10 +175,14 @@ add `metrics-and-models.ai`, copy the generated TXT name and value into GoDaddy,
 then select Verify. Keep this TXT record permanently. Do not invent the token;
 GitHub generates it. See [GitHub's verification instructions](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages).
 
+After explicit approval, change the workflow's `SITE_URL` to
+`https://metrics-and-models.ai` for production only and test the build.
 Coordinate the domain switch with the DNS update: set the production repository's
 Pages custom domain to `metrics-and-models.ai` before pointing DNS at GitHub.
 That setting starts redirecting the old site, so do not leave a long gap before
 updating DNS. A `CNAME` file is not needed for an Actions-based Pages site.
+The preview will also move to `https://metrics-and-models.ai/dev/`; no additional
+DNS record is needed for `/dev/`.
 
 In GoDaddy's DNS records for `metrics-and-models.ai`, replace the parking A
 record(s) for `@` and update the existing `www` CNAME to these values:

@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PATH_PREFIX: ${{ (github.repository != 'metrics-and-models/metrics-and-models.github.io' || github.ref != 'refs/heads/main') && '/dev' || '' }}
-      SITE_URL: ${{ github.repository == 'metrics-and-models/metrics-and-models.github.io' && github.ref == 'refs/heads/main' && 'https://metrics-and-models.ai' || 'https://metrics-and-models.github.io' }}
+      SITE_URL: https://metrics-and-models.github.io
       SITE_ENV: ${{ github.repository == 'metrics-and-models/metrics-and-models.github.io' && github.ref == 'refs/heads/main' && 'production' || 'preview' }}
     steps:
       - uses: actions/checkout@v6
