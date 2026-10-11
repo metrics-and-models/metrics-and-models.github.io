@@ -1,4 +1,4 @@
-name: Development website
+name: Website
 
 on:
   push:
@@ -17,8 +17,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      PATH_PREFIX: /dev
-      SITE_URL: https://metrics-and-models.github.io
+      PATH_PREFIX: ${{ (github.repository != 'metrics-and-models/metrics-and-models.github.io' || github.ref != 'refs/heads/main') && '/dev' || '' }}
+      SITE_URL: ${{ github.repository == 'metrics-and-models/metrics-and-models.github.io' && github.ref == 'refs/heads/main' && 'https://metrics-and-models.ai' || 'https://metrics-and-models.github.io' }}
+      SITE_ENV: ${{ github.repository == 'metrics-and-models/metrics-and-models.github.io' && github.ref == 'refs/heads/main' && 'production' || 'preview' }}
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v4
@@ -31,13 +32,13 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm run test:browser
       - uses: actions/upload-pages-artifact@v4
-        if: github.repository == 'metrics-and-models/dev' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        if: (github.repository == 'metrics-and-models/dev' || github.repository == 'metrics-and-models/metrics-and-models.github.io') && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         with:
           path: dist
 
   deploy:
-    # Never deploy to the production repository from this development workflow.
-    if: github.repository == 'metrics-and-models/dev' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    # Only main deploys: the source repository is production; the dev repository is a preview.
+    if: (github.repository == 'metrics-and-models/dev' || github.repository == 'metrics-and-models/metrics-and-models.github.io') && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -47,6 +48,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy development preview
+      - name: Deploy website
         id: deployment
         uses: actions/deploy-pages@v4

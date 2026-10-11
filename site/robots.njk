@@ -3,4 +3,8 @@ permalink: /robots.txt
 eleventyExcludeFromCollections: true
 ---
 User-agent: *
+{% if site.production %}Allow: /
+Disallow: /dev/
+{% else %}
 Disallow: /
+{% endif %}

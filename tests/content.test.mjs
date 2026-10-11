@@ -13,6 +13,8 @@ import {
 
 const content = loadContent();
 const prefix = (process.env.PATH_PREFIX || "").replace(/\/$/, "");
+const origin = process.env.SITE_URL || "https://metrics-and-models.github.io";
+const production = process.env.SITE_ENV === "production";
 const html = (url) => load(fs.readFileSync("dist" + url, "utf8"));
 
 test("all source schedule rows and detail permalinks survive the rebuild", () => {
@@ -113,9 +115,11 @@ test("calendar files preserve times, escape content, fold UTF-8 lines and link t
         "DTSTART:" + event.date.iso.replace(/[-:]/g, "").replace(".000", ""),
       ),
     );
+    assert.ok(unfolded.includes("URL:" + origin + prefix + event.url));
+    assert.ok(unfolded.includes(origin + prefix + "/about/#join"));
     assert.ok(
       unfolded.includes(
-        "URL:https://metrics-and-models.github.io" + prefix + event.url,
+        "UID:" + path.basename(event.url, ".html") + "@metrics-and-models.github.io",
       ),
     );
     for (const line of ics.split("\r\n"))
@@ -134,7 +138,16 @@ test("all generated internal links, fragments and assets resolve, including the 
     .filter((file) => file.endsWith(".html"));
   for (const file of files) {
     const $ = html("/" + file);
-    assert.equal($('meta[name="robots"]').attr("content"), "noindex, nofollow");
+    assert.equal(
+      $('meta[name="robots"]').attr("content"),
+      production && file !== "404.html" ? undefined : "noindex, nofollow",
+    );
+    const canonical = origin + prefix + "/" + file.replace(/index\.html$/, "");
+    assert.equal(
+      $('link[rel="canonical"]').attr("href"),
+      file === "404.html" ? undefined : canonical,
+    );
+    assert.equal($('meta[property="og:url"]').attr("content"), canonical);
     for (const element of $("[href],[src]").toArray()) {
       for (const attribute of ["href", "src"]) {
         const value = $(element).attr(attribute);
@@ -167,6 +180,24 @@ test("all generated internal links, fragments and assets resolve, including the 
       }
     }
   }
+});
+
+test("search indexing is allowed only on production, never the preview", () => {
+  const robots = fs.readFileSync("dist/robots.txt", "utf8");
+  if (production) {
+    assert.match(robots, /^Allow: \/$/m);
+    assert.match(robots, /^Disallow: \/dev\/$/m);
+    assert.doesNotMatch(robots, /^Disallow: \/$/m);
+  } else {
+    assert.match(robots, /^Disallow: \/$/m);
+    assert.doesNotMatch(robots, /^Allow:/m);
+  }
+  const $ = html("/index.html");
+  assert.equal(
+    $(".footer-links a").last().attr("href"),
+    "https://github.com/metrics-and-models/metrics-and-models.github.io/tree/" +
+      (production ? "main" : "dev"),
+  );
 });
 
 test("styles and scripts are versioned by their content on every page", () => {

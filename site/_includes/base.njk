@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fcfcfa">
   <meta name="description" content="{{ description or site.description }}">
-  <meta name="robots" content="noindex, nofollow">
+  {% if not site.production or noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
+  {% if not noindex %}<link rel="canonical" href="{{ site.origin }}{{ site.prefix }}{{ page.url }}">{% endif %}
   <title>{% if talk %}{{ talk.speaker }}{% elif title %}{{ title }}{% else %}Health & social data science{% endif %} | Metrics and Models</title>
   <meta property="og:title" content="{{ title or site.name }}">
   <meta property="og:description" content="{{ description or site.description }}">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site.origin }}{{ site.prefix }}{{ page.url }}">
   <link rel="icon" href="/assets/legacy-logo.png" type="image/png">
   <link rel="preload" href="/assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="{{ '/assets/site.css' | assetVersion }}">
@@ -33,7 +35,7 @@
   </header>
   <main id="main">{{ content | safe }}</main>
   <footer class="site-footer">
-    <div class="container footer-bottom"><span>Metrics and Models / University of Oxford</span><div class="footer-links"><a href="mailto:{{ site.email }}">Contact</a><a href="https://github.com/metrics-and-models/metrics-and-models.github.io/tree/dev">Source</a></div></div>
+    <div class="container footer-bottom"><span>Metrics and Models / University of Oxford</span><div class="footer-links"><a href="mailto:{{ site.email }}">Contact</a><a href="https://github.com/metrics-and-models/metrics-and-models.github.io/tree/{% if site.production %}main{% else %}dev{% endif %}">Source</a></div></div>
   </footer>
 </body>
 </html>

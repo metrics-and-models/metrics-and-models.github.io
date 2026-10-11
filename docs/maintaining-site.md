@@ -1,13 +1,14 @@
-# Development website
+# Metrics and Models website
 
-The redesigned website lives on the `dev` branch. The existing production site
-and its `main` branch are unchanged. The development preview is published at:
+The rebuilt lab website is prepared for https://metrics-and-models.ai/.
+Production is published from `main` in `metrics-and-models.github.io`; `dev`
+remains the working branch. The separate preview repository is published at:
 
 https://metrics-and-models.github.io/dev/
 
-GitHub Pages project sites use an organisation hostname and repository path;
-`dev.metrics-models.github.io` is not an assignable Pages hostname. A separate
-custom domain can be configured later if desired.
+Once the custom domain is connected to the organisation site, GitHub Pages
+redirects the old URLs to the new domain, including the preview at
+https://metrics-and-models.ai/dev/. No additional DNS record is needed for `/dev/`.
 
 ## Local preview and checks
 
@@ -35,6 +36,10 @@ To test the deployed path locally, stop the existing server first, then run
 `PATH_PREFIX=/dev npm run build`, `PATH_PREFIX=/dev npm test` and
 `PATH_PREFIX=/dev npm run test:browser`.
 
+For the production configuration, use `SITE_ENV=production`,
+`SITE_URL=https://metrics-and-models.ai` and an empty `PATH_PREFIX` for all three
+commands. Local builds default to preview mode and remain unindexed.
+
 ## Updating content
 
 The existing Markdown is still the source of truth:
@@ -43,13 +48,13 @@ The existing Markdown is still the source of truth:
 - `details/previous_talks.md`: archive table.
 - `details/<speaker>.md`: title, date, institution, abstract, bio and links.
 
-The internal meeting schedule is excluded from the development website and is
+The internal meeting schedule is excluded from both published websites and is
 not loaded into template data. About contains only a brief mention of lab
 meetings, with no dates, cadence or schedule link. The build also removes the
 old generated schedule page from an existing `dist/` directory. Do not restore
 that page or copy the source schedule into published assets. The existing
 Markdown and public Git history are retained; this is not a confidentiality
-guarantee for information already published, and production is unchanged.
+guarantee for information already published.
 
 Keep each talk's existing `permalink` and the table's details link matching.
 Some older files have intentionally different filenames and permalinks; do not
@@ -137,15 +142,59 @@ The `preview` remote points to `https://github.com/metrics-and-models/dev.git`.
 For a fresh clone, add it with
 `git remote add preview https://github.com/metrics-and-models/dev.git`.
 
-The workflow tests both repositories but can only deploy from the preview
-repository's `main` branch. It cannot replace the production website. It builds
-with `/dev` prefixed to local links and assets. Search indexing is disabled in
-both HTML metadata and `robots.txt` for this development version.
+The workflow can deploy only from `main` in either of these two repositories.
+Pushing to `origin/dev` runs checks but never changes production. The preview
+build uses `/dev` for local links and assets; search indexing remains disabled.
 
-Promoting the design to production should be a separate, deliberate change:
-review/merge the source, adjust the workflow repository and path conditions,
-switch production Pages to Actions, and remove the staging robots directives.
-Do not change production Pages settings just to preview a development branch.
+## Publishing production
+
+After reviewing and testing changes on `dev`, merge them into `main` and push
+`origin/main`. Do not force-push or replace unrelated content changes. The
+production repository's Pages publishing source must be **GitHub Actions**;
+its `github-pages` environment permits only `main` to deploy.
+
+Production builds set `SITE_ENV=production`, `SITE_URL=https://metrics-and-models.ai`
+and an empty `PATH_PREFIX`. This generates root-relative assets, canonical URLs
+and calendar links for the new domain. Existing event UIDs and talk permalinks
+are preserved. Production allows search indexing, except for `/dev/` and the
+404 page.
+
+## Connecting the GoDaddy domain
+
+DNS is managed at GoDaddy. Keep its existing nameservers and preserve email
+records (MX, SPF, DKIM and DMARC), ownership-verification TXT records and other
+unrelated records. Do not enable domain forwarding or wildcard DNS.
+
+Before changing the website DNS records, verify ownership under the
+[organisation's Pages settings](https://github.com/organizations/metrics-and-models/settings/pages):
+add `metrics-and-models.ai`, copy the generated TXT name and value into GoDaddy,
+then select Verify. Keep this TXT record permanently. Do not invent the token;
+GitHub generates it. See [GitHub's verification instructions](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages).
+
+Coordinate the domain switch with the DNS update: set the production repository's
+Pages custom domain to `metrics-and-models.ai` before pointing DNS at GitHub.
+That setting starts redirecting the old site, so do not leave a long gap before
+updating DNS. A `CNAME` file is not needed for an Actions-based Pages site.
+
+In GoDaddy's DNS records for `metrics-and-models.ai`, replace the parking A
+record(s) for `@` and update the existing `www` CNAME to these values:
+
+| Type | Name | Value |
+| --- | --- | --- |
+| A | @ | 185.199.108.153 |
+| A | @ | 185.199.109.153 |
+| A | @ | 185.199.110.153 |
+| A | @ | 185.199.111.153 |
+| CNAME | www | metrics-and-models.github.io |
+
+Use GoDaddy's default TTL. Do not retain additional parking A or conflicting
+AAAA records at `@`. IPv6 is optional; add it only with the GitHub Pages values
+from the [custom-domain documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
+
+Once DNS is correct and GitHub has issued the certificate, enable **Enforce
+HTTPS**. Check the apex domain, `www` redirect, old GitHub URLs, `/dev/`, talk
+detail pages, calendar downloads and the internal schedule's 404 response.
+Do not report the custom domain as live until DNS and HTTPS have been checked.
 
 ## Dependencies and security
 

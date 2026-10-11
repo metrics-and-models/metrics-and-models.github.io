@@ -17,6 +17,7 @@ export default function (config) {
       "Metrics and Models: a collaborative lab for health and social data science at the University of Oxford, with an open seminar series.",
     origin: process.env.SITE_URL || "https://metrics-and-models.github.io",
     prefix,
+    production: process.env.SITE_ENV === "production",
     registration: "https://forms.office.com/e/M3j2M2hBFt",
     subscribe:
       "mailto:sympa@maillist.ox.ac.uk?subject=subscribe%20metrics_and_models",
