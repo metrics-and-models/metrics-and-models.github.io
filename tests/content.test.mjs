@@ -67,7 +67,10 @@ test("Christmas Eve is a break in the programme, not a seminar", () => {
   assert.equal(notice.length, 1);
   assert.equal(notice.find("time").attr("datetime"), "2026-12-24");
   assert.match(notice.text(), /No seminar/);
-  assert.equal(notice.find("h3").text(), "Silent night. Silent Zoom.");
+  assert.equal(
+    notice.find("h3").text(),
+    "All models are wrong. Some are wrapping.",
+  );
   assert.match(notice.find(".break-message").text(), /Christmas Eve/);
   assert.match(notice.prev().text(), /Ilya Kashnitsky/);
   assert.match(notice.next().text(), /Yang Chen/);
