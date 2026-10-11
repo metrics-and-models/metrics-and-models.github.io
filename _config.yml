@@ -3,3 +3,5 @@ logo: assets/metrics_and_models_logo.png
 description: Welcome to the Metrics and Models homepage!
 show_downloads: false
 theme: jekyll-theme-minimal
+exclude:
+  - details/internal_lab_sessions.md
