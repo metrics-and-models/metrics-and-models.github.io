@@ -168,6 +168,31 @@ test("all generated internal links, fragments and assets resolve, including the 
   }
 });
 
+test("the production logo is used unchanged in every page header and favicon", () => {
+  assert.deepEqual(
+    fs.readFileSync("dist/assets/legacy-logo.png"),
+    fs.readFileSync("assets/metrics_and_models_logo.png"),
+  );
+  const files = fs
+    .readdirSync("dist", { recursive: true })
+    .filter((file) => file.endsWith(".html"));
+  for (const file of files) {
+    const $ = html("/" + file);
+    const brand = $(".site-header .wordmark");
+    assert.equal(brand.attr("href"), prefix + "/");
+    assert.equal(brand.attr("aria-label"), "Metrics and Models home");
+    assert.equal(
+      brand.find(".brand-logo").attr("src"),
+      prefix + "/assets/legacy-logo.png",
+    );
+    assert.equal(brand.find(".brand-logo").attr("alt"), "");
+    assert.equal(
+      $("link[rel=icon]").attr("href"),
+      prefix + "/assets/legacy-logo.png",
+    );
+  }
+});
+
 test("lab profiles support optional links, photos and interests without a hierarchy", () => {
   const people = JSON.parse(fs.readFileSync("site/_data/people.json", "utf8"));
   const $ = html("/people/index.html");

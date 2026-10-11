@@ -71,6 +71,52 @@ test("responsive pages have no overflow, broken assets or browser errors", async
   expect(errors).toEqual([]);
 });
 
+test("the production logo fits alongside the header navigation", async ({
+  page,
+}) => {
+  await page.goto("people/");
+  await page.evaluate(() => document.fonts.ready);
+  const brand = page.getByRole("link", {
+    name: "Metrics and Models home",
+    exact: true,
+  });
+  const logo = brand.locator("img");
+  await expect(logo).toBeVisible();
+  await expect
+    .poll(() => logo.evaluate((img) => img.complete && img.naturalWidth))
+    .toBe(1024);
+  const layout = await page.locator(".header-inner").evaluate((header) => {
+    const logo = header.querySelector(".brand-logo").getBoundingClientRect();
+    const name = header.querySelector(".wordmark span").getBoundingClientRect();
+    const brand = header.querySelector(".wordmark").getBoundingClientRect();
+    const navigation = [
+      header.querySelector(".menu-toggle"),
+      header.querySelector("nav"),
+    ]
+      .find((element) => element.getBoundingClientRect().width > 0)
+      .getBoundingClientRect();
+    return {
+      square: logo.width === logo.height,
+      nameFits: name.left >= logo.right && name.right <= navigation.left,
+      sameRow:
+        brand.right <= navigation.left &&
+        navigation.top < brand.bottom &&
+        brand.top < navigation.bottom,
+      inside: logo.left >= 0 && navigation.right <= innerWidth,
+    };
+  });
+  expect(layout).toEqual({
+    square: true,
+    nameFits: true,
+    sameRow: true,
+    inside: true,
+  });
+  await brand.click();
+  await expect(page.locator(".introduction h1")).toHaveText(
+    "Metrics and Models",
+  );
+});
+
 test("Christmas Eve is clearly marked as a seminar break", async ({
   page,
 }, testInfo) => {

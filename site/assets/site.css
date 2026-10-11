@@ -173,9 +173,20 @@ img {
   border-bottom: 1px solid var(--line);
 }
 .wordmark {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
   font: 20px/1.3 var(--serif);
   color: var(--ink);
   text-decoration: none;
+}
+.brand-logo {
+  display: block;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 #main-nav {
   display: flex;
@@ -839,7 +850,12 @@ input::placeholder {
     min-height: 74px;
   }
   .wordmark {
+    gap: 10px;
     font-size: 18px;
+  }
+  .brand-logo {
+    width: 52px;
+    height: 52px;
   }
   #main-nav {
     gap: 17px;
@@ -1084,10 +1100,13 @@ input::placeholder {
     display: inline-flex;
     margin-right: -7px;
   }
+  .wordmark {
+    max-width: calc(100% - 52px);
+  }
   #main-nav {
     display: none;
     position: absolute;
-    top: 65px;
+    top: 100%;
     left: -20px;
     right: -20px;
     z-index: 10;
