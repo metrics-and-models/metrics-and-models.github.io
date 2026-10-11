@@ -13,7 +13,7 @@ import {
 
 const content = loadContent();
 const prefix = (process.env.PATH_PREFIX || "").replace(/\/$/, "");
-const origin = process.env.SITE_URL || "https://metrics-and-models.github.io";
+const origin = process.env.SITE_URL || "https://metrics-and-models.ai";
 const production = process.env.SITE_ENV === "production";
 const html = (url) => load(fs.readFileSync("dist" + url, "utf8"));
 

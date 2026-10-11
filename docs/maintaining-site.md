@@ -1,14 +1,20 @@
 # Metrics and Models website
 
-The rebuilt lab website is live at https://metrics-and-models.github.io/.
-Production is published from `main` in `metrics-and-models.github.io`; `dev`
-remains the working branch. The separate preview repository is published at:
+The production and development websites are deliberately separate:
 
-https://metrics-and-models.github.io/dev/
+| Site | Source | Hosting |
+| --- | --- | --- |
+| https://metrics-and-models.github.io/ | Original seminar site, after Yang Chen was added (`9506e5b`) | Original repository, `main`, native Jekyll Pages build |
+| https://metrics-and-models.ai/ | Rebuilt lab site, maintained on `dev` | Separate `metrics-and-models/dev` repository, `main`, GitHub Actions |
 
-The `metrics-and-models.ai` launch is on hold. Do not set a GitHub Pages custom
-domain or redirect the GitHub URLs until the owner explicitly approves the
-switch. Keep the production repository's Pages custom domain unset.
+Keep the production repository's Pages custom domain unset. Only the separate
+dev repository may use `metrics-and-models.ai`. Do not merge the rebuilt site
+into production or redirect the production domain without explicit approval.
+The production restoration retains the removal of the internal schedule link
+and excludes that schedule from Jekyll publishing.
+
+The `.ai` binding is configured on the dev repository; public availability
+still requires GoDaddy DNS and GitHub's HTTPS certificate to be ready.
 
 ## Local preview and checks
 
@@ -32,13 +38,11 @@ npm run test:browser
 The browser suite checks five desktop, tablet and mobile widths, every talk detail page,
 archive filtering, navigation, calendars, images and animation behaviour.
 
-To test the deployed path locally, stop the existing server first, then run
-`PATH_PREFIX=/dev npm run build`, `PATH_PREFIX=/dev npm test` and
-`PATH_PREFIX=/dev npm run test:browser`.
-
-For the production configuration, use `SITE_ENV=production`,
-`SITE_URL=https://metrics-and-models.github.io` and an empty `PATH_PREFIX` for all three
-commands. Local builds default to preview mode and remain unindexed.
+To match the deployed dev site, use `SITE_ENV=preview`,
+`SITE_URL=https://metrics-and-models.ai` and an empty `PATH_PREFIX` for all three
+commands. These are also the local defaults. The rebuilt site remains unindexed.
+The optional `/dev` path-prefix checks can still be run with `PATH_PREFIX=/dev`,
+but the custom-domain deployment must not use that prefix.
 
 ## Updating content
 
@@ -142,28 +146,29 @@ The `preview` remote points to `https://github.com/metrics-and-models/dev.git`.
 For a fresh clone, add it with
 `git remote add preview https://github.com/metrics-and-models/dev.git`.
 
-The workflow can deploy only from `main` in either of these two repositories.
-Pushing to `origin/dev` runs checks but never changes production. The preview
-build uses `/dev` for local links and assets; search indexing remains disabled.
+The workflow can deploy only from `main` in `metrics-and-models/dev`.
+Pushing to `origin/dev` runs checks but never changes production. The dev build
+uses root-relative links and assets, with `SITE_URL=https://metrics-and-models.ai`
+and an empty `PATH_PREFIX`. Search indexing remains disabled. Its custom domain
+is set only in the dev repository's Pages settings. The former `/dev/` preview
+URL may redirect to `.ai`; the production homepage must not.
 
 ## Publishing production
 
-After reviewing and testing changes on `dev`, merge them into `main` and push
-`origin/main`. Do not force-push or replace unrelated content changes. The
-production repository's Pages publishing source must be **GitHub Actions**;
-its `github-pages` environment permits only `main` to deploy.
+Production remains the original Jekyll site on `main`. Its Pages source is
+**Deploy from a branch**, branch `main`, folder `/ (root)`, and the custom-domain
+field must stay empty. The rebuild workflow is not part of production.
 
-Production builds set `SITE_ENV=production`, `SITE_URL=https://metrics-and-models.github.io`
-and an empty `PATH_PREFIX`. This generates root-relative assets, canonical URLs
-and calendar links for the GitHub domain. Existing event UIDs and talk permalinks
-are preserved. Production allows search indexing, except for `/dev/` and the
-404 page.
+Do not merge `dev` into `main`: their site implementations now intentionally
+differ. Make approved seminar-content updates on `main` and apply the same
+content-only changes to `dev` when needed. Do not force-push or discard history.
+Preserve `_config.yml`'s exclusion of `details/internal_lab_sessions.md` and keep
+the homepage free of internal schedule links or timing information.
 
 ## Connecting the GoDaddy domain
 
-These are future launch instructions, not approval to change DNS or enable a
-redirect. The owner has explicitly requested that the GitHub site must not
-redirect yet. Obtain fresh approval before performing the switch below.
+The owner has approved `.ai` for the rebuilt dev site only, not a migration of
+production. Do not put this domain in the production repository's Pages settings.
 
 DNS is managed at GoDaddy. Keep its existing nameservers and preserve email
 records (MX, SPF, DKIM and DMARC), ownership-verification TXT records and other
@@ -175,14 +180,9 @@ add `metrics-and-models.ai`, copy the generated TXT name and value into GoDaddy,
 then select Verify. Keep this TXT record permanently. Do not invent the token;
 GitHub generates it. See [GitHub's verification instructions](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages).
 
-After explicit approval, change the workflow's `SITE_URL` to
-`https://metrics-and-models.ai` for production only and test the build.
-Coordinate the domain switch with the DNS update: set the production repository's
-Pages custom domain to `metrics-and-models.ai` before pointing DNS at GitHub.
-That setting starts redirecting the old site, so do not leave a long gap before
-updating DNS. A `CNAME` file is not needed for an Actions-based Pages site.
-The preview will also move to `https://metrics-and-models.ai/dev/`; no additional
-DNS record is needed for `/dev/`.
+Set only `metrics-and-models/dev`'s Pages custom domain to `metrics-and-models.ai`
+before pointing DNS at GitHub. A `CNAME` file is not needed for its Actions-based
+Pages build. The dev site is served from the domain root, not `/dev/`.
 
 In GoDaddy's DNS records for `metrics-and-models.ai`, replace the parking A
 record(s) for `@` and update the existing `www` CNAME to these values:
@@ -195,13 +195,20 @@ record(s) for `@` and update the existing `www` CNAME to these values:
 | A | @ | 185.199.111.153 |
 | CNAME | www | metrics-and-models.github.io |
 
+The `www` CNAME names the GitHub account, not a production-site redirect. GitHub
+routes requests for `.ai` to the dev repository that owns the custom-domain
+binding; production remains accessible independently at its GitHub URL.
+
 Use GoDaddy's default TTL. Do not retain additional parking A or conflicting
 AAAA records at `@`. IPv6 is optional; add it only with the GitHub Pages values
 from the [custom-domain documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
 
 Once DNS is correct and GitHub has issued the certificate, enable **Enforce
-HTTPS**. Check the apex domain, `www` redirect, old GitHub URLs, `/dev/`, talk
-detail pages, calendar downloads and the internal schedule's 404 response.
+HTTPS** on the dev repository. Check the `.ai` homepage, People, talk details,
+calendar downloads and internal schedule's 404 response. Verify the original
+GitHub homepage still returns HTTP 200 without a redirect, renders the legacy
+seminar site and includes Yang Chen. Check the internal schedule is also 404
+on production.
 Do not report the custom domain as live until DNS and HTTPS have been checked.
 
 ## Dependencies and security
