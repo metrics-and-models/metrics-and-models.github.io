@@ -68,7 +68,6 @@ export default function (config) {
   });
   config.addPassthroughCopy({
     "site/assets": "assets",
-    "assets/logo.png": "assets/oxford-partners.png",
     "assets/metrics_and_models_logo.png": "assets/legacy-logo.png",
   });
   config.addPassthroughCopy({

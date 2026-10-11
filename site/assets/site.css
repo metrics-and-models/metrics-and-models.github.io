@@ -705,15 +705,6 @@ input::placeholder {
   padding-left: 22px;
   border-left: 1px solid var(--line);
 }
-.partners {
-  border-top: 1px solid var(--line);
-  padding-top: 30px;
-}
-.partners img {
-  display: block;
-  width: 100%;
-  max-width: 580px;
-}
 .notice {
   display: flex;
   align-items: flex-start;
@@ -1062,9 +1053,6 @@ input::placeholder {
   }
   .prose {
     font-size: 18px;
-  }
-  .partners {
-    padding-top: 23px;
   }
   .notice {
     font-size: 12px;

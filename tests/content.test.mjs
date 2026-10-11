@@ -235,6 +235,11 @@ test("each page uses the original logo once, plus its favicon", () => {
   for (const file of files) {
     const $ = html("/" + file);
     const brand = $(".site-header .wordmark");
+    assert.equal(
+      $('.partners, img[src$="/oxford-partners.png"]').length,
+      0,
+      file + ": no departmental logo strip",
+    );
     assert.equal(brand.attr("href"), prefix + "/");
     assert.equal(brand.attr("aria-label"), "Metrics and Models home");
     const logo = $("img[src='" + prefix + "/assets/legacy-logo.png']");
