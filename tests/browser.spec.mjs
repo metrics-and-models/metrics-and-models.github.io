@@ -431,8 +431,16 @@ test("sketches stay framed through a full network rotation and stop offscreen", 
     expect(clipped, "animation sample " + step).toEqual([]);
   }
   await page.screenshot({ path: testInfo.outputPath("moving-sketches.png") });
+  // Leave enough scroll range to hide every sketch even on compact pages.
+  const viewport = page.viewportSize();
+  await page.setViewportSize({
+    ...viewport,
+    height: Math.min(viewport.height, 600),
+  });
   await page.locator("footer").scrollIntoViewIfNeeded();
-  await expect(canvases.first()).not.toBeInViewport();
+  for (const canvas of await canvases.all()) {
+    await expect(canvas).not.toBeInViewport();
+  }
   await page.clock.runFor(100);
   const snapshots = () =>
     canvases.evaluateAll((items) => items.map((canvas) => canvas.toDataURL()));

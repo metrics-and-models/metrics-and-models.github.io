@@ -14,7 +14,7 @@ export default function (config) {
   config.addGlobalData("site", {
     name: "Metrics and Models",
     description:
-      "Metrics and Models: a collaborative lab for health and social data science at the University of Oxford, with an open seminar series.",
+      "Metrics and Models: a University of Oxford lab developing computational methods for complex problems in health and society, with an open seminar series.",
     origin: process.env.SITE_URL || "https://metrics-and-models.ai",
     prefix,
     production: process.env.SITE_ENV === "production",

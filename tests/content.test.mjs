@@ -318,12 +318,25 @@ test("the lab is introduced separately from its open seminar programme", () => {
   const about = html("/about/index.html");
   assert.match(
     home(".intro-copy").text(),
-    /lab for health and social data science/,
+    /lab at the University of Oxford, developing computational methods for complex problems in health and society/,
   );
   assert.equal(home(".intro-copy a").first().attr("href"), prefix + "/people/");
   assert.equal(home("#upcoming h2").text(), "Open seminars");
   assert.match(home(".programme-intro").text(), /open to everyone/);
-  assert.match(about("main").text(), /flat structure/);
+  assert.match(
+    about(".page-heading").text(),
+    /develop computational methods for complex problems/,
+  );
+  for (const page of [home, about, html("/people/index.html")]) {
+    assert.doesNotMatch(
+      page("main").text(),
+      /flat structure|everyone is a lab member|lab leader/i,
+    );
+    assert.match(
+      page('meta[name="description"]').attr("content"),
+      /developing computational methods/,
+    );
+  }
   assert.match(about("#join").text(), /do not need to be a lab member/);
 });
 
