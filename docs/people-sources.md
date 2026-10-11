@@ -40,8 +40,8 @@ Keywords summarise the research described on these pages. Google Scholar and
 GitHub links come from members' own linked pages, or are corroborated against
 public GitHub profiles and attributed research or teaching repositories. They
 are not guessed from names.
-All profiles use the same "Lab member" role. No academic seniority or leadership
-roles from external biographies are reproduced.
+All profiles share the same presentation, without repeated role labels.
+No academic seniority or leadership roles from external biographies are reproduced.
 
 ## GitHub verification
 

@@ -177,7 +177,8 @@ test("lab profiles support optional links, photos and interests without a hierar
     const profile = $(".person").eq(index);
     assert.ok(person.name);
     assert.equal(person.role, "Lab member");
-    assert.equal(profile.find(".person-role").text(), "Lab member");
+    assert.equal(profile.find(".person-role").length, 0);
+    assert.doesNotMatch(profile.text(), /\bLab member\b/i);
     assert.equal(profile.find("h2").text().trim(), person.name);
     if (person.url) {
       assert.ok(/^https:\/\//.test(person.url));

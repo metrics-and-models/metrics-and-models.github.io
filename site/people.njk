@@ -15,7 +15,6 @@ permalink: /people/index.html
     <article class="person">
       <div>
         <h2>{{ person.name }}</h2>
-        <p class="person-role">{{ person.role }}</p>
         {% if person.interests | length %}<p class="person-interests">{{ person.interests | join("; ") }}.</p>{% endif %}
         {% if person.bio %}<p class="person-bio">{{ person.bio }}</p>{% endif %}
         {% if person.url or person.links | length %}

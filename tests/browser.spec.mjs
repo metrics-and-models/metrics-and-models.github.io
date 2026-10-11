@@ -155,9 +155,7 @@ test("navigation is keyboard accessible on mobile and desktop", async ({
     .click();
   await expect(page.locator("h1")).toHaveText("People");
   await expect(page.locator(".person")).toHaveCount(people.length);
-  await expect(page.locator(".person-role")).toHaveText(
-    people.map(() => "Lab member"),
-  );
+  await expect(page.locator(".person-role")).toHaveCount(0);
   if (await menu.isVisible()) await menu.click();
   await page
     .getByRole("navigation")
