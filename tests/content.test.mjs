@@ -62,6 +62,27 @@ test("the homepage lists each talk once and marks the next seminar", () => {
   assert.equal(first.find(".next-marker").text(), "Next");
 });
 
+test("Christmas Eve is a break in the programme, not a seminar", () => {
+  const $ = html("/index.html");
+  const notice = $(".programme-break");
+  assert.equal(notice.length, 1);
+  assert.equal(notice.find("time").attr("datetime"), "2026-12-24");
+  assert.match(notice.text(), /No seminar/);
+  assert.equal(notice.find("h3").text(), "Silent night. Silent Zoom.");
+  assert.match(notice.find(".break-message").text(), /Christmas Eve/);
+  assert.match(notice.prev().text(), /Ilya Kashnitsky/);
+  assert.match(notice.next().text(), /Yang Chen/);
+  assert.equal(notice.find("a, button, .next-marker").length, 0);
+  assert.ok(
+    content.upcoming.every((talk) => !talk.date.iso.startsWith("2026-12-24")),
+  );
+  assert.equal(fs.readdirSync("dist/calendar").length, content.upcoming.length);
+  assert.equal(
+    html("/details/previous_talks.html")(".programme-break").length,
+    0,
+  );
+});
+
 test("summer and winter seminar times convert correctly to UTC", () => {
   assert.equal(
     parseDate("14:00 BST, 15th October, 2026").iso,

@@ -20,6 +20,11 @@ export default function (config) {
   config.addFilter("displayTitle", (title) =>
     /^(TBC|TBD)$/.test(title || "") ? "Title forthcoming" : title,
   );
+  config.addFilter("withBreaks", (talks, breaks = []) =>
+    [...talks, ...breaks.map((entry) => ({ ...entry, isBreak: true }))].sort(
+      (a, b) => a.date.iso.localeCompare(b.date.iso),
+    ),
+  );
   config.addShortcode("icon", (name, className = "") => {
     if (!/^[a-z-]+$/.test(name)) throw new Error("Invalid icon name");
     return fs

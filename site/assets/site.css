@@ -317,12 +317,28 @@ img {
 .section-heading > .mono {
   color: var(--muted);
 }
-.talk-row {
+.talk-row,
+.programme-break {
   display: grid;
   grid-template-columns: 86px minmax(0, 1fr) 95px;
   gap: 27px;
   padding-block: 25px;
   border-bottom: 1px solid var(--line);
+}
+.programme-break .talk-main {
+  grid-column: 2 / -1;
+}
+.break-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #4f756b;
+  font: 500 12px/1.5 var(--sans);
+}
+.break-message {
+  margin-top: 7px;
+  color: var(--muted);
+  font: 13px/1.7 var(--sans);
 }
 .talk-date {
   display: flex;
@@ -764,7 +780,8 @@ input::placeholder {
     display: block;
     margin: 3px 0 0;
   }
-  .talk-row {
+  .talk-row,
+  .programme-break {
     grid-template-columns: 76px minmax(0, 1fr) 90px;
     gap: 20px;
   }
@@ -872,7 +889,8 @@ input::placeholder {
   .section-heading .text-link {
     font-size: 12px;
   }
-  .talk-row {
+  .talk-row,
+  .programme-break {
     grid-template-columns: 67px minmax(0, 1fr);
     gap: 5px 17px;
     padding-block: 23px;
@@ -1105,7 +1123,8 @@ input::placeholder {
     width: 112px;
     height: 108px;
   }
-  .talk-row {
+  .talk-row,
+  .programme-break {
     grid-template-columns: 59px minmax(0, 1fr);
     column-gap: 14px;
   }

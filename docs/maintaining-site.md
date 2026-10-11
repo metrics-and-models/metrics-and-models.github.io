@@ -55,6 +55,11 @@ To move a talk to the archive, move its table row from `README.md` into
 sorted row in the upcoming table; archiving is deliberately manual. Calendar
 downloads use the listed GMT/BST offset and assume a one-hour seminar.
 
+Planned breaks are listed in `seminarBreaks` in the front matter of
+`site/index.njk`. They appear in date order alongside talks, but do not count as
+seminars, receive a "Next" label, or generate calendar invitations. Remove a
+break from that list once it is no longer part of the upcoming programme.
+
 Historical source inconsistencies have not been silently corrected: the archive
 and detail files disagree on the time zones of Mathew Zook and Weisi Guo, and
 several old archive rows use BST outside the summer period. Review those source

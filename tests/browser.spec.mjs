@@ -61,6 +61,26 @@ test("responsive pages have no overflow, broken assets or browser errors", async
   expect(errors).toEqual([]);
 });
 
+test("Christmas Eve is clearly marked as a seminar break", async ({
+  page,
+}, testInfo) => {
+  await page.goto("");
+  const notice = page.locator(".programme-break");
+  await notice.scrollIntoViewIfNeeded();
+  await expect(notice.getByText("No seminar", { exact: true })).toBeVisible();
+  await expect(notice.getByRole("heading")).toHaveText(
+    "Silent night. Silent Zoom.",
+  );
+  await expect(notice.locator("time")).toHaveAttribute(
+    "datetime",
+    "2026-12-24",
+  );
+  await expect(notice.locator("a, button")).toHaveCount(0);
+  await expect(page.locator(".talk-row")).toHaveCount(content.upcoming.length);
+  await page.evaluate(() => document.fonts.ready);
+  await page.screenshot({ path: testInfo.outputPath("christmas-break.png") });
+});
+
 test("archive search, year filtering and empty state work together", async ({
   page,
 }) => {

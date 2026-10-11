@@ -2,6 +2,14 @@
 layout: base.njk
 section: lab
 home: true
+seminarBreaks:
+  - date:
+      iso: "2026-12-24"
+      day: "24"
+      month: Dec
+      year: "2026"
+    title: Silent night. Silent Zoom.
+    message: The models are taking Christmas Eve off.
 ---
 <header class="container introduction" data-animation-group data-animation-name="animations">
   <h1>Metrics <i>and</i> Models</h1>
@@ -26,5 +34,5 @@ home: true
 <section id="upcoming" class="container programme section-space">
   <div class="section-heading"><h2>Open seminars</h2><a href="/details/previous_talks.html" class="text-link">Previous talks</a></div>
   <p class="programme-intro">Every other Thursday, 14:00 UK time. Online and open to everyone. <a href="/about/#join">Mailing list &amp; joining information</a>.</p>
-  {% set events = seminars.upcoming %}{% set highlightNext = true %}{% include "talk-list.njk" %}
+  {% set events = seminars.upcoming | withBreaks(seminarBreaks) %}{% set highlightNext = true %}{% include "talk-list.njk" %}
 </section>
