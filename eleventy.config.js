@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import { createHash } from "node:crypto";
 import { load } from "cheerio";
 import { loadContent } from "./lib/content.mjs";
 
@@ -24,6 +25,13 @@ export default function (config) {
   config.addFilter("displayTitle", (title) =>
     /^(TBC|TBD)$/.test(title || "") ? "Title forthcoming" : title,
   );
+  config.addFilter("assetVersion", (url) => {
+    const version = createHash("sha256")
+      .update(fs.readFileSync("site" + url))
+      .digest("hex")
+      .slice(0, 12);
+    return `${url}?v=${version}`;
+  });
   config.addFilter("withBreaks", (talks, breaks = []) =>
     [...talks, ...breaks.map((entry) => ({ ...entry, isBreak: true }))].sort(
       (a, b) => a.date.iso.localeCompare(b.date.iso),

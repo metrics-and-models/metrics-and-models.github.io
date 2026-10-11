@@ -98,6 +98,8 @@ test("the production logo fits alongside the header navigation", async ({
     return {
       square: logo.width === logo.height,
       nameFits: name.left >= logo.right && name.right <= navigation.left,
+      centred: Math.abs(logo.y + logo.height / 2 - name.y - name.height / 2) < 1,
+      close: name.left - logo.right <= 6,
       sameRow:
         brand.right <= navigation.left &&
         navigation.top < brand.bottom &&
@@ -108,6 +110,8 @@ test("the production logo fits alongside the header navigation", async ({
   expect(layout).toEqual({
     square: true,
     nameFits: true,
+    centred: true,
+    close: true,
     sameRow: true,
     inside: true,
   });
@@ -115,6 +119,35 @@ test("the production logo fits alongside the header navigation", async ({
   await expect(page.locator(".introduction h1")).toHaveText(
     "Metrics and Models",
   );
+});
+
+test("the brand stays on one line at the mobile navigation breakpoint", async ({
+  page,
+}) => {
+  await page.goto("");
+  await page.evaluate(() => document.fonts.ready);
+  const menu = page.locator(".menu-toggle");
+  for (const width of [421, 480, 481]) {
+    await page.setViewportSize({ width, height: 850 });
+    const layout = await page.locator(".wordmark span").evaluate((name) => {
+      const bounds = name.getBoundingClientRect();
+      return {
+        singleLine: bounds.height <= parseFloat(getComputedStyle(name).lineHeight) + 1,
+        inside: document.documentElement.scrollWidth === innerWidth,
+      };
+    });
+    expect(layout, String(width)).toEqual({ singleLine: true, inside: true });
+    if (width <= 480) {
+      await expect(menu).toBeVisible();
+      await menu.click();
+      await expect(page.locator("nav")).toBeVisible();
+      await page.keyboard.press("Escape");
+      await expect(page.locator("nav")).not.toBeVisible();
+    } else {
+      await expect(menu).not.toBeVisible();
+      await expect(page.locator("nav")).toBeVisible();
+    }
+  }
 });
 
 test("Christmas Eve is clearly marked as a seminar break", async ({

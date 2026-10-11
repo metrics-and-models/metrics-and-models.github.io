@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import { createHash } from "node:crypto";
 import path from "node:path";
 import { load } from "cheerio";
 import {
@@ -165,6 +166,26 @@ test("all generated internal links, fragments and assets resolve, including the 
         }
       }
     }
+  }
+});
+
+test("styles and scripts are versioned by their content on every page", () => {
+  const files = fs
+    .readdirSync("dist", { recursive: true })
+    .filter((file) => file.endsWith(".html"));
+  for (const file of files) {
+    const $ = html("/" + file);
+    const assets = $("link[rel=stylesheet], script[src]");
+    assert.ok(assets.length >= 2, file);
+    assets.each((_, element) => {
+      const value = $(element).attr("href") || $(element).attr("src");
+      const url = new URL(value, "https://test.invalid");
+      const version = createHash("sha256")
+        .update(fs.readFileSync("dist" + url.pathname.slice(prefix.length)))
+        .digest("hex")
+        .slice(0, 12);
+      assert.equal(url.searchParams.get("v"), version, file + ": " + value);
+    });
   }
 });
 

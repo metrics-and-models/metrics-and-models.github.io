@@ -28,7 +28,7 @@
     document.addEventListener("click", (event) => {
       if (!event.target.closest(".header-inner")) closeMenu();
     });
-    matchMedia("(min-width: 421px)").addEventListener("change", closeMenu);
+    matchMedia("(min-width: 481px)").addEventListener("change", closeMenu);
   }
 
   const search = document.querySelector("[data-search-input]");
