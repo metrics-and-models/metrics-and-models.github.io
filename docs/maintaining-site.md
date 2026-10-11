@@ -28,7 +28,7 @@ npm run test:browser
 ```
 
 `CHROME_PATH=/usr/bin/google-chrome npm run test:browser` uses an installed Chrome.
-The browser suite checks desktop and two mobile widths, every talk detail page,
+The browser suite checks five desktop, tablet and mobile widths, every talk detail page,
 archive filtering, navigation, calendars, images and animation behaviour.
 
 To test the deployed path locally, stop the existing server first, then run

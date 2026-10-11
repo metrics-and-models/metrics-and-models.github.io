@@ -1,7 +1,9 @@
 import { test, expect } from "@playwright/test";
+import fs from "node:fs";
 import { loadContent } from "../lib/content.mjs";
 
 const content = loadContent();
+const people = JSON.parse(fs.readFileSync("site/_data/people.json", "utf8"));
 
 test("responsive pages have no overflow, broken assets or browser errors", async ({
   page,
@@ -102,7 +104,7 @@ test("navigation is keyboard accessible on mobile and desktop", async ({
     .getByRole("link", { name: /People/ })
     .click();
   await expect(page.locator("h1")).toContainText("People behind");
-  await expect(page.locator(".person")).toHaveCount(8);
+  await expect(page.locator(".person")).toHaveCount(people.length);
 });
 
 test("seminar details, registration and calendar downloads are connected", async ({
