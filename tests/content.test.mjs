@@ -352,6 +352,11 @@ test("the lab is introduced separately from its open seminar programme", () => {
     about(".page-heading").text(),
     /develop computational methods for complex problems/,
   );
+  assert.ok(
+    about(".editorial-section").first().text().includes(
+      "We are a group of scholars from the Demographic Science Unit, the Oxford Internet Institute, Engineering Sciences, and the Department of Sociology.",
+    ),
+  );
   for (const page of [home, about, html("/people/index.html")]) {
     assert.doesNotMatch(
       page("main").text(),
