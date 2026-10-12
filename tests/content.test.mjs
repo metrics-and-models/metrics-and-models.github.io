@@ -254,6 +254,25 @@ test("each page uses the original logo once, plus its favicon", () => {
   }
 });
 
+test("the header links to people, seminars and about, with the brand linking home", () => {
+  const files = fs
+    .readdirSync("dist", { recursive: true })
+    .filter((file) => file.endsWith(".html"));
+  for (const file of files) {
+    const $ = html("/" + file);
+    assert.deepEqual(
+      $("#main-nav a").toArray().map((link) => [$(link).text(), $(link).attr("href")]),
+      [
+        ["People", prefix + "/people/"],
+        ["Seminars", prefix + "/#upcoming"],
+        ["About", prefix + "/about/"],
+      ],
+      file,
+    );
+    assert.equal($(".site-header .wordmark").attr("href"), prefix + "/");
+  }
+});
+
 test("lab profiles support optional links, photos and interests without a hierarchy", () => {
   const people = JSON.parse(fs.readFileSync("site/_data/people.json", "utf8"));
   const $ = html("/people/index.html");

@@ -1,5 +1,24 @@
 [
   {
+    "name": "Aarushi Sharma",
+    "url": "https://www.st-andrews.ac.uk/international-relations/people/as589",
+    "urlLabel": "St Andrews profile",
+    "role": "Lab member",
+    "interests": [
+      "Mechanistic interpretability",
+      "Large language models",
+      "Natural language processing",
+      "Nuclear ethics"
+    ],
+    "bio": "University of St Andrews and University of Oxford.",
+    "links": [
+      {
+        "label": "LinkedIn",
+        "url": "https://uk.linkedin.com/in/aarushi-sharma-741493195"
+      }
+    ]
+  },
+  {
     "name": "Anda-Raluca Epure",
     "url": "https://uk.linkedin.com/in/anda-raluca-epure-7b28021b7",
     "role": "Lab member",

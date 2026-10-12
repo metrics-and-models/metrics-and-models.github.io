@@ -6,6 +6,12 @@ directory; this file records supporting sources and portrait provenance.
 
 ## Research interests and links
 
+- Aarushi Sharma (checked 12 October 2026): [St Andrews profile](https://www.st-andrews.ac.uk/international-relations/people/as589),
+  [LinkedIn](https://uk.linkedin.com/in/aarushi-sharma-741493195),
+  [language-model interpretability research](https://research-portal.st-andrews.ac.uk/en/publications/encoding-without-influence-dissociating-demographic-representatio/),
+  and [Oxford Academic contributor biography](https://academic.oup.com/edited-volume/61790/chapter-abstract/545102734).
+  The site owner supplied the St Andrews and Oxford affiliations. No portrait
+  or personal GitHub account was confidently verified, so neither is included.
 - Anda-Raluca Epure: [LinkedIn](https://uk.linkedin.com/in/anda-raluca-epure-7b28021b7),
   [her public research announcement](https://uk.linkedin.com/in/devangi-dave-6453b3205)
   reproduced in the public activity feed, and the

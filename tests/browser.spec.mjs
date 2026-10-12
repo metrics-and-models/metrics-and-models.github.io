@@ -242,6 +242,10 @@ test("navigation is keyboard accessible on mobile and desktop", async ({
     .click();
   await expect(page.locator("#upcoming")).toBeInViewport();
   await expect(page.locator("#upcoming h2")).toHaveText("Open seminars");
+  await expect(page.locator("#main-nav a")).toHaveText(["People", "Seminars", "About"]);
+  await page.goto("people/");
+  await page.getByRole("link", { name: "Metrics and Models home", exact: true }).click();
+  await expect(page.locator(".intro-brand h1")).toHaveText("Metrics and Models");
 });
 
 test("seminar details, registration and calendar downloads are connected", async ({
