@@ -1,0 +1,136 @@
+[
+  {
+    "title": "RobustiPy: An efficient next-generation multiversal library with model selection, averaging, resampling, and explainable AI",
+    "date": "2026-08-01",
+    "year": 2026,
+    "journal": "Patterns",
+    "url": "https://doi.org/10.1016/j.patter.2026.101609",
+    "authors": 4,
+    "members": [
+      "Charlie Rahal",
+      "Daniel Valdenegro",
+      "Jiani Yan"
+    ]
+  },
+  {
+    "title": "When Behavioral Data Betray Users: A Diagnostic and Protective Framework Against Social Interaction Leakages",
+    "date": "2026-05-28",
+    "year": 2026,
+    "journal": "Information Systems Research",
+    "url": "https://doi.org/10.1287/isre.2024.1469",
+    "authors": 5,
+    "members": [
+      "Xiaowen Dong"
+    ]
+  },
+  {
+    "title": "Leveraging High‐Frequency Digital Data to Analyze Forced Displacement Dynamics: A Case Study from the Gaza Strip",
+    "date": "2026-05-15",
+    "year": 2026,
+    "journal": "Population and Development Review",
+    "url": "https://doi.org/10.1111/padr.70064",
+    "authors": 3,
+    "members": [
+      "Ridhi Kashyap"
+    ]
+  },
+  {
+    "title": "Training language models to be warm can reduce accuracy and increase sycophancy",
+    "date": "2026-04-29",
+    "year": 2026,
+    "journal": "Nature",
+    "url": "https://doi.org/10.1038/s41586-026-10410-0",
+    "authors": 3,
+    "members": [
+      "Luc Rocher"
+    ]
+  },
+  {
+    "title": "Evaluating Model Predictive Performance in Confirmatory Factor Analysis with Binary Outcomes Using the InterModel Vigorish",
+    "date": "2026-03-30",
+    "year": 2026,
+    "journal": "Multivariate Behavioral Research",
+    "url": "https://doi.org/10.1080/00273171.2026.2645212",
+    "authors": 6,
+    "members": [
+      "Charlie Rahal"
+    ]
+  },
+  {
+    "title": "Temperature and sex ratios at birth",
+    "date": "2026-02-19",
+    "year": 2026,
+    "journal": "Proceedings of the National Academy of Sciences",
+    "url": "https://doi.org/10.1073/pnas.2422625123",
+    "authors": 5,
+    "members": [
+      "Ridhi Kashyap"
+    ]
+  },
+  {
+    "title": "Attributing and situating knowledge cannot be left to language models",
+    "date": "2026-02-06",
+    "year": 2026,
+    "journal": "Nature Machine Intelligence",
+    "url": "https://doi.org/10.1038/s42256-026-01193-0",
+    "authors": 2,
+    "members": [
+      "Luc Rocher"
+    ]
+  },
+  {
+    "title": "Beyond Prototypicality: Identity Leadership Is About Shaping and Embedding a Sense of Social Identity, Not Just Representing It",
+    "date": "2026-02-05",
+    "year": 2026,
+    "journal": "Journal of Applied Social Psychology",
+    "url": "https://doi.org/10.1111/jasp.70049",
+    "authors": 53,
+    "members": [
+      "Daniel Valdenegro"
+    ]
+  },
+  {
+    "title": "Reliability of LLMs as medical assistants for the general public: a randomized preregistered study",
+    "date": "2026-02-01",
+    "year": 2026,
+    "journal": "Nature Medicine",
+    "url": "https://doi.org/10.1038/s41591-025-04074-y",
+    "authors": 11,
+    "members": [
+      "Luc Rocher"
+    ]
+  },
+  {
+    "title": "On the Impact of Sample Size in Reconstructing Noisy Graph Signals: A Theoretical Characterisation",
+    "date": "2026-01-01",
+    "year": 2026,
+    "journal": "IEEE Transactions on Signal Processing",
+    "url": "https://doi.org/10.1109/tsp.2026.3674580",
+    "authors": 3,
+    "members": [
+      "Xiaowen Dong"
+    ]
+  },
+  {
+    "title": "Harnessing registry data to identify socio-demographic and socio-economic gaps in HIV care in the Netherlands",
+    "date": "2025-11-26",
+    "year": 2025,
+    "journal": "Nature Communications",
+    "url": "https://doi.org/10.1038/s41467-025-65512-6",
+    "authors": 12,
+    "members": [
+      "Mark Verhagen"
+    ]
+  },
+  {
+    "title": "Risk of new HIV diagnosis by intersecting migration, socioeconomic, and mental health vulnerabilities in the Netherlands: a nationwide analysis of the ATHENA cohort and Statistics Netherlands registry data",
+    "date": "2025-11-21",
+    "year": 2025,
+    "journal": "The Lancet Regional Health - Europe",
+    "url": "https://doi.org/10.1016/j.lanepe.2025.101508",
+    "authors": 100,
+    "members": [
+      "Mark Verhagen"
+    ]
+  }
+]

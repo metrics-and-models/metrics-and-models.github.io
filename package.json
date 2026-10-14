@@ -7,7 +7,8 @@
     "build": "eleventy",
     "dev": "eleventy --serve --port=8081",
     "test": "node --test tests/content.test.mjs",
-    "test:browser": "playwright test"
+    "test:browser": "playwright test",
+    "publications": "node scripts/fetch-publications.mjs"
   },
   "engines": {
     "node": ">=22"

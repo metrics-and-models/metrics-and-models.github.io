@@ -5,13 +5,15 @@ section: about
 animated: true
 permalink: /about/index.html
 ---
+{% from "hero.njk" import hero %}
+{% call hero("page") %}
+  <p class="eyebrow-code">// about</p>
+  <h1>About the lab</h1>
+  <p class="hero-lead">Metrics and Models brings together researchers at the University of Oxford to develop computational methods for complex problems in health and society.</p>
+{% endcall %}
 <div class="container section-space">
-  <header class="page-heading">
-    <div class="heading-line"><h1>About the lab</h1>{% set plot = "distribution" %}{% set plotLabel = "Illustrative animated probability distribution" %}{% include "science-decoration.njk" %}</div>
-    <p>Metrics and Models brings together researchers at the University of Oxford to develop computational methods for complex problems in health and society.</p>
-  </header>
   <section class="editorial-section"><h2>Working together</h2><div class="prose"><p>We are a group of scholars from the Demographic Science Unit, the Oxford Internet Institute, Engineering Sciences, and the Department of Sociology. Together, we develop methods, test ideas, and tackle shared research questions.</p><p>Our work spans machine learning, measurement, population health, computational social science, and open research.</p><p>Meet the <a href="/people/">lab members</a>. New members and collaborations are welcome; <a href="mailto:{{ site.email }}">get in touch</a> if you would like to be involved.</p></div></section>
-  <section class="editorial-section" id="join"><h2>Open seminars</h2><div class="prose"><p>Alongside our collaborative research, we run an <a href="/#upcoming">open seminar series</a>. We meet online every other Thursday at 14:00 UK time (GMT or BST). Everyone is welcome, including people outside academia; you do not need to be a lab member to attend.</p><p>Subscribe to the mailing list for invitations and joining information, or register using the form.</p><div class="inline-links"><a class="text-link" href="{{ site.subscribe }}">Subscribe by email {% icon "mail" %}</a><a class="text-link" href="{{ site.registration }}" target="_blank" rel="noopener">Registration form {% icon "arrow-up-right" %}</a></div><p class="small muted">Oxford colleagues can also <a href="https://web.maillist.ox.ac.uk/ox/info/metrics_and_models" target="_blank" rel="noopener">subscribe through the mailing-list service</a>.</p></div></section>
+  <section class="editorial-section" id="join"><h2>Open seminars</h2><div class="prose"><p>Alongside our collaborative research, we run an <a href="/seminars/">open seminar series</a>. We meet online every other Thursday at 14:00 UK time (GMT or BST). Everyone is welcome, including people outside academia; you do not need to be a lab member to attend.</p><p>Subscribe to the mailing list for invitations and joining information, or register using the form.</p><div class="inline-links"><a class="text-link" href="{{ site.subscribe }}">Subscribe by email {% icon "mail" %}</a><a class="text-link" href="{{ site.registration }}" target="_blank" rel="noopener">Registration form {% icon "arrow-up-right" %}</a></div><p class="small muted">Oxford colleagues can also <a href="https://web.maillist.ox.ac.uk/ox/info/metrics_and_models" target="_blank" rel="noopener">subscribe through the mailing-list service</a>.</p></div></section>
   <section class="editorial-section"><h2>Giving a talk</h2><div class="prose"><p>Suggestions for future seminars are welcome.</p><a class="text-link" href="https://forms.office.com/e/KsFZYcMz5C" target="_blank" rel="noopener">Propose a talk {% icon "arrow-up-right" %}</a></div></section>
   <section class="editorial-section" id="lab-meetings"><h2>Lab meetings</h2><div class="prose"><p>Lab members also meet internally to share work in progress and discuss collaborations.</p></div></section>
 </div>

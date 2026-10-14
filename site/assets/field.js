@@ -1,11 +1,13 @@
 (() => {
+  // Publication palette, tuned to read on the navy banner.
   const colours = {
-    ink: "#62645f",
-    line: "#b0b2aa",
-    grid: "#d5d6cf",
-    blue: "#355287",
-    red: "#944a3d",
-    green: "#4f756b",
+    ink: "#75BBD4",
+    line: "#74ADD1",
+    grid: "#5d84ad",
+    blue: "#FEE7BA",
+    red: "#E66859",
+    green: "#74D1AF",
+    fill: "#74ADD133",
   };
 
   function dot(context, x, y, radius, colour) {
@@ -131,7 +133,7 @@
     const xPixel = (x) => 7 + x * (width - 13);
     const yPixel = (x) => height - 6 - density(x) * (height - 13);
     const barWidth = (width - 13) / 12;
-    context.fillStyle = "#35528726";
+    context.fillStyle = colours.fill;
     for (let bin = 0; bin < 12; bin++) {
       const x = (bin + 0.5) / 12;
       const y = yPixel(x);
@@ -190,7 +192,7 @@
             : Math.cos(
                 (row - column) * (1.15 + Math.sin(time * 0.0006) * 0.65),
               );
-        context.fillStyle = value >= 0 ? colours.blue : colours.red;
+        context.fillStyle = value >= 0 ? colours.line : colours.red;
         context.globalAlpha = 0.15 + Math.abs(value) * 0.7;
         context.fillRect(
           6 + column * cellWidth,
@@ -253,6 +255,66 @@
     );
   }
 
+  // A slowly turning knot of short strands: many noisy trajectories that
+  // together trace one shape. Drawn at native size for the homepage banner.
+  const tints = ["#E66859", "#FEE7BA", "#75BBD4", "#74ADD1", "#74D1AF"];
+  const strands = Array.from({ length: 1100 }, (_, index) => {
+    const random = (seed) => {
+      const x = Math.sin(index * 127.1 + seed * 311.7) * 43758.5453;
+      return x - Math.floor(x);
+    };
+    return {
+      u: (index / 1100) * Math.PI * 2,
+      spread: [random(1) - 0.5, random(2) - 0.5, random(3) - 0.5],
+      speed: 0.6 + random(4) * 0.8,
+      length: 0.03 + random(5) * 0.07,
+      tint: random(6) < 0.09 ? tints[Math.floor(random(7) * tints.length)] : "",
+      alpha: 0.18 + random(8) * 0.5,
+    };
+  });
+  function ribbon(context, width, height, time) {
+    const size = Math.min(width, height * 1.2) * 0.135;
+    const turn = time * 0.00011;
+    const tilt = 0.55 + Math.sin(time * 0.00007) * 0.15;
+    const project = (u, spread, wobble) => {
+      // A trefoil knot with a breathing cross-section.
+      let x = Math.sin(u) + 2 * Math.sin(2 * u);
+      let y = Math.cos(u) - 2 * Math.cos(2 * u);
+      let z = -Math.sin(3 * u);
+      const width = 0.55 + Math.sin(u * 3 + wobble) * 0.2;
+      x += spread[0] * width;
+      y += spread[1] * width;
+      z += spread[2] * width;
+      const cosT = Math.cos(turn), sinT = Math.sin(turn);
+      [x, z] = [x * cosT - z * sinT, x * sinT + z * cosT];
+      const cosL = Math.cos(tilt), sinL = Math.sin(tilt);
+      [y, z] = [y * cosL - z * sinL, y * sinL + z * cosL];
+      const depth = 4.2 / (4.2 + z * 0.35);
+      return [x * size * depth, y * size * depth, depth];
+    };
+    context.save();
+    context.translate(width / 2, height / 2);
+    context.globalCompositeOperation = "lighter";
+    context.lineWidth = 0.7;
+    const wobble = time * 0.0006;
+    for (const strand of strands) {
+      const head = strand.u + time * 0.000045 * strand.speed;
+      const [x1, y1, depth] = project(head, strand.spread, wobble);
+      const [x0, y0] = project(head - strand.length, strand.spread, wobble);
+      const colour = strand.tint || "#ffffff";
+      context.globalAlpha = strand.alpha * (depth - 0.55);
+      context.strokeStyle = colour;
+      context.beginPath();
+      context.moveTo(x0, y0);
+      context.lineTo(x1, y1);
+      context.stroke();
+      context.globalAlpha = Math.min(1, strand.alpha * 1.6 * depth);
+      context.fillStyle = colour;
+      context.fillRect(x1 - 0.8, y1 - 0.8, 1.6 * depth, 1.6 * depth);
+    }
+    context.restore();
+  }
+
   const renderers = {
     flow,
     network,
@@ -261,12 +323,16 @@
     heatmap,
     series,
     contours,
+    ribbon,
   };
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
 
   for (const group of document.querySelectorAll("[data-animation-group]")) {
     const button = group.querySelector(".motion-toggle");
     if (!button) continue;
+    const names = Object.keys(renderers).filter((name) => name !== "ribbon");
+    for (const canvas of group.querySelectorAll('canvas[data-plot="random"]'))
+      canvas.dataset.plot = names[Math.floor(Math.random() * names.length)];
     const plots = [...group.querySelectorAll("canvas[data-plot]")]
       .map((canvas) => ({
         canvas,
@@ -289,7 +355,14 @@
     const draw = (plot) => {
       if (!plot.width || !plot.height) return;
       plot.context.clearRect(0, 0, plot.width, plot.height);
-      plot.render(plot.context, plot.width, plot.height, time);
+      // Draw on a small logical canvas and scale it up, so the sketches keep
+      // their proportions and line weights when they fill a whole banner.
+      const zoom =
+        plot.canvas.dataset.plot === "ribbon" ? 1 : Math.max(1, plot.width / 420);
+      plot.context.save();
+      plot.context.scale(zoom, zoom);
+      plot.render(plot.context, plot.width / zoom, plot.height / zoom, time);
+      plot.context.restore();
     };
     const tick = (now) => {
       if (last) time += Math.min(now - last, 50);

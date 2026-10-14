@@ -38,6 +38,7 @@
   },
   {
     "name": "Ava Keeling",
+    "openalex": "A5117514735",
     "url": "https://www.demography.ox.ac.uk/people/ava-keeling",
     "role": "Lab member",
     "interests": [
@@ -57,6 +58,8 @@
   },
   {
     "name": "Charlie Rahal",
+    "orcid": "0000-0002-1764-2697",
+    "openalex": "A5075497327",
     "url": "https://crahal.com/",
     "role": "Lab member",
     "interests": [
@@ -79,6 +82,8 @@
   },
   {
     "name": "Daniel Valdenegro",
+    "orcid": "0000-0003-3695-0123",
+    "openalex": "A5079162755",
     "url": "https://www.demography.ox.ac.uk/people/daniel-valdenegro",
     "role": "Lab member",
     "interests": [
@@ -121,6 +126,7 @@
   },
   {
     "name": "Jiani Yan",
+    "openalex": ["A5049685049", "A5147208101"],
     "url": "https://jianiyan.com/",
     "role": "Lab member",
     "interests": [
@@ -144,6 +150,7 @@
   },
   {
     "name": "Luc Rocher",
+    "openalex": "A5003244640",
     "url": "https://rocher.lc/",
     "role": "Lab member",
     "interests": [
@@ -189,6 +196,7 @@
   },
   {
     "name": "Mark Verhagen",
+    "openalex": "A5000313412",
     "url": "https://markverhagen.me/",
     "role": "Lab member",
     "interests": [
@@ -252,6 +260,7 @@
   },
   {
     "name": "Ridhi Kashyap",
+    "openalex": "A5031279419",
     "url": "https://www.sociology.ox.ac.uk/people/ridhi-kashyap",
     "role": "Lab member",
     "interests": [
@@ -275,6 +284,7 @@
   },
   {
     "name": "Xiaowen Dong",
+    "openalex": "A5101579932",
     "url": "https://web.media.mit.edu/~xdong/",
     "role": "Lab member",
     "interests": [

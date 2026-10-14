@@ -1,0 +1,10 @@
+{#- Navy page banner with a randomly chosen animated plot behind the text. -#}
+{% macro hero(size = "") %}
+<header class="hero{% if size %} hero-{{ size }}{% endif %}" data-animation-group data-animation-name="background animation">
+  <canvas class="hero-plot" data-plot="random" aria-hidden="true"></canvas>
+  <div class="container hero-inner">
+    {{ caller() }}
+  </div>
+  <button class="motion-toggle icon-button" aria-label="Pause background animation" title="Pause background animation"><span data-pause>{% icon "pause" %}</span><span data-play hidden>{% icon "play" %}</span></button>
+</header>
+{% endmacro %}

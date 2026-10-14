@@ -1,0 +1,44 @@
+---
+layout: base.njk
+title: Projects
+section: projects
+animated: true
+permalink: /projects/index.html
+---
+{% from "hero.njk" import hero %}
+{% call hero("page") %}
+  <p class="eyebrow-code">// projects</p>
+  <h1>Projects</h1>
+  <p class="hero-lead">Research projects and recent publications from members of the lab.</p>
+{% endcall %}
+<section id="projects" class="container section-space">
+  <div class="section-heading"><h2>Highlighted projects</h2></div>
+  <div class="card-grid">
+  {% for project in projects %}
+    <a class="talk-card accent-{{ loop.index0 % 4 }}" href="{{ project.url }}">
+      <span class="card-date">{{ project.tag }}</span>
+      <h3>{{ project.title }}</h3>
+      <p class="card-text">{{ project.summary }}</p>
+      <span class="card-more">Learn more {% icon "arrow-right" %}</span>
+    </a>
+  {% else %}
+    {% for slot in [0, 1, 2] %}
+    <div class="talk-card project-placeholder accent-{{ slot }}" aria-hidden="true"><span class="skeleton short"></span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton mid"></span></div>
+    {% endfor %}
+  {% endfor %}
+  </div>
+  {% if not projects | length %}<p class="section-note placeholder-note">Project write-ups are coming soon.</p>{% endif %}
+</section>
+<section id="publications" class="container section-space">
+  <div class="section-heading"><h2>Recent publications</h2></div>
+  <ol class="archive-list publication-list">
+  {% for paper in publications %}
+    <li class="talk-row">
+      <time class="mono" datetime="{{ paper.date }}">{{ paper.date | monthYear }}</time>
+      <span class="archive-speaker">{{ paper.members | join(", ") }}<span>{{ paper.journal }}</span></span>
+      <span class="archive-title"><a href="{{ paper.url }}" target="_blank" rel="noopener">{{ paper.title }}</a></span>
+    </li>
+  {% endfor %}
+  </ol>
+  <p class="section-note placeholder-note">Journal articles by lab members from the last two years, via <a href="https://openalex.org" target="_blank" rel="noopener">OpenAlex</a>.</p>
+</section>

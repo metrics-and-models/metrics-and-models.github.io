@@ -5,10 +5,12 @@ section: people
 animated: true
 permalink: /people/index.html
 ---
+{% from "hero.njk" import hero %}
+{% call hero("page") %}
+  <p class="eyebrow-code">// the lab</p>
+  <h1>People</h1>
+{% endcall %}
 <div class="container section-space people-page">
-  <header class="page-heading">
-    <div class="heading-line"><h1>People</h1>{% set plot = "network" %}{% set plotLabel = "Illustrative animated network connections" %}{% include "science-decoration.njk" %}</div>
-  </header>
   <div class="people-grid">
   {% for person in people %}
     <article class="person">
@@ -27,5 +29,5 @@ permalink: /people/index.html
     </article>
   {% endfor %}
   </div>
-  <p class="people-note">Interested in joining the lab? <a href="mailto:{{ site.email }}">Get in touch</a>. Our <a href="/#upcoming">seminar series</a> is open to everyone.</p>
+  <p class="people-note">Interested in joining the lab? <a href="mailto:{{ site.email }}">Get in touch</a>. Our <a href="/seminars/">seminar series</a> is open to everyone.</p>
 </div>
