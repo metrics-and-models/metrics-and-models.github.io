@@ -7,7 +7,7 @@ pagination:
   alias: talk
 permalink: "{{ talk.url }}"
 ---
-{% from "hero.njk" import hero %}
+{% from "hero.njk" import hero with context %}
 {% call hero("page") %}
   <a class="back-link" href="{% if talk.archived %}/seminars/#previous{% else %}/seminars/{% endif %}">{% icon "arrow-left" %} {% if talk.archived %}Previous talks{% else %}All seminars{% endif %}</a>
   <p class="eyebrow-code">// {% if talk.archived %}past seminar{% else %}seminar{% endif %} · {{ talk.date.day }} {{ talk.date.month }} {{ talk.date.year }}</p>

@@ -5,29 +5,17 @@ section: projects
 animated: true
 permalink: /projects/index.html
 ---
-{% from "hero.njk" import hero %}
+{% from "hero.njk" import hero with context %}
 {% call hero("page") %}
   <p class="eyebrow-code">// projects</p>
   <h1>Projects</h1>
   <p class="hero-lead">Research projects and recent publications from members of the lab.</p>
 {% endcall %}
-<section id="projects" class="container section-space">
-  <div class="section-heading"><h2>Highlighted projects</h2></div>
-  <div class="card-grid">
-  {% for project in projects %}
-    <a class="talk-card accent-{{ loop.index0 % 4 }}" href="{{ project.url }}">
-      <span class="card-date">{{ project.tag }}</span>
-      <h3>{{ project.title }}</h3>
-      <p class="card-text">{{ project.summary }}</p>
-      <span class="card-more">Learn more {% icon "arrow-right" %}</span>
-    </a>
-  {% else %}
-    {% for slot in [0, 1, 2] %}
-    <div class="talk-card project-placeholder accent-{{ slot }}" aria-hidden="true"><span class="skeleton short"></span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton mid"></span></div>
-    {% endfor %}
-  {% endfor %}
+<section id="projects" class="deck-section">
+  <div class="container">
+    <div class="section-heading"><h2>Highlighted projects</h2></div>
+    {% set featured = highlights %}{% include "feature-carousel.njk" %}
   </div>
-  {% if not projects | length %}<p class="section-note placeholder-note">Project write-ups are coming soon.</p>{% endif %}
 </section>
 <section id="publications" class="container section-space">
   <div class="section-heading"><h2>Recent publications</h2></div>

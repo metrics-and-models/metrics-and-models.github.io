@@ -1,0 +1,48 @@
+[
+  {
+    "title": "RobustiPy: An efficient next-generation multiversal library with model selection, averaging, resampling, and explainable AI",
+    "date": "2026-08-01",
+    "year": 2026,
+    "journal": "Patterns",
+    "url": "https://doi.org/10.1016/j.patter.2026.101609",
+    "authors": 4,
+    "members": [
+      "Charlie Rahal",
+      "Daniel Valdenegro",
+      "Jiani Yan"
+    ]
+  },
+  {
+    "title": "Training language models to be warm can reduce accuracy and increase sycophancy",
+    "date": "2026-04-29",
+    "year": 2026,
+    "journal": "Nature",
+    "url": "https://doi.org/10.1038/s41586-026-10410-0",
+    "authors": 3,
+    "members": [
+      "Luc Rocher"
+    ]
+  },
+  {
+    "title": "Leveraging High‐Frequency Digital Data to Analyze Forced Displacement Dynamics: A Case Study from the Gaza Strip",
+    "date": "2026-05-15",
+    "year": 2026,
+    "journal": "Population and Development Review",
+    "url": "https://doi.org/10.1111/padr.70064",
+    "authors": 3,
+    "members": [
+      "Ridhi Kashyap"
+    ]
+  },
+  {
+    "title": "Mortality under locally unprecedented heat is better estimated with cross-regional learning",
+    "date": "2026-06-26",
+    "year": 2026,
+    "journal": "Environmental Research Letters",
+    "url": "https://doi.org/10.1088/1748-9326/ae8317",
+    "authors": 9,
+    "members": [
+      "Xiaowen Dong"
+    ]
+  }
+]

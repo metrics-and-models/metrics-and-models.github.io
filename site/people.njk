@@ -5,7 +5,7 @@ section: people
 animated: true
 permalink: /people/index.html
 ---
-{% from "hero.njk" import hero %}
+{% from "hero.njk" import hero with context %}
 {% call hero("page") %}
   <p class="eyebrow-code">// the lab</p>
   <h1>People</h1>

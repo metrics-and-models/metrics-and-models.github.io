@@ -13,6 +13,28 @@
     ]
   },
   {
+    "title": "Mortality under locally unprecedented heat is better estimated with cross-regional learning",
+    "date": "2026-06-26",
+    "year": 2026,
+    "journal": "Environmental Research Letters",
+    "url": "https://doi.org/10.1088/1748-9326/ae8317",
+    "authors": 9,
+    "members": [
+      "Xiaowen Dong"
+    ]
+  },
+  {
+    "title": "Tactical asset allocation with macroeconomic regime detection",
+    "date": "2026-06-11",
+    "year": 2026,
+    "journal": "Quantitative Finance",
+    "url": "https://doi.org/10.1080/14697688.2026.2659195",
+    "authors": 5,
+    "members": [
+      "Xiaowen Dong"
+    ]
+  },
+  {
     "title": "When Behavioral Data Betray Users: A Diagnostic and Protective Framework Against Social Interaction Leakages",
     "date": "2026-05-28",
     "year": 2026,
@@ -109,28 +131,6 @@
     "authors": 3,
     "members": [
       "Xiaowen Dong"
-    ]
-  },
-  {
-    "title": "Harnessing registry data to identify socio-demographic and socio-economic gaps in HIV care in the Netherlands",
-    "date": "2025-11-26",
-    "year": 2025,
-    "journal": "Nature Communications",
-    "url": "https://doi.org/10.1038/s41467-025-65512-6",
-    "authors": 12,
-    "members": [
-      "Mark Verhagen"
-    ]
-  },
-  {
-    "title": "Risk of new HIV diagnosis by intersecting migration, socioeconomic, and mental health vulnerabilities in the Netherlands: a nationwide analysis of the ATHENA cohort and Statistics Netherlands registry data",
-    "date": "2025-11-21",
-    "year": 2025,
-    "journal": "The Lancet Regional Health - Europe",
-    "url": "https://doi.org/10.1016/j.lanepe.2025.101508",
-    "authors": 100,
-    "members": [
-      "Mark Verhagen"
     ]
   }
 ]

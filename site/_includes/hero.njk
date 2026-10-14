@@ -1,9 +1,14 @@
-{#- Navy page banner with a randomly chosen animated plot behind the text. -#}
-{% macro hero(size = "") %}
+{#- Black page banner: copy on the left, a randomly chosen animated plot on
+    the right (cropped, never stretched), and a notice row linking to the next talk. Import `with context`. -#}
+{% macro hero(size = "", notice = true) %}
 <header class="hero{% if size %} hero-{{ size }}{% endif %}" data-animation-group data-animation-name="background animation">
-  <canvas class="hero-plot" data-plot="random" aria-hidden="true"></canvas>
-  <div class="container hero-inner">
-    {{ caller() }}
+  <canvas class="hero-plot" data-plot="random" data-fit="right" aria-hidden="true"></canvas>
+  <div class="container hero-frame">
+    {% if notice and seminars.next %}<a class="hero-notice" href="{{ seminars.next.url }}"><span class="pill-tag">Next talk</span><span>{{ seminars.next.date.day }} {{ seminars.next.date.month }} · {{ seminars.next.speaker }} — {{ seminars.next.title | displayTitle }}</span>{% icon "arrow-right" %}</a>
+    {% else %}<p class="hero-notice"><span class="pill-tag">Open to all</span><span>Every other Thursday · 14:00 UK time · online</span></p>{% endif %}
+    <div class="hero-grid">
+      <div class="hero-copy">{{ caller() }}</div>
+    </div>
   </div>
   <button class="motion-toggle icon-button" aria-label="Pause background animation" title="Pause background animation"><span data-pause>{% icon "pause" %}</span><span data-play hidden>{% icon "play" %}</span></button>
 </header>

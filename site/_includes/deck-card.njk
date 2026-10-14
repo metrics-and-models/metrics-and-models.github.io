@@ -11,7 +11,7 @@
   <div class="deck-body">
     <span class="deck-meta">{{ event.date.time or "Time TBC" }} · {{ event.mode }}</span>
     <h3>{{ event.title | displayTitle }}</h3>
-    <p class="deck-text">{{ event.speaker | replace("CANCELLED ", "") }}{% if event.institution %} · {{ event.institution }}{% endif %}</p>
+    <p class="deck-text"><span class="deck-speaker">{{ event.speaker | replace("CANCELLED ", "") }}</span>{% if event.institution %}<span class="deck-institution">{{ event.institution }}</span>{% endif %}</p>
     <span class="card-more">Click to see more {% icon "arrow-right" %}</span>
   </div>
 </a>

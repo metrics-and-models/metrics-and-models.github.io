@@ -77,7 +77,7 @@ test("Christmas Eve is a break in the programme, not a seminar", () => {
   assert.match(notice.text(), /No seminar/);
   assert.equal(
     notice.find("h3").text(),
-    "All models are wrong. Some are wrapping.",
+    "Winter break",
   );
   assert.match(notice.find(".break-message").text(), /Christmas Eve/);
   assert.match(notice.prev().text(), /Ilya Kashnitsky/);

@@ -158,7 +158,7 @@ test("Christmas Eve is clearly marked as a seminar break", async ({
   await notice.scrollIntoViewIfNeeded();
   await expect(notice.getByText("No seminar", { exact: true })).toBeVisible();
   await expect(notice.getByRole("heading")).toHaveText(
-    "All models are wrong. Some are wrapping.",
+    "Winter break",
   );
   await expect(notice.locator("time")).toHaveAttribute(
     "datetime",

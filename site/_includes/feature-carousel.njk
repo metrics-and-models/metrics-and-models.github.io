@@ -1,0 +1,21 @@
+{#- Rotating split panel of publications. Expects `featured`. -#}
+  <div class="feature" data-carousel>
+    <div class="feature-slides">
+    {% for paper in featured %}
+      <article class="feature-slide tone-{{ loop.index0 }}" id="paper-{{ loop.index0 }}"{% if not loop.first %} hidden{% endif %} aria-roledescription="slide" aria-label="{{ loop.index }} of {{ featured | length }}">
+        <div class="feature-cover"><span class="feature-journal">{{ paper.journal }}</span><span class="feature-year">{{ paper.year }}</span></div>
+        <div class="feature-copy">
+          <p class="eyebrow-code">// {{ paper.members | join(" · ") }}</p>
+          <h3><a href="{{ paper.url }}" target="_blank" rel="noopener">{{ paper.title }}</a></h3>
+          <p class="feature-meta"><em>{{ paper.journal }}</em> · {{ paper.year }}</p>
+          <a class="button button-white" href="{{ paper.url }}" target="_blank" rel="noopener">Read the paper {% icon "arrow-up-right" %}</a>
+        </div>
+      </article>
+    {% endfor %}
+    </div>
+    <ol class="feature-tabs" role="tablist" aria-label="Recent publications">
+    {% for paper in featured %}
+      <li><button role="tab" aria-controls="paper-{{ loop.index0 }}" aria-selected="{{ 'true' if loop.first else 'false' }}"><span class="tab-progress"></span><span class="tab-title">{{ paper.title }}</span></button></li>
+    {% endfor %}
+    </ol>
+  </div>
