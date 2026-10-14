@@ -4,6 +4,7 @@ import { loadContent } from "../lib/content.mjs";
 
 const content = loadContent();
 const people = JSON.parse(fs.readFileSync("site/_data/people.json", "utf8"));
+const plots = ["network", "distribution", "scatter", "heatmap", "series", "contours"];
 
 test("responsive pages have no overflow, broken assets or browser errors", async ({
   page,
@@ -15,9 +16,10 @@ test("responsive pages have no overflow, broken assets or browser errors", async
   });
   const pages = [
     "",
+    "seminars/",
     "people/",
+    "projects/",
     "about/",
-    "details/previous_talks.html",
     ...content.details.map((t) => t.url.slice(1)),
   ];
   for (const url of pages) {
@@ -32,9 +34,11 @@ test("responsive pages have no overflow, broken assets or browser errors", async
       scroll: document.documentElement.scrollWidth,
       outside: [
         ...document.querySelectorAll(
-          "main h1, main h2, main h3, main p, main a, main button, main canvas",
+          "main h1, main h2, main h3, main p, main a, main button",
         ),
       ]
+        // Queued project cards are deliberately clipped at the edges and inert.
+        .filter((el) => !el.closest("[inert]"))
         .filter((el) => {
           const box = el.getBoundingClientRect();
           return box.width && (box.right > innerWidth + 1 || box.left < -1);
@@ -52,100 +56,53 @@ test("responsive pages have no overflow, broken assets or browser errors", async
         .toBeTruthy();
     }
     await page.evaluate(() => scrollTo({ top: 0, behavior: "instant" }));
-    if (
-      [
-        "",
-        "people/",
-        "about/",
-        "details/previous_talks.html",
-        "details/emilycantrell.html",
-      ].includes(url)
-    )
+    if (["", "seminars/", "people/", "projects/", "about/", "details/emilycantrell.html"].includes(url))
       await page.screenshot({
-        path: testInfo.outputPath(
-          (url || "home").replaceAll("/", "-") + ".png",
-        ),
+        path: testInfo.outputPath((url || "home").replaceAll("/", "-") + ".png"),
         fullPage: true,
       });
   }
   expect(errors).toEqual([]);
 });
 
-test("the production logo fits alongside the header navigation", async ({
+test("the old previous-talks address lands on the seminars archive", async ({
   page,
 }) => {
-  await page.goto("people/");
-  await page.evaluate(() => document.fonts.ready);
-  const brand = page.getByRole("link", {
-    name: "Metrics and Models home",
-    exact: true,
-  });
-  const logo = brand.locator("img");
-  await expect(logo).toBeVisible();
-  await expect
-    .poll(() => logo.evaluate((img) => img.complete && img.naturalWidth))
-    .toBe(1024);
-  const layout = await page.locator(".header-inner").evaluate((header) => {
-    const logo = header.querySelector(".brand-logo").getBoundingClientRect();
-    const name = header.querySelector(".wordmark span").getBoundingClientRect();
-    const brand = header.querySelector(".wordmark").getBoundingClientRect();
-    const navigation = [
-      header.querySelector(".menu-toggle"),
-      header.querySelector("nav"),
-    ]
-      .find((element) => element.getBoundingClientRect().width > 0)
-      .getBoundingClientRect();
-    return {
-      square: logo.width === logo.height,
-      nameFits: name.left >= logo.right && name.right <= navigation.left,
-      centred: Math.abs(logo.y + logo.height / 2 - name.y - name.height / 2) < 1,
-      close: name.left - logo.right <= 6,
-      sameRow:
-        brand.right <= navigation.left &&
-        navigation.top < brand.bottom &&
-        brand.top < navigation.bottom,
-      inside: logo.left >= 0 && navigation.right <= innerWidth,
-    };
-  });
-  expect(layout).toEqual({
-    square: true,
-    nameFits: true,
-    centred: true,
-    close: true,
-    sameRow: true,
-    inside: true,
-  });
-  await brand.click();
-  await expect(page.locator(".introduction h1")).toHaveText(
-    "Metrics and Models",
+  await page.goto("details/previous_talks.html");
+  await expect(page).toHaveURL(/\/seminars\/#previous$/);
+  await expect(page.locator("#previous .section-heading h2")).toHaveText(
+    "Previous talks",
   );
 });
 
 test("the brand stays on one line at the mobile navigation breakpoint", async ({
   page,
 }) => {
-  await page.goto("");
-  await page.evaluate(() => document.fonts.ready);
-  const menu = page.locator(".menu-toggle");
-  for (const width of [421, 480, 481]) {
-    await page.setViewportSize({ width, height: 850 });
-    const layout = await page.locator(".wordmark span").evaluate((name) => {
-      const bounds = name.getBoundingClientRect();
-      return {
-        singleLine: bounds.height <= parseFloat(getComputedStyle(name).lineHeight) + 1,
-        inside: document.documentElement.scrollWidth === innerWidth,
-      };
-    });
-    expect(layout, String(width)).toEqual({ singleLine: true, inside: true });
-    if (width <= 480) {
-      await expect(menu).toBeVisible();
-      await menu.click();
-      await expect(page.locator("nav")).toBeVisible();
-      await page.keyboard.press("Escape");
-      await expect(page.locator("nav")).not.toBeVisible();
-    } else {
-      await expect(menu).not.toBeVisible();
-      await expect(page.locator("nav")).toBeVisible();
+  for (const url of ["", "people/"]) {
+    await page.goto(url);
+    await page.evaluate(() => document.fonts.ready);
+    const menu = page.locator(".menu-toggle");
+    for (const width of [421, 480, 481]) {
+      await page.setViewportSize({ width, height: 850 });
+      const layout = await page.locator(".wordmark span").evaluate((name) => {
+        const bounds = name.getBoundingClientRect();
+        return {
+          singleLine:
+            bounds.height <= parseFloat(getComputedStyle(name).lineHeight) + 1,
+          inside: document.documentElement.scrollWidth === innerWidth,
+        };
+      });
+      expect(layout, url + " " + width).toEqual({ singleLine: true, inside: true });
+      if (width <= 480) {
+        await expect(menu).toBeVisible();
+        await menu.click();
+        await expect(page.locator("nav")).toBeVisible();
+        await page.keyboard.press("Escape");
+        await expect(page.locator("nav")).not.toBeVisible();
+      } else {
+        await expect(menu).not.toBeVisible();
+        await expect(page.locator("nav")).toBeVisible();
+      }
     }
   }
 });
@@ -153,19 +110,16 @@ test("the brand stays on one line at the mobile navigation breakpoint", async ({
 test("Christmas Eve is clearly marked as a seminar break", async ({
   page,
 }, testInfo) => {
-  await page.goto("");
-  const notice = page.locator(".programme-break");
+  await page.goto("seminars/");
+  const notice = page.locator("#forthcoming .deck-break");
   await notice.scrollIntoViewIfNeeded();
+  await expect(notice).toBeVisible();
   await expect(notice.getByText("No seminar", { exact: true })).toBeVisible();
-  await expect(notice.getByRole("heading")).toHaveText(
-    "Winter break",
-  );
-  await expect(notice.locator("time")).toHaveAttribute(
-    "datetime",
-    "2026-12-24",
-  );
+  await expect(notice.getByRole("heading")).toHaveText("Winter break");
   await expect(notice.locator("a, button")).toHaveCount(0);
-  await expect(page.locator(".talk-row")).toHaveCount(content.upcoming.length);
+  await expect(page.locator("#forthcoming a.deck-card")).toHaveCount(
+    content.upcoming.length - 1,
+  );
   await page.evaluate(() => document.fonts.ready);
   await page.screenshot({ path: testInfo.outputPath("christmas-break.png") });
 });
@@ -193,8 +147,8 @@ test("the internal meeting schedule is not served", async ({
 test("archive search, year filtering and empty state work together", async ({
   page,
 }) => {
-  await page.goto("details/previous_talks.html");
-  const rows = page.locator(".talk-row:visible");
+  await page.goto("seminars/#previous");
+  const rows = page.locator("#previous .talk-row:visible");
   await expect(rows).toHaveCount(content.archive.length);
   await page.getByRole("searchbox").fill("Iain");
   await expect(rows).toHaveCount(1);
@@ -220,6 +174,7 @@ test("navigation is keyboard accessible on mobile and desktop", async ({
 }) => {
   await page.goto("");
   const menu = page.locator(".menu-toggle");
+  const nav = page.getByRole("navigation");
   if (await menu.isVisible()) {
     await menu.click();
     await expect(menu).toHaveAttribute("aria-expanded", "true");
@@ -228,35 +183,59 @@ test("navigation is keyboard accessible on mobile and desktop", async ({
     await expect(menu).toHaveAttribute("aria-expanded", "false");
     await menu.click();
   }
-  await page
-    .getByRole("navigation")
-    .getByRole("link", { name: /People/ })
-    .click();
+  await expect(page.locator("#main-nav a")).toHaveText([
+    "People",
+    "Open seminars",
+    "Projects",
+    "About",
+  ]);
+  await nav.getByRole("link", { name: "People" }).click();
   await expect(page.locator("h1")).toHaveText("People");
   await expect(page.locator(".person")).toHaveCount(people.length);
-  await expect(page.locator(".person-role")).toHaveCount(0);
+  await expect(page.locator("#main-nav a[aria-current]")).toHaveText("People");
   if (await menu.isVisible()) await menu.click();
+  await nav.getByRole("link", { name: "Open seminars" }).click();
+  await expect(page).toHaveURL(/\/seminars\/$/);
+  await expect(page.locator("#forthcoming h2")).toHaveText("Forthcoming");
+  if (await menu.isVisible()) await menu.click();
+  await nav.getByRole("link", { name: "Projects" }).click();
+  await expect(page.locator("h1")).toHaveText("Projects");
   await page
-    .getByRole("navigation")
-    .getByRole("link", { name: "Seminars", exact: true })
+    .getByRole("link", { name: "Metrics and Models home", exact: true })
     .click();
-  await expect(page.locator("#upcoming")).toBeInViewport();
-  await expect(page.locator("#upcoming h2")).toHaveText("Open seminars");
-  await expect(page.locator("#main-nav a")).toHaveText(["People", "Seminars", "About"]);
-  await page.goto("people/");
-  await page.getByRole("link", { name: "Metrics and Models home", exact: true }).click();
-  await expect(page.locator(".intro-brand h1")).toHaveText("Metrics and Models");
+  await expect(page.locator(".landing-title")).toHaveAccessibleName(
+    "Metrics and Models",
+  );
 });
 
-test("seminar details, registration and calendar downloads are connected", async ({
+test("a talk card opens a preview over the page, then leads to details and the calendar", async ({
   page,
 }) => {
   await page.goto("");
-  await page.locator(".talk-row h3 a").first().click();
+  const card = page.locator(".card-deck a.deck-card").first();
+  const dialog = page.locator("#" + (await card.getAttribute("data-dialog")));
+  await card.scrollIntoViewIfNeeded();
+  await card.click();
+  await expect(dialog).toBeVisible();
+  await expect(dialog.getByRole("heading")).toHaveText(content.next.title);
+  await expect(dialog.locator(".next-marker")).toHaveText("Next talk");
+  await page.keyboard.press("Escape");
+  await expect(dialog).not.toBeVisible();
+  // Clicking outside the preview also closes it.
+  await card.click();
+  await expect(dialog).toBeVisible();
+  await page.mouse.click(5, 5);
+  await expect(dialog).not.toBeVisible();
+  await card.click();
+  await dialog.getByRole("button", { name: "Close" }).click();
+  await expect(dialog).not.toBeVisible();
+
+  await card.click();
+  await dialog.getByRole("link", { name: "Talk details" }).click();
   await expect(page.locator("h1")).toHaveText(content.next.title);
   await expect(page.locator(".talk-copy")).toContainText("Abstract");
   const download = page.waitForEvent("download");
-  await page.getByRole("link", { name: "Add to calendar" }).click();
+  await page.locator(".event-facts").getByRole("link", { name: "Add to calendar" }).click();
   expect((await download).suggestedFilename()).toContain(".ics");
   await page.getByRole("link", { name: "Attend this talk" }).click();
   await expect(page.locator("#join")).toBeVisible();
@@ -268,187 +247,166 @@ test("seminar details, registration and calendar downloads are connected", async
   ).toHaveAttribute("href", /^mailto:sympa@maillist.ox.ac.uk/);
 });
 
-test("the homepage has one prominent logo without hiding the seminar section", async ({
+test("the landing banner types its label, fills the screen and settles shorter on scroll", async ({
   page,
 }) => {
-  await page.goto("");
-  await page.evaluate(() => document.fonts.ready);
-  const logo = page.locator(".intro-logo");
-  await expect(page.locator(".brand-logo")).toHaveCount(0);
-  await expect(page.locator('img[src$="/assets/legacy-logo.png"]')).toHaveCount(1);
-  await expect(logo).toBeInViewport({ ratio: 1 });
-  await expect
-    .poll(() => logo.evaluate((img) => img.complete && img.naturalWidth))
-    .toBe(1024);
-  const layout = await page.evaluate(() => {
-    const logo = document.querySelector(".intro-logo").getBoundingClientRect();
-    const heading = document.querySelector(".intro-brand h1").getBoundingClientRect();
-    const seminars = document.querySelector("#upcoming h2").getBoundingClientRect();
-    return {
-      size: logo.width,
-      square: logo.width === logo.height,
-      overlaps: logo.right > heading.left,
-      headingFits: heading.right <= innerWidth,
-      seminarsVisible: seminars.bottom <= innerHeight,
-    };
-  });
-  expect(layout.size).toBeGreaterThanOrEqual(140);
-  expect(layout.square).toBe(true);
-  expect(layout.overlaps).toBe(false);
-  expect(layout.headingFits).toBe(true);
-  expect(layout.seminarsVisible).toBe(true);
-});
-
-test("homepage sketches form a centred row below the introduction", async ({
-  page,
-}) => {
-  await page.goto("");
-  await page.evaluate(() => document.fonts.ready);
-  const sketches = page.locator(".science-sketches canvas");
-  await expect(sketches).toHaveCount(6);
-  expect(
-    await sketches.evaluateAll((items) => items.map((c) => c.dataset.plot)),
-  ).toEqual([
-    "network",
-    "distribution",
-    "scatter",
-    "heatmap",
-    "series",
-    "contours",
-  ]);
-  const layout = await page.evaluate(() => {
-    const boxes = [
-      ...document.querySelectorAll(".science-sketches canvas"),
-    ].map((c) => c.getBoundingClientRect());
-    return {
-      centre: (boxes[0].left + boxes.at(-1).right) / 2,
-      viewportCentre: innerWidth / 2,
-      top: boxes[0].top,
-      introBottom: document.querySelector(".intro-grid").getBoundingClientRect()
-        .bottom,
-      aligned: boxes.every((box) => Math.abs(box.top - boxes[0].top) < 1),
-      readable: boxes.every((box) => box.width >= 36 && box.height >= 36),
-      overlap: boxes.some(
-        (box, index) => index && box.left < boxes[index - 1].right,
-      ),
-    };
-  });
-  expect(Math.abs(layout.centre - layout.viewportCentre)).toBeLessThan(1);
-  expect(layout.top).toBeGreaterThan(layout.introBottom);
-  expect(layout.aligned).toBe(true);
-  expect(layout.readable).toBe(true);
-  expect(layout.overlap).toBe(false);
-});
-
-test("all scientific sketches render, animate, pause and respect reduced motion", async ({
-  page,
-}) => {
-  for (const [url, count] of [
-    ["", 7],
-    ["people/", 1],
-    ["about/", 1],
-    ["details/previous_talks.html", 1],
-    ["details/emilycantrell.html", 1],
-  ]) {
-    await page.emulateMedia({ reducedMotion: "no-preference" });
-    await page.goto(url);
-    const canvases = page.locator("canvas[data-plot]");
-    const button = page.locator(".motion-toggle");
-    await expect(canvases).toHaveCount(count);
-    const snapshots = () =>
-      canvases.evaluateAll((items) => items.map((c) => c.toDataURL()));
-    for (const canvas of await canvases.all()) {
-      await canvas.scrollIntoViewIfNeeded();
-      await expect(canvas).toBeInViewport();
-      await expect
-        .poll(() =>
-          canvas.evaluate((c) => {
-            const data = c
-              .getContext("2d")
-              .getImageData(0, 0, c.width, c.height).data;
-            let painted = 0;
-            for (let i = 3; i < data.length; i += 4) if (data[i] > 0) painted++;
-            return painted;
-          }),
-        )
-        .toBeGreaterThan(100);
-    }
-    const first = await snapshots();
-    await page.waitForTimeout(250);
-    (await snapshots()).forEach((frame, index) =>
-      expect(frame, url + " plot " + index).not.toBe(first[index]),
-    );
-    await button.click();
-    await expect(button).toHaveAttribute("aria-label", /^Play /);
-    const paused = await snapshots();
-    await page.waitForTimeout(250);
-    expect(await snapshots()).toEqual(paused);
-    await button.click();
-    await expect(button).toHaveAttribute("aria-label", /^Pause /);
-    await page.waitForTimeout(250);
-    expect(await snapshots()).not.toEqual(paused);
-    await page.emulateMedia({ reducedMotion: "reduce" });
-    await expect(button).toHaveAttribute("aria-label", /^Play /);
-    const reduced = await snapshots();
-    await page.waitForTimeout(250);
-    expect(await snapshots()).toEqual(reduced);
-
-    await page.reload();
-    await expect(button).toHaveAttribute("aria-label", /^Play /);
-    await expect
-      .poll(() => canvases.first().evaluate((c) => c.width))
-      .toBeGreaterThan(0);
-    await page.waitForTimeout(100);
-    const initialReduced = await snapshots();
-    await page.waitForTimeout(250);
-    expect(await snapshots()).toEqual(initialReduced);
-  }
-});
-
-test("sketches stay framed through a full network rotation and stop offscreen", async ({
-  page,
-}, testInfo) => {
-  await page.clock.install({ time: new Date("2026-10-11T12:00:00Z") });
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("");
   await page.evaluate(() => document.fonts.ready);
-  await page.clock.pauseAt(new Date("2026-10-11T12:01:00Z"));
-  const canvases = page.locator("canvas[data-plot]");
-  for (let step = 0; step < 6; step++) {
-    await page.clock.runFor(4000);
-    const clipped = await canvases.evaluateAll((items) =>
-      items
-        .filter((canvas) => {
-          const { width, height } = canvas;
-          const pixels = canvas
-            .getContext("2d")
-            .getImageData(0, 0, width, height).data;
-          const painted = (x, y) => pixels[(y * width + x) * 4 + 3] > 0;
-          for (let x = 0; x < width; x++)
-            if (painted(x, 0) || painted(x, height - 1)) return true;
-          for (let y = 0; y < height; y++)
-            if (painted(0, y) || painted(width - 1, y)) return true;
-          return false;
-        })
-        .map((canvas) => canvas.dataset.plot),
-    );
-    expect(clipped, "animation sample " + step).toEqual([]);
+  const label = page.locator(".landing [data-typing]");
+  await expect(label).toHaveAttribute("aria-label", "// health & social data science");
+  await expect(label).toHaveText("// health & social data science", { timeout: 8000 });
+  const landing = page.locator(".landing");
+  const before = (await landing.boundingBox()).height;
+  expect(before).toBeGreaterThan(page.viewportSize().height * 0.6);
+  await expect(page.locator(".landing-title")).toBeInViewport({ ratio: 1 });
+  await page.mouse.wheel(0, 600);
+  await expect
+    .poll(() => landing.evaluate((el) => el.style.getPropertyValue("--collapse")))
+    .toBe("1.000");
+  // On narrow phones the wrapped title limits how far it can shrink.
+  expect((await landing.boundingBox()).height).toBeLessThan(
+    page.viewportSize().width > 480 ? before * 0.8 : before,
+  );
+
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.reload();
+  await expect(label).toHaveText("// health & social data science");
+  await expect(label.locator(".typing-cursor")).toHaveCount(0);
+});
+
+test("featured publications rotate, respond to tabs and stay still with reduced motion", async ({
+  page,
+}) => {
+  await page.clock.install();
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("");
+  const carousel = page.locator("#publications [data-carousel]");
+  const slides = carousel.locator(".feature-slide");
+  const tabs = carousel.getByRole("tab");
+  await expect(slides.nth(0)).toBeVisible();
+  await page.clock.runFor(7100);
+  await expect(slides.nth(1)).toBeVisible();
+  await expect(slides.nth(0)).toBeHidden();
+  await expect(tabs.nth(1)).toHaveAttribute("aria-selected", "true");
+  await tabs.nth(3).click();
+  await expect(slides.nth(3)).toBeVisible();
+  await expect(tabs.nth(3)).toHaveAttribute("aria-selected", "true");
+  // While the pointer rests on the panel it does not advance.
+  await carousel.hover();
+  await page.clock.runFor(15000);
+  await expect(slides.nth(3)).toBeVisible();
+
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.reload();
+  await page.mouse.move(0, 0);
+  await page.clock.runFor(15000);
+  await expect(slides.nth(0)).toBeVisible();
+});
+
+test("banner animations render, keep moving, pause and respect reduced motion", async ({
+  page,
+}) => {
+  for (const url of ["", "seminars/", "people/", "projects/", "about/", "details/emilycantrell.html"]) {
+    await page.emulateMedia({ reducedMotion: "no-preference" });
+    await page.goto(url);
+    const canvas = page.locator("canvas[data-plot]");
+    const button = page.locator("[data-animation-group] .motion-toggle");
+    await expect(canvas).toHaveCount(1);
+    const plot = await canvas.getAttribute("data-plot");
+    expect(url ? plots : ["ribbon"], url).toContain(plot);
+    await expect
+      .poll(() =>
+        canvas.evaluate((c) => {
+          const data = c.getContext("2d").getImageData(0, 0, c.width, c.height).data;
+          let painted = 0;
+          for (let i = 3; i < data.length; i += 4) if (data[i] > 0) painted++;
+          return painted;
+        }),
+      )
+      .toBeGreaterThan(1000);
+    const snapshot = () => canvas.evaluate((c) => c.toDataURL());
+    const first = await snapshot();
+    await page.waitForTimeout(250);
+    expect(await snapshot(), url + " moves").not.toBe(first);
+    await button.click();
+    await expect(button).toHaveAttribute("aria-label", /^Play /);
+    const paused = await snapshot();
+    await page.waitForTimeout(250);
+    expect(await snapshot(), url + " pauses").toBe(paused);
+    await button.click();
+    await expect(button).toHaveAttribute("aria-label", /^Pause /);
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await expect(button).toHaveAttribute("aria-label", /^Play /);
+    const reduced = await snapshot();
+    await page.waitForTimeout(250);
+    expect(await snapshot(), url + " reduced motion").toBe(reduced);
   }
-  await page.screenshot({ path: testInfo.outputPath("moving-sketches.png") });
-  // Leave enough scroll range to hide every sketch even on compact pages.
-  const viewport = page.viewportSize();
-  await page.setViewportSize({
-    ...viewport,
-    height: Math.min(viewport.height, 600),
-  });
+});
+
+test("animations stop while scrolled out of view", async ({ page }) => {
+  await page.clock.install();
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  // A short window leaves enough scroll range to hide the banner.
+  await page.setViewportSize({ ...page.viewportSize(), height: 600 });
+  await page.goto("about/");
+  const canvas = page.locator("canvas[data-plot]");
   await page.locator("footer").scrollIntoViewIfNeeded();
-  for (const canvas of await canvases.all()) {
-    await expect(canvas).not.toBeInViewport();
-  }
+  await expect(canvas).not.toBeInViewport();
   await page.clock.runFor(100);
-  const snapshots = () =>
-    canvases.evaluateAll((items) => items.map((canvas) => canvas.toDataURL()));
-  const offscreen = await snapshots();
+  const offscreen = await canvas.evaluate((c) => c.toDataURL());
   await page.clock.runFor(1000);
-  expect(await snapshots()).toEqual(offscreen);
+  expect(await canvas.evaluate((c) => c.toDataURL())).toBe(offscreen);
+});
+
+test("highlighted projects rotate with the highlighted card in the middle", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("projects/");
+  await page.mouse.move(0, 0);
+  const queue = page.locator("[data-queue]");
+  const cards = queue.locator(".queue-card");
+  const current = queue.locator("[data-queue-current]");
+  const fill = queue.locator(".queue-progress > span");
+  const slots = () => cards.evaluateAll((items) => items.map((card) => card.dataset.slot));
+  const filled = () => fill.evaluate((bar) => bar.getBoundingClientRect().width);
+  expect(await slots()).toEqual(["centre", "right", "off-right", "left"]);
+  await expect(current).toHaveText("01");
+  // The highlighted card is centred, with one card visible either side.
+  const stage = await queue.locator(".queue-stage").boundingBox();
+  const centre = await cards.first().boundingBox();
+  expect(Math.abs(centre.x + centre.width / 2 - (stage.x + stage.width / 2))).toBeLessThan(2);
+
+  // The progress bar fills from left to right, then the queue advances.
+  await page.waitForTimeout(1500);
+  const partway = await filled();
+  expect(partway).toBeGreaterThan(0);
+  await page.waitForTimeout(500);
+  expect(await filled()).toBeGreaterThan(partway);
+  await expect(current).toHaveText("02", { timeout: 9000 });
+  expect(await slots()).toEqual(["left", "centre", "right", "off-left"]);
+  expect(await cards.nth(1).evaluate((card) => card.inert)).toBe(false);
+  expect(await cards.first().evaluate((card) => card.inert)).toBe(true);
+
+  // Hovering pauses the fill where it is.
+  await page.waitForTimeout(1000);
+  await queue.locator(".queue-stage").hover();
+  const held = await filled();
+  await page.waitForTimeout(800);
+  expect(await filled()).toBe(held);
+  await expect(current).toHaveText("02");
+  await queue.getByRole("button", { name: "Previous project" }).click();
+  await expect(current).toHaveText("01");
+  expect(await slots()).toEqual(["centre", "right", "off-right", "left"]);
+  await queue.getByRole("button", { name: "Next project" }).click();
+  await expect(current).toHaveText("02");
+
+  // With reduced motion the queue stays put and the bar does not fill.
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.reload();
+  await page.mouse.move(0, 0);
+  await page.waitForTimeout(1000);
+  expect(await filled()).toBe(0);
+  await expect(current).toHaveText("01");
 });

@@ -181,4 +181,62 @@
     carousel.addEventListener("focusin", stop);
     play();
   }
+
+  // Highlighted projects: three cards at a time, the highlighted one in the
+  // middle. Each turn the middle card steps left and the next moves in from
+  // the right; cards out of view wait off-stage on the side they will enter.
+  for (const queue of document.querySelectorAll("[data-queue]")) {
+    const cards = [...queue.querySelectorAll(".queue-card")];
+    const counter = queue.querySelector("[data-queue-current]");
+    let current = 0;
+    const slotFor = (index) => {
+      const offset = (index - current + cards.length) % cards.length;
+      if (offset === 0) return "centre";
+      if (offset === 1) return "right";
+      if (offset === cards.length - 1) return "left";
+      return null;
+    };
+    // The progress bar is the timer: when its fill reaches the end, the queue
+    // advances. Hovering or focusing pauses the fill where it is.
+    const bar = queue.querySelector(".queue-progress > span");
+    const restartProgress = () => {
+      queue.removeAttribute("data-playing");
+      queue.offsetWidth;
+      if (!reduced && cards.length > 1) queue.setAttribute("data-playing", "");
+    };
+    bar.addEventListener("animationend", () => move(1));
+    const move = (step) => {
+      current = (current + step + cards.length) % cards.length;
+      const entering = step > 0 ? "right" : "left";
+      cards.forEach((card, index) => {
+        const slot = slotFor(index);
+        if (slot === entering && card.dataset.slot.startsWith("off")) {
+          // Jump to the side it enters from before animating in.
+          card.classList.add("is-resetting");
+          card.dataset.slot = "off-" + entering;
+          card.offsetWidth;
+          card.classList.remove("is-resetting");
+        }
+        card.dataset.slot = slot || (step > 0 ? "off-left" : "off-right");
+        card.inert = slot !== "centre";
+      });
+      counter.textContent = String(current + 1).padStart(2, "0");
+      restartProgress();
+    };
+    const pause = () => queue.setAttribute("data-paused", "");
+    const resume = () => queue.removeAttribute("data-paused");
+    cards.forEach((card, index) => {
+      card.dataset.slot = slotFor(index) || "off-right";
+      card.inert = index !== 0;
+    });
+    queue.querySelector("[data-queue-next]").addEventListener("click", () => move(1));
+    queue.querySelector("[data-queue-prev]").addEventListener("click", () => move(-1));
+    queue.addEventListener("pointerenter", pause);
+    queue.addEventListener("pointerleave", resume);
+    queue.addEventListener("focusin", pause);
+    queue.addEventListener("focusout", (event) => {
+      if (!queue.contains(event.relatedTarget)) resume();
+    });
+    restartProgress();
+  }
 })();

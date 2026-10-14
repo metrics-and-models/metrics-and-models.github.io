@@ -1,0 +1,22 @@
+{#- A rotating row of publication cards: previous, highlighted (middle) and
+    next are shown; the rest wait off-stage. Expects `featured`. -#}
+<div class="queue" data-queue aria-roledescription="carousel" aria-label="Highlighted projects">
+  <div class="queue-stage">
+  {% for paper in featured %}
+    <article class="queue-card tone-{{ loop.index0 % 4 }}" data-slot="{{ 'centre' if loop.first else ('right' if loop.index0 == 1 else ('left' if loop.last else 'off-right')) }}" aria-roledescription="slide" aria-label="{{ loop.index }} of {{ featured | length }}">
+      <div class="queue-cover"><span class="feature-journal">{{ paper.journal }}</span><span class="queue-year">{{ paper.year }}</span></div>
+      <div class="queue-body">
+        <p class="eyebrow-code">// {{ paper.members | join(" · ") }}</p>
+        <h3><a href="{{ paper.url }}" target="_blank" rel="noopener">{{ paper.title }}</a></h3>
+        <a class="button button-white" href="{{ paper.url }}" target="_blank" rel="noopener">Read the paper {% icon "arrow-up-right" %}</a>
+      </div>
+    </article>
+  {% endfor %}
+  </div>
+  <div class="queue-controls">
+    <button class="icon-button" data-queue-prev aria-label="Previous project">{% icon "arrow-left" %}</button>
+    <span class="mono queue-count" aria-live="polite"><span data-queue-current>01</span> / {{ featured | length | pad2 }}</span>
+    <button class="icon-button" data-queue-next aria-label="Next project">{% icon "arrow-right" %}</button>
+  </div>
+  <span class="queue-progress" aria-hidden="true"><span></span></span>
+</div>
