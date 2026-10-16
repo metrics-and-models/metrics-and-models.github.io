@@ -1,0 +1,29 @@
+{#- A homepage seminar card that opens a preview dialog. Expects `event`. -#}
+{% if event.isBreak %}
+<aside class="deck-card deck-break" aria-label="No seminar on {{ event.date.day }} {{ event.date.month }} {{ event.date.year }}">
+  <div class="deck-face"><span class="deck-day">{{ event.date.day }}</span><span class="deck-month">{{ event.date.month }}</span></div>
+  <div class="deck-body"><span class="deck-meta">No seminar</span><h3>{{ event.title }}</h3><p class="deck-text">{{ event.message }}</p></div>
+</aside>
+{% else %}
+{% set isNext = event.url == seminars.next.url %}
+<a class="deck-card tone-{{ loop.index0 % 4 }}" href="{{ event.url }}" data-dialog="talk-{{ loop.index0 }}">
+  <div class="deck-face"><span class="deck-day">{{ event.date.day or "TBC" }}</span><span class="deck-month">{{ event.date.month }}</span>{% if isNext %}<span class="next-marker">Next talk</span>{% endif %}</div>
+  <div class="deck-body">
+    <span class="deck-meta">{{ event.date.time or "Time TBC" }} · {{ event.mode }}</span>
+    <h3>{{ event.title | displayTitle }}</h3>
+    <p class="deck-text"><span class="deck-speaker">{{ event.speaker | replace("CANCELLED ", "") }}</span>{% if event.institution %}<span class="deck-institution">{{ event.institution }}</span>{% endif %}</p>
+    <span class="card-more">Click to see more {% icon "arrow-right" %}</span>
+  </div>
+</a>
+<dialog class="talk-dialog tone-{{ loop.index0 % 4 }}" id="talk-{{ loop.index0 }}" aria-labelledby="talk-{{ loop.index0 }}-title">
+  <button class="dialog-close icon-button" aria-label="Close" data-close>{% icon "x" %}</button>
+  <p class="card-date">{{ event.date.full }} · {{ event.date.time or "Time TBC" }} · {{ event.mode }}{% if isNext %}<span class="next-marker">Next talk</span>{% endif %}</p>
+  <h3 id="talk-{{ loop.index0 }}-title">{{ event.title | displayTitle }}</h3>
+  <p class="dialog-speaker">{% if event.home %}<a href="{{ event.home }}" target="_blank" rel="noopener">{{ event.speaker }} {% icon "arrow-up-right" %}</a>{% else %}{{ event.speaker }}{% endif %}{% if event.institution %}<span>{{ event.institution }}</span>{% endif %}</p>
+  {% if event.summary %}<p class="dialog-summary">{{ event.summary }}</p>{% else %}<p class="dialog-summary muted">The abstract will be announced soon.</p>{% endif %}
+  <div class="button-row">
+    <a class="button button-solid" href="{{ event.url }}">Talk details {% icon "arrow-right" %}</a>
+    {% if event.calendar %}<a class="button button-outline" href="{{ event.calendar }}" download>{% icon "calendar-plus" %} Add to calendar</a>{% endif %}
+  </div>
+</dialog>
+{% endif %}

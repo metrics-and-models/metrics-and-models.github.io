@@ -5,6 +5,9 @@ on:
     branches: [dev, main]
   pull_request:
   workflow_dispatch:
+  # Weekly rebuild so lab members' latest publications appear automatically.
+  schedule:
+    - cron: "0 6 * * 1"
 
 permissions:
   contents: read
@@ -28,6 +31,10 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # Falls back to the committed publications.json if OpenAlex is unavailable.
+      - name: Refresh publications from OpenAlex
+        run: npm run publications
+        continue-on-error: true
       - run: npm run build
       - run: npm test
       - run: npx playwright install --with-deps chromium

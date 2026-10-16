@@ -26,6 +26,10 @@ export default function (config) {
   config.addFilter("displayTitle", (title) =>
     /^(TBC|TBD)$/.test(title || "") ? "Title forthcoming" : title,
   );
+  config.addFilter("monthYear", (iso) =>
+    new Intl.DateTimeFormat("en-GB", { month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(iso)),
+  );
+  config.addFilter("pad2", (value) => String(value).padStart(2, "0"));
   config.addFilter("assetVersion", (url) => {
     const version = createHash("sha256")
       .update(fs.readFileSync("site" + url))

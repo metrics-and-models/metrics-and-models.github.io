@@ -1,0 +1,32 @@
+---
+layout: base.njk
+title: Projects
+section: projects
+animated: true
+permalink: /projects/index.html
+---
+{% from "hero.njk" import hero with context %}
+{% call hero("page") %}
+  <p class="eyebrow-code">// projects</p>
+  <h1>Projects</h1>
+  <p class="hero-lead">Research projects and recent publications from members of the lab.</p>
+{% endcall %}
+<section id="projects" class="deck-section">
+  <div class="container">
+    <div class="section-heading"><h2>Highlighted projects</h2></div>
+    {% set featured = highlights %}{% include "card-queue.njk" %}
+  </div>
+</section>
+<section id="publications" class="container section-space">
+  <div class="section-heading"><h2>Recent publications</h2></div>
+  <ol class="archive-list publication-list">
+  {% for paper in publications %}
+    <li class="talk-row">
+      <time class="mono" datetime="{{ paper.date }}">{{ paper.date | monthYear }}</time>
+      <span class="archive-speaker">{{ paper.members | join(", ") }}<span>{{ paper.journal }}</span></span>
+      <span class="archive-title"><a href="{{ paper.url }}" target="_blank" rel="noopener">{{ paper.title }}</a></span>
+    </li>
+  {% endfor %}
+  </ol>
+  <p class="section-note placeholder-note">Journal articles by lab members from the last two years, via <a href="https://openalex.org" target="_blank" rel="noopener">OpenAlex</a>.</p>
+</section>

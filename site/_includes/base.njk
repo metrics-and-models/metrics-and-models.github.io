@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fcfcfa">
+  <meta name="theme-color" content="#0b0b0c">
   <meta name="description" content="{{ description or site.description }}">
   {% if not site.production or noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
   {% if not noindex %}<link rel="canonical" href="{{ site.origin }}{{ site.prefix }}{{ page.url }}">{% endif %}
@@ -15,26 +15,28 @@
   <link rel="icon" href="/assets/legacy-logo.png" type="image/png">
   <link rel="preload" href="/assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="{{ '/assets/site.css' | assetVersion }}">
-  <noscript><style>.motion-toggle,.archive-tools,.science-sketches,.science-decoration,.research-figure{display:none}@media(max-width:480px){.header-inner{height:auto;padding-block:16px}.menu-toggle{display:none}#main-nav{display:flex;position:static;flex-wrap:wrap;padding:12px 0 0;width:100%;border:0}}</style></noscript>
+  <noscript><style>.motion-toggle,.archive-tools,.hero-plot{display:none}@media(max-width:480px){.header-inner{height:auto;padding-block:16px}.menu-toggle{display:none}#main-nav{display:flex;position:static;flex-wrap:wrap;padding:12px 0 0;width:100%;border:0}}</style></noscript>
   <script src="{{ '/assets/site.js' | assetVersion }}" defer></script>
-  {% if home or animated %}<script src="{{ '/assets/field.js' | assetVersion }}" defer></script>{% endif %}
+  {% if home or animated or talk %}<script src="{{ '/assets/field.js' | assetVersion }}" defer></script>{% endif %}
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
-  <header class="site-header">
+  <header class="site-header{% if home %} site-header-home{% endif %}">
     <div class="container header-inner">
-      <a class="wordmark" href="/" aria-label="Metrics and Models home">{% if not home %}<img class="brand-logo" src="/assets/legacy-logo.png" alt="" width="64" height="64">{% endif %}<span>Metrics and Models</span></a>
+      <a class="wordmark" href="/" aria-label="Metrics and Models home"><span>Metrics and Models</span></a>
+      {% if home %}<svg class="header-mark" viewBox="-12 -12 24 24" aria-hidden="true"><g stroke="currentColor" stroke-width="1.1" fill="currentColor">{% for a in [0, 60, 120, 180, 240, 300] %}<line x1="0" y1="0" x2="0" y2="-8.5" transform="rotate({{ a }})"/><circle cx="0" cy="-9.2" r="1.5" transform="rotate({{ a }})"/>{% endfor %}<circle r="2.2"/></g></svg>{% endif %}
       <button class="menu-toggle icon-button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-nav">{% icon "menu" %}</button>
       <nav id="main-nav" aria-label="Main navigation">
         <a href="/people/" {% if section == "people" %}aria-current="page"{% endif %}>People</a>
-        <a href="/#upcoming" {% if section == "seminars" %}aria-current="location"{% endif %}>Seminars</a>
+        <a href="/seminars/" {% if section == "seminars" %}aria-current="page"{% endif %}>Open seminars</a>
+        <a href="/projects/" {% if section == "projects" %}aria-current="page"{% endif %}>Projects</a>
         <a href="/about/" {% if section == "about" %}aria-current="page"{% endif %}>About</a>
       </nav>
     </div>
   </header>
   <main id="main">{{ content | safe }}</main>
   <footer class="site-footer">
-    <div class="container footer-bottom"><span>Metrics and Models / University of Oxford</span><div class="footer-links"><a href="mailto:{{ site.email }}">Contact</a><a href="https://github.com/metrics-and-models/metrics-and-models.github.io/tree/{% if site.production %}main{% else %}dev{% endif %}">Source</a></div></div>
+    <div class="container footer-bottom"><span>Metrics and Models · University of Oxford</span><div class="footer-links"><a href="mailto:{{ site.email }}">Contact</a><a href="https://github.com/metrics-and-models/metrics-and-models.github.io/tree/{% if site.production %}main{% else %}dev{% endif %}">Source</a></div></div>
   </footer>
 </body>
 </html>

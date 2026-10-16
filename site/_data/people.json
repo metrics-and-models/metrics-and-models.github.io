@@ -1,6 +1,7 @@
 [
   {
     "name": "Aarushi Sharma",
+    "orcid": "0009-0009-2729-9763",
     "url": "https://www.st-andrews.ac.uk/international-relations/people/as589",
     "urlLabel": "St Andrews profile",
     "role": "Lab member",
@@ -20,6 +21,7 @@
   },
   {
     "name": "Anda-Raluca Epure",
+    "orcid": "0009-0000-8152-7696",
     "url": "https://uk.linkedin.com/in/anda-raluca-epure-7b28021b7",
     "role": "Lab member",
     "interests": ["Healthcare data science", "AI for drug discovery"],
@@ -38,6 +40,8 @@
   },
   {
     "name": "Ava Keeling",
+    "orcid": "0009-0000-9665-7864",
+    "openalex": "A5117514735",
     "url": "https://www.demography.ox.ac.uk/people/ava-keeling",
     "role": "Lab member",
     "interests": [
@@ -57,6 +61,8 @@
   },
   {
     "name": "Charlie Rahal",
+    "orcid": "0000-0002-1764-2697",
+    "openalex": "A5075497327",
     "url": "https://crahal.com/",
     "role": "Lab member",
     "interests": [
@@ -79,6 +85,8 @@
   },
   {
     "name": "Daniel Valdenegro",
+    "orcid": "0000-0003-3695-0123",
+    "openalex": "A5079162755",
     "url": "https://www.demography.ox.ac.uk/people/daniel-valdenegro",
     "role": "Lab member",
     "interests": [
@@ -102,6 +110,7 @@
   },
   {
     "name": "Hana Antonio",
+    "orcid": "0009-0008-2757-7068",
     "url": "",
     "role": "Lab member",
     "interests": [
@@ -121,6 +130,8 @@
   },
   {
     "name": "Jiani Yan",
+    "orcid": "0000-0002-9379-1547",
+    "openalex": ["A5049685049", "A5147208101"],
     "url": "https://jianiyan.com/",
     "role": "Lab member",
     "interests": [
@@ -144,6 +155,8 @@
   },
   {
     "name": "Luc Rocher",
+    "orcid": "0000-0002-9956-1187",
+    "openalex": "A5003244640",
     "url": "https://rocher.lc/",
     "role": "Lab member",
     "interests": [
@@ -189,6 +202,8 @@
   },
   {
     "name": "Mark Verhagen",
+    "orcid": "0000-0003-2746-0309",
+    "openalex": "A5000313412",
     "url": "https://markverhagen.me/",
     "role": "Lab member",
     "interests": [
@@ -211,6 +226,7 @@
   },
   {
     "name": "Mingyue Liu",
+    "orcid": "0009-0000-1188-2393",
     "url": "https://www.demography.ox.ac.uk/people/rita-liu",
     "role": "Lab member",
     "interests": [
@@ -252,6 +268,8 @@
   },
   {
     "name": "Ridhi Kashyap",
+    "orcid": "0000-0003-0615-2868",
+    "openalex": "A5031279419",
     "url": "https://www.sociology.ox.ac.uk/people/ridhi-kashyap",
     "role": "Lab member",
     "interests": [
@@ -275,6 +293,8 @@
   },
   {
     "name": "Xiaowen Dong",
+    "orcid": "0000-0002-1143-9786",
+    "openalex": "A5101579932",
     "url": "https://web.media.mit.edu/~xdong/",
     "role": "Lab member",
     "interests": [

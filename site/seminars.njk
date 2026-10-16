@@ -1,0 +1,45 @@
+---
+layout: base.njk
+title: Seminars
+section: seminars
+animated: true
+permalink: /seminars/index.html
+---
+{% from "hero.njk" import hero with context %}
+{% set next = seminars.next %}
+{% call hero("now", false) %}
+  <p class="eyebrow-code" data-typing>// next seminar · {{ next.date.day }} {{ next.date.month }} · {{ next.date.time }}</p>
+  <h1>{{ next.title | displayTitle }}</h1>
+  <p class="hero-lead">{% if next.home %}<a href="{{ next.home }}" target="_blank" rel="noopener">{{ next.speaker }} {% icon "arrow-up-right" %}</a>{% else %}{{ next.speaker }}{% endif %}{% if next.institution %} · {{ next.institution }}{% endif %}</p>
+  <div class="button-row">
+    <a class="button button-white" href="{{ next.url }}">Talk details {% icon "arrow-right" %}</a>
+    {% if next.calendar %}<a class="button button-dark" href="{{ next.calendar }}" download>{% icon "calendar-plus" %} Add to calendar</a>{% endif %}
+    <a class="button button-dark" href="/about/#join">How to join {% icon "arrow-right" %}</a>
+  </div>
+{% endcall %}
+<section id="forthcoming" class="deck-section">
+  <div class="container">
+    <div class="section-heading section-heading-center"><h2>Forthcoming</h2><p class="section-intro">Every other Thursday, 14:00 UK time. Online and open to everyone. Pick a card to see more.</p></div>
+    <div class="card-deck card-deck-wrap">
+    {% for event in seminars.upcoming.slice(1) | withBreaks(seminarBreaks) %}{% include "deck-card.njk" %}{% endfor %}
+    </div>
+  </div>
+</section>
+<section id="previous" class="container section-space">
+  <div class="section-heading"><h2>Previous talks</h2></div>
+  <div class="archive-tools" data-filter-controls>
+    <label class="search-box">{% icon "search" %}<input type="search" data-search-input placeholder="Search speakers, titles, institutions" aria-label="Search previous talks"></label>
+    <label class="year-filter"><span>Year</span><select data-year-select aria-label="Filter talks by year"><option value="">All years</option>{% for year in seminars.years %}<option>{{ year }}</option>{% endfor %}</select></label>
+    <span class="result-count mono" aria-live="polite"><span data-result-count>{{ seminars.archive.length }}</span> talks</span>
+  </div>
+  <ol class="archive-list">
+  {% for event in seminars.archive %}
+    <li class="talk-row" data-search="{{ event.speaker }} {{ event.title }} {{ event.institution }}" data-year="{{ event.date.year }}">
+      <time class="mono" datetime="{{ event.date.iso }}">{{ event.date.day }} {{ event.date.month }} {{ event.date.year }}</time>
+      <span class="archive-speaker">{% if event.home %}<a href="{{ event.home }}" target="_blank" rel="noopener">{{ event.speaker | replace("CANCELLED ", "") }}</a>{% else %}{{ event.speaker | replace("CANCELLED ", "") }}{% endif %}{% if event.institution %}<span>{{ event.institution }}</span>{% endif %}</span>
+      <span class="archive-title">{% if event.cancelled %}<span class="cancelled">Cancelled · </span>{% endif %}{% if event.url %}<a href="{{ event.url }}">{{ event.title | displayTitle }}</a>{% else %}{{ event.title | displayTitle }}{% endif %}</span>
+    </li>
+  {% endfor %}
+  </ol>
+  <div class="empty-state" hidden data-empty><h2>No talks found.</h2><button class="text-link" data-clear-filters>Clear filters {% icon "rotate-ccw" %}</button></div>
+</section>

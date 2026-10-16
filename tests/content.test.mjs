@@ -16,6 +16,22 @@ const prefix = (process.env.PATH_PREFIX || "").replace(/\/$/, "");
 const origin = process.env.SITE_URL || "https://metrics-and-models.ai";
 const production = process.env.SITE_ENV === "production";
 const html = (url) => load(fs.readFileSync("dist" + url, "utf8"));
+const people = JSON.parse(fs.readFileSync("site/_data/people.json", "utf8"));
+const breaks = JSON.parse(
+  fs.readFileSync("site/_data/seminarBreaks.json", "utf8"),
+);
+const publications = JSON.parse(
+  fs.readFileSync("site/_data/publications.json", "utf8"),
+);
+const highlights = JSON.parse(
+  fs.readFileSync("site/_data/highlights.json", "utf8"),
+);
+// The old previous-talks address is now a redirect stub, not a full page.
+const redirects = ["details/previous_talks.html"];
+const pages = () =>
+  fs
+    .readdirSync("dist", { recursive: true })
+    .filter((file) => file.endsWith(".html") && !redirects.includes(file));
 
 test("all source schedule rows and detail permalinks survive the rebuild", () => {
   for (const [source, key] of [
@@ -53,44 +69,86 @@ test("all source schedule rows and detail permalinks survive the rebuild", () =>
   }
 });
 
-test("the homepage lists each talk once and marks the next seminar", () => {
+test("the homepage spotlights the next four programme entries and marks the next talk", () => {
   const $ = html("/index.html");
-  assert.equal($(".intro-brand h1").text(), "Metrics and Models");
-  assert.equal($(".intro-brand h1").children().length, 0);
-  assert.equal($(".intro-logo").length, 1);
-  assert.equal($(".intro-logo").attr("src"), prefix + "/assets/legacy-logo.png");
-  assert.equal($(".intro-logo").attr("alt"), "");
-  assert.equal($(".talk-row").length, content.upcoming.length);
-  const first = $(".talk-row").first();
-  assert.ok(first.text().includes(content.next.speaker));
-  assert.ok(first.text().includes(content.next.title));
-  assert.equal(first.find("h3 a").attr("href"), prefix + content.next.url);
-  assert.equal($(".next-marker").length, 1);
-  assert.equal(first.find(".next-marker").text(), "Next");
+  assert.equal($(".landing-title").attr("aria-label"), "Metrics and Models");
+  assert.equal($("main h1").length, 1);
+  const programme = [...content.upcoming, ...breaks.map((b) => ({ ...b, isBreak: true }))]
+    .sort((a, b) => a.date.iso.localeCompare(b.date.iso))
+    .slice(0, 4);
+  const cards = $(".card-deck > .deck-card");
+  assert.equal(cards.length, programme.length);
+  programme.forEach((entry, index) => {
+    const card = cards.eq(index);
+    if (entry.isBreak) {
+      assert.ok(card.is("aside"));
+      return;
+    }
+    assert.equal(card.attr("href"), prefix + entry.url);
+    assert.ok(card.text().includes(entry.speaker));
+    if (entry.institution)
+      assert.equal(card.find(".deck-institution").text(), entry.institution);
+    // Each card opens a preview dialog for the same talk.
+    const dialog = $("#" + card.attr("data-dialog"));
+    assert.ok(dialog.is("dialog"));
+    assert.equal(
+      dialog.find("h3").text(),
+      /^(TBC|TBD)$/.test(entry.title) ? "Title forthcoming" : entry.title,
+    );
+    assert.equal(dialog.find(".button-solid").attr("href"), prefix + entry.url);
+  });
+  const marked = cards.filter((_, card) => $(card).find(".next-marker").length);
+  assert.equal(marked.length, 1);
+  assert.equal(marked.attr("href"), prefix + content.next.url);
+  assert.equal(marked.find(".next-marker").text(), "Next talk");
+  assert.equal($(".landing-next").attr("href"), prefix + content.next.url);
+});
+
+test("the seminars page leads with the next talk, then forthcoming cards and the archive", () => {
+  const $ = html("/seminars/index.html");
+  assert.equal(
+    $("main h1").text(),
+    /^(TBC|TBD)$/.test(content.next.title) ? "Title forthcoming" : content.next.title,
+  );
+  assert.equal($(".hero .button-white").attr("href"), prefix + content.next.url);
+  const forthcoming = $("#forthcoming .deck-card");
+  assert.equal(forthcoming.length, content.upcoming.length - 1 + breaks.length);
+  for (const talk of content.upcoming.slice(1))
+    assert.equal($('#forthcoming a.deck-card[href="' + prefix + talk.url + '"]').length, 1);
+  assert.equal($("#forthcoming .next-marker").length, 0);
+  assert.equal($("#previous .talk-row").length, content.archive.length);
+  content.archive.forEach((talk, index) =>
+    assert.ok($("#previous .talk-row").eq(index).text().includes(talk.title === "TBC" ? "Title forthcoming" : talk.title)),
+  );
 });
 
 test("Christmas Eve is a break in the programme, not a seminar", () => {
-  const $ = html("/index.html");
-  const notice = $(".programme-break");
+  const $ = html("/seminars/index.html");
+  const notice = $("#forthcoming .deck-break");
   assert.equal(notice.length, 1);
-  assert.equal(notice.find("time").attr("datetime"), "2026-12-24");
+  assert.match(notice.attr("aria-label"), /24 Dec 2026/);
   assert.match(notice.text(), /No seminar/);
-  assert.equal(
-    notice.find("h3").text(),
-    "All models are wrong. Some are wrapping.",
-  );
-  assert.match(notice.find(".break-message").text(), /Christmas Eve/);
-  assert.match(notice.prev().text(), /Ilya Kashnitsky/);
-  assert.match(notice.next().text(), /Yang Chen/);
+  assert.equal(notice.find("h3").text(), "Winter break");
+  assert.match(notice.find(".deck-text").text(), /Christmas Eve/);
+  assert.match(notice.prevAll("a.deck-card").first().text(), /Ilya Kashnitsky/);
+  assert.match(notice.nextAll("a.deck-card").first().text(), /Yang Chen/);
   assert.equal(notice.find("a, button, .next-marker").length, 0);
   assert.ok(
     content.upcoming.every((talk) => !talk.date.iso.startsWith("2026-12-24")),
   );
   assert.equal(fs.readdirSync("dist/calendar").length, content.upcoming.length);
+  assert.equal($("#previous .deck-break").length, 0);
+});
+
+test("the old previous-talks address redirects to the seminars archive", () => {
+  const $ = html("/details/previous_talks.html");
   assert.equal(
-    html("/details/previous_talks.html")(".programme-break").length,
-    0,
+    $('meta[http-equiv="refresh"]').attr("content"),
+    "0; url=" + prefix + "/seminars/#previous",
   );
+  assert.equal($('meta[name="robots"]').attr("content"), "noindex, nofollow");
+  assert.equal($('link[rel="canonical"]').attr("href"), origin + prefix + "/seminars/");
+  assert.equal($("a").attr("href"), prefix + "/seminars/#previous");
 });
 
 test("summer and winter seminar times convert correctly to UTC", () => {
@@ -138,10 +196,7 @@ test("calendar files preserve times, escape content, fold UTF-8 lines and link t
 });
 
 test("all generated internal links, fragments and assets resolve, including the deployment prefix", () => {
-  const files = fs
-    .readdirSync("dist", { recursive: true })
-    .filter((file) => file.endsWith(".html"));
-  for (const file of files) {
+  for (const file of pages()) {
     const $ = html("/" + file);
     assert.equal(
       $('meta[name="robots"]').attr("content"),
@@ -206,10 +261,7 @@ test("search indexing is allowed only on production, never the preview", () => {
 });
 
 test("styles and scripts are versioned by their content on every page", () => {
-  const files = fs
-    .readdirSync("dist", { recursive: true })
-    .filter((file) => file.endsWith(".html"));
-  for (const file of files) {
+  for (const file of pages()) {
     const $ = html("/" + file);
     const assets = $("link[rel=stylesheet], script[src]");
     assert.ok(assets.length >= 2, file);
@@ -225,15 +277,12 @@ test("styles and scripts are versioned by their content on every page", () => {
   }
 });
 
-test("each page uses the original logo once, plus its favicon", () => {
+test("the logo is the favicon only, with a text wordmark linking home", () => {
   assert.deepEqual(
     fs.readFileSync("dist/assets/legacy-logo.png"),
     fs.readFileSync("assets/metrics_and_models_logo.png"),
   );
-  const files = fs
-    .readdirSync("dist", { recursive: true })
-    .filter((file) => file.endsWith(".html"));
-  for (const file of files) {
+  for (const file of pages()) {
     const $ = html("/" + file);
     const brand = $(".site-header .wordmark");
     assert.equal(
@@ -243,11 +292,8 @@ test("each page uses the original logo once, plus its favicon", () => {
     );
     assert.equal(brand.attr("href"), prefix + "/");
     assert.equal(brand.attr("aria-label"), "Metrics and Models home");
-    const logo = $("img[src='" + prefix + "/assets/legacy-logo.png']");
-    assert.equal(logo.length, 1, file + ": only one visible logo");
-    assert.equal(logo.attr("alt"), "");
-    assert.ok(logo.hasClass(file === "index.html" ? "intro-logo" : "brand-logo"));
-    assert.equal(brand.find(".brand-logo").length, file === "index.html" ? 0 : 1);
+    assert.equal(brand.text().trim(), "Metrics and Models");
+    assert.equal($('img[src$="/assets/legacy-logo.png"]').length, 0, file);
     assert.equal(
       $("link[rel=icon]").attr("href"),
       prefix + "/assets/legacy-logo.png",
@@ -255,22 +301,41 @@ test("each page uses the original logo once, plus its favicon", () => {
   }
 });
 
-test("the header links to people, seminars and about, with the brand linking home", () => {
-  const files = fs
-    .readdirSync("dist", { recursive: true })
-    .filter((file) => file.endsWith(".html"));
-  for (const file of files) {
+test("the header links to people, open seminars, projects and about, with the brand linking home", () => {
+  for (const file of pages()) {
     const $ = html("/" + file);
     assert.deepEqual(
       $("#main-nav a").toArray().map((link) => [$(link).text(), $(link).attr("href")]),
       [
         ["People", prefix + "/people/"],
-        ["Seminars", prefix + "/#upcoming"],
+        ["Open seminars", prefix + "/seminars/"],
+        ["Projects", prefix + "/projects/"],
         ["About", prefix + "/about/"],
       ],
       file,
     );
     assert.equal($(".site-header .wordmark").attr("href"), prefix + "/");
+  }
+});
+
+test("every page has one animated banner with a pause control", () => {
+  for (const file of pages().filter((file) => file !== "404.html")) {
+    const $ = html("/" + file);
+    const banner = $("[data-animation-group]");
+    assert.equal(banner.length, 1, file);
+    assert.equal(banner.find(".motion-toggle").length, 1, file);
+    const canvas = banner.find("canvas[data-plot]");
+    assert.equal(canvas.length, 1, file);
+    assert.equal(canvas.attr("aria-hidden"), "true", file);
+    if (file === "index.html") assert.equal(canvas.attr("data-plot"), "ribbon");
+    else {
+      assert.equal(canvas.attr("data-plot"), "random", file);
+      assert.equal(canvas.attr("data-fit"), "right", file);
+      // The notice row links to the next talk everywhere but the seminars
+      // page, whose banner is the next talk.
+      if (file !== "seminars/index.html")
+        assert.equal(banner.find(".hero-notice").attr("href"), prefix + content.next.url, file);
+    }
   }
 });
 
@@ -342,14 +407,20 @@ test("the lab is introduced separately from its open seminar programme", () => {
   const home = html("/index.html");
   const about = html("/about/index.html");
   assert.equal(
-    home(".intro-copy > p").first().text(),
-    "We are a lab at the University of Oxford, developing computational methods for complex problems.",
+    home(".landing-lead").text(),
+    "A lab at the University of Oxford, developing computational methods for complex problems.",
   );
-  assert.equal(home(".intro-copy a").first().attr("href"), prefix + "/people/");
-  assert.equal(home("#upcoming h2").text(), "Open seminars");
-  assert.match(home(".programme-intro").text(), /open to everyone/);
+  assert.deepEqual(
+    home(".landing-links a").toArray().map((a) => [home(a).text(), home(a).attr("href")]),
+    [
+      ["Join the seminar", prefix + "/seminars/"],
+      ["Meet the lab", prefix + "/people/"],
+    ],
+  );
+  assert.equal(home("#upcoming h2").text(), "Open talks · Next up");
+  assert.match(home("#upcoming .section-intro").text(), /open to everyone/);
   assert.match(
-    about(".page-heading").text(),
+    about(".hero-lead").text(),
     /develop computational methods for complex problems/,
   );
   assert.ok(
@@ -368,6 +439,58 @@ test("the lab is introduced separately from its open seminar programme", () => {
     );
   }
   assert.match(about("#join").text(), /do not need to be a lab member/);
+});
+
+test("publication data is well formed and credits only listed lab members", () => {
+  const names = new Set(people.map((person) => person.name));
+  for (const person of people) {
+    if (person.orcid) assert.match(person.orcid, /^\d{4}-\d{4}-\d{4}-\d{3}[\dX]$/, person.name);
+    for (const id of [person.openalex ?? []].flat())
+      assert.match(id, /^A\d+$/, person.name);
+  }
+  assert.ok(publications.length > 0 && publications.length <= 12);
+  for (const list of [publications, highlights])
+    for (const paper of list) {
+      assert.ok(paper.title && paper.journal && paper.year, paper.title);
+      assert.match(paper.url, /^https:\/\//, paper.title);
+      assert.match(paper.date, /^\d{4}-\d{2}-\d{2}$/, paper.title);
+      assert.ok(paper.members.length > 0, paper.title);
+      for (const member of paper.members) assert.ok(names.has(member), member);
+    }
+  assert.deepEqual(
+    publications.map((paper) => paper.date),
+    publications.map((paper) => paper.date).sort().reverse(),
+  );
+  assert.equal(new Set(publications.map((paper) => paper.url)).size, publications.length);
+});
+
+test("the homepage features the latest four papers and Projects the curated highlights", () => {
+  const home = html("/index.html");
+  const projects = html("/projects/index.html");
+  const papers = publications.slice(0, 4);
+  const slides = home(".feature-slide");
+  assert.equal(slides.length, papers.length);
+  assert.equal(home('.feature-tabs [role="tab"]').length, papers.length);
+  papers.forEach((paper, index) => {
+    assert.equal(slides.eq(index).find("h3 a").text(), paper.title);
+    assert.equal(slides.eq(index).find("h3 a").attr("href"), paper.url);
+    assert.equal(slides.eq(index).attr("hidden") !== undefined, index > 0);
+    assert.equal(
+      home('.feature-tabs [role="tab"]').eq(index).attr("aria-selected"),
+      String(index === 0),
+    );
+  });
+  const cards = projects("[data-queue] .queue-card");
+  assert.equal(cards.length, highlights.length);
+  highlights.forEach((paper, index) => {
+    assert.equal(cards.eq(index).find("h3 a").text(), paper.title);
+    assert.equal(cards.eq(index).find("h3 a").attr("href"), paper.url);
+    const expected =
+      index === 0 ? "centre" : index === 1 ? "right" : index === highlights.length - 1 ? "left" : "off-right";
+    assert.equal(cards.eq(index).attr("data-slot"), expected);
+  });
+  assert.equal(projects(".queue-count").text().trim(), "01 / " + String(highlights.length).padStart(2, "0"));
+  assert.equal(projects("#publications .talk-row").length, publications.length);
 });
 
 test("the public site mentions lab meetings only on About and never publishes their schedule", () => {
