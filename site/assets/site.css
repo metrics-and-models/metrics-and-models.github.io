@@ -381,12 +381,12 @@ a.hero-notice:hover {
 a.hero-notice:hover .icon {
   transform: translateX(3px);
 }
-/* Every inner page shares one banner height. */
+/* Compact inner-page banners grow naturally for longer titles. */
 .hero-grid {
   display: flex;
   align-items: center;
-  min-height: 480px;
-  padding-block: 56px 72px;
+  min-height: 280px;
+  padding-block: 40px 48px;
 }
 .hero-copy {
   position: relative;
@@ -909,6 +909,9 @@ input::placeholder {
 }
 
 /* People: a plain two-column list. */
+.people-page {
+  padding-top: 40px;
+}
 .people-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -971,15 +974,26 @@ input::placeholder {
 .person-links a:hover .icon {
   transform: translate(2px, -2px);
 }
-.person-photo {
+.person-photo-frame {
+  display: block;
   width: 80px;
   height: 96px;
   border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.person-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center 20%;
-  flex-shrink: 0;
   filter: grayscale(0.25);
   transition: filter 0.3s var(--ease);
+}
+.person-photo-frame[data-crop="headshot"] .person-photo {
+  transform: scale(1.7);
+  transform-origin: 50% 45%;
 }
 .person:hover .person-photo {
   filter: none;
@@ -1164,8 +1178,8 @@ input::placeholder {
     padding-inline: 0;
   }
   .hero-grid {
-    min-height: 420px;
-    padding-block: 40px 56px;
+    min-height: 220px;
+    padding-block: 28px 36px;
   }
   .hero-copy {
     max-width: none;
@@ -1226,7 +1240,7 @@ input::placeholder {
   .person {
     padding: 18px;
   }
-  .person-photo {
+  .person-photo-frame {
     width: 68px;
     height: 82px;
   }

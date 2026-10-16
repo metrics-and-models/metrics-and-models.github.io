@@ -25,7 +25,7 @@ permalink: /people/index.html
         </div>
         {% endif %}
       </div>
-      {% if person.photo %}<img class="person-photo" src="{{ person.photo }}" alt="{{ person.name }}" width="76" height="90" loading="lazy">{% endif %}
+      {% if person.photo %}<span class="person-photo-frame"{% if person.photoCrop %} data-crop="{{ person.photoCrop }}"{% endif %}><img class="person-photo" src="{{ person.photo }}" alt="{{ person.name }}" width="76" height="90" loading="lazy"></span>{% endif %}
     </article>
   {% endfor %}
   </div>
