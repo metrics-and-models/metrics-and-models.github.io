@@ -137,15 +137,6 @@
     collapse();
   }
 
-  // A soft light follows the pointer around each card's frame.
-  for (const card of document.querySelectorAll(".deck-card")) {
-    card.addEventListener("pointermove", (event) => {
-      const box = card.getBoundingClientRect();
-      card.style.setProperty("--x", event.clientX - box.left + "px");
-      card.style.setProperty("--y", event.clientY - box.top + "px");
-    });
-  }
-
   // Featured publications rotate every few seconds, pausing while a visitor
   // points at or focuses the panel.
   for (const carousel of document.querySelectorAll("[data-carousel]")) {

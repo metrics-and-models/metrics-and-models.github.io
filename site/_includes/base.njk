@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b0b0c">
+  <meta name="theme-color" content="#ffffff">
   <meta name="description" content="{{ description or site.description }}">
   {% if not site.production or noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
   {% if not noindex %}<link rel="canonical" href="{{ site.origin }}{{ site.prefix }}{{ page.url }}">{% endif %}
@@ -24,7 +24,6 @@
   <header class="site-header{% if home %} site-header-home{% endif %}">
     <div class="container header-inner">
       <a class="wordmark" href="/" aria-label="Metrics and Models home"><span>Metrics and Models</span></a>
-      {% if home %}<svg class="header-mark" viewBox="-12 -12 24 24" aria-hidden="true"><g stroke="currentColor" stroke-width="1.1" fill="currentColor">{% for a in [0, 60, 120, 180, 240, 300] %}<line x1="0" y1="0" x2="0" y2="-8.5" transform="rotate({{ a }})"/><circle cx="0" cy="-9.2" r="1.5" transform="rotate({{ a }})"/>{% endfor %}<circle r="2.2"/></g></svg>{% endif %}
       <button class="menu-toggle icon-button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-nav">{% icon "menu" %}</button>
       <nav id="main-nav" aria-label="Main navigation">
         <a href="/people/" {% if section == "people" %}aria-current="page"{% endif %}>People</a>

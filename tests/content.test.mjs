@@ -325,10 +325,14 @@ test("every page has one animated banner with a pause control", () => {
     assert.equal(banner.length, 1, file);
     assert.equal(banner.find(".motion-toggle").length, 1, file);
     const canvas = banner.find("canvas[data-plot]");
-    assert.equal(canvas.length, 1, file);
-    assert.equal(canvas.attr("aria-hidden"), "true", file);
-    if (file === "index.html") assert.equal(canvas.attr("data-plot"), "ribbon");
+    canvas.each((_, sketch) => assert.equal($(sketch).attr("aria-hidden"), "true", file));
+    if (file === "index.html") {
+      assert.deepEqual(canvas.toArray().map((sketch) => $(sketch).attr("data-plot")), [
+        "flow", "network", "distribution", "scatter",
+      ]);
+    }
     else {
+      assert.equal(canvas.length, 1, file);
       assert.equal(canvas.attr("data-plot"), "random", file);
       assert.equal(canvas.attr("data-fit"), "right", file);
       // The notice row links to the next talk everywhere but the seminars

@@ -5,6 +5,7 @@ import { loadContent } from "../lib/content.mjs";
 const content = loadContent();
 const people = JSON.parse(fs.readFileSync("site/_data/people.json", "utf8"));
 const plots = ["network", "distribution", "scatter", "heatmap", "series", "contours"];
+const landingPlots = ["flow", "network", "distribution", "scatter"];
 
 test("responsive pages have no overflow, broken assets or browser errors", async ({
   page,
@@ -208,6 +209,29 @@ test("navigation is keyboard accessible on mobile and desktop", async ({
   );
 });
 
+test("page backgrounds are white and the desktop header navigation stays horizontal", async ({
+  page,
+}) => {
+  for (const url of ["", "seminars/", "people/", "projects/", "about/"]) {
+    await page.goto(url);
+    await page.evaluate(() => document.fonts.ready);
+    await expect(page.locator("body")).toHaveCSS("background-color", "rgb(255, 255, 255)");
+    await expect(page.locator(".landing, .hero")).toHaveCSS("background-color", "rgb(255, 255, 255)");
+    if (page.viewportSize().width <= 480) continue;
+    const layout = await page.locator("#main-nav").evaluate((nav) => {
+      const links = [...nav.querySelectorAll("a")].map((link) => link.getBoundingClientRect());
+      const header = nav.closest(".header-inner").getBoundingClientRect();
+      const bounds = nav.getBoundingClientRect();
+      return {
+        sameRow: links.every((link) => Math.abs(link.top - links[0].top) < 2),
+        leftToRight: links.every((link, index) => !index || link.left > links[index - 1].right),
+        alignedRight: Math.abs(bounds.right - header.right) < 2,
+      };
+    });
+    expect(layout, url || "home").toEqual({ sameRow: true, leftToRight: true, alignedRight: true });
+  }
+});
+
 test("a talk card opens a preview over the page, then leads to details and the calendar", async ({
   page,
 }) => {
@@ -312,36 +336,65 @@ test("banner animations render, keep moving, pause and respect reduced motion", 
     await page.goto(url);
     const canvas = page.locator("canvas[data-plot]");
     const button = page.locator("[data-animation-group] .motion-toggle");
-    await expect(canvas).toHaveCount(1);
-    const plot = await canvas.getAttribute("data-plot");
-    expect(url ? plots : ["ribbon"], url).toContain(plot);
+    await expect(canvas).toHaveCount(url ? 1 : landingPlots.length);
+    const types = await canvas.evaluateAll((items) => items.map((c) => c.dataset.plot));
+    if (url) expect(plots, url).toContain(types[0]);
+    else expect(types).toEqual(landingPlots);
     await expect
       .poll(() =>
-        canvas.evaluate((c) => {
-          const data = c.getContext("2d").getImageData(0, 0, c.width, c.height).data;
-          let painted = 0;
-          for (let i = 3; i < data.length; i += 4) if (data[i] > 0) painted++;
-          return painted;
+        canvas.evaluateAll((items) => {
+          const painted = items.map((c) => {
+            const data = c.getContext("2d").getImageData(0, 0, c.width, c.height).data;
+            let count = 0;
+            for (let i = 3; i < data.length; i += 4) if (data[i] > 0) count++;
+            return count;
+          });
+          return Math.min(...painted);
         }),
       )
-      .toBeGreaterThan(1000);
-    const snapshot = () => canvas.evaluate((c) => c.toDataURL());
+      .toBeGreaterThan(url ? 1000 : 100);
+    const snapshot = () => canvas.evaluateAll((items) => items.map((c) => c.toDataURL()));
     const first = await snapshot();
     await page.waitForTimeout(250);
-    expect(await snapshot(), url + " moves").not.toBe(first);
+    const moving = await snapshot();
+    moving.forEach((frame, index) => expect(frame, (url || "home") + " " + types[index] + " moves").not.toBe(first[index]));
     await button.click();
     await expect(button).toHaveAttribute("aria-label", /^Play /);
     const paused = await snapshot();
     await page.waitForTimeout(250);
-    expect(await snapshot(), url + " pauses").toBe(paused);
+    expect(await snapshot(), url + " pauses").toEqual(paused);
     await button.click();
     await expect(button).toHaveAttribute("aria-label", /^Pause /);
     await page.emulateMedia({ reducedMotion: "reduce" });
     await expect(button).toHaveAttribute("aria-label", /^Play /);
     const reduced = await snapshot();
     await page.waitForTimeout(250);
-    expect(await snapshot(), url + " reduced motion").toBe(reduced);
+    expect(await snapshot(), url + " reduced motion").toEqual(reduced);
   }
+});
+
+test("the landing mathematical widgets appear gradually and are immediate with reduced motion", async ({
+  page,
+}) => {
+  await page.clock.install();
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("");
+  const sketches = page.locator(".landing canvas[data-plot]");
+  const opacity = () => sketches.evaluateAll((items) => items.map((canvas) => Number(getComputedStyle(canvas).opacity)));
+  const initial = await opacity();
+  await page.clock.runFor(1200);
+  const appearing = await opacity();
+  await page.clock.runFor(6000);
+  const revealed = await opacity();
+  expect(appearing[0]).toBeGreaterThan(initial[0]);
+  expect(appearing[0]).toBeLessThan(revealed[0]);
+  revealed.forEach((value, index) => expect(value).toBeGreaterThan(initial[index]));
+
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.reload();
+  await expect.poll(opacity).toEqual(revealed);
+  await page.clock.runFor(6000);
+  expect(await opacity()).toEqual(revealed);
 });
 
 test("animations stop while scrolled out of view", async ({ page }) => {
