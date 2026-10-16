@@ -1,7 +1,6 @@
 (() => {
   // Muted scientific ink, readable against the white page.
   const colours = {
-    ink: "#62645f",
     line: "#9baaa9",
     grid: "#d5dcd9",
     blue: "#355287",
@@ -16,175 +15,6 @@
     context.arc(x, y, radius, 0, Math.PI * 2);
     context.fill();
   }
-
-  // The original small homepage widgets keep their fine, two-dimensional ink.
-  const originalRenderers = (() => {
-    function axes(context, width, height) {
-      context.strokeStyle = colours.line;
-      context.lineWidth = 0.8;
-      context.beginPath();
-      context.moveTo(5, 5);
-      context.lineTo(5, height - 5);
-      context.lineTo(width - 4, height - 5);
-      context.stroke();
-    }
-
-    function flow(context, width, height, time) {
-      // A family of trajectories projected onto a scientific grid.
-      const point = (u, v) => {
-        const phase = time * 0.00055;
-        const angle = u * Math.PI * 1.7 - 1.1 + Math.sin(time * 0.00022) * 0.28;
-        const radius = (0.25 + v * 0.11) * (1 + Math.sin(phase + v) * 0.04);
-        const bend = Math.sin(u * Math.PI * 2 + phase) * 0.045;
-        return [
-          width * (0.51 + Math.cos(angle) * radius + u * 0.14 + v * 0.035),
-          height * (0.47 + Math.sin(angle) * radius * 0.9 + v * 0.12 + bend),
-        ];
-      };
-      context.fillStyle = colours.grid;
-      for (let x = 18; x < width - 5; x += 18)
-        for (let y = 18; y < height - 5; y += 18) context.fillRect(x, y, 1, 1);
-
-      for (let line = 0; line < 27; line++) {
-        const v = (line - 13) / 13;
-        context.beginPath();
-        for (let step = 0; step <= 130; step++) {
-          const [x, y] = point(step / 130, v);
-          if (step === 0) context.moveTo(x, y);
-          else context.lineTo(x, y);
-        }
-        context.strokeStyle = line % 6 === 0 ? colours.ink : colours.line;
-        context.lineWidth = line % 6 === 0 ? 0.77 : 0.455;
-        context.stroke();
-      }
-      for (let index = 0; index < 5; index++) {
-        const u = (index * 0.207 + time * 0.00007) % 1;
-        const [x, y] = point(u, (index - 2) / 3);
-        dot(context, x, y, 1.96, index === 2 ? colours.red : colours.blue);
-      }
-    }
-
-    function network(context, width, height, time) {
-      const points = [
-        [0.16, 0.3],
-        [0.2, 0.76],
-        [0.41, 0.15],
-        [0.47, 0.52],
-        [0.62, 0.83],
-        [0.77, 0.23],
-        [0.86, 0.62],
-      ].map(([x, y], index) => {
-        const angle = time * 0.00035 + Math.sin(time * 0.00065 + index) * 0.1;
-        const radius = 0.84 * (1 + Math.sin(time * 0.0009 + index) * 0.07);
-        const dx = (x - 0.5) * radius;
-        const dy = (y - 0.5) * radius;
-        return [
-          width * (0.5 + dx * Math.cos(angle) - dy * Math.sin(angle)),
-          height * (0.5 + dx * Math.sin(angle) + dy * Math.cos(angle)),
-        ];
-      });
-      const edges = [
-        [0, 1],
-        [0, 2],
-        [0, 3],
-        [1, 3],
-        [1, 4],
-        [2, 3],
-        [2, 5],
-        [3, 4],
-        [3, 5],
-        [3, 6],
-        [4, 6],
-        [5, 6],
-      ];
-      context.strokeStyle = colours.line;
-      context.lineWidth = 0.8;
-      for (const [a, b] of edges) {
-        context.beginPath();
-        context.moveTo(...points[a]);
-        context.lineTo(...points[b]);
-        context.stroke();
-      }
-      points.forEach(([x, y], index) =>
-        dot(
-          context,
-          x,
-          y,
-          width < 70 ? 1.7 : 2.4,
-          index === 3 ? colours.red : colours.blue,
-        ),
-      );
-      for (const [index, edge] of [edges[5], edges[8], edges[10]].entries()) {
-        const progress = (time * 0.00028 + index / 3) % 1;
-        const [a, b] = edge.map((node) => points[node]);
-        dot(
-          context,
-          a[0] + (b[0] - a[0]) * progress,
-          a[1] + (b[1] - a[1]) * progress,
-          1.6,
-          colours.green,
-        );
-      }
-    }
-
-    function distribution(context, width, height, time) {
-      axes(context, width, height);
-      const mean = 0.49 + Math.sin(time * 0.00085) * 0.14;
-      const sigma = 0.155 + Math.cos(time * 0.00065) * 0.03;
-      const density = (x) => Math.exp(-0.5 * ((x - mean) / sigma) ** 2);
-      const xPixel = (x) => 7 + x * (width - 13);
-      const yPixel = (x) => height - 6 - density(x) * (height - 13);
-      const barWidth = (width - 13) / 12;
-      context.fillStyle = "#35528726";
-      for (let bin = 0; bin < 12; bin++) {
-        const x = (bin + 0.5) / 12;
-        const y = yPixel(x);
-        context.fillRect(
-          xPixel(bin / 12),
-          y,
-          Math.max(1, barWidth - 1),
-          height - 6 - y,
-        );
-      }
-      context.strokeStyle = colours.blue;
-      context.lineWidth = 1.1;
-      context.beginPath();
-      for (let step = 0; step <= 60; step++) {
-        const x = step / 60;
-        if (step === 0) context.moveTo(xPixel(x), yPixel(x));
-        else context.lineTo(xPixel(x), yPixel(x));
-      }
-      context.stroke();
-      dot(context, xPixel(mean), yPixel(mean), 1.8, colours.red);
-    }
-
-    function scatter(context, width, height, time) {
-      axes(context, width, height);
-      const slope = 0.44 + Math.sin(time * 0.0008) * 0.15;
-      const xPixel = (x) => 7 + x * (width - 13);
-      const yPixel = (y) => height - 7 - y * (height - 13);
-      context.strokeStyle = colours.red;
-      context.lineWidth = 1;
-      context.beginPath();
-      context.moveTo(xPixel(0), yPixel(0.2));
-      context.lineTo(xPixel(1), yPixel(0.2 + slope));
-      context.stroke();
-      for (let index = 0; index < 15; index++) {
-        const x = (index + 0.5) / 15 + Math.sin(time * 0.00055 + index) * 0.012;
-        const noise = Math.sin(index * 5.7) * 0.14;
-        const drift = Math.sin(time * 0.001 + index) * 0.065;
-        dot(
-          context,
-          xPixel(x),
-          yPixel(0.2 + slope * x + noise + drift),
-          width < 70 ? 1.3 : 1.8,
-          colours.green,
-        );
-      }
-    }
-
-    return { flow, network, distribution, scatter };
-  })();
 
   // A fixed dot grid in screen pixels, behind every animation.
   function dotGrid(context, width, height) {
@@ -399,7 +229,6 @@
     context.globalAlpha = 1;
   }
 
-
   const renderers = {
     network,
     distribution,
@@ -420,7 +249,7 @@
       .map((canvas) => ({
         canvas,
         context: canvas.getContext("2d"),
-        render: (canvas.dataset.sketch === "original" ? originalRenderers : renderers)[canvas.dataset.plot],
+        render: renderers[canvas.dataset.plot],
         width: 0,
         height: 0,
         visible: false,
@@ -440,20 +269,13 @@
       const { context, width, height } = plot;
       if (!width || !height) return;
       context.clearRect(0, 0, width, height);
-      if (plot.canvas.dataset.sketch === "original") {
-        // Reveal each widget in sequence. Explicitly pausing completes the
-        // reveal, so every sketch remains visible as a static illustration.
+      if (plot.canvas.hasAttribute("data-reveal-delay")) {
+        // Explicitly pausing completes the reveal, so the mathematical
+        // scene remains visible as a static illustration.
         const delay = Number(plot.canvas.dataset.revealDelay) || 0;
         const progress = revealComplete ? 1 : Math.max(0, Math.min(1, (time - delay) / 3200));
         const opacity = progress * progress * (3 - 2 * progress);
         plot.canvas.style.setProperty("--sketch-opacity", opacity.toFixed(4));
-        const sketchWidth = Math.min(width, height / 0.75);
-        const sketchHeight = sketchWidth * 0.75;
-        context.save();
-        context.translate((width - sketchWidth) / 2, (height - sketchHeight) / 2);
-        plot.render(context, sketchWidth, sketchHeight, time * 0.55);
-        context.restore();
-        return;
       }
       dotGrid(context, width, height);
       // Draw each sketch on a fixed 4:3 logical canvas, scaled up past the
@@ -466,7 +288,8 @@
       context.save();
       context.translate(centreX - size / 2, height / 2 - (size * 0.75) / 2);
       context.scale(size / 420, size / 420);
-      plot.render(context, 420, 315, time);
+      const speed = Number(plot.canvas.dataset.speed) || 1;
+      plot.render(context, 420, 315, time * speed);
       context.restore();
     };
     const tick = (now) => {

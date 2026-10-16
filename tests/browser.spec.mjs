@@ -11,7 +11,7 @@ const activeBreaks = JSON.parse(fs.readFileSync("site/_data/seminarBreaks.json",
   .filter((entry) => entry.date.iso >= londonDate);
 const people = JSON.parse(fs.readFileSync("site/_data/people.json", "utf8"));
 const plots = ["network", "distribution", "scatter", "heatmap", "series", "contours"];
-const landingPlots = ["flow", "network", "distribution", "scatter"];
+const landingPlots = ["distribution"];
 
 test("responsive pages have no overflow, broken assets or browser errors", async ({
   page,
@@ -412,13 +412,14 @@ test("banner animations render, keep moving, pause and respect reduced motion", 
   }
 });
 
-test("the landing mathematical widgets appear gradually and are immediate with reduced motion", async ({
+test("the landing 3D distribution appears gradually and is immediate with reduced motion", async ({
   page,
 }) => {
   await page.clock.install();
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("");
   const sketches = page.locator(".landing canvas[data-plot]");
+  await expect(sketches).toHaveCount(1);
   const opacity = () => sketches.evaluateAll((items) => items.map((canvas) => Number(getComputedStyle(canvas).opacity)));
   const initial = await opacity();
   await page.clock.runFor(1200);

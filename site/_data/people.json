@@ -232,12 +232,13 @@
     "url": "https://www.demography.ox.ac.uk/people/rita-liu",
     "role": "Lab member",
     "interests": [
-      "Neuro-symbolic learning",
-      "Inductive logic programming",
-      "Large language models",
-      "AI for science"
+      "Neuro-Symbolic Learning",
+      "Knowledge Representation and Reasoning",
+      "Natural Language Processing",
+      "Large Language Models",
+      "AI for Science"
     ],
-    "photo": "",
+    "photo": "/assets/people/mingyue-liu.png",
     "urlLabel": "Oxford profile",
     "links": [
       {

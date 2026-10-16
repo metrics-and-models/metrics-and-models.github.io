@@ -32,6 +32,7 @@ directory; this file records supporting sources and portrait provenance.
   [research publications](https://markverhagen.me/publications.html).
 - Mingyue Liu: [Oxford profile, under Rita Liu](https://www.demography.ox.ac.uk/people/rita-liu).
   Displayed name supplied by the site owner and also used on the linked Scholar profile.
+  Research interests supplied by the site owner on 16 October 2026.
 - Olivia Li: research interests supplied directly for the lab profile;
   full name confirmed by the site owner. The owner supplied her
   [LinkedIn profile, under Ziying (Olivia) Li](https://uk.linkedin.com/in/ziying-olivia-li-0a93271b7)
@@ -118,15 +119,14 @@ member-confirmed account or a direct link from their own page can be added later
   homepage's 14 MB image for a small directory portrait.
 - `maksim-zubok.webp`: [departmental portrait](https://www.demography.ox.ac.uk/sites/default/files/styles/person/public/2026-04/maksim_zubok_website.png.webp?itok=XGSzitGI)
   on his Oxford profile.
+- `mingyue-liu.png`: kitten avatar supplied by the site owner on 16 October
+  2026 for Mingyue's lab profile.
 - `olivia-li.jpeg`: striped-background portrait supplied for Olivia's lab
   profile; identity confirmed by the site owner.
 - `ridhi-kashyap.jpg`: [departmental portrait](https://www.sociology.ox.ac.uk/sites/g/files/vzsiac2426/files/styles/oxfcms_medium_square/public/2026-07/ridhi_kashyap2.jpeg?h=b4e301e9&itok=pmtc4jDy)
   on her linked Sociology profile.
 - `xiaowen-dong.jpg`: [original homepage image](https://web.media.mit.edu/~xdong/engsci2.jpg),
   used with permission conveyed in the membership request.
-
-Mingyue's linked departmental and Scholar profiles contain generic placeholders,
-not a personal portrait, so her photo remains unset.
 
 The site owner requested use of relevant portraits from the linked public
 pages. Files retain the bytes served by their sources (including source-provided

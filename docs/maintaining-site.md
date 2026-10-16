@@ -132,17 +132,16 @@ departmental page uses "Rita Liu".
 
 ## Scientific sketches
 
-`site/assets/field.js` draws illustrative flow, network, distribution and scatter
-sketches, not empirical research results. The home page has four sketches sharing
-one pause control; People, About and the archive have small heading sketches,
-and talk details include a network beside the event facts. Networks rotate and
-deform slowly, while coloured points travel along their edges. The
-`science-decoration.njk` include provides these smaller versions.
+`site/assets/field.js` draws illustrative mathematical sketches. The home page
+has one subtle 3D Gaussian surface that moves slowly and fades into the header,
+with a pause control. Inner pages retain their existing heading plots, chosen
+from network, distribution, scatter, heatmap, time-series and contour sketches.
+These are decorative illustrations rather than empirical research results.
 
 Animation stops when a sketch is offscreen or the tab is hidden. Reduced-motion
-preferences initialise all sketches as still images; the controls can start or
-pause them. Keep dimensions fixed in CSS and preserve the controls and accessible
-canvas labels when adding a sketch.
+preferences show the sketches immediately as still images; the controls can
+start or pause them. Keep dimensions fixed in CSS and preserve the controls
+and accessible canvas labels when adding a sketch.
 
 ## Publishing the preview
 

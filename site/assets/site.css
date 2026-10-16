@@ -1328,7 +1328,7 @@ input::placeholder {
   }
 }
 
-/* Homepage: white space, dark type and slowly emerging mathematical sketches. */
+/* Homepage: white space, dark type and one slowly emerging 3D surface. */
 .landing {
   position: relative;
   overflow: hidden;
@@ -1336,34 +1336,16 @@ input::placeholder {
   color: var(--ink);
   isolation: isolate;
 }
-.landing-sketches {
+.landing-plot {
   position: absolute;
-  inset: 2% 0 12%;
+  inset: 0;
   z-index: -1;
-  pointer-events: none;
-}
-.landing-sketch {
-  position: absolute;
   display: block;
-  width: clamp(200px, 28vw, 440px);
-  height: 40%;
-  opacity: calc(var(--sketch-opacity, 0) * 0.44);
-}
-.landing-sketch:nth-child(1) {
-  top: 0;
-  left: 4%;
-}
-.landing-sketch:nth-child(2) {
-  top: 0;
-  right: 4%;
-}
-.landing-sketch:nth-child(3) {
-  bottom: 0;
-  left: 2%;
-}
-.landing-sketch:nth-child(4) {
-  bottom: 0;
-  right: 2%;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: calc(var(--sketch-opacity, 0) * 0.28);
+  mask-image: linear-gradient(90deg, transparent, rgb(0 0 0 / 0.25) 30%, #000 65%);
 }
 .landing-frame {
   display: flex;
@@ -1474,13 +1456,8 @@ input::placeholder {
   .landing-frame {
     width: calc(100% - 32px);
   }
-  .landing-sketches {
-    inset: 0 -8% 16%;
-  }
-  .landing-sketch {
-    width: 52%;
-    height: 34%;
-    opacity: calc(var(--sketch-opacity, 0) * 0.24);
+  .landing-plot {
+    opacity: calc(var(--sketch-opacity, 0) * 0.18);
   }
   .landing-title {
     white-space: normal;

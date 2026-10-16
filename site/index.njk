@@ -4,13 +4,8 @@ section: lab
 home: true
 ---
 {% set next = seminars.next %}
-<header class="landing" data-animation-group data-animation-name="header animations">
-  <div class="landing-sketches" aria-hidden="true">
-    <canvas class="landing-sketch" data-plot="flow" data-sketch="original" data-fit="contain" data-reveal-delay="0" aria-hidden="true"></canvas>
-    <canvas class="landing-sketch" data-plot="network" data-sketch="original" data-fit="contain" data-reveal-delay="650" aria-hidden="true"></canvas>
-    <canvas class="landing-sketch" data-plot="distribution" data-sketch="original" data-fit="contain" data-reveal-delay="1300" aria-hidden="true"></canvas>
-    <canvas class="landing-sketch" data-plot="scatter" data-sketch="original" data-fit="contain" data-reveal-delay="1950" aria-hidden="true"></canvas>
-  </div>
+<header class="landing" data-animation-group data-animation-name="header animation">
+  <canvas class="landing-plot" data-plot="distribution" data-fit="right" data-reveal-delay="0" data-speed="0.55" aria-hidden="true"></canvas>
   <div class="landing-frame">
     <h1 class="landing-title" aria-label="Metrics and Models"><span aria-hidden="true">Metrics <span class="amp">&amp;</span> Models</span></h1>
     <div class="landing-copy">
@@ -22,7 +17,7 @@ home: true
       <div class="landing-links">
         <a class="bracket-link" href="/seminars/">Join the seminar</a>
         <a class="bracket-link" href="/people/">Meet the lab</a>
-        <button class="motion-toggle icon-button" aria-label="Pause header animations" title="Pause header animations"><span data-pause>{% icon "pause" %}</span><span data-play hidden>{% icon "play" %}</span></button>
+        <button class="motion-toggle icon-button" aria-label="Pause header animation" title="Pause header animation"><span data-pause>{% icon "pause" %}</span><span data-play hidden>{% icon "play" %}</span></button>
       </div>
     </div>
   </div>

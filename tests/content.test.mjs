@@ -461,9 +461,9 @@ test("every page has one animated banner with a pause control", () => {
     const canvas = banner.find("canvas[data-plot]");
     canvas.each((_, sketch) => assert.equal($(sketch).attr("aria-hidden"), "true", file));
     if (file === "index.html") {
-      assert.deepEqual(canvas.toArray().map((sketch) => $(sketch).attr("data-plot")), [
-        "flow", "network", "distribution", "scatter",
-      ]);
+      assert.equal(canvas.length, 1, file);
+      assert.equal(canvas.attr("data-plot"), "distribution", file);
+      assert.equal(canvas.attr("data-fit"), "right", file);
     }
     else {
       assert.equal(canvas.length, 1, file);
