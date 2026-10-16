@@ -74,6 +74,8 @@ export default function (config) {
     "site/assets": "assets",
     "assets/metrics_and_models_logo.png": "assets/legacy-logo.png",
   });
+  // Preserve image URLs from the original GitHub Pages site.
+  config.addPassthroughCopy("assets/*.png");
   config.addPassthroughCopy({
     "node_modules/@fontsource-variable/instrument-sans/LICENSE":
       "assets/licenses/instrument-sans.txt",
