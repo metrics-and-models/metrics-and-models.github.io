@@ -187,19 +187,38 @@ redirect to `.ai`. Keep the canonical repository's Pages custom-domain field
 empty and do not add a `CNAME` file: attaching `.ai` there would redirect the
 GitHub Pages URL to the custom domain. See [GitHub's custom-domain documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages).
 
-The `.ai` domain remains on its current `metrics-and-models/dev` deployment
-during the transition. Its replacement must use an external host deploying
-from the same canonical `metrics-and-models.github.io` repository and `main`
-branch. Vercel has been suggested, but it is not connected or configured yet.
-Do not retire the old `dev` deployment or remove its domain binding until the
-replacement `.ai` deployment has been verified.
+The repository includes a prepared Vercel reverse proxy in `vercel.json`.
+It forwards requests to the published GitHub Pages site while keeping the
+visitor's `.ai` address. Content and hourly archive rebuilds therefore follow
+the same GitHub deployment without copying the website or triggering another
+build. Vercel rewrite caching is explicitly disabled; GitHub's own caching
+and browser caches still apply. Directory paths receive a same-host trailing
+slash, so `/people` becomes `/people/` before reaching GitHub; `.html`, calendar
+and asset URLs keep their extensions. See [Vercel rewrites](https://vercel.com/docs/routing/rewrites)
+and [configuration options](https://vercel.com/docs/project-configuration/vercel-json).
 
-Before completing the transition, verify `.ai` over HTTPS, including People,
-seminars, talk details and calendar downloads, and confirm the GitHub URL still
-serves the site directly. Domain changes must preserve the existing nameservers,
-email records (MX, SPF, DKIM and DMARC), verification TXT records and unrelated
-DNS records. Record the replacement host and deployment arrangement here once
-implemented and verified.
+The proxy skips dependency installation and builds. Only `hosting/ai-proxy/`
+is deployed locally, containing a fallback 404 page; repository files and the
+internal schedule are not included in its public output. Canonical metadata
+continues to identify the GitHub URL.
+
+This configuration is not live until Vercel is connected and DNS is changed.
+Keep the existing `.ai` deployment and domain binding in `metrics-and-models/dev`
+working throughout the transition:
+
+1. Import the canonical repository into Vercel, with production branch `main`
+   and the repository root as Root Directory. Let `vercel.json` select the
+   Other framework preset, empty install/build commands and proxy output folder.
+2. Deploy and verify the Vercel URL: homepage, `/people` and `/people/`, seminars,
+   talk details, assets with version queries, calendar downloads and 404s. Confirm
+   `/details/internal_lab_sessions.html` and `/details/internal_lab_sessions.md`
+   return 404, and that directory redirects stay on the requested host.
+3. Add `metrics-and-models.ai` and its `www` variant in Vercel. Apply the exact
+   web DNS records Vercel provides, preserving existing nameservers, email records
+   (MX, SPF, DKIM and DMARC), verification TXT records and unrelated DNS records.
+4. Verify `.ai` over HTTPS and confirm the GitHub URL still serves the site
+   directly. Only then remove the former `dev` domain binding and retire that
+   deployment. Record the verified Vercel project and cutover here.
 
 ## Dependencies and security
 
