@@ -1,20 +1,16 @@
 # Metrics and Models website
 
-The production and development websites are deliberately separate:
+The canonical repository is
+[`metrics-and-models/metrics-and-models.github.io`](https://github.com/metrics-and-models/metrics-and-models.github.io).
+It contains the rebuilt lab site and the retained seminar content. The `main`
+branch deploys the site through GitHub Actions to
+https://metrics-and-models.github.io/.
 
-| Site | Source | Hosting |
-| --- | --- | --- |
-| https://metrics-and-models.github.io/ | Original seminar site, after Yang Chen was added (`9506e5b`) | Original repository, `main`, native Jekyll Pages build |
-| https://metrics-and-models.ai/ | Rebuilt lab site, maintained on `dev` | Separate `metrics-and-models/dev` repository, `main`, GitHub Actions |
-
-Keep the production repository's Pages custom domain unset. Only the separate
-dev repository may use `metrics-and-models.ai`. Do not merge the rebuilt site
-into production or redirect the production domain without explicit approval.
-The production restoration retains the removal of the internal schedule link
-and excludes that schedule from Jekyll publishing.
-
-The `.ai` binding is configured on the dev repository; public availability
-still requires GoDaddy DNS and GitHub's HTTPS certificate to be ready.
+Keep the repository's Pages custom-domain field empty and do not add a `CNAME`
+file. The GitHub URL must serve the website directly, without redirecting to
+`metrics-and-models.ai`. There is one canonical source repository and one
+production branch; the former separate `metrics-and-models/dev` repository is
+no longer a publishing target.
 
 ## Local preview and checks
 
@@ -38,11 +34,14 @@ npm run test:browser
 The browser suite checks five desktop, tablet and mobile widths, every talk detail page,
 archive filtering, navigation, calendars, images and animation behaviour.
 
-To match the deployed dev site, use `SITE_ENV=preview`,
-`SITE_URL=https://metrics-and-models.ai` and an empty `PATH_PREFIX` for all three
-commands. These are also the local defaults. The rebuilt site remains unindexed.
-The optional `/dev` path-prefix checks can still be run with `PATH_PREFIX=/dev`,
-but the custom-domain deployment must not use that prefix.
+Local builds default to `SITE_URL=https://metrics-and-models.github.io` and an
+empty `PATH_PREFIX`. They remain unindexed unless `SITE_ENV=production` is set:
+preview pages have `noindex` metadata and `robots.txt` disallows crawling.
+GitHub Actions sets `SITE_ENV=production` for the production build.
+
+For an explicit production-build check, use `SITE_ENV=production npm run build`
+and `SITE_ENV=production npm test`. Optional path-prefix checks can still use
+`PATH_PREFIX=/dev`, but the production deployment uses an empty prefix.
 
 ## Updating content
 
@@ -52,7 +51,7 @@ The existing Markdown is still the source of truth:
 - `details/previous_talks.md`: archive table.
 - `details/<speaker>.md`: title, date, institution, abstract, bio and links.
 
-The internal meeting schedule is excluded from both published websites and is
+The internal meeting schedule is excluded from the published website and is
 not loaded into template data. About contains only a brief mention of lab
 meetings, with no dates, cadence or schedule link. The build also removes the
 old generated schedule page from an existing `dist/` directory. Do not restore
@@ -143,87 +142,64 @@ preferences show the sketches immediately as still images; the controls can
 start or pause them. Keep dimensions fixed in CSS and preserve the controls
 and accessible canvas labels when adding a sketch.
 
-## Publishing the preview
+## Publishing
 
-Source is maintained on `dev` in the original repository. A separate public
-`metrics-and-models/dev` repository hosts the preview, receiving the same commit
-on its `main` branch. Its Pages setting is **GitHub Actions**.
-
-After committing changes on `dev`:
+Maintain changes in the canonical repository and merge them into `main`. An
+`origin` remote used for publishing must point to
+`https://github.com/metrics-and-models/metrics-and-models.github.io.git`.
+After the intended changes are committed on `main`, publish with:
 
 ```sh
-git push origin dev
-git push preview dev:main
+git push origin main
 ```
 
-The `preview` remote points to `https://github.com/metrics-and-models/dev.git`.
-For a fresh clone, add it with
-`git remote add preview https://github.com/metrics-and-models/dev.git`.
+Pull requests run checks; deployment is restricted to the canonical repository's
+`main` branch. Do not maintain a second copy of content or push to the former
+`dev` repository to publish the site. Preserve existing Git history and talk
+URLs when making changes.
 
-The workflow can deploy only from `main` in `metrics-and-models/dev`.
-Pushing to `origin/dev` runs checks but never changes production. The dev build
-uses root-relative links and assets, with `SITE_URL=https://metrics-and-models.ai`
-and an empty `PATH_PREFIX`. Search indexing remains disabled. Its custom domain
-is set only in the dev repository's Pages settings. The former `/dev/` preview
-URL may redirect to `.ai`; the production homepage must not.
+In the canonical repository's **Settings → Pages**, use **GitHub Actions** as
+the source and keep the custom-domain field empty. The workflow builds the
+Eleventy site into `dist/`, runs content and browser checks, uploads the Pages
+artifact and deploys it. Production uses:
 
-## Publishing production
+```text
+SITE_ENV=production
+SITE_URL=https://metrics-and-models.github.io
+PATH_PREFIX=
+```
 
-Production remains the original Jekyll site on `main`. Its Pages source is
-**Deploy from a branch**, branch `main`, folder `/ (root)`, and the custom-domain
-field must stay empty. The rebuild workflow is not part of production.
+The retained Jekyll source files are not a separate deployment pipeline. Keep
+`details/internal_lab_sessions.md` excluded from publishing and the homepage
+free of internal schedule links or timing information. Do not add a `CNAME`
+file to the source or generated output.
 
-Do not merge `dev` into `main`: their site implementations now intentionally
-differ. Make approved seminar-content updates on `main` and apply the same
-content-only changes to `dev` when needed. Do not force-push or discard history.
-Preserve `_config.yml`'s exclusion of `details/internal_lab_sessions.md` and keep
-the homepage free of internal schedule links or timing information.
+After deployment, check that https://metrics-and-models.github.io/ serves the
+rebuilt homepage directly over HTTPS, with no redirect to `.ai`. Check People,
+seminars, previous talks, talk details and calendar downloads, and confirm the
+internal schedule URL returns 404.
 
-## Connecting the GoDaddy domain
+## The `.ai` domain
 
-The owner has approved `.ai` for the rebuilt dev site only, not a migration of
-production. Do not put this domain in the production repository's Pages settings.
+The owner requires both https://metrics-and-models.github.io/ and
+https://metrics-and-models.ai/ to serve the website. The GitHub URL must never
+redirect to `.ai`. Keep the canonical repository's Pages custom-domain field
+empty and do not add a `CNAME` file: attaching `.ai` there would redirect the
+GitHub Pages URL to the custom domain. See [GitHub's custom-domain documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages).
 
-DNS is managed at GoDaddy. Keep its existing nameservers and preserve email
-records (MX, SPF, DKIM and DMARC), ownership-verification TXT records and other
-unrelated records. Do not enable domain forwarding or wildcard DNS.
+The `.ai` domain remains on its current `metrics-and-models/dev` deployment
+during the transition. Its replacement must use an external host deploying
+from the same canonical `metrics-and-models.github.io` repository and `main`
+branch. Vercel has been suggested, but it is not connected or configured yet.
+Do not retire the old `dev` deployment or remove its domain binding until the
+replacement `.ai` deployment has been verified.
 
-Before changing the website DNS records, verify ownership under the
-[organisation's Pages settings](https://github.com/organizations/metrics-and-models/settings/pages):
-add `metrics-and-models.ai`, copy the generated TXT name and value into GoDaddy,
-then select Verify. Keep this TXT record permanently. Do not invent the token;
-GitHub generates it. See [GitHub's verification instructions](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages).
-
-Set only `metrics-and-models/dev`'s Pages custom domain to `metrics-and-models.ai`
-before pointing DNS at GitHub. A `CNAME` file is not needed for its Actions-based
-Pages build. The dev site is served from the domain root, not `/dev/`.
-
-In GoDaddy's DNS records for `metrics-and-models.ai`, replace the parking A
-record(s) for `@` and update the existing `www` CNAME to these values:
-
-| Type | Name | Value |
-| --- | --- | --- |
-| A | @ | 185.199.108.153 |
-| A | @ | 185.199.109.153 |
-| A | @ | 185.199.110.153 |
-| A | @ | 185.199.111.153 |
-| CNAME | www | metrics-and-models.github.io |
-
-The `www` CNAME names the GitHub account, not a production-site redirect. GitHub
-routes requests for `.ai` to the dev repository that owns the custom-domain
-binding; production remains accessible independently at its GitHub URL.
-
-Use GoDaddy's default TTL. Do not retain additional parking A or conflicting
-AAAA records at `@`. IPv6 is optional; add it only with the GitHub Pages values
-from the [custom-domain documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
-
-Once DNS is correct and GitHub has issued the certificate, enable **Enforce
-HTTPS** on the dev repository. Check the `.ai` homepage, People, talk details,
-calendar downloads and internal schedule's 404 response. Verify the original
-GitHub homepage still returns HTTP 200 without a redirect, renders the legacy
-seminar site and includes Yang Chen. Check the internal schedule is also 404
-on production.
-Do not report the custom domain as live until DNS and HTTPS have been checked.
+Before completing the transition, verify `.ai` over HTTPS, including People,
+seminars, talk details and calendar downloads, and confirm the GitHub URL still
+serves the site directly. Domain changes must preserve the existing nameservers,
+email records (MX, SPF, DKIM and DMARC), verification TXT records and unrelated
+DNS records. Record the replacement host and deployment arrangement here once
+implemented and verified.
 
 ## Dependencies and security
 

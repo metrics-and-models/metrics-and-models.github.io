@@ -25,7 +25,7 @@ async function main() {
   try {
     const url = new URL(
       "/seminars/status.json",
-      process.env.SITE_URL || "https://metrics-and-models.ai",
+      process.env.SITE_URL || "https://metrics-and-models.github.io",
     );
     url.searchParams.set("checkedAt", String(Date.now()));
     const response = await fetch(url, {

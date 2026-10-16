@@ -16,7 +16,7 @@ import { needsSeminarRefresh } from "../scripts/check-seminar-refresh.mjs";
 const now = new Date(JSON.parse(fs.readFileSync("dist/seminars/status.json", "utf8")).generatedAt);
 const content = loadContent({ now });
 const prefix = (process.env.PATH_PREFIX || "").replace(/\/$/, "");
-const origin = process.env.SITE_URL || "https://metrics-and-models.ai";
+const origin = process.env.SITE_URL || "https://metrics-and-models.github.io";
 const production = process.env.SITE_ENV === "production";
 const html = (url) => load(fs.readFileSync("dist" + url, "utf8"));
 const people = JSON.parse(fs.readFileSync("site/_data/people.json", "utf8"));
@@ -374,6 +374,41 @@ test("all generated internal links, fragments and assets resolve, including the 
       }
     }
   }
+});
+
+test("GitHub-hosted pages keep navigation and redirects on the chosen site", {
+  skip: new URL(origin).hostname !== "metrics-and-models.github.io",
+}, () => {
+  const formerHost = /^(?:www\.)?metrics-and-models\.ai$/i;
+  const formerDomain = /(?:https?:)?\/\/(?:www\.)?metrics-and-models\.ai(?:[/:?#\s"'`]|$)/i;
+  const locationRedirect = /\blocation\s*(?:(?:\.href\s*)?=\s*|\.(?:assign|replace)\s*\(\s*)["'`](?:https?:)?\/\/(?:www\.)?metrics-and-models\.ai(?:[/:?#]|["'`])/i;
+  const scripts = new Map();
+  for (const file of [...pages(), ...redirects]) {
+    const $ = html("/" + file);
+    const navigation = $(".site-header a, .footer-links a, .landing-next[href], .landing-links a, .hero-notice[href], a.deck-card, .deck-all a");
+    for (const link of navigation.toArray()) {
+      const target = new URL($(link).attr("href"), origin + prefix + "/" + file);
+      assert.ok(!formerHost.test(target.hostname), file + ": navigation to " + target.href);
+    }
+    for (const element of $('link[rel="canonical"], meta[property="og:url"]').toArray()) {
+      const target = new URL($(element).attr("href") || $(element).attr("content"));
+      assert.equal(target.origin, new URL(origin).origin, file + ": site URL metadata");
+    }
+    for (const refresh of $('meta[http-equiv="refresh" i]').toArray())
+      assert.doesNotMatch($(refresh).attr("content") || "", formerDomain, file + ": refresh to former site");
+    for (const [index, script] of $("script").toArray().entries()) {
+      const source = $(script).attr("src");
+      if (!source) {
+        scripts.set(file + ": inline script " + index, $(script).text());
+      } else {
+        const url = new URL(source, origin + prefix + "/" + file);
+        if (url.origin === new URL(origin).origin)
+          scripts.set(url.pathname, fs.readFileSync("dist" + url.pathname.slice(prefix.length), "utf8"));
+      }
+    }
+  }
+  for (const [source, code] of scripts)
+    assert.doesNotMatch(code, locationRedirect, source + ": location redirect to former site");
 });
 
 test("search indexing is allowed only on production, never the preview", () => {

@@ -1,8 +1,8 @@
-name: Development website
+name: Metrics and Models website
 
 on:
   push:
-    branches: [dev, main]
+    branches: ['**']
   pull_request:
   workflow_dispatch:
   # Check for ended seminars hourly; refresh publications every Monday.
@@ -20,14 +20,14 @@ concurrency:
 
 jobs:
   build:
-    if: github.repository == 'metrics-and-models/dev' || github.ref != 'refs/heads/main'
+    if: github.repository == 'metrics-and-models/metrics-and-models.github.io' || github.ref != 'refs/heads/main'
     runs-on: ubuntu-latest
     outputs:
       rebuild: ${{ steps.refresh.outputs.rebuild }}
     env:
       PATH_PREFIX: ''
-      SITE_URL: https://metrics-and-models.ai
-      SITE_ENV: preview
+      SITE_URL: https://metrics-and-models.github.io
+      SITE_ENV: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && 'production' || 'preview' }}
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v4
@@ -61,13 +61,13 @@ jobs:
       - run: npm run test:browser
         if: steps.refresh.outputs.rebuild == 'true'
       - uses: actions/upload-pages-artifact@v4
-        if: steps.refresh.outputs.rebuild == 'true' && github.repository == 'metrics-and-models/dev' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        if: steps.refresh.outputs.rebuild == 'true' && github.repository == 'metrics-and-models/metrics-and-models.github.io' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         with:
           path: dist
 
   deploy:
-    # The rebuilt site deploys only to the separate dev repository, never production.
-    if: needs.build.outputs.rebuild == 'true' && github.repository == 'metrics-and-models/dev' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    # Only the canonical repository's main branch publishes the website.
+    if: needs.build.outputs.rebuild == 'true' && github.repository == 'metrics-and-models/metrics-and-models.github.io' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     permissions:

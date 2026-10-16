@@ -18,6 +18,10 @@ test("responsive pages have no overflow, broken assets or browser errors", async
 }, testInfo) => {
   const errors = [];
   page.on("pageerror", (error) => errors.push(error.message));
+  page.on("request", (request) => {
+    if (request.isNavigationRequest() && /^(?:www\.)?metrics-and-models\.ai$/i.test(new URL(request.url()).hostname))
+      errors.push("Navigation to former site: " + request.url());
+  });
   page.on("response", (response) => {
     if (response.status() >= 400) errors.push(response.url());
   });

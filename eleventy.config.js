@@ -10,6 +10,8 @@ export default function (config) {
     buildTime = new Date(process.env.SITE_NOW || Date.now());
     // Eleventy retains removed pages in an existing output directory.
     fs.rmSync("dist/details/internal_lab_sessions.html", { force: true });
+    // Keep the canonical github.io site independent of custom-domain redirects.
+    fs.rmSync("dist/CNAME", { force: true });
   });
   config.setNunjucksEnvironmentOptions({ autoescape: true });
   config.addGlobalData("seminars", () => loadContent({ now: buildTime }));
@@ -17,7 +19,7 @@ export default function (config) {
     name: "Metrics and Models",
     description:
       "Metrics and Models: a University of Oxford lab developing computational methods for complex problems in health and society, with an open seminar series.",
-    origin: process.env.SITE_URL || "https://metrics-and-models.ai",
+    origin: process.env.SITE_URL || "https://metrics-and-models.github.io",
     prefix,
     production: process.env.SITE_ENV === "production",
     registration: "https://forms.office.com/e/M3j2M2hBFt",
