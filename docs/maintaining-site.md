@@ -48,7 +48,7 @@ but the custom-domain deployment must not use that prefix.
 
 The existing Markdown is still the source of truth:
 
-- `README.md`: upcoming talks table.
+- `README.md`: seminar programme table; completed entries are archived automatically in the rebuilt site.
 - `details/previous_talks.md`: archive table.
 - `details/<speaker>.md`: title, date, institution, abstract, bio and links.
 
@@ -66,15 +66,30 @@ rename their public URLs. Preserve the `Speaker`, `Institution`, `Date`,
 `Talk Title`, `Abstract`, and `Bio` labels in detail files. Times must include
 GMT or BST and a complete date including year.
 
-To move a talk to the archive, move its table row from `README.md` into
-`details/previous_talks.md`. The "Next" label uses the first chronologically
-sorted row in the upcoming table; archiving is deliberately manual. Calendar
-downloads use the listed GMT/BST offset and assume a one-hour seminar.
+The rebuilt site moves each programme entry into Previous talks when its
+scheduled one-hour slot ends, using the listed GMT/BST offset. This updates
+the next-talk links, homepage cards, archive filters and talk-page attendance
+links together. It does not rewrite the Markdown tables. You can leave
+completed rows in `README.md`; entries already in `details/previous_talks.md`
+remain historical, and a URL briefly present in both tables is displayed once.
+Undated entries remain upcoming until a complete date is supplied. Talk URLs
+and calendar downloads stay available after archiving. When no future talks
+remain, the site shows an announcement message and retains the archive.
 
-Planned breaks are listed in `seminarBreaks` in the front matter of
-`site/index.njk`. They appear in date order alongside talks, but do not count as
-seminars, receive a "Next" label, or generate calendar invitations. Remove a
-break from that list once it is no longer part of the upcoming programme.
+GitHub Actions checks hourly whether the published `/seminars/status.json`
+has reached its next transition, and rebuilds only when needed. The existing
+Monday publication refresh also rebuilds the site. Scheduled Actions can run
+late, so public updates follow the next successful scheduled deployment rather
+than an exact second. GitHub disables schedules after 60 days without repository
+activity; re-enable the workflow if that happens. Local preview builds apply
+the same date rules whenever the site rebuilds. `SITE_NOW` can fix the build
+clock for checking future states, for example
+`SITE_NOW=2030-01-01T00:00:00Z npm run build`; omit it for normal use.
+
+Planned breaks are listed in `site/_data/seminarBreaks.json`. They appear in
+date order alongside talks, but do not count as seminars, receive a "Next"
+label, or generate calendar invitations. Breaks before the current UK date
+are omitted when the site rebuilds.
 
 Historical source inconsistencies have not been silently corrected: the archive
 and detail files disagree on the time zones of Mathew Zook and Weisi Guo, and

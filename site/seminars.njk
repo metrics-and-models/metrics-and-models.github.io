@@ -8,6 +8,7 @@ permalink: /seminars/index.html
 {% from "hero.njk" import hero with context %}
 {% set next = seminars.next %}
 {% call hero("now", false) %}
+  {% if next %}
   <p class="eyebrow-code" data-typing>// next seminar · {{ next.date.day }} {{ next.date.month }} · {{ next.date.time }}</p>
   <h1>{{ next.title | displayTitle }}</h1>
   <p class="hero-lead">{% if next.home %}<a href="{{ next.home }}" target="_blank" rel="noopener">{{ next.speaker }} {% icon "arrow-up-right" %}</a>{% else %}{{ next.speaker }}{% endif %}{% if next.institution %} · {{ next.institution }}{% endif %}</p>
@@ -16,15 +17,27 @@ permalink: /seminars/index.html
     {% if next.calendar %}<a class="button button-dark" href="{{ next.calendar }}" download>{% icon "calendar-plus" %} Add to calendar</a>{% endif %}
     <a class="button button-dark" href="/about/#join">How to join {% icon "arrow-right" %}</a>
   </div>
+  {% else %}
+  <p class="eyebrow-code">// open seminars</p>
+  <h1>Open seminars</h1>
+  <p class="hero-lead">New seminars will be announced soon.</p>
+  <div class="button-row">
+    <a class="button button-white" href="/about/#join">Mailing list {% icon "arrow-right" %}</a>
+    <a class="button button-dark" href="#previous">Previous talks {% icon "arrow-right" %}</a>
+  </div>
+  {% endif %}
 {% endcall %}
+{% set forthcoming = seminars.upcoming.slice(1) | withBreaks(seminarBreaks) %}
+{% if next and forthcoming | length %}
 <section id="forthcoming" class="deck-section">
   <div class="container">
     <div class="section-heading section-heading-center"><h2>Forthcoming</h2><p class="section-intro">Every other Thursday, 14:00 UK time. Online and open to everyone. Pick a card to see more.</p></div>
     <div class="card-deck card-deck-wrap">
-    {% for event in seminars.upcoming.slice(1) | withBreaks(seminarBreaks) %}{% include "deck-card.njk" %}{% endfor %}
+    {% for event in forthcoming %}{% include "deck-card.njk" %}{% endfor %}
     </div>
   </div>
 </section>
+{% endif %}
 <section id="previous" class="container section-space">
   <div class="section-heading"><h2>Previous talks</h2></div>
   <div class="archive-tools" data-filter-controls>

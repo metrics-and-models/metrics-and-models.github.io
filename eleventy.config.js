@@ -1,16 +1,18 @@
 import fs from "node:fs";
 import { createHash } from "node:crypto";
 import { load } from "cheerio";
-import { loadContent } from "./lib/content.mjs";
+import { loadContent, withBreaks } from "./lib/content.mjs";
 
 export default function (config) {
   const prefix = (process.env.PATH_PREFIX || "").replace(/\/$/, "");
+  let buildTime = new Date(process.env.SITE_NOW || Date.now());
   config.on("eleventy.before", () => {
+    buildTime = new Date(process.env.SITE_NOW || Date.now());
     // Eleventy retains removed pages in an existing output directory.
     fs.rmSync("dist/details/internal_lab_sessions.html", { force: true });
   });
   config.setNunjucksEnvironmentOptions({ autoescape: true });
-  config.addGlobalData("seminars", loadContent);
+  config.addGlobalData("seminars", () => loadContent({ now: buildTime }));
   config.addGlobalData("site", {
     name: "Metrics and Models",
     description:
@@ -37,11 +39,7 @@ export default function (config) {
       .slice(0, 12);
     return `${url}?v=${version}`;
   });
-  config.addFilter("withBreaks", (talks, breaks = []) =>
-    [...talks, ...breaks.map((entry) => ({ ...entry, isBreak: true }))].sort(
-      (a, b) => a.date.iso.localeCompare(b.date.iso),
-    ),
-  );
+  config.addFilter("withBreaks", (talks, breaks = []) => withBreaks(talks, breaks, buildTime));
   config.addShortcode("icon", (name, className = "") => {
     if (!/^[a-z-]+$/.test(name)) throw new Error("Invalid icon name");
     return fs

@@ -1,8 +1,14 @@
 import { test, expect } from "@playwright/test";
 import fs from "node:fs";
-import { loadContent } from "../lib/content.mjs";
+import { loadContent, tableRows } from "../lib/content.mjs";
 
-const content = loadContent();
+const now = new Date(JSON.parse(fs.readFileSync("dist/seminars/status.json", "utf8")).generatedAt);
+const content = loadContent({ now });
+const londonDate = new Intl.DateTimeFormat("en-CA", {
+  timeZone: "Europe/London", year: "numeric", month: "2-digit", day: "2-digit",
+}).format(now);
+const activeBreaks = JSON.parse(fs.readFileSync("site/_data/seminarBreaks.json", "utf8"))
+  .filter((entry) => entry.date.iso >= londonDate);
 const people = JSON.parse(fs.readFileSync("site/_data/people.json", "utf8"));
 const plots = ["network", "distribution", "scatter", "heatmap", "series", "contours"];
 const landingPlots = ["flow", "network", "distribution", "scatter"];
@@ -111,6 +117,7 @@ test("the brand stays on one line at the mobile navigation breakpoint", async ({
 test("Christmas Eve is clearly marked as a seminar break", async ({
   page,
 }, testInfo) => {
+  test.skip(!content.next || !activeBreaks.some((entry) => entry.date.iso === "2026-12-24"), "The winter break is no longer forthcoming.");
   await page.goto("seminars/");
   const notice = page.locator("#forthcoming .deck-break");
   await notice.scrollIntoViewIfNeeded();
@@ -170,6 +177,34 @@ test("archive search, year filtering and empty state work together", async ({
     await expect(row).toContainText(/Google DeepMind/i);
 });
 
+test("completed talks are archived while the next talk and its detail page stay current", async ({
+  page,
+}) => {
+  const schedule = tableRows(fs.readFileSync("README.md", "utf8"));
+  const completed = schedule.filter((talk) => talk.date.iso && Date.parse(talk.date.iso) + 60 * 60 * 1000 <= now.getTime());
+  await page.goto("seminars/");
+  for (const talk of completed) {
+    await expect(page.locator(`#previous .archive-title a[href$="${talk.url}"]`)).toHaveCount(1);
+    await expect(page.locator(`#forthcoming a.deck-card[href$="${talk.url}"]`)).toHaveCount(0);
+  }
+  await expect(page.locator("#previous .talk-row")).toHaveCount(content.archive.length);
+  if (content.next) {
+    await expect(page.locator(".hero .button-white")).toHaveAttribute("href", new RegExp(content.next.url.replaceAll(".", "\\.") + "$"));
+    await page.goto(content.next.url.slice(1));
+    await expect(page.locator(".event-facts").getByRole("link", { name: "Add to calendar" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Attend this talk" })).toBeVisible();
+  } else {
+    await expect(page.locator(".hero h1")).toHaveText("Open seminars");
+    await expect(page.locator(".hero-lead")).toContainText("announced soon");
+    await expect(page.locator("#forthcoming")).toHaveCount(0);
+  }
+  if (completed.length) {
+    await page.goto(completed[0].url.slice(1));
+    await expect(page.locator("h1")).toBeVisible();
+    await expect(page.getByRole("link", { name: "Attend this talk" })).toHaveCount(0);
+  }
+});
+
 test("navigation is keyboard accessible on mobile and desktop", async ({
   page,
 }) => {
@@ -197,7 +232,10 @@ test("navigation is keyboard accessible on mobile and desktop", async ({
   if (await menu.isVisible()) await menu.click();
   await nav.getByRole("link", { name: "Open seminars" }).click();
   await expect(page).toHaveURL(/\/seminars\/$/);
-  await expect(page.locator("#forthcoming h2")).toHaveText("Forthcoming");
+  if (content.next && (content.upcoming.length > 1 || activeBreaks.length))
+    await expect(page.locator("#forthcoming h2")).toHaveText("Forthcoming");
+  else
+    await expect(page.locator("#forthcoming")).toHaveCount(0);
   if (await menu.isVisible()) await menu.click();
   await nav.getByRole("link", { name: "Projects" }).click();
   await expect(page.locator("h1")).toHaveText("Projects");
@@ -235,6 +273,7 @@ test("page backgrounds are white and the desktop header navigation stays horizon
 test("a talk card opens a preview over the page, then leads to details and the calendar", async ({
   page,
 }) => {
+  test.skip(!content.next, "No forthcoming talk to preview.");
   await page.goto("");
   const card = page.locator(".card-deck a.deck-card").first();
   const dialog = page.locator("#" + (await card.getAttribute("data-dialog")));

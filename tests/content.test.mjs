@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import { createHash } from "node:crypto";
 import path from "node:path";
+import os from "node:os";
 import { load } from "cheerio";
 import {
   loadContent,
@@ -10,8 +11,10 @@ import {
   calendarEvent,
   tableRows,
 } from "../lib/content.mjs";
+import { needsSeminarRefresh } from "../scripts/check-seminar-refresh.mjs";
 
-const content = loadContent();
+const now = new Date(JSON.parse(fs.readFileSync("dist/seminars/status.json", "utf8")).generatedAt);
+const content = loadContent({ now });
 const prefix = (process.env.PATH_PREFIX || "").replace(/\/$/, "");
 const origin = process.env.SITE_URL || "https://metrics-and-models.ai";
 const production = process.env.SITE_ENV === "production";
@@ -20,6 +23,10 @@ const people = JSON.parse(fs.readFileSync("site/_data/people.json", "utf8"));
 const breaks = JSON.parse(
   fs.readFileSync("site/_data/seminarBreaks.json", "utf8"),
 );
+const londonDate = new Intl.DateTimeFormat("en-CA", {
+  timeZone: "Europe/London", year: "numeric", month: "2-digit", day: "2-digit",
+}).format(now);
+const activeBreaks = breaks.filter((entry) => entry.date.iso >= londonDate);
 const publications = JSON.parse(
   fs.readFileSync("site/_data/publications.json", "utf8"),
 );
@@ -33,15 +40,127 @@ const pages = () =>
     .readdirSync("dist", { recursive: true })
     .filter((file) => file.endsWith(".html") && !redirects.includes(file));
 
-test("all source schedule rows and detail permalinks survive the rebuild", () => {
-  for (const [source, key] of [
-    ["README.md", "upcoming"],
-    ["details/previous_talks.md", "archive"],
+// Isolate schedule edge cases from the real programme without rewriting source files.
+function withScheduleFixture(upcoming, archive, check) {
+  const originalDirectory = process.cwd();
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), "seminar-schedule-"));
+  const table = (rows) => [
+    "| Speaker | Date | Title | More Details |",
+    "| --- | --- | --- | --- |",
+    ...rows.map(([speaker, date, url]) =>
+      `| ${speaker} | ${date} | A seminar | [Details](${url}) |`,
+    ),
+  ].join("\n");
+  fs.mkdirSync(path.join(directory, "details"));
+  fs.writeFileSync(path.join(directory, "README.md"), table(upcoming));
+  fs.writeFileSync(path.join(directory, "details/previous_talks.md"), table(archive));
+  try {
+    process.chdir(directory);
+    return check();
+  } finally {
+    process.chdir(originalDirectory);
+    fs.rmSync(directory, { recursive: true, force: true });
+  }
+}
+
+test("hourly checks rebuild only for due transitions or an invalid published status", () => {
+  const clock = Date.parse("2026-10-29T15:00:00.000Z");
+  const status = {
+    generatedAt: "2026-10-16T14:00:00.000Z",
+    nextTransitionAt: "2026-10-29T15:00:00.000Z",
+  };
+  assert.equal(needsSeminarRefresh(status, clock - 1), false);
+  assert.equal(needsSeminarRefresh(status, clock), true);
+  assert.equal(needsSeminarRefresh(status, clock + 1), true);
+  assert.equal(needsSeminarRefresh({ ...status, nextTransitionAt: null }, clock), false);
+  for (const invalid of [
+    null,
+    {},
+    { ...status, generatedAt: "invalid" },
+    { ...status, generatedAt: "2030-01-01T00:00:00.000Z", nextTransitionAt: null },
+    { ...status, nextTransitionAt: "2026-02-30T15:00:00.000Z" },
+    { ...status, nextTransitionAt: "tomorrow" },
+  ]) assert.equal(needsSeminarRefresh(invalid, clock), true);
+});
+
+test("a talk remains upcoming until its one-hour slot ends, in BST and GMT", () => {
+  for (const [url, end, nextUrl] of [
+    ["/details/emilycantrell.html", "2026-10-15T14:00:00.000Z", "/details/bengreen.html"],
+    ["/details/bengreen.html", "2026-10-29T15:00:00.000Z", "/details/perblock.html"],
   ]) {
+    const before = loadContent({ now: new Date(Date.parse(end) - 1) });
+    assert.equal(before.generatedAt, new Date(Date.parse(end) - 1).toISOString());
+    assert.equal(before.nextTransitionAt, end);
+    assert.equal(before.next.url, url);
+    assert.ok(before.upcoming.some((talk) => talk.url === url));
+    assert.ok(!before.archive.some((talk) => talk.url === url));
+    const after = loadContent({ now: end });
+    assert.equal(after.next.url, nextUrl);
+    assert.ok(!after.upcoming.some((talk) => talk.url === url));
+    assert.equal(after.archive.filter((talk) => talk.url === url).length, 1);
+    const detail = after.details.find((talk) => talk.url === url);
+    assert.equal(detail.archived, true);
+    assert.equal(detail.calendar, before.details.find((talk) => talk.url === url).calendar);
+  }
+});
+
+test("archiving preserves source files, stable URLs, details and the complete programme", () => {
+  const sources = ["README.md", "details/previous_talks.md"];
+  const originals = sources.map((file) => fs.readFileSync(file, "utf8"));
+  const before = loadContent({ now: "2026-10-15T12:00:00Z" });
+  const after = loadContent({ now: "2030-01-01T00:00:00Z" });
+  assert.equal(after.upcoming.length, 0);
+  assert.equal(after.next, undefined);
+  assert.equal(after.nextTransitionAt, null);
+  assert.equal(after.total, before.total);
+  assert.equal(after.archive.length, before.total);
+  assert.deepEqual(
+    after.archive.map((talk) => talk.url).sort(),
+    [...before.upcoming, ...before.archive].map((talk) => talk.url).sort(),
+  );
+  assert.deepEqual(after.details.map((talk) => talk.url), before.details.map((talk) => talk.url));
+  assert.deepEqual(sources.map((file) => fs.readFileSync(file, "utf8")), originals);
+});
+
+test("the refresh status describes the built programme and its next automatic transition", () => {
+  const status = JSON.parse(fs.readFileSync("dist/seminars/status.json", "utf8"));
+  assert.equal(status.generatedAt, content.generatedAt);
+  assert.equal(status.nextTransitionAt, content.nextTransitionAt);
+  const ends = content.upcoming
+    .filter((talk) => talk.date.iso)
+    .map((talk) => Date.parse(talk.date.iso) + 60 * 60 * 1000)
+    .filter((end) => end > now.getTime())
+    .sort((a, b) => a - b);
+  assert.equal(status.nextTransitionAt, ends.length ? new Date(ends[0]).toISOString() : null);
+});
+
+test("unknown dates remain upcoming and manually archived talks stay archived without duplicates", () => {
+  withScheduleFixture(
+    [
+      ["Unknown date", "TBC", "/details/unknown.html"],
+      ["Next dated talk", "14:00 GMT, 29th October, 2026", "/details/next.html"],
+      ["Manually archived", "14:00 GMT, 12th November, 2026", "/details/moved.html"],
+    ],
+    [["Manually archived", "14:00 GMT, 12th November, 2026", "/details/moved.html"]],
+    () => {
+      const result = loadContent({ now: "2026-10-16T00:00:00Z" });
+      assert.equal(result.next.url, "/details/next.html");
+      assert.equal(result.upcoming.find((talk) => talk.url === "/details/unknown.html").archived, false);
+      assert.equal(result.archive.filter((talk) => talk.url === "/details/moved.html").length, 1);
+      assert.ok(!result.upcoming.some((talk) => talk.url === "/details/moved.html"));
+      assert.equal(result.total, 3);
+    },
+  );
+});
+
+test("all source schedule rows and detail permalinks survive automatic archiving", () => {
+  const events = [...content.upcoming, ...content.archive];
+  const sourceRows = [];
+  for (const source of ["README.md", "details/previous_talks.md"]) {
     const rows = tableRows(fs.readFileSync(source, "utf8"));
-    assert.equal(content[key].length, rows.length);
+    sourceRows.push(...rows);
     for (const row of rows) {
-      const event = content[key].find(
+      const event = events.find(
         (event) =>
           event.speaker === row.speaker && event.date.label === row.date.label,
       );
@@ -50,7 +169,9 @@ test("all source schedule rows and detail permalinks survive the rebuild", () =>
       assert.equal(event.url, row.url);
     }
   }
-  for (const event of [...content.upcoming, ...content.archive]) {
+  assert.equal(content.total, new Set(sourceRows.map((event) => event.url)).size);
+  assert.equal(new Set(events.map((event) => event.url)).size, events.length);
+  for (const event of events) {
     assert.ok(event.date.iso, event.speaker + ": date must be parsed");
     if (event.url.startsWith("/"))
       assert.ok(fs.existsSync("dist" + event.url), event.url);
@@ -73,7 +194,7 @@ test("the homepage spotlights the next four programme entries and marks the next
   const $ = html("/index.html");
   assert.equal($(".landing-title").attr("aria-label"), "Metrics and Models");
   assert.equal($("main h1").length, 1);
-  const programme = [...content.upcoming, ...breaks.map((b) => ({ ...b, isBreak: true }))]
+  const programme = (content.next ? [...content.upcoming, ...activeBreaks.map((b) => ({ ...b, isBreak: true }))] : [])
     .sort((a, b) => a.date.iso.localeCompare(b.date.iso))
     .slice(0, 4);
   const cards = $(".card-deck > .deck-card");
@@ -98,21 +219,29 @@ test("the homepage spotlights the next four programme entries and marks the next
     assert.equal(dialog.find(".button-solid").attr("href"), prefix + entry.url);
   });
   const marked = cards.filter((_, card) => $(card).find(".next-marker").length);
-  assert.equal(marked.length, 1);
-  assert.equal(marked.attr("href"), prefix + content.next.url);
-  assert.equal(marked.find(".next-marker").text(), "Next talk");
-  assert.equal($(".landing-next").attr("href"), prefix + content.next.url);
+  assert.equal(marked.length, content.next ? 1 : 0);
+  if (content.next) {
+    assert.equal(marked.attr("href"), prefix + content.next.url);
+    assert.equal(marked.find(".next-marker").text(), "Next talk");
+    assert.equal($(".landing-next").attr("href"), prefix + content.next.url);
+  } else {
+    assert.equal($(".landing-next").attr("href"), undefined);
+    assert.match($(".landing-next").text(), /announced soon/);
+  }
 });
 
 test("the seminars page leads with the next talk, then forthcoming cards and the archive", () => {
   const $ = html("/seminars/index.html");
   assert.equal(
     $("main h1").text(),
-    /^(TBC|TBD)$/.test(content.next.title) ? "Title forthcoming" : content.next.title,
+    !content.next ? "Open seminars" : /^(TBC|TBD)$/.test(content.next.title) ? "Title forthcoming" : content.next.title,
   );
-  assert.equal($(".hero .button-white").attr("href"), prefix + content.next.url);
+  if (content.next)
+    assert.equal($(".hero .button-white").attr("href"), prefix + content.next.url);
+  else
+    assert.match($(".hero-lead").text(), /announced soon/);
   const forthcoming = $("#forthcoming .deck-card");
-  assert.equal(forthcoming.length, content.upcoming.length - 1 + breaks.length);
+  assert.equal(forthcoming.length, content.next ? content.upcoming.length - 1 + activeBreaks.length : 0);
   for (const talk of content.upcoming.slice(1))
     assert.equal($('#forthcoming a.deck-card[href="' + prefix + talk.url + '"]').length, 1);
   assert.equal($("#forthcoming .next-marker").length, 0);
@@ -125,6 +254,10 @@ test("the seminars page leads with the next talk, then forthcoming cards and the
 test("Christmas Eve is a break in the programme, not a seminar", () => {
   const $ = html("/seminars/index.html");
   const notice = $("#forthcoming .deck-break");
+  if (!content.next || !activeBreaks.some((entry) => entry.date.iso === "2026-12-24")) {
+    assert.equal(notice.length, 0);
+    return;
+  }
   assert.equal(notice.length, 1);
   assert.match(notice.attr("aria-label"), /24 Dec 2026/);
   assert.match(notice.text(), /No seminar/);
@@ -136,7 +269,6 @@ test("Christmas Eve is a break in the programme, not a seminar", () => {
   assert.ok(
     content.upcoming.every((talk) => !talk.date.iso.startsWith("2026-12-24")),
   );
-  assert.equal(fs.readdirSync("dist/calendar").length, content.upcoming.length);
   assert.equal($("#previous .deck-break").length, 0);
 });
 
@@ -168,7 +300,9 @@ test("summer and winter seminar times convert correctly to UTC", () => {
 });
 
 test("calendar files preserve times, escape content, fold UTF-8 lines and link to this deployment", () => {
-  for (const event of content.upcoming) {
+  const events = [...content.upcoming, ...content.archive].filter((talk) => talk.calendar);
+  assert.equal(fs.readdirSync("dist/calendar").length, events.length);
+  for (const event of events) {
     const ics = fs.readFileSync("dist" + event.calendar, "utf8");
     assert.ok(ics.startsWith("BEGIN:VCALENDAR\r\n"));
     assert.ok(ics.endsWith("END:VCALENDAR\r\n"));
@@ -189,7 +323,7 @@ test("calendar files preserve times, escape content, fold UTF-8 lines and link t
       assert.ok(Buffer.byteLength(line) <= 75);
   }
   const escaped = calendarEvent({
-    ...content.next,
+    ...[...content.upcoming, ...content.archive].find((talk) => talk.date.iso),
     title: "Data, models;\nand " + "é".repeat(100),
   }).replace(/\r\n /g, "");
   assert.ok(escaped.includes("Data\\, models\\;\\nand "));
@@ -337,8 +471,10 @@ test("every page has one animated banner with a pause control", () => {
       assert.equal(canvas.attr("data-fit"), "right", file);
       // The notice row links to the next talk everywhere but the seminars
       // page, whose banner is the next talk.
-      if (file !== "seminars/index.html")
-        assert.equal(banner.find(".hero-notice").attr("href"), prefix + content.next.url, file);
+      if (file !== "seminars/index.html") {
+        assert.equal(banner.find(".hero-notice").attr("href"), content.next ? prefix + content.next.url : undefined, file);
+        if (!content.next) assert.match(banner.find(".hero-notice").text(), /announced soon/, file);
+      }
     }
   }
 });
@@ -421,8 +557,8 @@ test("the lab is introduced separately from its open seminar programme", () => {
       ["Meet the lab", prefix + "/people/"],
     ],
   );
-  assert.equal(home("#upcoming h2").text(), "Open talks · Next up");
-  assert.match(home("#upcoming .section-intro").text(), /open to everyone/);
+  assert.equal(home("#upcoming h2").text(), content.next ? "Open talks · Next up" : "Open talks");
+  assert.match(home("#upcoming .section-intro").text(), content.next ? /open to everyone/ : /announced soon/);
   assert.match(
     about(".hero-lead").text(),
     /develop computational methods for complex problems/,

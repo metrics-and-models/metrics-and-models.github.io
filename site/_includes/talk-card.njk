@@ -6,8 +6,9 @@
   <p class="card-text">{{ event.message }}</p>
 </aside>
 {% else %}
-<a class="talk-card accent-{{ loop.index0 % 4 }}{% if event.url == seminars.next.url %} is-next{% endif %}" href="{{ event.url }}">
-  <span class="card-date">{{ event.date.day or "TBC" }} {{ event.date.month }} · {{ event.date.time or "Time TBC" }}{% if event.url == seminars.next.url %}<span class="next-marker">Next talk</span>{% endif %}</span>
+{% set isNext = seminars.next and event.url == seminars.next.url %}
+<a class="talk-card accent-{{ loop.index0 % 4 }}{% if isNext %} is-next{% endif %}" href="{{ event.url }}">
+  <span class="card-date">{{ event.date.day or "TBC" }} {{ event.date.month }} · {{ event.date.time or "Time TBC" }}{% if isNext %}<span class="next-marker">Next talk</span>{% endif %}</span>
   <h3>{{ event.title | displayTitle }}</h3>
   <p class="card-text">{{ event.speaker | replace("CANCELLED ", "") }}{% if event.institution %}<span class="deck-institution">{{ event.institution }}</span>{% endif %}</p>
   <span class="card-more">Talk details {% icon "arrow-right" %}</span>

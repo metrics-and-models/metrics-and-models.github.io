@@ -5,8 +5,9 @@ on:
     branches: [dev, main]
   pull_request:
   workflow_dispatch:
-  # Weekly rebuild so lab members' latest publications appear automatically.
+  # Check for ended seminars hourly; refresh publications every Monday.
   schedule:
+    - cron: "17 * * * *"
     - cron: "0 6 * * 1"
 
 permissions:
@@ -14,12 +15,15 @@ permissions:
 
 concurrency:
   group: website-${{ github.repository }}-${{ github.ref }}
-  cancel-in-progress: true
+  # A no-op hourly check must not cancel an in-flight content deployment.
+  cancel-in-progress: ${{ github.event_name != 'schedule' }}
 
 jobs:
   build:
     if: github.repository == 'metrics-and-models/dev' || github.ref != 'refs/heads/main'
     runs-on: ubuntu-latest
+    outputs:
+      rebuild: ${{ steps.refresh.outputs.rebuild }}
     env:
       PATH_PREFIX: ''
       SITE_URL: https://metrics-and-models.ai
@@ -30,23 +34,40 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - name: Check whether the seminar schedule needs refreshing
+        id: refresh
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          SCHEDULE: ${{ github.event.schedule }}
+        run: |
+          if [ "$EVENT_NAME" = "schedule" ] && [ "$SCHEDULE" = "17 * * * *" ]; then
+            node scripts/check-seminar-refresh.mjs
+          else
+            echo "rebuild=true" >> "$GITHUB_OUTPUT"
+          fi
       - run: npm ci
+        if: steps.refresh.outputs.rebuild == 'true'
       # Falls back to the committed publications.json if OpenAlex is unavailable.
       - name: Refresh publications from OpenAlex
+        if: steps.refresh.outputs.rebuild == 'true' && github.event.schedule != '17 * * * *'
         run: npm run publications
         continue-on-error: true
       - run: npm run build
+        if: steps.refresh.outputs.rebuild == 'true'
       - run: npm test
+        if: steps.refresh.outputs.rebuild == 'true'
       - run: npx playwright install --with-deps chromium
+        if: steps.refresh.outputs.rebuild == 'true'
       - run: npm run test:browser
+        if: steps.refresh.outputs.rebuild == 'true'
       - uses: actions/upload-pages-artifact@v4
-        if: github.repository == 'metrics-and-models/dev' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        if: steps.refresh.outputs.rebuild == 'true' && github.repository == 'metrics-and-models/dev' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         with:
           path: dist
 
   deploy:
     # The rebuilt site deploys only to the separate dev repository, never production.
-    if: github.repository == 'metrics-and-models/dev' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    if: needs.build.outputs.rebuild == 'true' && github.repository == 'metrics-and-models/dev' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     permissions:

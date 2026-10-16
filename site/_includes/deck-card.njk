@@ -5,7 +5,7 @@
   <div class="deck-body"><span class="deck-meta">No seminar</span><h3>{{ event.title }}</h3><p class="deck-text">{{ event.message }}</p></div>
 </aside>
 {% else %}
-{% set isNext = event.url == seminars.next.url %}
+{% set isNext = seminars.next and event.url == seminars.next.url %}
 <a class="deck-card tone-{{ loop.index0 % 4 }}" href="{{ event.url }}" data-dialog="talk-{{ loop.index0 }}">
   <div class="deck-face"><span class="deck-day">{{ event.date.day or "TBC" }}</span><span class="deck-month">{{ event.date.month }}</span>{% if isNext %}<span class="next-marker">Next talk</span>{% endif %}</div>
   <div class="deck-body">
