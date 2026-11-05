@@ -190,6 +190,23 @@ test("all source schedule rows and detail permalinks survive automatic archiving
   }
 });
 
+test("Per Block's listing stays concise while his detail page credits collaborators", () => {
+  const programme = loadContent({ now: new Date("2026-11-05T12:00:00Z") });
+  const detail = programme.details.find((talk) => talk.url === "/details/perblock.html");
+  assert.equal(programme.next.url, detail.url);
+  assert.equal(programme.next.speaker, "Per Block");
+  assert.equal(programme.next.title, "Relational Alignment Models");
+  assert.equal(programme.next.date.iso, "2026-11-12T14:00:00.000Z");
+  assert.equal(detail.speaker, "Per Block (with Marion Hoffman and Claudia Noack)");
+  const $ = html(detail.url);
+  assert.equal($(".speaker-line a").text().trim(), detail.speaker);
+  assert.deepEqual($(".talk-copy h2").toArray().map((el) => $(el).text()), ["Abstract", "Biography"]);
+  assert.match($(".talk-copy").text(), /multiple or many categorical outcomes/);
+  assert.match($(".talk-copy").text(), /a statistical representation of relational approaches\./);
+  assert.doesNotMatch($(".talk-copy").text(), /\bTBC\b|\bTBD\b/);
+  assert.doesNotMatch(html("/index.html")("main").text(), /Marion Hoffman|Claudia Noack/);
+});
+
 test("the homepage spotlights the next four programme entries and marks the next talk", () => {
   const $ = html("/index.html");
   assert.equal($(".landing-title").attr("aria-label"), "Metrics and Models");
