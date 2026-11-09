@@ -8,6 +8,8 @@ const people = JSON.parse(fs.readFileSync("site/_data/people.json", "utf8"));
 const since = new Date();
 since.setFullYear(since.getFullYear() - 2);
 const contact = "metrics_and_models_mgmt@maillist.ox.ac.uk";
+// Editorial exclusions apply before sorting and limiting the refreshed feed.
+const excludedDois = new Set(["https://doi.org/10.32468/espe112"]);
 
 const normalise = (name) =>
   name
@@ -64,7 +66,12 @@ for (const member of members) {
     for (const work of (await response.json()).results) {
       const source = work.primary_location?.source;
       // Published journal articles only, not preprints or repository copies.
-      if (source?.type !== "journal" || !work.title || works.has(work.id))
+      if (
+        source?.type !== "journal" ||
+        !work.title ||
+        works.has(work.id) ||
+        excludedDois.has(work.doi?.toLowerCase())
+      )
         continue;
       works.set(work.id, {
         title: work.title.replace(/<[^>]+>/g, ""),

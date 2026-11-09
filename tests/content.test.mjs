@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { createHash } from "node:crypto";
+import { execFileSync } from "node:child_process";
 import path from "node:path";
 import os from "node:os";
 import { load } from "cheerio";
@@ -633,6 +634,44 @@ test("the lab is introduced separately from its open seminar programme", () => {
   assert.match(about("#join").text(), /do not need to be a lab member/);
 });
 
+test("publication refresh excludes the requested paper before filling the feed", () => {
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), "publications-refresh-"));
+  const script = new URL("../scripts/fetch-publications.mjs", import.meta.url).href;
+  const works = Array.from({ length: 13 }, (_, index) => ({
+    id: `https://openalex.org/W${index + 1}`,
+    title: `Test article ${index + 1}`,
+    doi: `https://doi.org/10.1234/test${index + 1}`,
+    publication_date: `2026-10-${String(13 - index).padStart(2, "0")}`,
+    publication_year: 2026,
+    primary_location: { source: { type: "journal", display_name: "Test journal" } },
+    authorships: [{ author: { id: "https://openalex.org/A1", display_name: "Charlie Rahal" } }],
+  }));
+  const excluded = {
+    ...works[0],
+    id: "https://openalex.org/W100",
+    title: "Cambio demográfico y sus impactos económicos en Colombia",
+    doi: "https://doi.org/10.32468/espe112",
+    publication_date: "2026-11-01",
+  };
+  const results = [excluded, { ...excluded, id: "https://openalex.org/W101", doi: excluded.doi.toUpperCase() }, ...works];
+  try {
+    fs.mkdirSync(path.join(directory, "site/_data"), { recursive: true });
+    fs.writeFileSync(path.join(directory, "site/_data/people.json"), JSON.stringify([
+      { name: "Charlie Rahal", openalex: "A1" },
+    ]));
+    execFileSync(process.execPath, ["--input-type=module", "-e", `
+      globalThis.fetch = async () => ({ ok: true, json: async () => ({ results: ${JSON.stringify(results)} }) });
+      await import(${JSON.stringify(script)});
+    `], { cwd: directory, timeout: 10000, encoding: "utf8" });
+    const refreshed = JSON.parse(fs.readFileSync(path.join(directory, "site/_data/publications.json"), "utf8"));
+    assert.equal(refreshed.length, 12);
+    assert.deepEqual(refreshed.map((paper) => paper.url), works.slice(0, 12).map((work) => work.doi));
+    assert.ok(refreshed.every((paper) => paper.title !== excluded.title));
+  } finally {
+    fs.rmSync(directory, { recursive: true, force: true });
+  }
+});
+
 test("publication data is well formed and credits only listed lab members", () => {
   const names = new Set(people.map((person) => person.name));
   for (const person of people) {
@@ -654,12 +693,15 @@ test("publication data is well formed and credits only listed lab members", () =
     publications.map((paper) => paper.date).sort().reverse(),
   );
   assert.equal(new Set(publications.map((paper) => paper.url)).size, publications.length);
+  assert.ok(publications.every((paper) => paper.url.toLowerCase() !== "https://doi.org/10.32468/espe112"));
 });
 
 test("the homepage features the latest four papers and Projects the curated highlights", () => {
   const home = html("/index.html");
   const projects = html("/projects/index.html");
   const papers = publications.slice(0, 4);
+  assert.equal(home('a[href="https://doi.org/10.32468/espe112"]').length, 0);
+  assert.equal(projects('#publications a[href="https://doi.org/10.32468/espe112"]').length, 0);
   const slides = home(".feature-slide");
   assert.equal(slides.length, papers.length);
   assert.equal(home('.feature-tabs [role="tab"]').length, papers.length);

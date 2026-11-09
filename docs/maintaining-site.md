@@ -95,6 +95,15 @@ and detail files disagree on the time zones of Mathew Zook and Weisi Guo, and
 several old archive rows use BST outside the summer period. Review those source
 dates separately before treating the archive as authoritative calendar data.
 
+## Publication exclusions
+
+Publication-feed exclusions are recorded by DOI in `excludedDois` in
+`scripts/fetch-publications.mjs`. The importer applies them before selecting
+the latest twelve papers, so scheduled refreshes do not restore excluded works.
+The Colombia demographic-change paper (`10.32468/espe112`) is excluded at the
+site owner's request. Keep it out of the committed `publications.json` fallback
+as well; removing an entry from that JSON alone does not prevent reimporting it.
+
 ## Adding people
 
 Edit `site/_data/people.json`. Add an object following this structure:
