@@ -208,6 +208,27 @@ test("Per Block's listing stays concise while his detail page credits collaborat
   assert.doesNotMatch(html("/index.html")("main").text(), /Marion Hoffman|Claudia Noack/);
 });
 
+test("Sabina Tomkins' programme entry and detail page include the supplied talk details", () => {
+  const programme = loadContent({ now: "2026-11-09T12:00:00Z" });
+  const url = "/details/sabina-tomkins.html";
+  const title = "How should we actually use LLMs in human annotation workflows?";
+  const entry = programme.upcoming.find((talk) => talk.url === url);
+  const detail = programme.details.find((talk) => talk.url === url);
+  assert.equal(entry.speaker, "Sabina Tomkins");
+  assert.equal(entry.title, title);
+  assert.equal(entry.date.iso, "2026-11-26T14:00:00.000Z");
+  assert.equal(detail.title, title);
+  assert.equal(detail.institution, "University of Michigan");
+  const $ = html(url);
+  assert.equal($("main h1").text(), title);
+  assert.equal($(".speaker-line a").text().trim(), "Sabina Tomkins");
+  assert.deepEqual($(".talk-copy h2").toArray().map((el) => $(el).text()), ["Abstract", "Biography"]);
+  assert.match($(".talk-copy").text(), /how should we actually use LLMs with human annotators\?/);
+  assert.match($(".talk-copy").text(), /a faculty associate at the Center for Political Studies/);
+  assert.match($(".talk-copy").text(), /National Science Foundation and University of Michigan fellowships\./);
+  assert.doesNotMatch($(".talk-copy").text(), /\bTBC\b|\bTBD\b/);
+});
+
 test("the homepage spotlights the next four programme entries and marks the next talk", () => {
   const $ = html("/index.html");
   assert.equal($(".landing-title").attr("aria-label"), "Metrics and Models");

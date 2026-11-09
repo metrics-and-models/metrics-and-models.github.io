@@ -55,7 +55,7 @@ Hi! We are a group of health and social data scientists located at the Universit
     <tr>
       <td><a href="https://politechlab.org/" target="_blank" rel="noopener noreferrer">Sabina Tomkins</a></td>
       <td>14:00 GMT, 26th November, 2026</td>
-      <td>TBC</td>
+      <td>How should we actually use LLMs in human annotation workflows?</td>
       <td><a href="/details/sabina-tomkins.html">More details</a></td>
     </tr>
     <tr>
